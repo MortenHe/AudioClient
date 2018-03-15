@@ -1,0 +1,45 @@
+<!-- auesserer Container -->
+<div class="container mt-3">
+
+  <h1>Web Video Player</h1>
+
+  <!-- Form fuer Such und Mode-Filter -->
+  <form [formGroup]="myForm">
+
+    <!-- Suchfeld fuer Filterung -->
+    <div class="form-group">
+      <input class="form-control"
+             id="search"
+             type="search"
+             name="search"
+             formControlName="search">
+    </div>
+
+    <!-- Filter-Buttons -->
+    <div class="form-group btn-group mb-0">
+
+      <!-- Ueber Buttons gehen -->
+      <label *ngFor="let single_mode_filter of mode_filter"
+             class="btn btn-default btn-outline-primary"
+             [class.active]="single_mode_filter.value == myForm.controls.mode.value">
+
+        <!-- Usichtbare radio box -->
+        <input class="d-none"
+               type="radio"
+               [value]="single_mode_filter.value"
+               name="mode"
+               formControlName="mode">{{single_mode_filter.label}}
+      </label>
+    </div>
+  </form>
+
+  <!-- Trennlinie zwischen Suchbereich und Trefferliste -->
+  <hr>
+
+  <!-- Ueber Video-Array gehen und nach Name sortiert ausgeben, ggf. nach Modus filtern ("Conni") -->
+  <div *ngFor="let video of videos | orderBy: 'name' | modeFilter: myForm.controls.mode.value | searchFilter: myForm.controls.search.value"
+
+       (click)="playVideo(video.file)"
+       class="box">{{video.name}}
+  </div>
+</div>

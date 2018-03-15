@@ -1,0 +1,29 @@
+.box {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+    background: lightyellow;
+    cursor: pointer;
+}
+
+.box:hover {
+    background: lightcoral;
+}
+
+.box + .box {
+    margin-top: 10px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Bootstrap changes */
+.btn {
+    box-shadow: none !important;
+}
+
+.btn-outline-primary:not([disabled]):not(.disabled).active {
+    color: white;
+}
