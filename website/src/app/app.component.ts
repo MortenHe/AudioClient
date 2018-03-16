@@ -65,6 +65,14 @@ export class AppComponent {
     this.vs.sendVideoPlayRequest(filename);
   }
 
+  //Video stoppen
+  stopVideo() {
+
+    //Service aufrufen, der das Video stoppt
+    console.log("stop video");
+    this.vs.sendVideoStopRequest();
+  }
+
   //Liste der Videos
   videos: any[] = [
     {

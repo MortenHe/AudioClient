@@ -15,4 +15,12 @@ export class VideoService {
     //Dateiname mitschicken bei HTTP-Request
     this.http.get("http://192.168.0.150/play_video.php?filename=" + filename).subscribe();
   }
+
+  //Anfrage an Proxy schicken, damit diese das Videoplayback stoppt
+  sendVideoStopRequest(): any {
+    console.log("Stop video");
+
+    //HTTP-Request um Video zu stoppen
+    this.http.get("http://192.168.0.150/stop_video.php").subscribe();
+  }
 }
