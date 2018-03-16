@@ -68,9 +68,20 @@ export class AppComponent {
   //Video stoppen
   stopVideo() {
 
+    //aktives Video wieder zuruecksetzen, weil gerade kein Video mehr laeuft
+    this.active_video = null;
+
     //Service aufrufen, der das Video stoppt
     console.log("stop video");
     this.vs.sendVideoStopRequest();
+  }
+
+  //Pi herunterfahren
+  shutdownPi() {
+
+    //Service aufrufen, der den Pi herunterfaehrt
+    console.log("shutdown video");
+    this.vs.sendShutdownRequest();
   }
 
   //Liste der Videos

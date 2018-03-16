@@ -19,8 +19,16 @@
 }
 
 hr {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+h1{
+    font-size: 25px;
 }
 
 /* Bootstrap changes */

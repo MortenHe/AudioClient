@@ -23,4 +23,12 @@ export class VideoService {
     //HTTP-Request um Video zu stoppen
     this.http.get("http://192.168.0.150/stop_video.php").subscribe();
   }
+
+  //Anfrage an Proxy schicken, damit der Pi heruntergefahren wird
+  sendShutdownRequest(): any {
+    console.log("Shutdown pi");
+
+    //HTTP-Request um Pi herunterzufahren
+    this.http.get("http://192.168.0.150/shutdown_pi.php").subscribe();
+  }
 }
