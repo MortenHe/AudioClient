@@ -13,6 +13,6 @@ export class VideoService {
     console.log("Play file" + filename);
 
     //Dateiname mitschicken bei HTTP-Request
-    this.http.get("http://definitely-fu.de/test/test.php?filename=" + filename).subscribe();
+    this.http.get("http://192.168.0.150/play_video.php?filename=" + filename).subscribe();
   }
 }

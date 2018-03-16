@@ -8,7 +8,8 @@
 
     <!-- Suchfeld fuer Filterung -->
     <div class="form-group">
-      <input class="form-control"
+      <input autofocus
+             class="form-control"
              id="search"
              type="search"
              name="search"
@@ -37,9 +38,10 @@
   <hr>
 
   <!-- Ueber Video-Array gehen und nach Name sortiert ausgeben, ggf. nach Modus filtern ("Conni") -->
-  <div *ngFor="let video of videos | orderBy: 'name' | modeFilter: myForm.controls.mode.value | searchFilter: myForm.controls.search.value"
+  <div *ngFor="let video of videos | orderBy: 'name' | modeFilter: myForm.controls.mode.value | searchFilter: myForm.controls.search.value; index as i"
 
        (click)="playVideo(video.file)"
-       class="box">{{video.name}}
+       class="box"
+       [class.active_video]="video.file == active_video">{{video.name}}
   </div>
 </div>

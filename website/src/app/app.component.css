@@ -6,8 +6,12 @@
     cursor: pointer;
 }
 
-.box:hover {
-    background: lightcoral;
+.box:hover:not(.active_video) {
+    background: rgba(255, 165, 0, .4);
+}
+
+.active_video {
+    background: rgba(255, 165, 0, .8);
 }
 
 .box + .box {

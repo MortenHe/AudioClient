@@ -10,7 +10,7 @@ import { FormBuilder, FormControl } from "@angular/forms";
 
 export class AppComponent {
 
-  //Form
+  //Form fuer Textsuche und ModeFilterung
   myForm;
 
   //Filtermoeglichkeiten
@@ -33,6 +33,9 @@ export class AppComponent {
     }
   ];
 
+  //Welches Video ist gerade aktiv (ueber den Dateiname gehen)
+  active_video: string;
+
   //Videoservice und FormBuilder injecten
   constructor(private vs: VideoService, private fb: FormBuilder) {
   }
@@ -53,6 +56,9 @@ export class AppComponent {
 
   //Video abspielen
   playVideo(filename) {
+
+    //aktives Video setzen und dadurch optisch anpassen
+    this.active_video = filename;
 
     //Service aufrufen, der das Video startet
     console.log(filename);
