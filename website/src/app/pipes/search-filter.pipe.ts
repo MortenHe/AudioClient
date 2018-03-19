@@ -7,6 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 //Videoliste anhand eines Suchstrings filtern
 export class SearchFilterPipe implements PipeTransform {
 
+  //Suchstring wird uebergeben
   transform(items: any, search_string: any): any {
 
     //Wenn Suchfeld leer ist

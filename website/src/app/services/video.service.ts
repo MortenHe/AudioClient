@@ -8,17 +8,15 @@ export class VideoService {
   constructor(private http: Http) {
   }
 
-  //Anfrage an Proxy schicken, damit dieser ein Video startet
-  sendVideoPlayRequest(filename) {
-    console.log("Play file" + filename);
+  //Anfrage an Proxy schicken, damit dieser ein Video / Liste von Videos startet
+  sendVideoPlayRequest(filename_string) {
 
-    //Dateiname mitschicken bei HTTP-Request
-    this.http.get("http://192.168.0.150/play_video.php?filename=" + filename).subscribe();
+    //Dateiname(n) mitschicken bei HTTP-Request
+    this.http.get("http://192.168.0.150/start_playlist.php?filename_string=" + filename_string).subscribe();
   }
 
-  //Anfrage an Proxy schicken, damit diese das Videoplayback stoppt
+  //Anfrage an Proxy schicken, damit dieser das Videoplayback stoppt
   sendVideoStopRequest(): any {
-    console.log("Stop video");
 
     //HTTP-Request um Video zu stoppen
     this.http.get("http://192.168.0.150/stop_video.php").subscribe();
@@ -26,7 +24,6 @@ export class VideoService {
 
   //Anfrage an Proxy schicken, damit der Pi heruntergefahren wird
   sendShutdownRequest(): any {
-    console.log("Shutdown pi");
 
     //HTTP-Request um Pi herunterzufahren
     this.http.get("http://192.168.0.150/shutdown_pi.php").subscribe();

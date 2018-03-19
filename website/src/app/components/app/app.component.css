@@ -14,8 +14,8 @@
     background: rgba(255, 165, 0, .8);
 }
 
-.box + .box {
-    margin-top: 10px;
+.video_row + .video_row {
+    margin-top: 5px;
 }
 
 hr {
@@ -27,8 +27,27 @@ label {
     margin-bottom: 0px;
 }
 
-h1{
+h1 {
     font-size: 25px;
+    margin-bottom: 0px
+}
+
+.button_clean {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.button_clean:focus {
+    outline: none;
+}
+
+button {
+    outline: none;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 /* Bootstrap changes */

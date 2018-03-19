@@ -4,6 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'modeFilter'
 })
 
+//nach einem Modus im Video-Objekt filtern
 export class ModeFilterPipe implements PipeTransform {
 
   //Modus Filter fuer Videoliste
