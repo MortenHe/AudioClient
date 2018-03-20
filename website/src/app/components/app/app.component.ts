@@ -93,7 +93,7 @@ export class AppComponent {
     else if (field === "length" && this.orderField === "name") {
 
       //Nach Zeit absteigend sortieren
-      this.reverseOrder = false;
+      this.reverseOrder = true;
     }
 
     //Wenn bereits nach Laenge sortiert wurde
@@ -176,7 +176,7 @@ export class AppComponent {
       return length_string.substring(3)
     }
 
-    //TODO: wenn keine 10er Stunde
+    //wenn keine 10er Stunde
     else if (length_string.startsWith("0")) {
 
       //gekuerzten String zureuckgeben
@@ -240,6 +240,16 @@ export class AppComponent {
 
     //Service aufrufen, der das Video stoppt
     this.vs.sendVideoStopRequest();
+  }
+
+  //Videoliste aus Webseite und auf Server vergleichen (um Fehler zu finden)
+  checkVideolist() {
+
+    //Liste der Dateiname aus Config als komma-sep. String
+    let video_string = (VIDEOS.map(item => item.file).join(","));
+
+    //Service aufrufen, der den Pi mit dem Vergleich beauftragt
+    this.vs.sendCheckVideolistReqeuist(video_string);
   }
 
   //Pi herunterfahren

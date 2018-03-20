@@ -5,4 +5,4 @@ header("Access-Control-Allow-Origin: *");
 echo "Fahre Pi herunter<br>";
 
 //Pi herunterfahren
-echo shell_exec("/bin/shutdown -h now");
+echo shell_exec("/sbin/shutdown -h now 2>&1");

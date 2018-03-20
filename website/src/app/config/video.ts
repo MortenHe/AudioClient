@@ -155,7 +155,7 @@ export const VIDEOS: Video[] = [
     {
         'mode': 'Janosch',
         'name': 'Janosch - Lied: Ein Loch ist im Eimer',
-        'file': 'janosch-eimer.mp4',
+        'file': 'janosch-loch-eimer.mp4',
         'length': '00:02:52'
     },
     {
@@ -300,7 +300,7 @@ export const VIDEOS: Video[] = [
     {
         'mode': 'Janosch',
         'name': 'Janosch - Lied: Schnuddelpferd',
-        'file': 'janosch-.mp4',
+        'file': 'janosch-schnuddelpferd.mp4',
         'length': '00:02:45'
     },
     {
@@ -314,5 +314,6 @@ export const VIDEOS: Video[] = [
         'name': 'Janosch - Traumstunde für Siebenschläfer',
         'file': 'janosch-siebenschlaefer.mp4',
         'length': '00:10:10'
-    }
+    },
+
 ];
