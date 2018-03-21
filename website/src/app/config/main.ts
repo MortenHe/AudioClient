@@ -495,23 +495,28 @@ export const VIDEOS: Video[] = [
 export const MODES = [
     {
         "label": "Alle",
-        "value": "*"
+        "value": "*",
+        "icon": "all"
     },
     {
         "label": "Bibi & Tina",
-        "value": "Bibi Tina"
+        "value": "Bibi Tina",
+        "icon": "bibi-tina"
     },
     {
         "label": "Bobo",
-        "value": "Bobo"
+        "value": "Bobo",
+        "icon": "bobo"
     },
     {
         "label": "Conni",
-        "value": "Conni"
+        "value": "Conni",
+        "icon": "conni"
     },
     {
         "label": "Janosch",
-        "value": "Janosch"
+        "value": "Janosch",
+        "icon": "janosch"
     }
 ];
 

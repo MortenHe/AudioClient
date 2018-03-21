@@ -1,5 +1,5 @@
 <!-- auesserer Container -->
-<div class="container-fluid mt-3 mb-3">
+<div class="app-width container-fluid mt-3 mb-3">
 
   <!-- Zeile fuer Ueberschrift und Shutdown-Button -->
   <div class="row no-gutters">
@@ -57,7 +57,7 @@
     <div class="form-group mb-2">
       <input autofocus
              placeholder="Video suchen"
-             class="form-control"
+             class="search-field form-control"
              id="search"
              type="search"
              name="search"
@@ -65,15 +65,18 @@
     </div>
 
     <!-- Filter-Buttons -->
-    <div class="form-group btn-group mb-0">
+    <div class="form-group mb-0">
 
       <!-- Ueber Buttons gehen -->
       <label *ngFor="let single_mode_filter of mode_filter"
-             class="btn btn-default btn-outline-primary"
+             class="mode-filter cursor-pointer mr-2"
              [class.active]="single_mode_filter.value === myForm.controls.mode.value">
 
+        <!-- Vorschaubild -->
+        <img src="assets/images/{{single_mode_filter.icon}}.png" />
+
         <!-- Name des Filters -->
-        {{single_mode_filter.label}}
+        <!-- {{single_mode_filter.label}} -->
 
         <!-- Usichtbare radio box -->
         <input class="d-none"
@@ -181,7 +184,11 @@
     <!-- Button um einzelnes Video zu starten -->
     <button (click)="playSingleVideo(video)"
             class="box col text-left pl-2"
-            [class.active-video]="video.file === active_video">{{video.name}}
+            [class.active-video]="video.file === active_video">
+
+      <!-- Play-Symbol -->
+      <i class="fa fa-play ml-1 mr-1"></i>
+      {{video.name}}
     </button>
   </div>
 </div>

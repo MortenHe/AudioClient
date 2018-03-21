@@ -19,19 +19,45 @@ $color-light-bg-active: rgba(255, 165, 0, .8);
 
 /* eigenes styles */
 
+.app-width {
+    max-width: 600px;
+}
+
+.mode-filter {
+    border: 3px solid $color-grey;
+    border-radius: 5px;
+    padding: 5px;
+    &:hover:not(.active) {
+        border: 3px solid $color-light-bg-hover
+    }
+    &.active {
+        border: 3px solid $color-light-bg-active;
+    }
+}
+
 .box {
     border: 1px solid $color-grey;
     border-radius: 5px;
     padding: 5px;
     background: $color-light-bg;
     cursor: pointer;
-    &.box:hover:not(.active_video) {
-        background: $color-light-bg-hover
+    .fa-play {
+        display: none;
     }
-}
-
-.active-video {
-    background: $color-light-bg-active
+    &:hover:not(.active-video) {
+        background: $color-light-bg-hover;
+        .fa-play {
+            display: inline;
+            opacity: .5;
+        }
+    }
+    &.active-video {
+        background: $color-light-bg-active;
+        .fa-play {
+            display: inline;
+            opacity: 1;
+        }
+    }
 }
 
 hr {
