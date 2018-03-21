@@ -4,14 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 //Video-Liste importieren
-import { VIDEOS, Video } from '../config/video'
+import { PROXY_URL, VIDEOS, Video } from '../config/main'
 
 @Injectable()
 export class VideoService {
 
-    //URL wo die Proxyskripte liegen
-    //proxyUrl = "http://192.168.0.150/proxy/";
-    proxyUrl = "http://localhost/WebPlayer/website/src/app/proxy/";
+    //URL wo die Proxyskripte liegen aus config laden
+    proxyUrl = PROXY_URL
 
     //Http Service injekten
     constructor(private http: Http) {

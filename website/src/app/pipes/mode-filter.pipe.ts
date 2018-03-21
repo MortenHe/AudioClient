@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Video } from '../config/main';
 
 @Pipe({
   name: 'modeFilter'
@@ -8,7 +9,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ModeFilterPipe implements PipeTransform {
 
   //Modus Filter fuer Videoliste
-  transform(items: any, mode: any): any {
+  transform(items: Video[], mode: string): any {
 
     //Wenn alle Videos angezeigt werden sollen
     if (mode === "*") {

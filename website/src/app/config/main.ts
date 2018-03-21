@@ -118,14 +118,14 @@ export const VIDEOS: Video[] = [
     },
     {
         'mode': 'Bibi Tina',
-        'name': 'Bibi und Tina - Die Biber sind los',
-        'file': 'bibi-tina-biber.mp4',
+        'name': 'Bibi und Tina - Rettung für den Wanderzirkus',
+        'file': 'bibi-tina-wanderzirkus.mp4',
         'length': '00:25:08'
     },
     {
         'mode': 'Bibi Tina',
-        'name': 'Bibi und Tina - Rettung für den Wanderzirkus',
-        'file': 'bibi-tina-wanderzirkus.mp4',
+        'name': 'Bibi und Tina - Die Biber sind los',
+        'file': 'bibi-tina-biber.mp4',
         'length': '00:25:08'
     },
     {
@@ -209,7 +209,7 @@ export const VIDEOS: Video[] = [
     {
         'mode': 'Janosch',
         'name': 'Janosch - Oh wie einsam ist die Luft',
-        'file': 'janosch-einsam.mp4',
+        'file': 'janosch-einsam-luft.mp4',
         'length': '00:11:20'
     },
     {
@@ -227,13 +227,13 @@ export const VIDEOS: Video[] = [
     {
         'mode': 'Janosch',
         'name': 'Janosch - Die Grille und der Maulwurf',
-        'file': 'janosch-grille.mp4',
+        'file': 'janosch-fiedelgrille.mp4',
         'length': '00:06:36'
     },
     {
         'mode': 'Janosch',
-        'name': 'Janosch - Zehn Gänse saßen im Haberstroh',
-        'file': 'janosch-gaense-haberstroh.mp4',
+        'name': 'Janosch - Zehn Gänse saßen im Haferstroh',
+        'file': 'janosch-gaense-haferstroh.mp4',
         'length': '00:02:57'
     },
     {
@@ -315,5 +315,206 @@ export const VIDEOS: Video[] = [
         'file': 'janosch-siebenschlaefer.mp4',
         'length': '00:10:10'
     },
-
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Antek Pistole",
+        "file": "janosch-antek-pistole.mp4",
+        "length": "00:29:05"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Ein Fremder mit Sporen",
+        "file": "janosch-fremder-sporen.mp4",
+        "length": "00:28:46"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Lied: Morgens um 6",
+        "file": "janosch-hex.mp4",
+        "length": "00:02:50"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der unsichtbare Indianer",
+        "file": "janosch-indianer.mp4",
+        "length": "00:26:07"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Lukas Kümmel",
+        "file": "janosch-kuemmel.mp4",
+        "length": "00:28:07"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der Quasselkasper wird reich",
+        "file": "janosch-quasselkasper-reich.mp4",
+        "length": "00:28:43"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Rabe Josef",
+        "file": "janosch-rabe-josef.mp4",
+        "length": "00:28:29"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Riesenparty für den kleinen Tiger",
+        "file": "janosch-riesenparty.mp4",
+        "length": "00:16:50"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der Wettlauf zwischen Hase und Igel",
+        "file": "janosch-wettlauf.mp4",
+        "length": "00:11:45"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Ade kleines Schweinchen",
+        "file": "janosch-ade-schweinchen.mp4",
+        "length": "00:17:07"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der Frosch der fliegt",
+        "file": "janosch-frosch-fliegt.mp4",
+        "length": "00:06:40"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der Frosch und die Tigerente",
+        "file": "janosch-frosch-tigerente.mp4",
+        "length": "00:06:57"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der Froschkönig",
+        "file": "janosch-froschkoenig.mp4",
+        "length": "00:15:43"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Lied: Der Jäger",
+        "file": "janosch-fuchs-jaeger.mp4",
+        "length": "00:03:02"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Hase Baldrian",
+        "file": "janosch-hase-baldrian.mp4",
+        "length": "00:17:13"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Die fabelhafte Geschichte vom Hasen Robinson",
+        "file": "janosch-hase-robinson.mp4",
+        "length": "00:09:02"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Das Geheimnis des Herrn Schmidt",
+        "file": "janosch-herr-schmidt.mp4",
+        "length": "00:14:25"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Kasper Mütze",
+        "file": "janosch-kasper-muetze.mp4",
+        "length": "00:14:12"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Lied: Komm herein",
+        "file": "janosch-komm-herein.mp4",
+        "length": "00:02:58"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Lied: Lauf Jäger lauf",
+        "file": "janosch-lauf-jaeger.mp4",
+        "length": "00:02:55"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Das Lumpengesindel",
+        "file": "janosch-lumpengesindel.mp4",
+        "length": "00:10:24"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der Quasselkasper",
+        "file": "janosch-quasselkasper.mp4",
+        "length": "00:26:11"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Die Schneckenbahn hat zwölf Stationen",
+        "file": "janosch-schneckenbahn.mp4",
+        "length": "00:14:28"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Tigerschweinchen",
+        "file": "janosch-tigerschweinchen.mp4",
+        "length": "00:08:07"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Lied: Zungenbrecher",
+        "file": "janosch-zungenbrecher.mp4",
+        "length": "00:02:56"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der Esel und die Eule",
+        "file": "janosch-esel-eule-youtube.mp4",
+        "length": "00:05:05"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Der Frosch und die Ziege",
+        "file": "janosch-frosch-ziege-youtube.mp4",
+        "length": "00:05:48"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Herr Korbes will klein Hühnchen küssen",
+        "file": "janosch-herr-korbes-youtube.mp4",
+        "length": "00:07:35"
+    },
+    {
+        "mode": "Janosch",
+        "name": "Janosch - Das Schnweinchen und der Wolf",
+        "file": "janosch-schweinchen-wolf-youtube.mp4",
+        "length": "00:05:57"
+    }
 ];
+
+//Filter-Modi
+export const MODES = [
+    {
+        "label": "Alle",
+        "value": "*"
+    },
+    {
+        "label": "Bibi & Tina",
+        "value": "Bibi Tina"
+    },
+    {
+        "label": "Bobo",
+        "value": "Bobo"
+    },
+    {
+        "label": "Conni",
+        "value": "Conni"
+    },
+    {
+        "label": "Janosch",
+        "value": "Janosch"
+    }
+];
+
+//Proxy-URL
+export const PROXY_URL = "http://localhost/WebPlayer/website/src/app/proxy/";
+//export const PROXY_URL = "http://192.168.0.150/proxy/";

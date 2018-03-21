@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { VIDEOS } from '../../config/video';
+import { VIDEOS } from '../../config/main';
 import { VideoService } from '../../services/video.service';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
 

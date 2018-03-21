@@ -2,14 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { OrderModule } from 'ngx-order-pipe';
-import { AppComponent } from './components/app/app.component';
-import { VideoService } from './services/video.service';
 import { HttpModule } from '@angular/http';
+
+//eigenes Services
+import { VideoService } from './services/video.service';
+
+//eigenes Pipes
 import { ModeFilterPipe } from './pipes/mode-filter.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
-import { AdminComponent } from './components/admin/admin.component';
+import { OrderByPipe } from './pipes/order-by.pipe';
+
+//Komponenten
+import { AppComponent } from './components/app/app.component';
 import { SearchComponent } from './components/search/search.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +23,11 @@ import { SearchComponent } from './components/search/search.component';
     ModeFilterPipe,
     SearchFilterPipe,
     AdminComponent,
-    SearchComponent
+    SearchComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,
-    OrderModule,
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot([

@@ -8,10 +8,10 @@ $postdata = file_get_contents('php://input');
 $request = json_decode($postdata, true);
 
 //$video_dir = "/home/pi/video/";
-$video_dir = "C:/Users/Martin/Desktop/media/vid/done/";
+$video_dir = "C:/Users/Martin/Desktop/media/dvd-export/*/";
 
 //Liste kommt als Komma-sep. Liste. Diese als Array
-$video_array_browser = explode(",", $$request["video_string"]);
+$video_array_browser = explode(",", $request["video_string"]);
 
 //Videos auf Server sammeln
 $video_array_server = [];

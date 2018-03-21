@@ -6,12 +6,12 @@ import { FormBuilder, FormControl } from "@angular/forms";
 import { add, str } from 'timelite'
 
 //Video-Liste importieren
-import { VIDEOS, Video } from '../../config/video'
+import { MODES, VIDEOS, Video } from '../../config/main'
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.scss']
 })
 
 export class SearchComponent {
@@ -31,29 +31,8 @@ export class SearchComponent {
   //Form fuer Textsuche und ModeFilterung
   myForm;
 
-  //Filtermoeglichkeiten
-  mode_filter = [
-    {
-      "label": "Alle",
-      "value": "*"
-    },
-    {
-      "label": "Bibi & Tina",
-      "value": "Bibi Tina"
-    },
-    {
-      "label": "Bobo",
-      "value": "Bobo"
-    },
-    {
-      "label": "Conni",
-      "value": "Conni"
-    },
-    {
-      "label": "Janosch",
-      "value": "Janosch"
-    }
-  ];
+  //Filtermoeglichkeiten aus Config laden
+  mode_filter = MODES;
 
   //Sortierung der Trefferliste zu Beginn nach Name
   orderField = 'name';
@@ -197,10 +176,10 @@ export class SearchComponent {
     //aktives Video setzen und dadurch optisch anpassen
     this.active_video = video.file;
 
-    //Videoplaylist setzen mit Videoname und Laenge
+    //Videoplaylist setzen mit Videoname und formiattierter Laenge
     this.currentPlayedPlaylist = {
       items: [video.name],
-      length: video.length
+      length: this.format_length_string(video.length)
     }
 
     //Service aufrufen, der das Video startet
