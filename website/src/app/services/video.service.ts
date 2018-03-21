@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 //Video-Liste importieren
 import { VIDEOS, Video } from '../config/video'
 
 @Injectable()
 export class VideoService {
+
+    //URL wo die Proxyskripte liegen
+    //proxyUrl = "http://192.168.0.150/proxy/";
+    proxyUrl = "http://localhost/WebPlayer/website/src/app/proxy/";
 
     //Http Service injekten
     constructor(private http: Http) {
@@ -15,27 +21,27 @@ export class VideoService {
     sendVideoPlayRequest(filename_string) {
 
         //Dateiname(n) mitschicken bei HTTP-Request
-        this.http.get("http://192.168.0.150/proxy/start_playlist.php?filename_string=" + filename_string).subscribe();
+        this.http.get(this.proxyUrl + "start_playlist.php?filename_string=" + filename_string).subscribe();
     }
 
     //Anfrage an Proxy schicken, damit dieser das Videoplayback stoppt
     sendVideoStopRequest(): any {
 
         //HTTP-Request um Video zu stoppen
-        this.http.get("http://192.168.0.150/proxy/stop_video.php").subscribe();
+        this.http.get(this.proxyUrl + "stop_video.php").subscribe();
     }
 
     //Anfrage an Proxy schicken, damit der Pi heruntergefahren wird
     sendShutdownRequest(): any {
 
         //HTTP-Request um Pi herunterzufahren
-        this.http.get("http://192.168.0.150/proxy/shutdown_pi.php").subscribe();
+        this.http.get(this.proxyUrl + "shutdown_pi.php").subscribe();
     }
 
     //Videoliste aus Webseite und auf Server vergleichen
-    sendCheckVideolistReqeuist(video_string): any {
+    sendCheckVideolistReqeuist(video_string): Observable<any> {
 
         //HTTP-Reqeust fuer Vergleich der Videolisten
-        this.http.post("http://192.168.0.150/proxy/check_videolist.php", JSON.stringify({ video_string: video_string })).subscribe();
+        return this.http.post(this.proxyUrl + "check_videolist.php", JSON.stringify({ video_string: video_string })).map(response => response.json() as any);
     }
 }

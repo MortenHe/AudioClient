@@ -7,27 +7,30 @@ header("Access-Control-Allow-Origin: *");
 $postdata = file_get_contents('php://input');
 $request = json_decode($postdata, true);
 
-//Liste der Videos kommt als komma-sep. String
-$video_string = $request["video_string"];
+//$video_dir = "/home/pi/video/";
+$video_dir = "C:/Users/Martin/Desktop/media/vid/done/";
 
-//Komma-sep. Liste als Array
-$video_array_browser = explode(",", $video_string);
+//Liste kommt als Komma-sep. Liste. Diese als Array
+$video_array_browser = explode(",", $$request["video_string"]);
+
+//Videos auf Server sammeln
+$video_array_server = [];
 
 //Ueber Dateien auf Server gehen
-foreach (glob("/home/pi/video/*.mp4") as $server_file) {
+foreach (glob($video_dir . "*.mp4") as $server_file) {
 
     //Dateinamen in Array speichern
     $video_array_server[] = basename($server_file);
 }
 
-//welche Videos fehlen auf dem Server
-$missing_server = array_diff($video_array_browser, $video_array_server);
+//Ausgabe JSON Array
+$output = [];
 
-//ggf. fehlende Dateien auf dem Server ausgeben
-echo "Auf dem Server fehlen:<br>" . join("<br>", $missing_server);
+//welche Videos fehlen auf dem Server
+$output["missing_server"] = array_values(array_diff($video_array_browser, $video_array_server));
 
 //welche Videos fehlen auf im Browser
-$missing_browser = array_diff($video_array_server, $video_array_browser);
+$output["missing_browser"] = array_values(array_diff($video_array_server, $video_array_browser));
 
-//ggf. fehlende Dateien im Browser ausgeben
-echo "<br><br>Im Browser fehlen:<br>" . join("<br>", $missing_browser);
+//JSON-Array mit den Werten zurueckgeben
+echo json_encode($output);

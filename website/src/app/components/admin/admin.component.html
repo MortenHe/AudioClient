@@ -1,0 +1,36 @@
+<!-- auesserer Container -->
+<div class="container-fluid mt-3">
+
+    <!-- Ueberschrift -->
+    <h1>Admin</h1>
+
+    <!-- Videolisten vergleichen -->
+    <button class="btn mb-3 mt-2"
+            (click)="checkVideolist()">Vergleiche Videolisten</button>
+
+    <!-- Wenn es fehlende Dateien auf dem Server gibt -->
+    <div *ngIf="diagnostic.missing_server?.length"
+         class="margin-top-block">
+
+        <!-- Ueberschrift -->
+        <b>Auf dem Server fehlen</b>
+
+        <!-- Fehlende Videos auf Server ausgeben -->
+        <div *ngFor="let video of diagnostic.missing_server">
+            {{video}}
+        </div>
+    </div>
+
+    <!-- Wenn es fehlende Dateien in Config gibt -->
+    <div *ngIf="diagnostic.missing_browser?.length"
+         class="margin-top-block">
+
+        <!-- Ueberschrift -->
+        <b>In der Config fehlen</b>
+
+        <!-- Fehlende Videos in Config ausgeben -->
+        <div *ngFor="let video of diagnostic.missing_browser">
+            {{video}}
+        </div>
+    </div>
+</div>

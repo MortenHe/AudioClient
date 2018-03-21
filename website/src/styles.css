@@ -1,2 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.box {
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+    background: lightyellow;
+    cursor: pointer;
+}
+
+.box:hover:not(.active_video) {
+    background: rgba(255, 165, 0, .4);
+}
+
+.active_video {
+    background: rgba(255, 165, 0, .8);
+}
+
+.video_row + .video_row {
+    margin-top: 5px;
+}
+
+hr {
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+h1 {
+    font-size: 25px;
+    margin-bottom: 0px
+}
+
+.button_clean {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.button_clean:focus {
+    outline: none;
+}
+
+button {
+    outline: none;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Bootstrap changes */
+.btn {
+    box-shadow: none !important;
+}
+
+.btn-outline-primary:not([disabled]):not(.disabled).active {
+    color: white;
+}
+
+.margin-top-block + .margin-top-block {
+    margin-top: 10px;
+}
