@@ -5,6 +5,8 @@ $color-white: white;
 $color-light-bg: lightyellow;
 $color-light-bg-hover: rgba(255, 166, 0, .4);
 $color-light-bg-active: rgba(255, 165, 0, .8);
+//Rahmen
+$border-radius: 5px;
 
 /* Bootstrap changes */
 
@@ -25,7 +27,7 @@ $color-light-bg-active: rgba(255, 165, 0, .8);
 
 .mode-filter {
     border: 3px solid $color-grey;
-    border-radius: 5px;
+    border-radius: $border-radius;
     padding: 5px;
     &:hover:not(.active) {
         border: 3px solid $color-light-bg-hover
@@ -37,7 +39,7 @@ $color-light-bg-active: rgba(255, 165, 0, .8);
 
 .box {
     border: 1px solid $color-grey;
-    border-radius: 5px;
+    border-radius: $border-radius;
     padding: 5px;
     background: $color-light-bg;
     cursor: pointer;
@@ -97,4 +99,24 @@ button {
     display: inline-block;
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.active-link {
+    text-decoration: underline;
+}
+
+.margin-top-block {
+    +.margin-top-block {
+        margin-top: 10px;
+    }
+}
+
+.margin-left-block {
+    +.margin-left-block {
+        margin-left: 10px;
+    }
+}
+
+.width-auto {
+    width: auto;
 }

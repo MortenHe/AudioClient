@@ -31,9 +31,9 @@ import { AdminComponent } from './components/admin/admin.component';
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: SearchComponent },
-      { path: 'admin', component: AdminComponent },
-      { path: '**', component: SearchComponent }
+      { path: 'search/:video_mode', component: SearchComponent },
+      { path: 'admin/:video_mode', component: AdminComponent },
+      { path: '**', redirectTo: '/search/kinder', pathMatch: 'full' }
     ]),
   ],
   providers: [VideoService],

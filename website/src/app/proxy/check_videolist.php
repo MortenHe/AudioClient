@@ -7,20 +7,24 @@ header("Access-Control-Allow-Origin: *");
 $postdata = file_get_contents('php://input');
 $request = json_decode($postdata, true);
 
-//$video_dir = "/home/pi/video/";
-$video_dir = "C:/Users/Martin/Desktop/media/dvd-export/*/";
+//video_mode um korrekten Ordner zu finden wo die Videos liegen
+$video_mode = $request["video_mode"];
 
-//Liste kommt als Komma-sep. Liste. Diese als Array
-$video_array_browser = explode(",", $request["video_string"]);
+//Ordner wo die Videos liegen
+//$video_dir = "/home/pi/video/" . $video_mode . "/";
+$video_dir = "C:/Users/Martin/Desktop/media/done/" . $video_mode . "/*/";
+
+//Liste der Videos in Browser (kommt als Array)
+$video_array_browser = $request["video_list"];
 
 //Videos auf Server sammeln
 $video_array_server = [];
 
 //Ueber Dateien auf Server gehen
-foreach (glob($video_dir . "*.mp4") as $server_file) {
+foreach (glob($video_dir . "*.{mp4,m2v}", GLOB_BRACE) as $server_file) {
 
     //Dateinamen in Array speichern
-    $video_array_server[] = basename($server_file);
+    $video_array_server[] = basename(dirname($server_file)) . "/" . basename($server_file);
 }
 
 //Ausgabe JSON Array

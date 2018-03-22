@@ -12,7 +12,7 @@ export class ModeFilterPipe implements PipeTransform {
   transform(items: Video[], mode: string): any {
 
     //Wenn alle Videos angezeigt werden sollen
-    if (mode === "*") {
+    if (mode === "all") {
 
       //Alle Items zurueckgeben
       return items;

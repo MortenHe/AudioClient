@@ -1,8 +1,22 @@
 <!-- auesserer Container -->
-<div class="container-fluid mt-3">
+<div class="app-width container-fluid mt-3 mb-3">
 
-    <!-- Ueberschrift -->
-    <h1>Admin</h1>
+    <!-- Obere Zeile -->
+    <div class="row no-gutters">
+
+        <!-- Ueberschrift -->
+        <h1 class="col">Admin</h1>
+
+        <!-- Link auf Kindervideossuche -->
+        <a routerLink="/admin/kinder"
+           routerLinkActive="active-link"
+           class="margin-left-block">Kindervideos</a>
+
+        <!-- Link auf Jahresvideosuche -->
+        <a routerLink="/admin/jahresvideo"
+           routerLinkActive="active-link"
+           class="margin-left-block mr-5">Jahresvideos</a>
+    </div>
 
     <!-- Videolisten vergleichen -->
     <button class="btn mb-3 mt-2"

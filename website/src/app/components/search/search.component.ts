@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { VideoService } from '../../services/video.service';
 import { FormBuilder, FormControl } from "@angular/forms";
+import { ActivatedRoute, Router } from '@angular/router';
 
 //Zeit-Formattierung
 import { add, str } from 'timelite'
 
 //Video-Liste importieren
-import { MODES, VIDEOS, Video } from '../../config/main'
+import { VIDEOLIST, Video } from '../../config/main'
 
 @Component({
   selector: 'app-search',
@@ -16,23 +17,26 @@ import { MODES, VIDEOS, Video } from '../../config/main'
 
 export class SearchComponent {
 
+  //Welche Videos sollen geladen werden (kinder vs. jahresvideo)
+  video_mode;
+
   //Liste der Videos
-  videos: Video[] = VIDEOS;
+  videos: Video[];
+
+  //Filtermoeglichkeiten (z.B. nur Bobo)
+  mode_filter;
 
   //Playlist
   playlist = [];
 
   //Zu Beginn laeuft keine Playlist
-  currentPlayedPlaylist = null;
+  currentPlayedPlaylist;
 
   //Welches Video ist gerade aktiv (ueber den Dateiname gehen), zu Beginn kein Video aktiv
-  active_video = null;
+  active_video;
 
   //Form fuer Textsuche und ModeFilterung
   myForm;
-
-  //Filtermoeglichkeiten aus Config laden
-  mode_filter = MODES;
 
   //Sortierung der Trefferliste zu Beginn nach Name
   orderField = 'name';
@@ -40,22 +44,58 @@ export class SearchComponent {
   //Zu Beginn aufsteigend sortieren
   reverseOrder = false;
 
-  //Videoservice und FormBuilder injecten
-  constructor(private vs: VideoService, private fb: FormBuilder) {
+  //Services und Router injecten
+  constructor(private vs: VideoService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
   }
 
   //Beim Init
   ngOnInit() {
 
+    //paramMap liefert Oberservable
+    this.route.paramMap.subscribe(params => {
+
+      //Video-Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
+      this.video_mode = params.get('video_mode');
+
+      //Wenn kein korrekter Parameter geliefert wurde
+      if (VIDEOLIST[this.video_mode] === undefined) {
+
+        //Kindervideos anzeigen
+        this.video_mode = "kinder";
+      }
+
+      //Videos des passenden Modus laden
+      this.videos = VIDEOLIST[this.video_mode].videos.filter(item => {
+
+        //Nur aktive Videos laden
+        return item.active;
+      });
+
+      //Filter laden fuer diesen Modus
+      this.mode_filter = VIDEOLIST[this.video_mode].filter;
+    });
+
     //Form anlegen fuer Suchfeld und Mode Radio Buttons
     this.myForm = this.fb.group({
+
+      "select-video-mode": this.video_mode,
 
       //Suchfeld zu Beginn leer
       "search": "",
 
       //Zu Beginn den Radio Button "Alle" vorauswaehlen
-      "mode": "*"
+      "mode": "all"
     });
+  }
+
+  //zu anderem Videomodus wechseln
+  changeVideoMode() {
+
+    //Video-Modus anhand des Selects anpassen
+    this.video_mode = this.myForm.controls["select-video-mode"].value;
+
+    //zu passender URL navigieren
+    this.router.navigate(['/search', this.video_mode]);
   }
 
   //Sortierfeld setzen
@@ -183,7 +223,7 @@ export class SearchComponent {
     }
 
     //Service aufrufen, der das Video startet
-    this.vs.sendVideoPlayRequest(video.file);
+    this.vs.sendVideoPlayRequest(this.video_mode, [video.mode + "/" + video.file]);
   }
 
   //Playlist aus mehreren Videos laden
@@ -192,20 +232,22 @@ export class SearchComponent {
     //aktives Video wieder zuruecksetzen, weil gerade kein einzelnes Video mehr laeuft
     this.active_video = null;
 
-    //Service aufrufen, der Playlist startet
-    let filename_string = this.playlist.map(item => item.file).join(",");
-
     //VideoPlaylist setzen mit Array der Namen der Video + Laenge der Playlist
     this.currentPlayedPlaylist = {
       items: this.playlist.map(item => item.name),
       length: this.getPlaylistLength()
     }
 
+    //Liste der Dateinname fuer Serveranfrage
+    let video_list = this.playlist.map(item => {
+      return item.mode + "/" + item.file
+    });
+
     //Playlist leeren
     this.playlist = [];
 
     //Service aufrufen, der das Videos startet
-    this.vs.sendVideoPlayRequest(filename_string);
+    this.vs.sendVideoPlayRequest(this.video_mode, video_list);
   }
 
   //Video stoppen
