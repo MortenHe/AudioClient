@@ -182,7 +182,7 @@ export class SearchComponent {
     let playlist_length_array = add(this.playlist.map(item => item.length));
 
     //Ergebnis als String: [0, 5, 12] -> "00:05:12"
-    let playlist_length = str(playlist_length_array)
+    let playlist_length = str(playlist_length_array);
 
     //formattieren String (ohne fuehrende 0) ausgeben: "00:05:12" -> "5:12"
     return this.format_length_string(playlist_length);
@@ -195,28 +195,28 @@ export class SearchComponent {
     if (length_string.startsWith("00:0")) {
 
       //gekuerzten String zureuckgeben
-      return length_string.substring(4)
+      return length_string.substring(4);
     }
 
     //Wenn keine Stunde
     else if (length_string.startsWith("00:")) {
 
       //gekuerzten String zureuckgeben
-      return length_string.substring(3)
+      return length_string.substring(3);
     }
 
     //wenn keine 10er Stunde
     else if (length_string.startsWith("0")) {
 
       //gekuerzten String zureuckgeben
-      return length_string.substring(1)
+      return length_string.substring(1);
     }
 
     //keine Bedingung erfuellt
     else {
 
       //Original-String zurueckgeben
-      return length_string
+      return length_string;
     }
   }
 

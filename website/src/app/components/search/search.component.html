@@ -158,6 +158,7 @@
     }"></i>
     </button>
 
+    <!-- Trennlinie zwischen den Sortierbuttons -->
     <div class="vertical-line"></div>
 
     <!-- Sortierbutton Länge -->
@@ -197,8 +198,10 @@
             class="box col text-left pl-2"
             [class.active-video]="video.file === active_video">
 
-      <!-- Play-Symbol -->
+      <!-- Play-Symbol wird nur bei hover und active angezeigt -->
       <i class="fa fa-play ml-1 mr-1"></i>
+
+      <!-- Videoname -->
       {{video.name}}
     </button>
   </div>
