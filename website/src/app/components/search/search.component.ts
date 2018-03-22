@@ -51,7 +51,20 @@ export class SearchComponent {
   //Beim Init
   ngOnInit() {
 
-    //paramMap liefert Oberservable
+    //Form anlegen fuer Suchfeld und Mode Radio Buttons
+    this.myForm = this.fb.group({
+
+      //Videomodus-Select
+      "select-video-mode": "",
+
+      //Suchfeld (zu Beginn leer)
+      "search": "",
+
+      //Filter Inputs
+      "mode": ""
+    });
+
+    //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert
     this.route.paramMap.subscribe(params => {
 
       //Video-Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
@@ -73,18 +86,15 @@ export class SearchComponent {
 
       //Filter laden fuer diesen Modus
       this.mode_filter = VIDEOLIST[this.video_mode].filter;
-    });
 
-    //Form anlegen fuer Suchfeld und Mode Radio Buttons
-    this.myForm = this.fb.group({
+      //Playlist leeren
+      this.playlist = [];
 
-      "select-video-mode": this.video_mode,
+      //ausgewaehlten Video-Modus in Select setzen
+      this.myForm.controls["select-video-mode"].setValue(this.video_mode);
 
-      //Suchfeld zu Beginn leer
-      "search": "",
-
-      //Zu Beginn den Radio Button "Alle" vorauswaehlen
-      "mode": "all"
+      //Alle-Filter auswaehlen
+      this.myForm.controls["mode"].setValue("all");
     });
   }
 

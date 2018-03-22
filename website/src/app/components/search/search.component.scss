@@ -1,7 +1,47 @@
+//Variable importerein
+@import '~scss/variables.scss';
+//eigenes styles
 .search-field {
     max-width: 250px;
 }
 
 .video-length {
     min-width: 40px;
+}
+
+.mode-filter {
+    border: 3px solid $color-grey;
+    border-radius: $border-radius;
+    padding: 5px;
+    &:hover:not(.active) {
+        border: 3px solid $color-light-bg-hover;
+    }
+    &.active {
+        border: 3px solid $color-light-bg-active;
+    }
+}
+
+.box {
+    border: 1px solid $color-grey;
+    border-radius: $border-radius;
+    padding: 5px;
+    background: $color-light-bg;
+    cursor: pointer;
+    .fa-play {
+        display: none;
+    }
+    &:hover:not(.active-video) {
+        background: $color-light-bg-hover;
+        .fa-play {
+            display: inline;
+            opacity: .5;
+        }
+    }
+    &.active-video {
+        background: $color-light-bg-active;
+        .fa-play {
+            display: inline;
+            opacity: 1;
+        }
+    }
 }
