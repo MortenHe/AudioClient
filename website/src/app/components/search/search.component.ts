@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { add, str } from 'timelite'
 
 //Video-Liste importieren
-import { VIDEOLIST, Video } from '../../config/main'
+import { Video } from '../../config/main-config'
 
 @Component({
   selector: 'app-search',
@@ -20,8 +20,8 @@ export class SearchComponent {
   //Welche Videos sollen geladen werden (kinder vs. jahresvideo)
   video_mode;
 
-  //Liste der Videos
-  videos: Video[];
+  //Liste der Videos zu Beginn leer (wird per php geladen)
+  videos: Video[] = [];
 
   //Filtermoeglichkeiten (z.B. nur Bobo)
   mode_filter;
@@ -70,31 +70,39 @@ export class SearchComponent {
       //Video-Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
       this.video_mode = params.get('video_mode');
 
-      //Wenn kein korrekter Parameter geliefert wurde
-      if (VIDEOLIST[this.video_mode] === undefined) {
+      //Videoliste holen aus JSON holen
+      this.vs.getVideolist().subscribe(VIDEOLIST => {
 
-        //Kindervideos anzeigen
-        this.video_mode = "kinder";
-      }
+        //Wenn kein korrekter Parameter geliefert wurde
+        if (VIDEOLIST[this.video_mode] === undefined) {
 
-      //Videos des passenden Modus laden
-      this.videos = VIDEOLIST[this.video_mode].videos.filter(item => {
+          //zu Kinder-Suche navigieren
+          this.router.navigate(['/search/kinder']);
+        }
 
-        //Nur aktive Videos laden
-        return item.active;
+        //korrekter Parameter
+        else {
+
+          //Videos des passenden Modus laden
+          this.videos = VIDEOLIST[this.video_mode].videos.filter(item => {
+
+            //Nur aktive Videos laden
+            return item.active;
+          });
+
+          //Filter laden fuer diesen Modus
+          this.mode_filter = VIDEOLIST[this.video_mode].filter;
+
+          //Playlist leeren
+          this.playlist = [];
+
+          //ausgewaehlten Video-Modus in Select setzen
+          this.myForm.controls["select-video-mode"].setValue(this.video_mode);
+
+          //Alle-Filter auswaehlen
+          this.myForm.controls["mode"].setValue("all");
+        }
       });
-
-      //Filter laden fuer diesen Modus
-      this.mode_filter = VIDEOLIST[this.video_mode].filter;
-
-      //Playlist leeren
-      this.playlist = [];
-
-      //ausgewaehlten Video-Modus in Select setzen
-      this.myForm.controls["select-video-mode"].setValue(this.video_mode);
-
-      //Alle-Filter auswaehlen
-      this.myForm.controls["mode"].setValue("all");
     });
   }
 

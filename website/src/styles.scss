@@ -43,8 +43,10 @@ h1 {
     }
 }
 
-button {
+button,
+input:focus {
     outline: none !important;
+    box-shadow: none !important;
 }
 
 .cursor-pointer {

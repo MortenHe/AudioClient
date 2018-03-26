@@ -8,8 +8,14 @@ for entry in "$@"
 do
 
   #aktuelles Video ausgeben
-  echo $entry
+  echo /media/usb_red/video/$entry
 
   #Video in OMXPlayer abspielen
-  omxplayer /home/pi/video/$entry > /dev/null
+  omxplayer /media/usb_red/video/$entry
 done
+
+#Wenn Playlist durchlaufen wurden, ein 3-min Video mit Countdown anzeigen
+omxplayer /media/usb_red/video/shutdown.mp4
+
+#wenn das Video durchgelaufen ist, Pi runterfahren
+/sbin/shutdown -h now 2>&1

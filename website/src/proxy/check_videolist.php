@@ -8,20 +8,25 @@ $postdata = file_get_contents('php://input');
 $request = json_decode($postdata, true);
 
 //video_mode um korrekten Ordner zu finden wo die Videos liegen
-$video_mode = $request["video_mode"];
+$video_mode = $_GET["video_mode"];
 
 //Ordner wo die Videos liegen
-//$video_dir = "/home/pi/video/" . $video_mode . "/";
+//$video_dir = "/media/usb_red/video/" . $video_mode . "/*/";
 $video_dir = "C:/Users/Martin/Desktop/media/done/" . $video_mode . "/*/";
 
-//Liste der Videos in Browser (kommt als Array)
-$video_array_browser = $request["video_list"];
+//Liste der Videos des Modus aus Config-Datei lesen
+$video_array_browser_full = json_decode(file_get_contents("videolist.json"), true)[$video_mode]["videos"];
+
+//Jetzt nur die Dateinamen extrahieren
+$video_array_browser = array_map(function ($video) {
+    return $video["mode"] . "/" . $video["file"];
+}, $video_array_browser_full);
 
 //Videos auf Server sammeln
 $video_array_server = [];
 
 //Ueber Dateien auf Server gehen
-foreach (glob($video_dir . "*.{mp4,m2v}", GLOB_BRACE) as $server_file) {
+foreach (glob($video_dir . "*.{mp4,m2ts}", GLOB_BRACE) as $server_file) {
 
     //Dateinamen in Array speichern
     $video_array_server[] = basename(dirname($server_file)) . "/" . basename($server_file);
