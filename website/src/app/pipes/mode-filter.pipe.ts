@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Video } from '../config/main';
+import { Video } from '../config/main-config';
 
 @Pipe({
   name: 'modeFilter'
