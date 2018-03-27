@@ -11,8 +11,8 @@ $request = json_decode($postdata, true);
 $video_mode = $_GET["video_mode"];
 
 //Ordner wo die Videos liegen
-//$video_dir = "/media/usb_red/video/" . $video_mode . "/*/";
-$video_dir = "C:/Users/Martin/Desktop/media/done/" . $video_mode . "/*/";
+$video_dir = "/media/usb_red/video/" . $video_mode . "/*/";
+//$video_dir = "C:/Users/Martin/Desktop/media/done/" . $video_mode . "/*/";
 
 //Liste der Videos des Modus aus Config-Datei lesen
 $video_array_browser_full = json_decode(file_get_contents("videolist.json"), true)[$video_mode]["videos"];

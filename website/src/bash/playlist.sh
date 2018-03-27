@@ -10,12 +10,15 @@ do
   #aktuelles Video ausgeben
   echo /media/usb_red/video/$entry
 
-  #Video in OMXPlayer abspielen
-  omxplayer /media/usb_red/video/$entry
+  #Video in OMXPlayer abspielen, -b = blank (schwarzer Hintergrund)
+  omxplayer -b /media/usb_red/video/$entry
+
+ # omxplayer -b /media/usb_red/video/$entry < /home/pi/mh_prog/omxpipe &
+ # echo . > /home/pi/mh_prog/omxpipe
 done
 
 #Wenn Playlist durchlaufen wurden, ein 3-min Video mit Countdown anzeigen
-omxplayer /media/usb_red/video/shutdown.mp4
+omxplayer -b /media/usb_red/video/shutdown.mp4
 
 #wenn das Video durchgelaufen ist, Pi runterfahren
 /sbin/shutdown -h now 2>&1
