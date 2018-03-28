@@ -30,20 +30,18 @@
       <!-- Trennlinie -->
       <hr>
 
-      <!-- Video stoppen -->
-      <div class="row no-gutters cursor-pointer"
-           (click)="stopVideo()">
-        <button class="fa fa-stop text-primary button-clean mr-2"></button>
-        <div class="font-weight-bold">Stop Video</div>
-      </div>
-
-      <!-- Trennlinie -->
-      <hr>
-
       <!-- Ueberschrift: "Gerade laeuft (die Playlist):" -->
       <div class="d-flex font-weight-bold">
         <span>Gerade läuft</span>
         <span *ngIf="currentPlayedPlaylist.items.length > 1">&nbsp;die Playlist</span>
+
+        <!-- Video pausieren -->
+        <button (click)="pauseVideo()"
+                class="fa fa-pause text-warning button-clean ml-2"></button>
+
+        <!-- Video stoppen -->
+        <button (click)="stopVideo()"
+                class="fa fa-stop text-danger button-clean ml-2"></button>
       </div>
 
       <!-- Titel der akutell laufenden Playlist -->
@@ -55,17 +53,17 @@
       <div>Länge:
         <b>{{currentPlayedPlaylist.length}}</b>
       </div>
-
-      <!-- Trennlinie -->
-      <hr>
     </ng-container>
 
+    <!-- Trennlinie -->
+    <hr class="mode-filter-hr">
+
     <!-- Filter-Buttons -->
-    <div class="form-group mb-0">
+    <div class="mb-0">
 
       <!-- Ueber Buttons gehen -->
       <label *ngFor="let single_mode_filter of mode_filter"
-             class="mode-filter cursor-pointer mr-2"
+             class="mode-filter cursor-pointer mt-2 mr-2"
              [class.active]="single_mode_filter.id === myForm.controls.mode.value">
 
         <!-- Vorschaubild des Filters (sofern definiert) -->

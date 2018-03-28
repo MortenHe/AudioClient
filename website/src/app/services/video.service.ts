@@ -45,9 +45,16 @@ export class VideoService {
     }
 
     //Videoliste aus Webseite und auf Server vergleichen
-    sendCheckVideolistRequest(video_mode): Observable<any> {
+    sendCheckVideolistRequest(): Observable<any> {
 
         //HTTP-Reqeust fuer Vergleich der Videolisten
-        return this.http.get(this.proxyUrl + "check_videolist.php?video_mode=" + video_mode).map(response => response.json() as any);
+        return this.http.get(this.proxyUrl + "check_videolist.php").map(response => response.json() as any);
+    }
+
+    //Anfrage an Proxy schicken, damit dieser das Videoplayback pausieren oder wieder startet
+    sendVideoPauseRequest(): any {
+
+        //HTTP-Request um Video zu stoppen
+        this.http.get(this.proxyUrl + "pause_playlist.php").subscribe();
     }
 }

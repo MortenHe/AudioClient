@@ -84,11 +84,7 @@ export class SearchComponent {
         else {
 
           //Videos des passenden Modus laden
-          this.videos = VIDEOLIST[this.video_mode].videos.filter(item => {
-
-            //Nur aktive Videos laden
-            return item.active;
-          });
+          this.videos = VIDEOLIST[this.video_mode].videos;
 
           //Filter laden fuer diesen Modus
           this.mode_filter = VIDEOLIST[this.video_mode].filter;
@@ -266,6 +262,13 @@ export class SearchComponent {
 
     //Service aufrufen, der das Videos startet
     this.vs.sendVideoPlayRequest(this.video_mode, video_list);
+  }
+
+  //Video pausieren oder wieder starten
+  pauseVideo() {
+
+    //Service aufrufen, der das Video stoppt
+    this.vs.sendVideoPauseRequest();
   }
 
   //Video stoppen

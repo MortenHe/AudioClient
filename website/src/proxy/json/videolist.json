@@ -1,0 +1,57 @@
+{
+    "kinder": {
+        "filter": [
+            {
+                "id": "all",
+                "icon": "all",
+                "active": true
+            },
+            {
+                "id": "bibi-tina",
+                "icon": "bibi-tina",
+                "active": true
+            },
+            {
+                "id": "bobo",
+                "icon": "bobo",
+                "active": true
+            },
+            {
+                "id": "conni",
+                "icon": "conni",
+                "active": true
+            },
+            {
+                "id": "janosch",
+                "icon": "janosch",
+                "active": true
+            },
+            {
+                "id": "misc",
+                "icon": "misc",
+                "active": true
+            }
+        ],
+        "videos": []
+    },
+    "jahresvideo": {
+        "filter": [
+            {
+                "id": "all",
+                "label": "Alle",
+                "active": true
+            },
+            {
+                "id": "2014",
+                "label": "2014",
+                "active": true
+            },
+            {
+                "id": "2015",
+                "label": "2015",
+                "active": true
+            }
+        ],
+        "videos": []
+    }
+}
