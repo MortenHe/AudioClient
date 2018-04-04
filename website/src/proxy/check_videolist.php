@@ -4,12 +4,12 @@
 header("Access-Control-Allow-Origin: *");
 
 //Ordner wo die Videos liegen
-//$video_dir = "/media/usb_red/video/";
-$video_dir = "C:/Users/Martin/Desktop/media/done/*/*/";
+$video_dir = "/media/usb_red/video/*/*/";
+//$video_dir = "C:/Users/Martin/Desktop/media/done/*/*/";
 
 //Skript, das die Videodateien liefert
-//$url = "http://192.168.0.150/proxy/get_videolist.php?all=true";
-$url = "http://localhost/WebPlayer/website/src/proxy/get_videolist.php?all=true";
+$url = "http://192.168.0.150/proxy/get_videolist.php?all=true";
+//$url = "http://localhost/WebPlayer/website/src/proxy/get_videolist.php?all=true";
 
 //Config-Date per cURL holen
 $ch = curl_init();

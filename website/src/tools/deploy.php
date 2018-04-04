@@ -23,19 +23,19 @@ $packages = [
     "assets" => [
         "active" => false,
         "dirs" => [[
-        "local" => "../../assets/images",
+        "local" => "../assets/images",
         "remote" => "assets/images"]]
     ],
     //PHP Proxy-Skripte
     "proxy" => [
-        "active" => false,
+        "active" => true,
         "dirs" => [[
         "local" => "../proxy",
         "remote" => "proxy"]]
     ],
     //Videoliste als JSON
     "videolist" => [
-        "active" => true,
+        "active" => false,
         "dirs" => [[
         "local" => "../proxy/json",
         "remote" => "proxy/json"],

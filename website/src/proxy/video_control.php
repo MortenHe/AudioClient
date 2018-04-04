@@ -16,13 +16,13 @@ switch($command) {
     //30 sec nach links
     case "seek-left":
         echo "seek -30 sec";
-        echo shell_exec("echo -n $'\e'[C > /home/pi/mh_prog/omxpipe");
+        echo shell_exec("echo -n $'\e'[D > /home/pi/mh_prog/omxpipe");
         break;
 
     //30 sec nach rechts
     case "seek-right":
         echo "seek +30 sec";
-        echo shell_exec("echo -n $'\e'[D > /home/pi/mh_prog/omxpipe");
+        echo shell_exec("echo -n $'\e'[C > /home/pi/mh_prog/omxpipe");
         break;
 
     //Command nicht gefunden
