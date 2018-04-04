@@ -40,5 +40,29 @@
         "file": "bibi-tina-statue.mp4",
         "length": "00:25:09",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das Pferd in der Schule",
+        "file": "bibi-tina-pferd-schule.mp4",
+        "length": "00:26:02",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Der Pferdeflüsterer",
+        "file": "bibi-tina-pferdefluesterer.mp4",
+        "length": "00:25:11",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Ein Preis für den Martinshof",
+        "file": "bibi-tina-preis-martinshof.mp4",
+        "length": "00:25:10",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das Westernturnier",
+        "file": "bibi-tina-westernturnier.mp4",
+        "length": "00:26:02",
+        "active": true
     }
 ]

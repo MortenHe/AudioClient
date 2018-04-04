@@ -142,5 +142,11 @@
         "file": "conni-zoo.mp4",
         "length": "00:11:32",
         "active": true
+    },
+    {
+        "name": "Conni lernt die Uhrzeit",
+        "file": "conni-uhr-tivi.mp4",
+        "length": "00:11:26",
+        "active": true
     }
 ]

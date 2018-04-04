@@ -7,6 +7,11 @@
                 "active": true
             },
             {
+                "id": "bebl",
+                "icon": "bebl",
+                "active": true
+            },
+            {
                 "id": "bibi-tina",
                 "icon": "bibi-tina",
                 "active": true
@@ -22,8 +27,18 @@
                 "active": true
             },
             {
+                "id": "heidi",
+                "icon": "heidi",
+                "active": true
+            },
+            {
                 "id": "janosch",
                 "icon": "janosch",
+                "active": true
+            },
+            {
+                "id": "maulwurf",
+                "icon": "maulwurf",
                 "active": true
             },
             {
