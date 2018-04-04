@@ -264,11 +264,11 @@ export class SearchComponent {
     this.vs.sendVideoPlayRequest(this.video_mode, video_list);
   }
 
-  //Video pausieren oder wieder starten
-  pauseVideo() {
+  //Video pausieren oder wieder starten oder 30 sec nach links springen
+  controlVideo(command) {
 
-    //Service aufrufen, der das Video stoppt
-    this.vs.sendVideoPauseRequest();
+    //Service aufrufen, der z.B. das Video pausiert oder wieder startet oder 30 sec nach links spring
+    this.vs.sendVideoControlRequest(command);
   }
 
   //Video stoppen

@@ -36,8 +36,16 @@
         <span *ngIf="currentPlayedPlaylist.items.length > 1">&nbsp;die Playlist</span>
 
         <!-- Video pausieren -->
-        <button (click)="pauseVideo()"
+        <button (click)="controlVideo('pause')"
                 class="fa fa-pause text-warning button-clean ml-2"></button>
+
+        <!-- Video 30 sec nach links -->
+        <button (click)="controlVideo('seek-left')"
+                class="fa fa-backward text-info button-clean ml-2"></button>
+
+        <!-- Video 30 sec nach rechts -->
+        <button (click)="controlVideo('seek-right')"
+                class="fa fa-forward text-info button-clean ml-2"></button>
 
         <!-- Video stoppen -->
         <button (click)="stopVideo()"

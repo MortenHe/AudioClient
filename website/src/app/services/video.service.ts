@@ -51,10 +51,10 @@ export class VideoService {
         return this.http.get(this.proxyUrl + "check_videolist.php").map(response => response.json() as any);
     }
 
-    //Anfrage an Proxy schicken, damit dieser das Videoplayback pausieren oder wieder startet
-    sendVideoPauseRequest(): any {
+    //Anfrage an Proxy schicken, damit diese z.B: das Video pausiert oder 30 sek nach rechts sprint
+    sendVideoControlRequest(command): any {
 
         //HTTP-Request um Video zu stoppen
-        this.http.get(this.proxyUrl + "pause_playlist.php").subscribe();
+        this.http.get(this.proxyUrl + "video_control.php?command=" + command).subscribe();
     }
 }
