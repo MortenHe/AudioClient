@@ -1,13 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { VideoService } from '../../services/video.service';
 import { FormBuilder, FormControl } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
 
-//Zeit-Formattierung
-import { add, str } from 'timelite'
-
 //Video-Liste importieren
 import { Video } from '../../config/main-config'
+import { PlaylistService } from '../../services/playlist.service';
 
 @Component({
   selector: 'app-search',
@@ -17,23 +15,23 @@ import { Video } from '../../config/main-config'
 
 export class SearchComponent {
 
+  //Zugriff auf Child Komponente erlauben (video_active zuruecksetzen)
+  @ViewChild('videoResultList') videoResultList;
+
   //Welche Videos sollen geladen werden (kinder vs. jahresvideo)
-  video_mode;
+  videoMode;
 
   //Liste der Videos zu Beginn leer (wird per php geladen)
   videos: Video[] = [];
 
   //Filtermoeglichkeiten (z.B. nur Bobo)
-  mode_filter;
+  modeFilter;
 
   //Playlist
   playlist = [];
 
   //Zu Beginn laeuft keine Playlist
   currentPlayedPlaylist;
-
-  //Welches Video ist gerade aktiv (ueber den Dateiname gehen), zu Beginn kein Video aktiv
-  active_video;
 
   //Form fuer Textsuche und ModeFilterung
   myForm;
@@ -45,7 +43,7 @@ export class SearchComponent {
   reverseOrder = false;
 
   //Services und Router injecten
-  constructor(private vs: VideoService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private vs: VideoService, private pls: PlaylistService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
   }
 
   //Beim Init
@@ -68,13 +66,13 @@ export class SearchComponent {
     this.route.paramMap.subscribe(params => {
 
       //Video-Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
-      this.video_mode = params.get('video_mode');
+      this.videoMode = params.get('videoMode');
 
       //Videoliste holen aus JSON holen
       this.vs.getVideolist().subscribe(VIDEOLIST => {
 
         //Wenn kein korrekter Parameter geliefert wurde
-        if (VIDEOLIST[this.video_mode] === undefined) {
+        if (VIDEOLIST[this.videoMode] === undefined) {
 
           //zu Kinder-Suche navigieren
           this.router.navigate(['/search/kinder']);
@@ -84,32 +82,47 @@ export class SearchComponent {
         else {
 
           //Videos des passenden Modus laden
-          this.videos = VIDEOLIST[this.video_mode].videos;
+          this.videos = VIDEOLIST[this.videoMode].videos;
 
           //Filter laden fuer diesen Modus
-          this.mode_filter = VIDEOLIST[this.video_mode].filter;
+          this.modeFilter = VIDEOLIST[this.videoMode].filter;
 
           //Playlist leeren
-          this.playlist = [];
+          this.pls.setPlaylist([])
 
           //ausgewaehlten Video-Modus in Select setzen
-          this.myForm.controls["select-video-mode"].setValue(this.video_mode);
+          this.myForm.controls["select-video-mode"].setValue(this.videoMode);
 
           //Alle-Filter auswaehlen
           this.myForm.controls["mode"].setValue("all");
         }
       });
     });
+
+    //Playlist mit Service Subject abgleichen
+    this.pls.getPlaylist().subscribe(playlist => {
+      this.playlist = playlist
+    });
+
+    //CurrentPlayedPlaylist mit Service Subject abgleichen
+    this.pls.getCurrentPlayedPlaylist().subscribe(currentPlayedPlaylist => {
+      this.currentPlayedPlaylist = currentPlayedPlaylist
+    });
+  }
+
+  //per Service Video in Playlist toggeln
+  toggleInPlaylist(video) {
+    this.pls.toggleInPlaylist(video);
   }
 
   //zu anderem Videomodus wechseln
   changeVideoMode() {
 
     //Video-Modus anhand des Selects anpassen
-    this.video_mode = this.myForm.controls["select-video-mode"].value;
+    this.videoMode = this.myForm.controls["select-video-mode"].value;
 
     //zu passender URL navigieren
-    this.router.navigate(['/search', this.video_mode]);
+    this.router.navigate(['/search', this.videoMode]);
   }
 
   //Sortierfeld setzen
@@ -140,128 +153,20 @@ export class SearchComponent {
     this.orderField = field;
   }
 
-  //Video in Playlist einfuegen oder daraus entfernen
-  toggleInPlaylist(file) {
 
-    //Wenn das Video schon in der Playlist ist
-    if (this.isInPlaylist(file)) {
-
-      //Das Video aus der Playlist entfernen
-      this.removeFromPlaylist(file)
-    }
-
-    //Video ist noch nicht in Playlist
-    else {
-
-      //Video in Playlist einfuegen
-      this.playlist.push(file);
-    }
-  }
-
-  //Video aus Playlist entfernen
-  removeFromPlaylist(file) {
-
-    //Index des Videos in Playlist ermitteln
-    const index: number = this.playlist.indexOf(file);
-
-    //Wenn Video in Playlist ist
-    if (index !== -1) {
-
-      //Video aus Playlist entfernen
-      this.playlist.splice(index, 1);
-    }
-  }
-
-  //Pruefen ob Video in Playlist ist
-  isInPlaylist(file) {
-
-    //Ist Video in Playlist?
-    return this.playlist.indexOf(file) > -1;
-  }
-
-  //Laenge der Playlist ermitteln
+ //per Service Laenge der Playlist ermitteln
   getPlaylistLength() {
-
-    //Laengen-Merkmal aus Playlist-Array extrahieren und addieren
-    let playlist_length_array = add(this.playlist.map(item => item.length));
-
-    //Ergebnis als String: [0, 5, 12] -> "00:05:12"
-    let playlist_length = str(playlist_length_array);
-
-    //formattieren String (ohne fuehrende 0) ausgeben: "00:05:12" -> "5:12"
-    return this.format_length_string(playlist_length);
-  }
-
-  //Zeitstring formattieren
-  format_length_string(length_string) {
-
-    //Wenn keine Stunde und keine 10-er Minute
-    if (length_string.startsWith("00:0")) {
-
-      //gekuerzten String zureuckgeben
-      return length_string.substring(4);
+      return this.pls.getPlaylistLength();
     }
-
-    //Wenn keine Stunde
-    else if (length_string.startsWith("00:")) {
-
-      //gekuerzten String zureuckgeben
-      return length_string.substring(3);
-    }
-
-    //wenn keine 10er Stunde
-    else if (length_string.startsWith("0")) {
-
-      //gekuerzten String zureuckgeben
-      return length_string.substring(1);
-    }
-
-    //keine Bedingung erfuellt
-    else {
-
-      //Original-String zurueckgeben
-      return length_string;
-    }
-  }
-
-  //einzelnes Video abspielen
-  playSingleVideo(video) {
-
-    //aktives Video setzen und dadurch optisch anpassen
-    this.active_video = video.file;
-
-    //Videoplaylist setzen mit Videoname und formiattierter Laenge
-    this.currentPlayedPlaylist = {
-      items: [video.name],
-      length: this.format_length_string(video.length)
-    }
-
-    //Service aufrufen, der das Video startet
-    this.vs.sendVideoPlayRequest(this.video_mode, [video.mode + "/" + video.file]);
-  }
 
   //Playlist aus mehreren Videos laden
   startVideoPlaylist() {
 
     //aktives Video wieder zuruecksetzen, weil gerade kein einzelnes Video mehr laeuft
-    this.active_video = null;
+    this.videoResultList.activeVideo = null;
 
-    //VideoPlaylist setzen mit Array der Namen der Video + Laenge der Playlist
-    this.currentPlayedPlaylist = {
-      items: this.playlist.map(item => item.name),
-      length: this.getPlaylistLength()
-    }
-
-    //Liste der Dateinname fuer Serveranfrage
-    let video_list = this.playlist.map(item => {
-      return item.mode + "/" + item.file
-    });
-
-    //Playlist leeren
-    this.playlist = [];
-
-    //Service aufrufen, der das Videos startet
-    this.vs.sendVideoPlayRequest(this.video_mode, video_list);
+    //per Service Videoplaylist starten
+    this.pls.startVideoPlaylist(this.videoMode);
   }
 
   //Video pausieren oder wieder starten oder 30 sec nach links springen
@@ -275,10 +180,10 @@ export class SearchComponent {
   stopVideo() {
 
     //aktives Video wieder zuruecksetzen, weil gerade kein Video mehr laeuft
-    this.active_video = null;
+    this.videoResultList.active_video = null;
 
-    //aktuell laufende Playlist zurecksetzen
-    this.currentPlayedPlaylist = null
+    //aktuell abgespielte Playlist in Service zuruecksetzen
+    this.pls.resetCurrentPlayedPlaylist();
 
     //Service aufrufen, der das Video stoppt
     this.vs.sendVideoStopRequest();

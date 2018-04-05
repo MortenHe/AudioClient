@@ -4,13 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 //Video-Liste importieren
-import { PROXY_URL } from '../config/main-config'
+import { PROXY_URL } from '../config/main-config';
 
 @Injectable()
 export class VideoService {
 
     //URL wo die Proxyskripte liegen aus config laden
-    proxyUrl = PROXY_URL
+    proxyUrl = PROXY_URL;
 
     //Http Service injekten
     constructor(private http: Http) {
@@ -24,10 +24,10 @@ export class VideoService {
     }
 
     //Anfrage an Proxy schicken, damit dieser ein Video / Liste von Videos startet
-    sendVideoPlayRequest(video_mode, video_list) {
+    sendVideoPlayRequest(videoMode, videoList) {
 
         //Dateiname(n) und Modus mitschicken bei HTTP-Request
-        this.http.post(this.proxyUrl + "start_playlist.php", JSON.stringify({ video_mode: video_mode, video_list: video_list })).subscribe();
+        this.http.post(this.proxyUrl + "start_playlist.php", JSON.stringify({ video_mode: videoMode, video_list: videoList })).subscribe();
     }
 
     //Anfrage an Proxy schicken, damit dieser das Videoplayback stoppt

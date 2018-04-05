@@ -16,6 +16,9 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { AppComponent } from './components/app/app.component';
 import { SearchComponent } from './components/search/search.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ResultlistComponent } from './components/resultlist/resultlist.component';
+import { PlaylistService } from './services/playlist.service';
+import { TimeformatterPipe } from './pipes/timeformatter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,19 +27,21 @@ import { AdminComponent } from './components/admin/admin.component';
     SearchFilterPipe,
     AdminComponent,
     SearchComponent,
-    OrderByPipe
+    OrderByPipe,
+    ResultlistComponent,
+    TimeformatterPipe
   ],
   imports: [
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: 'search/:video_mode', component: SearchComponent },
-      { path: 'admin/:video_mode', component: AdminComponent },
+      { path: 'search/:videoMode', component: SearchComponent },
+      { path: 'admin', component: AdminComponent },
       { path: '**', redirectTo: '/search/kinder', pathMatch: 'full' }
     ]),
   ],
-  providers: [VideoService],
+  providers: [VideoService, PlaylistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

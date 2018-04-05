@@ -70,23 +70,23 @@
     <div class="mb-0">
 
       <!-- Ueber Buttons gehen -->
-      <label *ngFor="let single_mode_filter of mode_filter"
+      <label *ngFor="let single_modeFilter of modeFilter"
              class="mode-filter cursor-pointer mt-2 mr-2"
-             [class.active]="single_mode_filter.id === myForm.controls.mode.value">
+             [class.active]="single_modeFilter.id === myForm.controls.mode.value">
 
         <!-- Vorschaubild des Filters (sofern definiert) -->
-        <img *ngIf="single_mode_filter.icon"
+        <img *ngIf="single_modeFilter.icon"
              height="50"
              width="50"
-             src="/assets/images/{{single_mode_filter.icon}}.png" />
+             src="/assets/images/{{single_modeFilter.icon}}.png" />
 
         <!-- Name des Filters (sofern definiert) -->
-        <span *ngIf="single_mode_filter.label">{{single_mode_filter.label}}</span>
+        <span *ngIf="single_modeFilter.label">{{single_modeFilter.label}}</span>
 
         <!-- Usichtbare radio box -->
         <input class="d-none"
                type="radio"
-               [value]="single_mode_filter.id"
+               [value]="single_modeFilter.id"
                name="mode"
                formControlName="mode">
       </label>
@@ -107,10 +107,10 @@
 
         <!-- Button, um Titel aus Playlist zu loeschen -->
         <button class="fa fa-minus text-danger button-clean mr-1"
-                (click)="removeFromPlaylist(item)"></button>
+                (click)="toggleInPlaylist(item)"></button>
 
         <!-- Laenge des Videos -->
-        <div class="video-length text-right mr-2">{{format_length_string(item.length)}}</div>
+        <div class="video-length text-right mr-2">{{item.length | timeformatter}}</div>
 
         <!-- Name des Videos -->
         <div class="col">{{item.name}}</div>
@@ -124,7 +124,7 @@
         <button class="fa fa-play text-primary button-clean mr-1"></button>
 
         <!-- Laenge der gesamten Playlist -->
-        <div class="video-length text-right mr-2">{{getPlaylistLength()}}</div>
+        <div class="video-length text-right mr-2">{{getPlaylistLength() | timeformatter}}</div>
 
         <!-- Text "Playlist starten" -->
         <div class="col font-weight-bold">Playlist starten</div>
@@ -194,36 +194,13 @@
       </div>
     </div>
 
-    <!-- Ueber Video-Array gehen und passende sortierte Liste ausgeben, ggf. nach Modus filtern ("Conni") oder Suchfeld ("kinder") filtern -->
-    <div *ngFor="let video of videos | modeFilter: myForm.controls.mode.value | searchFilter: myForm.controls.search.value | orderBy: orderField: reverseOrder"
-  
-         class="row no-gutters align-items-center mt-2">
-
-      <!-- Video in Playlist einfuegen oder von dort entfernen -->
-      <button (click)="toggleInPlaylist(video)"
-              class="fa button-clean mr-1"
-              [ngClass]="{
-              'fa-plus text-success': !isInPlaylist(video),
-              'fa-minus text-danger': isInPlaylist(video)
-            }">
-      </button>
-
-      <!-- Laenge des Videos -->
-      <div class="video-length text-right mr-2">
-        {{format_length_string(video.length)}}
-      </div>
-
-      <!-- Button um einzelnes Video zu starten -->
-      <button (click)="playSingleVideo(video)"
-              class="box col text-left pl-2"
-              [class.active-video]="video.file === active_video">
-
-        <!-- Play-Symbol wird nur bei hover und active angezeigt -->
-        <i class="fa fa-play ml-1 mr-1"></i>
-
-        <!-- Videoname -->
-        {{video.name}}
-      </button>
-    </div>
+    <!-- Trefferliste -->
+    <resultlist [videos]="videos" 
+                [videoMode]="videoMode" 
+                [modeFilter]="myForm.controls.mode.value"
+                [searchFilter]="myForm.controls.search.value"
+                [orderField]="orderField"
+                [reverseOrder]="reverseOrder"
+                #videoResultList></resultlist>
   </form>
 </div>

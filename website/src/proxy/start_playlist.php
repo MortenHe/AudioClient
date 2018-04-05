@@ -8,8 +8,8 @@ $request = json_decode($postdata, true);
 //Videomodus fuer korrekte Link zu Video
 $video_mode = $request["video_mode"];
 
-$video_dir = "/media/usb_red/video/" . $video_mode . "/";
-//$video_dir = "C:/Users/Martin/Desktop/media/done/" . $video_mode . "/";
+$video_dir = "/media/usb_red/video/" . $videoMode . "/";
+//$video_dir = "C:/Users/Martin/Desktop/media/done/" . $videoMode . "/";
 
 //Dateinamen Array um Pfad des Modus ergaenzen
 $playlist = array_map(function ($filename) {
