@@ -1,0 +1,12 @@
+<!-- Form fuer Videomode-Select -->
+<form [formGroup]="selectVideomodeForm">
+
+    <!-- Auswahl der Videolisten (Kindervideos, Jahresvideo) -->
+    <select formControlName="select-video-mode"
+            class="width-auto form-control mr-2">
+
+        <!-- auswaehlbare Optionen -->
+        <option value="kinder">Kindervideos</option>
+        <option value="jahresvideo">Jahresvideos</option>
+  </select>
+</form>

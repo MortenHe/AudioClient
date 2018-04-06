@@ -1,0 +1,38 @@
+ <!-- Info ueber Playlist, die gerade zusammengestellt wird -->
+ <ng-container *ngIf="playlist.length">
+
+  <!-- Trennlinie -->
+  <hr>
+
+  <!-- Ueberschrift "Playlist erstellen" -->
+  <div class="font-weight-bold mb-1">Playlist erstellen</div>
+
+  <!-- Ueber Titel in Playlist gehen -->
+  <div *ngFor="let item of playlist, last as last"
+       class="row no-gutters">
+
+    <!-- Button, um Titel aus Playlist zu loeschen -->
+    <button class="fa fa-minus text-danger button-clean mr-1"
+            (click)="toggleInPlaylist(item)"></button>
+
+    <!-- formattierte Laenge des Videos -->
+    <div class="video-length text-right mr-2">{{item.length | timeformatter}}</div>
+
+    <!-- Name des Videos -->
+    <div class="col">{{item.name}}</div>
+  </div>
+
+  <!-- Playlist starten -->
+  <div class="row no-gutters cursor-pointer mt-3"
+       (click)="startVideoPlaylist()">
+
+    <!-- Play-Symbol -->
+    <button class="fa fa-play text-primary button-clean mr-1"></button>
+
+    <!-- formattierte Laenge der gesamten Playlist -->
+    <div class="video-length text-right mr-2">{{getPlaylistLength() | timeformatter}}</div>
+
+    <!-- Text "Playlist starten" -->
+    <div class="col font-weight-bold">Playlist starten</div>
+  </div>
+</ng-container>

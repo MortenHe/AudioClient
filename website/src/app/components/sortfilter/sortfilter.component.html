@@ -1,0 +1,25 @@
+<!-- Sortierbutton Name -->
+<button class="btn btn-outline-secondary p-1 button-clean"
+      (click)="setOrder('name')">
+    <i class="fa fa-font"></i>
+    <i class="fa fa-fw"
+      [ngClass]="{
+          'fa-sort': orderField !== 'name',
+          'fa-sort-up': orderField === 'name'
+          }"></i>
+</button>
+
+<!-- Trennlinie zwischen den Sortierbuttons -->
+<div class="vertical-line"></div>
+
+<!-- Sortierbutton Länge -->
+<button class="btn btn-outline-secondary p-1 button-clean"
+      (click)="setOrder('length')">
+    <i class="fa fa-clock-o"></i>
+    <i class="fa fa-fw"
+      [ngClass]="{
+        'fa-sort': orderField !== 'length',
+        'fa-sort-up': orderField === 'length' && !reverseOrder,
+        'fa-sort-down': orderField === 'length' && reverseOrder
+      }"></i>
+</button>

@@ -1,22 +1,14 @@
 <!-- auesserer Container -->
 <div class="app-width container-fluid mt-3 mb-3 mr-0 ml-0">
 
-  <!-- Form fuer Suche und Mode-Filter -->
-  <form [formGroup]="myForm">
-
     <!-- Zeile fuer Ueberschrift und Shutdown-Button -->
     <div class="row no-gutters">
 
       <!-- Ueberschrift -->
       <h1 class="col">Web Video Player</h1>
 
-      <!-- Auswahl der Videolisten (Kindervideos, Jahresvideo) -->
-      <select formControlName="select-video-mode"
-              (change)="changeVideoMode()"
-              class="width-auto form-control mr-2">
-        <option value="kinder">Kindervideos</option>
-        <option value="jahresvideo">Jahresvideos</option>
-      </select>
+      <!-- Umschalter fuer Videomodus -->
+      <selectvideomode></selectvideomode>
 
       <!-- Button zum Pi herunterfahren -->
       <button (click)="shutdownPi()"
@@ -24,44 +16,7 @@
       </button>
     </div>
 
-    <!-- Info ueber aktuell laufende Playlist -->
-    <ng-container *ngIf="currentPlayedPlaylist">
-
-      <!-- Trennlinie -->
-      <hr>
-
-      <!-- Ueberschrift: "Gerade laeuft (die Playlist):" -->
-      <div class="d-flex font-weight-bold">
-        <span>Gerade läuft</span>
-        <span *ngIf="currentPlayedPlaylist.items.length > 1">&nbsp;die Playlist</span>
-
-        <!-- Video pausieren -->
-        <button (click)="controlVideo('pause')"
-                class="fa fa-pause text-warning button-clean ml-2"></button>
-
-        <!-- Video 30 sec nach links -->
-        <button (click)="controlVideo('seek-left')"
-                class="fa fa-backward text-info button-clean ml-2"></button>
-
-        <!-- Video 30 sec nach rechts -->
-        <button (click)="controlVideo('seek-right')"
-                class="fa fa-forward text-info button-clean ml-2"></button>
-
-        <!-- Video stoppen -->
-        <button (click)="stopVideo()"
-                class="fa fa-stop text-danger button-clean ml-2"></button>
-      </div>
-
-      <!-- Titel der akutell laufenden Playlist -->
-      <div *ngFor="let item of currentPlayedPlaylist.items, first as first">
-        {{item}}
-      </div>
-
-      <!-- Wie lange ist die aktuell laufende Playlist? -->
-      <div>Länge:
-        <b>{{currentPlayedPlaylist.length}}</b>
-      </div>
-    </ng-container>
+    <currentplayedplaylistinspector></currentplayedplaylistinspector>
 
     <!-- Trennlinie -->
     <hr class="mode-filter-hr">
@@ -69,67 +24,11 @@
     <!-- Filter-Buttons -->
     <div class="mb-0">
 
-      <!-- Ueber Buttons gehen -->
-      <label *ngFor="let single_modeFilter of modeFilter"
-             class="mode-filter cursor-pointer mt-2 mr-2"
-             [class.active]="single_modeFilter.id === myForm.controls.mode.value">
-
-        <!-- Vorschaubild des Filters (sofern definiert) -->
-        <img *ngIf="single_modeFilter.icon"
-             height="50"
-             width="50"
-             src="/assets/images/{{single_modeFilter.icon}}.png" />
-
-        <!-- Name des Filters (sofern definiert) -->
-        <span *ngIf="single_modeFilter.label">{{single_modeFilter.label}}</span>
-
-        <!-- Usichtbare radio box -->
-        <input class="d-none"
-               type="radio"
-               [value]="single_modeFilter.id"
-               name="mode"
-               formControlName="mode">
-      </label>
+      <!-- Filter-Buttons -->
+      <modefilter></modefilter>
     </div>
 
-    <!-- Info ueber Playlist, die gerade zusammengestellt wird -->
-    <ng-container *ngIf="playlist.length">
-
-      <!-- Trennlinie -->
-      <hr>
-
-      <!-- Ueberschrift "Playlist erstellen" -->
-      <div class="font-weight-bold mb-1">Playlist erstellen</div>
-
-      <!-- Ueber Titel in Playlist gehen -->
-      <div *ngFor="let item of playlist, last as last"
-           class="row no-gutters">
-
-        <!-- Button, um Titel aus Playlist zu loeschen -->
-        <button class="fa fa-minus text-danger button-clean mr-1"
-                (click)="toggleInPlaylist(item)"></button>
-
-        <!-- Laenge des Videos -->
-        <div class="video-length text-right mr-2">{{item.length | timeformatter}}</div>
-
-        <!-- Name des Videos -->
-        <div class="col">{{item.name}}</div>
-      </div>
-
-      <!-- Playlist starten -->
-      <div class="row no-gutters cursor-pointer mt-3"
-           (click)="startVideoPlaylist()">
-
-        <!-- Play-Symbol -->
-        <button class="fa fa-play text-primary button-clean mr-1"></button>
-
-        <!-- Laenge der gesamten Playlist -->
-        <div class="video-length text-right mr-2">{{getPlaylistLength() | timeformatter}}</div>
-
-        <!-- Text "Playlist starten" -->
-        <div class="col font-weight-bold">Playlist starten</div>
-      </div>
-    </ng-container>
+   <playlistgenerator></playlistgenerator>
 
     <!-- Trennlinie -->
     <hr>
@@ -139,10 +38,14 @@
 
       <!-- Anzahl der Videos in Trefferliste -->
       <div class="video-count text-right mr-2">
+        <!--
         {{(videos | modeFilter: myForm.controls.mode.value | searchFilter: myForm.controls.search.value).length}}
 
+        -->
         <!-- korrekter Plural -->
+        <!--
         <span *ngIf="(videos | modeFilter: myForm.controls.mode.value | searchFilter: myForm.controls.search.value).length !== 1; then tempVideos else tempVideo"></span>
+        -->
 
         <!-- bei 0 oder > 1 = Videos -->
         <ng-template #tempVideos>Videos</ng-template>
@@ -153,54 +56,15 @@
 
       <!-- Suchfeld fuer Filterung -->
       <div class="col">
-        <input autofocus
-               autocomplete="off"
-               placeholder="Video suchen"
-               class="search-field form-control"
-               id="search"
-               type="search"
-               name="search"
-               formControlName="search">
+         <searchfilter></searchfilter>
       </div>
 
       <!-- Sortierbuttons -->
       <div>
-
-        <!-- Sortierbutton Name -->
-        <button class="btn btn-outline-secondary p-1 button-clean"
-                (click)="setOrder('name')">
-          <i class="fa fa-font"></i>
-          <i class="fa fa-fw"
-             [ngClass]="{
-        'fa-sort': orderField !== 'name',
-        'fa-sort-up': orderField === 'name'
-    }"></i>
-        </button>
-
-        <!-- Trennlinie zwischen den Sortierbuttons -->
-        <div class="vertical-line"></div>
-
-        <!-- Sortierbutton Länge -->
-        <button class="btn btn-outline-secondary p-1 button-clean"
-                (click)="setOrder('length')">
-          <i class="fa fa-clock-o"></i>
-          <i class="fa fa-fw"
-             [ngClass]="{
-          'fa-sort': orderField !== 'length',
-          'fa-sort-up': orderField === 'length' && !reverseOrder,
-        'fa-sort-down': orderField === 'length' && reverseOrder
-      }"></i>
-        </button>
+        <sortfilter></sortfilter>
       </div>
     </div>
 
     <!-- Trefferliste -->
-    <resultlist [videos]="videos" 
-                [videoMode]="videoMode" 
-                [modeFilter]="myForm.controls.mode.value"
-                [searchFilter]="myForm.controls.search.value"
-                [orderField]="orderField"
-                [reverseOrder]="reverseOrder"
-                #videoResultList></resultlist>
-  </form>
+    <resultlist></resultlist>
 </div>

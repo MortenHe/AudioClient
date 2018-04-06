@@ -1,0 +1,25 @@
+  <!-- Info ueber aktuell laufende Playlist -->
+  <ng-container *ngIf="currentPlayedPlaylist">
+
+    <!-- Trennlinie -->
+    <hr>
+
+    <!-- Ueberschrift: "Gerade laeuft (die Playlist):" -->
+    <div class="d-flex font-weight-bold">
+      <span>Gerade läuft</span>
+      <span *ngIf="currentPlayedPlaylist.items.length > 1">&nbsp;die Playlist</span>
+
+      <!-- Steuerelemente (play, stop, seek) fuer Video-Wiedergabe -->
+      <playercontrol></playercontrol>
+    </div>
+
+    <!-- Titel der akutell laufenden Playlist -->
+    <div *ngFor="let item of currentPlayedPlaylist.items, first as first">
+      {{item}}
+    </div>
+
+    <!-- Wie lange ist die aktuell laufende Playlist? -->
+    <div>Länge:
+      <b>{{currentPlayedPlaylist.length}}</b>
+    </div>
+  </ng-container>
