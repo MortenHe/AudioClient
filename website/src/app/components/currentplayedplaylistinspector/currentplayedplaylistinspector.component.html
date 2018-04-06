@@ -5,18 +5,15 @@
     <hr>
 
     <!-- Ueberschrift: "Gerade laeuft (die Playlist):" -->
-    <div class="d-flex font-weight-bold">
-      <span>Gerade läuft</span>
-      <span *ngIf="currentPlayedPlaylist.items.length > 1">&nbsp;die Playlist</span>
+    <div class="d-flex">
+      <span class="font-weight-bold">Gerade läuft</span>
+      <span class="font-weight-bold"
+          *ngIf="currentPlayedPlaylist.items.length > 1">&nbsp;die Playlist</span>
+      &nbsp;(Länge:&nbsp;{{currentPlayedPlaylist.length | timeformatter}})
     </div>
 
     <!-- Titel der akutell laufenden Playlist -->
     <div *ngFor="let item of currentPlayedPlaylist.items, first as first">
       {{item}}
-    </div>
-
-    <!-- Wie lange ist die aktuell laufende Playlist? -->
-    <div>Länge:
-      <b>{{currentPlayedPlaylist.length}}</b>
     </div>
   </ng-container>
