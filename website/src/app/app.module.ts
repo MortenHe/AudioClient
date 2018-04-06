@@ -47,7 +47,10 @@ import { DebuginspectorComponent } from './components/debuginspector/debuginspec
     PlayercontrolComponent,
     PicontrolComponent,
     ResultlistinspectorComponent,
-    DebuginspectorComponent
+    DebuginspectorComponent,
+    ModeFilterPipe,
+    SearchFilterPipe,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,

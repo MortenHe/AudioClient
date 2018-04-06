@@ -21,7 +21,7 @@ if (!$sftp->login($connection["user"], $connection["password"])) {
 $packages = [
 //Bilder-Ordner
     "assets" => [
-        "active" => false,
+        "active" => true,
         "dirs" => [[
         "local" => "../assets/images",
         "remote" => "assets/images"]]
@@ -35,7 +35,7 @@ $packages = [
     ],
     //Videoliste als JSON
     "videolist" => [
-        "active" => false,
+        "active" => true,
         "dirs" => [[
         "local" => "../proxy/json",
         "remote" => "proxy/json"],
@@ -49,7 +49,7 @@ $packages = [
     ],
     //Angular-Dist Code
     "website" => [
-        "active" => false,
+        "active" => true,
         "dirs" => [[
         "local" => "../../dist",
         "remote" => "wvp"]]
