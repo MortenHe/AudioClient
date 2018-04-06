@@ -3,8 +3,11 @@ import { Http } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { PROXY_URL } from '../config/main-config';
-import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ResultfilterService } from './resultfilter.service';
+import { ModeFilterPipe } from '../pipes/mode-filter.pipe';
+import { SearchFilterPipe } from '../pipes/search-filter.pipe';
+import { OrderByPipe } from '../pipes/order-by.pipe';
 
 @Injectable()
 
@@ -16,17 +19,34 @@ export class VideoService {
     //Komplette Videoliste wird nur 1 Mal geholt
     videoListFull;
 
+    //Videomode als Variable
+    videoMode;
+
+    //Mode-Filter (conni, heidi)
+    modeFilter;
+
+    //Suchefeld-Filter
+    searchTerm;
+
+    //Sortierfeld
+    orderField;
+
+    //umgekehrte Reihenfolge
+    reverseOrder;
+
     //Videomodus als BS, das abboniert werden kann
     videoModeBS = new BehaviorSubject("kinder");
 
-    //Liste der Videos dieses Videomodus als BS, das abboniert werden kann
-    videoListSub = new BehaviorSubject([]);
+    //gefilterte und sortierte Videolist als BS, das abboniert werden kann
+    videoListFilteredBS = new BehaviorSubject([]);
 
-    //Liste der Mode Filter dieses Video-Modus als Subject, das abboniert werden kann
-    modeFilterListSub = new Subject();
+    //Liste der Mode Filter dieses Video-Modus als BS, das abboniert werden kann
+    modeFilterListSB = new BehaviorSubject([]);
 
     //Service injekten
-    constructor(private http: Http) { }
+    constructor(private http: Http, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
+    }
+
 
     //Videoliste laden
     loadFullVideolist() {
@@ -40,13 +60,56 @@ export class VideoService {
             //Wenn sich Videomodus aendert
             this.videoModeBS.subscribe(videoMode => {
 
-                //Videoliste des aktuellen Videomodus setzen
-                this.videoListSub.next(this.videoListFull[videoMode].videos);
+                //Videomodus in Variable speichern (fuer Playlist start)
+                this.videoMode = videoMode;
 
                 //Filter-Modus-Liste des aktuellen Videomodus setzen
-                this.modeFilterListSub.next(this.videoListFull[videoMode].filter);
+                this.modeFilterListSB.next(this.videoListFull[videoMode].filter);
+
+                //gefilterte Videoliste erstellen
+                this.filterVideoList();
+            });
+
+            //Aenderungen an ModeFilter abbonieren, speichern und Videoliste neu erstellen
+            this.fs.getModeFilter().subscribe(modeFilter => {
+                this.modeFilter = modeFilter;
+                this.filterVideoList();
+            });
+
+            //Aenderungen an Suchterm abbonieren, speichern und Videoliste neu erstellen
+            this.fs.getSearchTerm().subscribe(searchTerm => {
+                this.searchTerm = searchTerm;
+                this.filterVideoList();
+            });
+
+            //Aenderungen an Sortierfeld abbonieren, speichern und Videoliste neu erstellen
+            this.fs.getOrderField().subscribe(orderField => {
+                this.orderField = orderField;
+                this.filterVideoList();
+            });
+
+            //Aenderungen an umgekehrter abbonieren, speichern und Videoliste neu erstellen
+            this.fs.getReverseOrder().subscribe(reverseOrder => {
+                this.reverseOrder = reverseOrder;
+                this.filterVideoList();
             });
         });
+    }
+
+    //Wenn Videomodus / Filter / Sortierung angepasst wurde, muss Videoliste neu erstellt / gefiltert / sortiert werden
+    filterVideoList() {
+
+        //Mode-Filter auf Videos dieses Videomodus anwenden
+        let filteredVideoList = this.modeFilterPipe.transform(this.videoListFull[this.videoMode].videos, this.modeFilter);
+        
+        //Suchfeld-Filter anwenden
+        filteredVideoList = this.searchFilterPipe.transform(filteredVideoList, this.searchTerm);
+        
+        //Sortierung anwenden
+        filteredVideoList = this.orderByPipe.transform(filteredVideoList, this.orderField, this.reverseOrder);
+
+        //neue Videoliste in BS schieben
+        this.videoListFilteredBS.next(filteredVideoList);
     }
 
     //Videomodus liefern
@@ -59,22 +122,21 @@ export class VideoService {
         this.videoModeBS.next(mode);
     }
 
-    //Videoliste liefern
-    getVideolist() {
-        return this.videoListSub;
+    //gefilterte und sortierte Videoliste liefern
+    getFilteredVideolist() {
+        return this.videoListFilteredBS;
     }
 
     //Liste der Filter-Optionen liefern
     getModeFilterList() {
-        return this.modeFilterListSub;
+        return this.modeFilterListSB;
     }
 
     //Anfrage an Proxy schicken, damit dieser ein Video / Liste von Videos startet
     sendVideoPlayRequest(videoList) {
 
         //Dateiname(n) und Modus mitschicken bei HTTP-Request
-        //TODO Videomode
-        this.http.post(this.proxyUrl + "start_playlist.php", JSON.stringify({ video_mode: "kinder", video_list: videoList })).subscribe();
+        this.http.post(this.proxyUrl + "start_playlist.php", JSON.stringify({ video_mode: this.videoMode, video_list: videoList })).subscribe();
     }
 
     //Anfrage an Proxy schicken, damit dieser das Videoplayback stoppt

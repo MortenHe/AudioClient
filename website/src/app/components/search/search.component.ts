@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { VideoService } from '../../services/video.service';
 import { PlaylistService } from '../../services/playlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VIDEO_MODES } from '../../config/main-config'
 
 @Component({
   selector: 'app-search',
@@ -10,6 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class SearchComponent {
+
+  //Anzeige Anzahl der Treffer
+  resultListLength: number;
 
   //Services und Router injecten
   constructor(private vs: VideoService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router) {
@@ -27,7 +31,12 @@ export class SearchComponent {
       //Video-Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
       let videoMode = params.get('videoMode');
 
-      //TODO fehlerhafte Parameter abfangen
+      //Wenn es diesen Video-Modus nicht gibt
+      if (VIDEO_MODES.indexOf(videoMode) === -1) {
+
+        //zu 1. Video-Modus aus Config navigieren
+        this.router.navigate(['/search', VIDEO_MODES[0]]);
+      }
 
       //Videomodus per Service setzen
       this.vs.setVideoMode(videoMode);
@@ -35,6 +44,9 @@ export class SearchComponent {
       //Playlist per Service zuruecksetzen
       this.pls.resetPlaylist();
     });
+
+    //Aenderungen bei Videoliste verfolgen, damit Anzahl der Treffer angepasst werden kann
+    this.vs.getFilteredVideolist().subscribe(videoList => this.resultListLength = videoList.length)
   }
 
   //Pi per Service herunterfahren

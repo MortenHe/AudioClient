@@ -1,6 +1,5 @@
-<!-- Ueber Video-Array gehen und passende sortierte Liste ausgeben, ggf. nach Modus ("Conni") oder Suchfeld ("kinder") filtern und umsortieren nach einem Feld -->
-<div *ngFor="let video of videos | modeFilter: modeFilter | searchFilter: searchFilter | orderBy: orderField: reverseOrder"
-
+<!-- Ueber Video-Array gehen und passende gefilterte und sortierte Liste ausgeben -->
+<div *ngFor="let video of videos"
       class="row no-gutters align-items-center mt-2">
 
   <!-- Video in Playlist einfuegen oder von dort entfernen -->

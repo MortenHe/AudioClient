@@ -38,14 +38,12 @@
 
       <!-- Anzahl der Videos in Trefferliste -->
       <div class="video-count text-right mr-2">
-        <!--
-        {{(videos | modeFilter: myForm.controls.mode.value | searchFilter: myForm.controls.search.value).length}}
+       
+       <!-- Anzahl der Videos in Trefferliste --> 
+        {{resultListLength}}
 
-        -->
         <!-- korrekter Plural -->
-        <!--
-        <span *ngIf="(videos | modeFilter: myForm.controls.mode.value | searchFilter: myForm.controls.search.value).length !== 1; then tempVideos else tempVideo"></span>
-        -->
+        <span *ngIf="resultListLength !== 1; then tempVideos else tempVideo"></span>
 
         <!-- bei 0 oder > 1 = Videos -->
         <ng-template #tempVideos>Videos</ng-template>

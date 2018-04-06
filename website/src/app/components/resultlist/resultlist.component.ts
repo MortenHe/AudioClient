@@ -15,42 +15,17 @@ export class ResultlistComponent {
   //Videoliste
   videos: Video[];
 
-
-  //Modus-Filter (conni, heidi,...)
-  modeFilter: string;
-
-  //Suchfeld-Filter
-  searchFilter: string;
-
-  //Sortierfeld
-  orderField: string;
-
-  //Umgekehrte Sortierung
-  reverseOrder: boolean;
-
   //welches Video in der Liste wurde angeklickt?
   activeVideo: Video;
 
-  //Services injecten
-  constructor(private pls: PlaylistService, private vs: VideoService, private fs: ResultfilterService) { }
+  //Services injecten, TODO fs raus
+  constructor(private pls: PlaylistService, private vs: VideoService) { }
 
   //beim Init
   ngOnInit() {
 
-    //Videoliste per Service abbonieren
-    this.vs.getVideolist().subscribe(videos => this.videos = videos)
-
-    //Mode-Filter per Service abbonieren
-    this.fs.getModeFilter().subscribe(modeFilter => this.modeFilter = modeFilter);
-
-    //Suchfeld-Filter per Service abbonieren
-    this.fs.getSearchTerm().subscribe(searchFilter => this.searchFilter = searchFilter);
-
-    //Sortierfeld per Service abbonieren
-    this.fs.getOrderField().subscribe(orderField => this.orderField = orderField);
-
-    //Umkehrte Sortierung per Service abbonieren
-    this.fs.getReverseOrder().subscribe(reverseOrder => this.reverseOrder = reverseOrder);
+    //gefilterte und sortierte Videoliste per Service abbonieren
+    this.vs.getFilteredVideolist().subscribe(videos => this.videos = videos)
 
     //Aktuell laufende Playlist per Service abbonieren
     this.pls.getCurrentPlayedPlaylist().subscribe(currentPlayedPlaylist => {

@@ -32,11 +32,8 @@ import { PlayercontrolComponent } from './components/playercontrol/playercontrol
 @NgModule({
   declarations: [
     AppComponent,
-    ModeFilterPipe,
-    SearchFilterPipe,
     AdminComponent,
     SearchComponent,
-    OrderByPipe,
     ResultlistComponent,
     TimeformatterPipe,
     ModefilterComponent,
@@ -54,10 +51,10 @@ import { PlayercontrolComponent } from './components/playercontrol/playercontrol
     RouterModule.forRoot([
       { path: 'search/:videoMode', component: SearchComponent },
       { path: 'admin', component: AdminComponent },
-      { path: '**', redirectTo: '/search/kinder', pathMatch: 'full' }
+      { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
   ],
-  providers: [VideoService, PlaylistService, ResultfilterService],
+  providers: [VideoService, PlaylistService, ResultfilterService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

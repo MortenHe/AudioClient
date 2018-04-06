@@ -11,7 +11,12 @@ export class Video {
 export const PROXY_URL = "http://localhost/WebPlayer/website/src/proxy/";
 //export const PROXY_URL = "http://192.168.0.150/proxy/";
 
-//Existierende Modes
-//Fallback mode
-//modefilter subject als bs?
-//videomode bei vs start_playlist
+//Verfuegbare Video-Modes
+export const VIDEO_MODES = [
+    "kinder",
+    "jahresvideo"
+];
+
+//subscribe innerhalb von subscribe
+//serach weiter aufteilen (2. Inspektor, 2. Suchfeld)
+//Pagination

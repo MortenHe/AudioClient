@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { VideoService } from './video.service';
 
 @Injectable()
 
 export class ResultfilterService {
 
   //Service injecten
-  constructor(private vs: VideoService) { }
+  constructor() { }
 
   //modeFilter als BS, das abboniert werden kann
   modeFilterBehaviorSubject = new BehaviorSubject("all");
