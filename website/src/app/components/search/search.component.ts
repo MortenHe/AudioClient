@@ -28,11 +28,14 @@ export class SearchComponent {
       //Video-Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
       let videoMode = params.get('videoMode');
 
+      //Video-Modes, die es in der der Config gibt
+      let configVideoModes = VIDEO_MODES.map(video_mode => {return video_mode.id});
+
       //Wenn es diesen Video-Modus nicht gibt
-      if (VIDEO_MODES.indexOf(videoMode) === -1) {
+      if (configVideoModes.indexOf(videoMode) === -1) {
 
         //zu 1. Video-Modus aus Config navigieren
-        this.router.navigate(['/search', VIDEO_MODES[0]]);
+        this.router.navigate(['/search', VIDEO_MODES[0].id]);
       }
 
       //Videomodus per Service setzen

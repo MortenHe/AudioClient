@@ -8,13 +8,19 @@ export class Video {
 }
 
 //Proxy-URL
-export const PROXY_URL = "http://localhost/WebPlayer/website/src/proxy/";
-//export const PROXY_URL = "http://192.168.0.150/proxy/";
+//export const PROXY_URL = "http://localhost/WebPlayer/website/src/proxy/";
+export const PROXY_URL = "http://192.168.0.150/proxy/";
 
 //Verfuegbare Video-Modes
 export const VIDEO_MODES = [
-    "kinder",
-    "jahresvideo"
+    {
+        "id": "kinder",
+        "label": "Kindervideos"
+    }, 
+    {
+        "id": "jahresvideo",
+        "label": "Jahresvideos"
+    }
 ];
 
 //subscribe innerhalb von subscribe

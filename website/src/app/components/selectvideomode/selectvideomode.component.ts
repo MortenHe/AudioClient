@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { VideoService } from '../../services/video.service';
 import { Router } from '@angular/router';
+import { VIDEO_MODES } from '../../config/main-config';
 
 @Component({
   selector: 'selectvideomode',
@@ -9,6 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./selectvideomode.component.scss']
 })
 export class SelectvideomodeComponent implements OnInit {
+
+  //Liste der Video-Modes
+  videoModes: any[];
 
   //Form fuer Auswahl des Videomodus
   selectVideomodeForm;
@@ -18,6 +22,9 @@ export class SelectvideomodeComponent implements OnInit {
 
   //beim Init
   ngOnInit() {
+
+    //Video-Modes aus Config laden
+    this.videoModes = VIDEO_MODES;
 
     //Reactive Form fuer Videomode-Select erstellen
     this.selectVideomodeForm = this.fb.group({

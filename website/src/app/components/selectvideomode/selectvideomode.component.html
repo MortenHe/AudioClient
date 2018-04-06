@@ -5,8 +5,8 @@
     <select formControlName="select-video-mode"
             class="width-auto form-control">
 
-        <!-- auswaehlbare Optionen -->
-        <option value="kinder">Kindervideos</option>
-        <option value="jahresvideo">Jahresvideos</option>
+        <!-- auswaehlbare Optionen ausgeben -->
+        <option *ngFor="let videoMode of videoModes"
+                [value]="videoMode.id">{{videoMode.label}}</option>
   </select>
 </form>
