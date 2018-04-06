@@ -1,68 +1,53 @@
 <!-- auesserer Container -->
 <div class="app-width container-fluid mt-3 mb-3 mr-0 ml-0">
 
-    <!-- Zeile fuer Ueberschrift und Shutdown-Button -->
-    <div class="row no-gutters">
+  <!-- Inspektor mit den moeglichen Werten -->
+  <debuginspector class="d-none"></debuginspector>
 
-      <!-- Ueberschrift -->
-      <h1 class="col">Web Video Player</h1>
+  <!-- Zeile fuer Ueberschrift, Videomode-Select und Shutdown-Button -->
+  <div class="row no-gutters">
 
-      <!-- Umschalter fuer Videomodus -->
-      <selectvideomode></selectvideomode>
+    <!-- Ueberschrift "Web Video Player" -->
+    <h1>Web Video Player</h1>
 
-      <!-- Button zum Pi herunterfahren -->
-      <button (click)="shutdownPi()"
-              class="fa fa-power-off text-danger button-clean">
-      </button>
-    </div>
+    <!-- Steuerelemente (play, stop, seek) fuer Video-Wiedergabe -->
+    <playercontrol class="col d-flex justify-content-around mr-2 ml-2"></playercontrol>
 
-    <currentplayedplaylistinspector></currentplayedplaylistinspector>
+    <!-- Umschalter fuer Videomodus -->
+    <selectvideomode class="mr-2"></selectvideomode>
 
-    <!-- Trennlinie -->
-    <hr class="mode-filter-hr">
+    <!-- Pi-Kontrolle zum Herunterfahren -->
+    <picontrol class="d-flex"></picontrol>
+  </div>
 
-    <!-- Filter-Buttons -->
-    <div class="mb-0">
+  <!-- Anischt der aktuellen laufenden Playlist -->
+  <currentplayedplaylistinspector></currentplayedplaylistinspector>
 
-      <!-- Filter-Buttons -->
-      <modefilter></modefilter>
-    </div>
+  <!-- Trennlinie -->
+  <hr class="mode-filter-hr">
 
-   <playlistgenerator></playlistgenerator>
+  <!-- Filter-Buttons -->
+  <modefilter></modefilter>
 
-    <!-- Trennlinie -->
-    <hr>
+  <!-- Uebersicht ueber gerade erstellte Playlist -->
+  <playlistgenerator></playlistgenerator>
 
-    <!-- Infos zu Anzahl der Videos, Suchfeld und Sortierbuttons -->
-    <div class="row no-gutters d-flex align-items-center">
+  <!-- Trennlinie -->
+  <hr>
 
-      <!-- Anzahl der Videos in Trefferliste -->
-      <div class="video-count text-right mr-2">
-       
-       <!-- Anzahl der Videos in Trefferliste --> 
-        {{resultListLength}}
+  <!-- Infos zu Anzahl der Videos, Suchfeld und Sortierbuttons -->
+  <div class="row no-gutters d-flex align-items-center">
 
-        <!-- korrekter Plural -->
-        <span *ngIf="resultListLength !== 1; then tempVideos else tempVideo"></span>
+    <!-- Anzahl der Videos in Trefferliste -->
+    <resultlistinspector class="video-count text-right mr-2"></resultlistinspector>
 
-        <!-- bei 0 oder > 1 = Videos -->
-        <ng-template #tempVideos>Videos</ng-template>
+    <!-- Suchfeld fuer Filterung -->
+    <searchfilter class="col"></searchfilter>
 
-        <!-- bei 1 = Video -->
-        <ng-template #tempVideo>Video</ng-template>
-      </div>
+    <!-- Sortierbuttons -->
+    <sortfilter class="d-flex align-items-center"></sortfilter>
+  </div>
 
-      <!-- Suchfeld fuer Filterung -->
-      <div class="col">
-         <searchfilter></searchfilter>
-      </div>
-
-      <!-- Sortierbuttons -->
-      <div>
-        <sortfilter></sortfilter>
-      </div>
-    </div>
-
-    <!-- Trefferliste -->
-    <resultlist></resultlist>
+  <!-- Trefferliste -->
+  <resultlist></resultlist>
 </div>

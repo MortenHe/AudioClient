@@ -13,14 +13,13 @@ import { PlaylistService } from './services/playlist.service';
 import { ModeFilterPipe } from './pipes/mode-filter.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { TimeformatterPipe } from './pipes/timeformatter.pipe';
 
-//Komponenten
+//eigene Komponenten
 import { AppComponent } from './components/app/app.component';
 import { SearchComponent } from './components/search/search.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ResultlistComponent } from './components/resultlist/resultlist.component';
-
-import { TimeformatterPipe } from './pipes/timeformatter.pipe';
 import { ModefilterComponent } from './components/modefilter/modefilter.component';
 import { SearchfilterComponent } from './components/searchfilter/searchfilter.component';
 import { SortfilterComponent } from './components/sortfilter/sortfilter.component';
@@ -28,6 +27,9 @@ import { SelectvideomodeComponent } from './components/selectvideomode/selectvid
 import { CurrentplayedplaylistinspectorComponent } from './components/currentplayedplaylistinspector/currentplayedplaylistinspector.component';
 import { PlaylistgeneratorComponent } from './components/playlistgenerator/playlistgenerator.component';
 import { PlayercontrolComponent } from './components/playercontrol/playercontrol.component';
+import { PicontrolComponent } from './components/picontrol/picontrol.component';
+import { ResultlistinspectorComponent } from './components/resultlistinspector/resultlistinspector.component';
+import { DebuginspectorComponent } from './components/debuginspector/debuginspector.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,10 @@ import { PlayercontrolComponent } from './components/playercontrol/playercontrol
     SelectvideomodeComponent,
     CurrentplayedplaylistinspectorComponent,
     PlaylistgeneratorComponent,
-    PlayercontrolComponent
+    PlayercontrolComponent,
+    PicontrolComponent,
+    ResultlistinspectorComponent,
+    DebuginspectorComponent
   ],
   imports: [
     BrowserModule,

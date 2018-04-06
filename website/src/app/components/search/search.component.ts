@@ -12,9 +12,6 @@ import { VIDEO_MODES } from '../../config/main-config'
 
 export class SearchComponent {
 
-  //Anzeige Anzahl der Treffer
-  resultListLength: number;
-
   //Services und Router injecten
   constructor(private vs: VideoService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router) {
   }
@@ -44,13 +41,5 @@ export class SearchComponent {
       //Playlist per Service zuruecksetzen
       this.pls.resetPlaylist();
     });
-
-    //Aenderungen bei Videoliste verfolgen, damit Anzahl der Treffer angepasst werden kann
-    this.vs.getFilteredVideolist().subscribe(videoList => this.resultListLength = videoList.length)
-  }
-
-  //Pi per Service herunterfahren
-  shutdownPi() {
-    this.vs.sendShutdownRequest();
   }
 }

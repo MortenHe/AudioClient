@@ -1,15 +1,19 @@
+<!-- Steuersymbole nur anzeigen, wenn gerade eine Playlist laeuft -->
+<ng-container *ngIf="currentPlayedPlaylist">
+
 <!-- Video pausieren -->
 <button (click)="controlVideo('pause')"
-        class="fa fa-pause text-warning button-clean ml-2"></button>
+        class="fa fa-pause text-warning button-clean"></button>
 
 <!-- Video 30 sec nach links -->
 <button (click)="controlVideo('seek-left')"
-        class="fa fa-backward text-info button-clean ml-2"></button>
+        class="fa fa-backward text-info button-clean"></button>
 
 <!-- Video 30 sec nach rechts -->
 <button (click)="controlVideo('seek-right')"
-        class="fa fa-forward text-info button-clean ml-2"></button>
+        class="fa fa-forward text-info button-clean"></button>
 
 <!-- Video stoppen -->
 <button (click)="stopVideo()"
-        class="fa fa-stop text-danger button-clean ml-2"></button>
+        class="fa fa-stop text-danger button-clean"></button>
+</ng-container>

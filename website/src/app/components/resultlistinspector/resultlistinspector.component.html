@@ -1,0 +1,11 @@
+<!-- Anzahl der Videos in Trefferliste -->
+{{resultListLength}}
+
+<!-- korrekter Plural -->
+<span *ngIf="resultListLength !== 1; then tempVideos else tempVideo"></span>
+
+<!-- bei 0 oder > 1 => Videos -->
+<ng-template #tempVideos>Videos</ng-template>
+
+<!-- bei 1 => Video -->
+<ng-template #tempVideo>Video</ng-template>
