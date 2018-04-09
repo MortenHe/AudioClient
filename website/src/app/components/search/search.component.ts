@@ -3,6 +3,7 @@ import { VideoService } from '../../services/video.service';
 import { PlaylistService } from '../../services/playlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VIDEO_MODES } from '../../config/main-config'
+import { environment, martin } from '../../../environments/environment';
 
 @Component({
   selector: 'app-search',
@@ -11,6 +12,9 @@ import { VIDEO_MODES } from '../../config/main-config'
 })
 
 export class SearchComponent {
+
+  envName = environment.envName;
+  myName = martin.name;
 
   //Services und Router injecten
   constructor(private vs: VideoService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router) {

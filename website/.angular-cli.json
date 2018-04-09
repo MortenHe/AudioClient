@@ -26,7 +26,11 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.prod.ts",
+        "audio-dev": "environments/environment.audio-dev.ts",
+        "audio-prod": "environments/environment.audio-prod.ts",
+        "video-dev": "environments/environment.video-dev.ts",
+        "video-prod": "environments/environment.video-prod.ts"
       }
     }
   ],
