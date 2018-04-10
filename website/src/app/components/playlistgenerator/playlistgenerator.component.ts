@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from '../../services/playlist.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'playlistgenerator',
@@ -10,7 +11,7 @@ import { PlaylistService } from '../../services/playlist.service';
 export class PlaylistgeneratorComponent implements OnInit {
 
   //Playlist, die zusammengestellt wird
-  playlist;
+  playlist$: Observable<any>;
 
   //Service injecten
   constructor(private pls: PlaylistService) { }
@@ -19,7 +20,7 @@ export class PlaylistgeneratorComponent implements OnInit {
   ngOnInit() {
 
     //Aenderungen an Playlist per Service abbonieren
-    this.pls.getPlaylist().subscribe(playlist => this.playlist = playlist)
+    this.playlist$ = this.pls.getPlaylist();
   }
 
   //per Service Laenge der Playlist ermitteln
@@ -27,13 +28,13 @@ export class PlaylistgeneratorComponent implements OnInit {
     return this.pls.getPlaylistLength();
   }
 
-  //per Service Video in Playlist toggeln
-  toggleInPlaylist(video) {
-    this.pls.toggleInPlaylist(video);
+  //per Service Item in Playlist toggeln
+  toggleInPlaylist(item) {
+    this.pls.toggleInPlaylist(item);
   }
 
-  //Playlist aus ggf. mehreren Videos ("multi") per Service starten
-  startVideoPlaylist() {
+  //Playlist aus ggf. mehreren Items ("multi") per Service starten
+  startPlaylist() {
     this.pls.startVideoPlaylist("multi");
   }
 }

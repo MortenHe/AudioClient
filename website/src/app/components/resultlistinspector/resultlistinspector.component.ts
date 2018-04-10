@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../../services/video.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'resultlistinspector',
@@ -9,8 +10,8 @@ import { VideoService } from '../../services/video.service';
 
 export class ResultlistinspectorComponent implements OnInit {
 
-  //Anzeige Anzahl der Treffer
-  resultListLength: number;
+  //Trefferliste als Observable
+  items$: Observable<any>;
 
   //Service injecten
   constructor(private vs: VideoService) { }
@@ -19,6 +20,6 @@ export class ResultlistinspectorComponent implements OnInit {
   ngOnInit() {
 
     //Aenderungen bei Videoliste verfolgen, damit Anzahl der Treffer angepasst werden kann
-    this.vs.getFilteredVideolist().subscribe(videoList => this.resultListLength = videoList.length)
+    this.items$ = this.vs.getFilteredVideolist();
   }
 }

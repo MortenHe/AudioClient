@@ -1,15 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Video } from '../config/main-config';
+import { Item } from '../config/main-config';
 
 @Pipe({
   name: 'searchFilter'
 })
 
-//Videoliste anhand eines Suchstrings filtern
+//Itemliste anhand eines Suchstrings filtern
 export class SearchFilterPipe implements PipeTransform {
 
   //Suchstring wird uebergeben
-  transform(items: Video[], search_string: string): any {
+  transform(items: Item[], search_string: string): any {
 
     //Wenn Suchfeld leer ist
     if (!search_string) {

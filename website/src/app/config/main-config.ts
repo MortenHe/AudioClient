@@ -1,5 +1,5 @@
-//Struktur eines Video-Elements
-export class Video {
+//Struktur eines Multimedia-Items (Video, Audio)
+export class Item {
     mode: string;
     name: string;
     file: string;
@@ -7,22 +7,13 @@ export class Video {
     active: boolean;
 }
 
-//Proxy-URL
-//export const PROXY_URL = "http://localhost/WebPlayer/website/src/proxy/";
-export const PROXY_URL = "http://192.168.0.150/proxy/";
-
-//Verfuegbare Video-Modes
-export const VIDEO_MODES = [
-    {
-        "id": "kinder",
-        "label": "Kindervideos"
-    }, 
-    {
-        "id": "jahresvideo",
-        "label": "Jahresvideos"
-    }
-];
-
 //subscribe innerhalb von subscribe
+//unsubscribe
 //serach weiter aufteilen (2. Inspektor, 2. Suchfeld)
 //Pagination
+//Playlist-Generator mit nur einem Container
+//selectvideomode Komponente umbenennen
+//Videoservice umbenennen
+//Inspektor Variablen als async obs
+//Video / Audio suchen placeholder bei searchfilter
+//Items um track (optional) erweitern oder single vs. typeplaylist

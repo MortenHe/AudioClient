@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { VideoService } from '../../services/video.service';
 import { PlaylistService } from '../../services/playlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VIDEO_MODES } from '../../config/main-config'
-import { environment, martin } from '../../../environments/environment';
+import { environment } from '../../../environments/environment'
 
 @Component({
   selector: 'app-search',
@@ -13,8 +12,8 @@ import { environment, martin } from '../../../environments/environment';
 
 export class SearchComponent {
 
+  //Name der App fuer Ueberschrift (z.B. Video Player (dev))
   envName = environment.envName;
-  myName = martin.name;
 
   //Services und Router injecten
   constructor(private vs: VideoService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router) {
@@ -23,27 +22,27 @@ export class SearchComponent {
   //Beim Init
   ngOnInit() {
 
-    //Komplettliste der Videos in Service laden
+    //Komplettliste der Items in Service laden
     this.vs.loadFullVideolist();
 
     //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert
     this.route.paramMap.subscribe(params => {
 
-      //Video-Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
-      let videoMode = params.get('videoMode');
+      //Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
+      let mode = params.get('mode');
 
-      //Video-Modes, die es in der der Config gibt
-      let configVideoModes = VIDEO_MODES.map(video_mode => {return video_mode.id});
+      //Modes, die es in der der Config gibt
+      let domainModes = environment.domainModes.map(domainMode => { return domainMode.id });
 
-      //Wenn es diesen Video-Modus nicht gibt
-      if (configVideoModes.indexOf(videoMode) === -1) {
+      //Wenn es diesen Modus nicht gibt
+      if (domainModes.indexOf(mode) === -1) {
 
-        //zu 1. Video-Modus aus Config navigieren
-        this.router.navigate(['/search', VIDEO_MODES[0].id]);
+        //zu 1. Modus aus Config navigieren
+        this.router.navigate(['/search', environment.domainModes[0].id]);
       }
 
-      //Videomodus per Service setzen
-      this.vs.setVideoMode(videoMode);
+      //Modus per Service setzen
+      this.vs.setVideoMode(mode);
 
       //Playlist per Service zuruecksetzen
       this.pls.resetPlaylist();

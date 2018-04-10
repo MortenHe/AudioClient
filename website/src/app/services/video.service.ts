@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { PROXY_URL } from '../config/main-config';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ResultfilterService } from './resultfilter.service';
 import { ModeFilterPipe } from '../pipes/mode-filter.pipe';
 import { SearchFilterPipe } from '../pipes/search-filter.pipe';
 import { OrderByPipe } from '../pipes/order-by.pipe';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 
 export class VideoService {
 
     //URL wo die Proxyskripte liegen aus config laden
-    proxyUrl = PROXY_URL;
+    proxyUrl = environment.proxyUrl;
 
     //Komplette Videoliste wird nur 1 Mal geholt
     videoListFull;
@@ -47,9 +47,10 @@ export class VideoService {
     constructor(private http: Http, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
     }
 
-
     //Videoliste laden
     loadFullVideolist() {
+
+        console.log(this.proxyUrl);
 
         //Videoliste holen per HTTP-Request
         this.http.get(this.proxyUrl + "get_videolist.php").map(response => response.json()).subscribe(videolist => {
@@ -101,10 +102,10 @@ export class VideoService {
 
         //Mode-Filter auf Videos dieses Videomodus anwenden
         let filteredVideoList = this.modeFilterPipe.transform(this.videoListFull[this.videoMode].videos, this.modeFilter);
-        
+
         //Suchfeld-Filter anwenden
         filteredVideoList = this.searchFilterPipe.transform(filteredVideoList, this.searchTerm);
-        
+
         //Sortierung anwenden
         filteredVideoList = this.orderByPipe.transform(filteredVideoList, this.orderField, this.reverseOrder);
 

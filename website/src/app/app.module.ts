@@ -57,7 +57,7 @@ import { DebuginspectorComponent } from './components/debuginspector/debuginspec
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: 'search/:videoMode', component: SearchComponent },
+      { path: 'search/:mode', component: SearchComponent },
       { path: 'admin', component: AdminComponent },
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),

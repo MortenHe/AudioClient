@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../../services/video.service';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { PlaylistService } from '../../services/playlist.service';
-import { Video } from '../../config/main-config';
+import { Item } from '../../config/main-config';
+import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'debuginspector',
@@ -12,8 +14,8 @@ import { Video } from '../../config/main-config';
 
 export class DebuginspectorComponent implements OnInit {
 
-  //lokale Kopien der Werte
-  videos: Video[];
+  //Observables fuer Anzeige
+  items: Observable<Item[]>;
   videoMode: string;
   modeFilter: string;
   searchTerm: string;
@@ -22,6 +24,13 @@ export class DebuginspectorComponent implements OnInit {
   playlist: any[];
   currentPlayedPlaylist: any;
 
+  //Env-Werte
+  appMode = environment.appMode;
+  domainModes = environment.domainModes;
+  envName = environment.envName;
+  production = environment.production;
+  proxyUrl = environment.proxyUrl;
+
   //Services injecten
   constructor(private vs: VideoService, private fs: ResultfilterService, private pls: PlaylistService) { }
 
@@ -29,7 +38,7 @@ export class DebuginspectorComponent implements OnInit {
   ngOnInit() {
 
     //Werte aus Services abbonieren und fuer Anzeige speichern
-    this.vs.getFilteredVideolist().subscribe(videoList => this.videos = videoList);
+    this.items = this.vs.getFilteredVideolist();
     this.vs.getVideoMode().subscribe(videoMode => this.videoMode = videoMode);
     this.fs.getModeFilter().subscribe(modeFilter => this.modeFilter = modeFilter);
     this.fs.getSearchTerm().subscribe(searchTerm => this.searchTerm = searchTerm);

@@ -1,12 +1,12 @@
-<!-- Form fuer Videomode-Select -->
-<form [formGroup]="selectVideomodeForm">
+<!-- Form fuer Mode-Select -->
+<form [formGroup]="selectModeForm">
 
-    <!-- Auswahl der Videolisten (Kindervideos, Jahresvideo) -->
-    <select formControlName="select-video-mode"
+    <!-- Auswahl der Audio- / Videolisten (Kindervideos, Jahresvideo) -->
+    <select formControlName="select-mode"
             class="width-auto form-control">
 
         <!-- auswaehlbare Optionen ausgeben -->
-        <option *ngFor="let videoMode of videoModes"
-                [value]="videoMode.id">{{videoMode.label}}</option>
-  </select>
+        <option *ngFor="let mode of modes"
+                [value]="mode.id">{{mode.label}}</option>
+    </select>
 </form>

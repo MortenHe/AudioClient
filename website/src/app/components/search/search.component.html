@@ -1,22 +1,19 @@
 <!-- auesserer Container -->
 <div class="app-width container-fluid mt-3 mb-3 mr-0 ml-0">
 
-  Env ist {{envName}}<br>
-  Name ist {{myName}}
-
   <!-- Inspektor mit den moeglichen Werten -->
-  <debuginspector class="d-none"></debuginspector>
+  <debuginspector class="d-flex"></debuginspector>
 
-  <!-- Zeile fuer Ueberschrift, Videomode-Select und Shutdown-Button -->
+  <!-- Zeile fuer Ueberschrift, Mode-Select und Shutdown-Button -->
   <div class="row no-gutters">
 
-    <!-- Ueberschrift "Web Video Player" -->
-    <h1>Web Video Player</h1>
+    <!-- Ueberschrift z.B. "Web Video Player (dev)" -->
+    <h1>{{envName}}</h1>
 
-    <!-- Steuerelemente (play, stop, seek) fuer Video-Wiedergabe -->
+    <!-- Steuerelemente (play, stop, seek) fuer Item-Wiedergabe -->
     <playercontrol class="col d-flex justify-content-around mr-2 ml-2"></playercontrol>
 
-    <!-- Umschalter fuer Videomodus -->
+    <!-- Umschalter fuer Modus (Kindervideos vs. Jahresvideos) -->
     <selectvideomode class="mr-2"></selectvideomode>
 
     <!-- Pi-Kontrolle zum Herunterfahren -->
@@ -38,11 +35,11 @@
   <!-- Trennlinie -->
   <hr>
 
-  <!-- Infos zu Anzahl der Videos, Suchfeld und Sortierbuttons -->
+  <!-- Infos zu Anzahl der Items, Suchfeld und Sortierbuttons -->
   <div class="row no-gutters d-flex align-items-center">
 
-    <!-- Anzahl der Videos in Trefferliste -->
-    <resultlistinspector class="video-count text-right mr-2"></resultlistinspector>
+    <!-- Anzahl der Items in Trefferliste -->
+    <resultlistinspector class="item-count text-right mr-2"></resultlistinspector>
 
     <!-- Suchfeld fuer Filterung -->
     <searchfilter class="col"></searchfilter>

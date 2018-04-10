@@ -1,18 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Video } from '../config/main-config';
+import { Item } from '../config/main-config';
 
 @Pipe({
   name: 'orderBy'
 })
 
-//Pipe zur Sortierung der Videos
+//Pipe zur Sortierung der Items
 export class OrderByPipe implements PipeTransform {
 
-  //SOrtierung nach Name oder nach Zeit und Name als 2. Sortierkriterium
-  transform(items: Video[], orderField: string, reverseOrder: boolean): any {
+  //Soriterung nach Name oder nach Zeit und Name als 2. Sortierkriterium
+  transform(items: Item[], orderField: string, reverseOrder: boolean): any {
 
     //Items soriteren, dazu immer 2 Elemente vergleichen
-    items.sort((a: Video, b: Video) => {
+    items.sort((a: Item, b: Item) => {
 
       //Wenn nach Name sortiert wird
       if (orderField === 'name') {
@@ -42,7 +42,7 @@ export class OrderByPipe implements PipeTransform {
           }
         }
 
-        //beide Videos haben die gleichen Laenge
+        //beide Items haben die gleichen Laenge
         else {
 
           //dann Namensfeld als 2. Sortierkritierum verwenden (aufsteigend)

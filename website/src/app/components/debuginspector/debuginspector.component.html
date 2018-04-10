@@ -1,8 +1,15 @@
-VideoMode: {{videoMode}}<br>
-ModeFilter: {{modeFilter}}<br>
-SearchFilter: {{searchTerm}}<br>
-OrderField: {{orderField}}<br>
-ReverseOrder: {{reverseOrder}}<br>
-Playlist: {{playlist | json}}<br>
-CurrentPlayedPlaylist: {{currentPlayedPlaylist | json}}<br>
-VideosList: {{videos | json}}
+envName: {{envName}}
+<br> appMode: {{appMode}}
+<br> production: {{production}}
+<br> proxyUrl: {{proxyUrl}}
+<br> domainModes: {{domainModes | json}}
+<br>
+<br> VideoMode: {{videoMode}}
+<br> ModeFilter: {{modeFilter}}
+<br> SearchFilter: {{searchTerm}}
+<br> OrderField: {{orderField}}
+<br> ReverseOrder: {{reverseOrder}}
+<br> Playlist: {{playlist | json}}
+<br> CurrentPlayedPlaylist: {{currentPlayedPlaylist | json}}
+<br> Itemlist: {{items | async | json}}
+<br>

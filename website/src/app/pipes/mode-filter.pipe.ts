@@ -1,17 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Video } from '../config/main-config';
+import { Item } from '../config/main-config';
 
 @Pipe({
   name: 'modeFilter'
 })
 
-//nach einem Modus im Video-Objekt filtern
+//nach einem Modus im Item-Objekt filtern
 export class ModeFilterPipe implements PipeTransform {
 
-  //Modus Filter fuer Videoliste
-  transform(items: Video[], mode: string): any {
+  //items und modus als Parameter
+  transform(items: Item[], mode: string): any {
 
-    //Wenn alle Videos angezeigt werden sollen
+    //Wenn alle Items angezeigt werden sollen
     if (mode === "all") {
 
       //Alle Items zurueckgeben

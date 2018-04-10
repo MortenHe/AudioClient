@@ -1,38 +1,42 @@
- <!-- Info ueber Playlist, die gerade zusammengestellt wird -->
- <ng-container *ngIf="playlist.length">
+<!-- Info ueber Playlist, die gerade zusammengestellt wird -->
+<ng-container *ngIf="(playlist$ | async) as playlist">
 
-  <!-- Trennlinie -->
-  <hr>
+  <!-- Wenn es Eintraege in der Playlist gibt -->
+  <ng-container *ngIf="playlist.length">
 
-  <!-- Ueberschrift "Playlist erstellen" -->
-  <div class="font-weight-bold mb-1">Playlist erstellen</div>
+    <!-- Trennlinie -->
+    <hr>
 
-  <!-- Ueber Titel in Playlist gehen -->
-  <div *ngFor="let item of playlist, last as last"
-       class="row no-gutters">
+    <!-- Ueberschrift "Playlist erstellen" -->
+    <div class="font-weight-bold mb-1">Playlist erstellen</div>
 
-    <!-- Button, um Titel aus Playlist zu loeschen -->
-    <button class="fa fa-minus text-danger button-clean mr-1"
-            (click)="toggleInPlaylist(item)"></button>
+    <!-- Ueber Titel in Playlist gehen -->
+    <div *ngFor="let item of playlist, last as last"
+         class="row no-gutters">
 
-    <!-- formattierte Laenge des Videos -->
-    <div class="video-length text-right mr-2">{{item.length | timeformatter}}</div>
+      <!-- Button, um Titel aus Playlist zu loeschen -->
+      <button class="fa fa-minus text-danger button-clean mr-1"
+              (click)="toggleInPlaylist(item)"></button>
 
-    <!-- Name des Videos -->
-    <div class="col">{{item.name}}</div>
-  </div>
+      <!-- formattierte Laenge des Items -->
+      <div class="item-length text-right mr-2">{{item.length | timeformatter}}</div>
 
-  <!-- Playlist starten -->
-  <div class="row no-gutters cursor-pointer mt-3"
-       (click)="startVideoPlaylist()">
+      <!-- Name des Items -->
+      <div class="col">{{item.name}}</div>
+    </div>
 
-    <!-- Play-Symbol -->
-    <button class="fa fa-play text-primary button-clean mr-1"></button>
+    <!-- Playlist starten -->
+    <div class="row no-gutters cursor-pointer mt-3"
+         (click)="startPlaylist()">
 
-    <!-- formattierte Laenge der gesamten Playlist -->
-    <div class="video-length text-right mr-2">{{getPlaylistLength() | timeformatter}}</div>
+      <!-- Play-Symbol -->
+      <button class="fa fa-play text-primary button-clean mr-1"></button>
 
-    <!-- Text "Playlist starten" -->
-    <div class="col font-weight-bold">Playlist starten</div>
-  </div>
+      <!-- formattierte Laenge der gesamten Playlist -->
+      <div class="item-length text-right mr-2">{{getPlaylistLength() | timeformatter}}</div>
+
+      <!-- Text "Playlist starten" -->
+      <div class="col font-weight-bold">Playlist starten</div>
+    </div>
+  </ng-container>
 </ng-container>

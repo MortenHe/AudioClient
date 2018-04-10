@@ -8,33 +8,35 @@
         <h1 class="col">Admin</h1>
     </div>
 
-    <!-- Videolisten vergleichen -->
+    <!-- Items vergleichen -->
     <button class="btn mb-3 mt-2"
-            (click)="checkVideolist()">Vergleiche Videolisten</button>
+            (click)="checkItemlist()">Vergleiche Items</button>
 
     <!-- Wenn es fehlende Dateien auf dem Server gibt -->
-    <div *ngIf="diagnostic.missing_server?.length"
-         class="margin-top-block">
+    <ng-container *ngIf="(diagnostic$ | async) as diagnostic">
+        <div *ngIf="diagnostic.missing_server.length"
+             class="margin-top-block">
 
-        <!-- Ueberschrift -->
-        <b>Auf dem Server fehlen</b>
+            <!-- Ueberschrift -->
+            <b>Auf dem Server fehlen</b>
 
-        <!-- Fehlende Videos auf Server ausgeben -->
-        <div *ngFor="let video of diagnostic.missing_server">
-            {{video}}
+            <!-- Fehlende Items auf Server ausgeben -->
+            <div *ngFor="let item of diagnostic.missing_server">
+                {{item}}
+            </div>
         </div>
-    </div>
 
-    <!-- Wenn es fehlende Dateien in Config gibt -->
-    <div *ngIf="diagnostic.missing_browser?.length"
-         class="margin-top-block">
+        <!-- Wenn es fehlende Dateien in Config gibt -->
+        <div *ngIf="diagnostic.missing_browser.length"
+             class="margin-top-block">
 
-        <!-- Ueberschrift -->
-        <b>In der Config fehlen</b>
+            <!-- Ueberschrift -->
+            <b>In der Config fehlen</b>
 
-        <!-- Fehlende Videos in Config ausgeben -->
-        <div *ngFor="let video of diagnostic.missing_browser">
-            {{video}}
+            <!-- Fehlende Videos in Config ausgeben -->
+            <div *ngFor="let item of diagnostic.missing_browser">
+                {{item}}
+            </div>
         </div>
-    </div>
+    </ng-container>
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { VideoService } from '../../services/video.service';
 import { Router } from '@angular/router';
-import { VIDEO_MODES } from '../../config/main-config';
+import { environment } from '../../../environments/environment.video-dev';
 
 @Component({
   selector: 'selectvideomode',
@@ -11,11 +11,11 @@ import { VIDEO_MODES } from '../../config/main-config';
 })
 export class SelectvideomodeComponent implements OnInit {
 
-  //Liste der Video-Modes
-  videoModes: any[];
+  //Liste der Modes
+  modes: any[];
 
-  //Form fuer Auswahl des Videomodus
-  selectVideomodeForm;
+  //Form fuer Auswahl des Modus
+  selectModeForm;
 
   //Services injecten
   constructor(private fb: FormBuilder, private vs: VideoService, private router: Router) { }
@@ -23,27 +23,27 @@ export class SelectvideomodeComponent implements OnInit {
   //beim Init
   ngOnInit() {
 
-    //Video-Modes aus Config laden
-    this.videoModes = VIDEO_MODES;
+    //Modes aus Config laden
+    this.modes = environment.domainModes;
 
-    //Reactive Form fuer Videomode-Select erstellen
-    this.selectVideomodeForm = this.fb.group({
-      "select-video-mode": ""
+    //Reactive Form fuer Mode-Select erstellen
+    this.selectModeForm = this.fb.group({
+      "select-mode": ""
     });
 
-    //Wenn sich Wert des Videomode-Select aendert
-    this.selectVideomodeForm.get("select-video-mode").valueChanges.subscribe(mode => {
+    //Wenn sich Wert des Mode-Select aendert
+    this.selectModeForm.get("select-mode").valueChanges.subscribe(mode => {
 
-        //zu passender URL navigieren
-        this.router.navigate(['/search', mode]);
-      }
+      //zu passender URL navigieren
+      this.router.navigate(['/search', mode]);
+    }
     );
 
-    //Wen sich der Videomodus aendert (z.B. URL annavigiert oder Aenderung per Select)
-    this.vs.getVideoMode().subscribe(videoMode => {
-      
-      //ausgewaehlten Video-Modus in Select setzen, dabei kein changeevent triggern
-      this.selectVideomodeForm.controls["select-video-mode"].setValue(videoMode, { emitEvent: false });
+    //Wen sich der Modus aendert (z.B. URL annavigiert oder Aenderung per Select)
+    this.vs.getVideoMode().subscribe(mode => {
+
+      //ausgewaehlten Modus in Select setzen, dabei kein changeevent triggern
+      this.selectModeForm.controls["select-mode"].setValue(mode, { emitEvent: false });
     });
   }
 }

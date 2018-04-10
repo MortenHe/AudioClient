@@ -1,11 +1,15 @@
-<!-- Anzahl der Videos in Trefferliste -->
-{{resultListLength}}
+<!-- Wenn Items vorhanden sind -->
+<ng-container *ngIf="(items$ | async) as items">
 
-<!-- korrekter Plural -->
-<span *ngIf="resultListLength !== 1; then tempVideos else tempVideo"></span>
+    <!-- Anzahl der Videos in Trefferliste -->
+    {{items.length}}
 
-<!-- bei 0 oder > 1 => Videos -->
-<ng-template #tempVideos>Videos</ng-template>
+    <!-- korrekter Plural -->
+    <span *ngIf="items.length !== 1; then tempVideos else tempVideo"></span>
 
-<!-- bei 1 => Video -->
-<ng-template #tempVideo>Video</ng-template>
+    <!-- bei 0 oder > 1 => Videos -->
+    <ng-template #tempVideos>Videos</ng-template>
+
+    <!-- bei 1 => Video -->
+    <ng-template #tempVideo>Video</ng-template>
+</ng-container>

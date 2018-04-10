@@ -1,19 +1,19 @@
-  <!-- Info ueber aktuell laufende Playlist -->
-  <ng-container *ngIf="currentPlayedPlaylist">
+<!-- Info ueber aktuell laufende Playlist -->
+<ng-container *ngIf="(currentPlayedPlaylist$ | async) as currentPlayedPlaylist">
 
-    <!-- Trennlinie -->
-    <hr>
+  <!-- Trennlinie -->
+  <hr>
 
-    <!-- Ueberschrift: "Gerade laeuft (die Playlist):" -->
-    <div class="d-flex">
-      <span class="font-weight-bold">Gerade läuft</span>
-      <span class="font-weight-bold"
+  <!-- Ueberschrift: "Gerade laeuft (die Playlist):" -->
+  <div class="d-flex">
+    <span class="font-weight-bold">Gerade läuft</span>
+    <span class="font-weight-bold"
           *ngIf="currentPlayedPlaylist.items.length > 1">&nbsp;die Playlist</span>
-      &nbsp;(Länge:&nbsp;{{currentPlayedPlaylist.length | timeformatter}})
-    </div>
+    &nbsp;(Länge:&nbsp;{{currentPlayedPlaylist.length | timeformatter}})
+  </div>
 
-    <!-- Titel der akutell laufenden Playlist -->
-    <div *ngFor="let item of currentPlayedPlaylist.items, first as first">
-      {{item}}
-    </div>
-  </ng-container>
+  <!-- Titel der akutell laufenden Playlist -->
+  <div *ngFor="let item of currentPlayedPlaylist.items">
+    {{item}}
+  </div>
+</ng-container>

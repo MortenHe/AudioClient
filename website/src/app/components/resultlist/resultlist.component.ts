@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Video } from '../../config/main-config';
+import { Item } from '../../config/main-config';
 import { PlaylistService } from '../../services/playlist.service';
 import { VideoService } from '../../services/video.service';
 import { ResultfilterService } from '../../services/resultfilter.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'resultlist',
@@ -12,11 +13,11 @@ import { ResultfilterService } from '../../services/resultfilter.service';
 
 export class ResultlistComponent {
 
-  //Videoliste
-  videos: Video[];
+  //Itemliste als Observable. Wird in Template per async pipe ausgegeben
+  items$: Observable<Item[]>;
 
-  //welches Video in der Liste wurde angeklickt?
-  activeVideo: Video;
+  //welches Item in der Liste wurde angeklickt?
+  activeItem: Item;
 
   //Services injecten, TODO fs raus
   constructor(private pls: PlaylistService, private vs: VideoService) { }
@@ -24,8 +25,8 @@ export class ResultlistComponent {
   //beim Init
   ngOnInit() {
 
-    //gefilterte und sortierte Videoliste per Service abbonieren
-    this.vs.getFilteredVideolist().subscribe(videos => this.videos = videos)
+    //gefilterte und sortierte Itemliste per Service abbonieren
+    this.items$ = this.vs.getFilteredVideolist();
 
     //Aktuell laufende Playlist per Service abbonieren
     this.pls.getCurrentPlayedPlaylist().subscribe(currentPlayedPlaylist => {
@@ -36,38 +37,38 @@ export class ResultlistComponent {
         //und sie durch den Playlistgenerator erstellt wurde
         if (currentPlayedPlaylist.playmode === "multi") {
 
-          //kein Video in der Trefferliste als aktiv anzeigen
-          this.activeVideo = null;
+          //kein Item in der Trefferliste als aktiv anzeigen
+          this.activeItem = null;
         }
       }
 
       //es gibt keine Playlist (mehr)
       else {
 
-        //kein Video in der Trefferliste (mehr) als aktiv anzeigen
-        this.activeVideo = null;
+        //kein Item in der Trefferliste (mehr) als aktiv anzeigen
+        this.activeItem = null;
       }
     });
   }
 
-  //per Service pruefen ob Video in Playlist ist
-  isInPlaylist(video) {
-    return this.pls.isInPlaylist(video);
+  //per Service pruefen ob Item in Playlist ist
+  isInPlaylist(item) {
+    return this.pls.isInPlaylist(item);
   }
 
-  //per Service ein Video in Playlist togglen
-  toggleInPlaylist(video) {
-    this.pls.toggleInPlaylist(video);
+  //per Service ein Item in Playlist togglen
+  toggleInPlaylist(item) {
+    this.pls.toggleInPlaylist(item);
   }
 
-  //einzelnes Video abspielen
-  playSingleVideo(video) {
+  //einzelnes Item abspielen
+  playSingleItem(item) {
 
-    //aktives Video setzen und dadurch in Liste optisch anpassen
-    this.activeVideo = video.file;
+    //aktives Item setzen und dadurch in Liste optisch anpassen
+    this.activeItem = item.file;
 
-    //Playlist bestehend aus 1 Video setzen
-    this.pls.setPlaylist([video]);
+    //Playlist bestehend aus 1 Item setzen
+    this.pls.setPlaylist([item]);
 
     //Service aufrufen, der das Video startet
     this.pls.startVideoPlaylist("single");

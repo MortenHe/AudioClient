@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Video } from '../../config/main-config';
+import { Item } from '../../config/main-config';
 import { VideoService } from '../../services/video.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-admin',
@@ -10,17 +11,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AdminComponent {
 
-  //Diagnostic-JSON-Objekt
-  diagnostic: any = {};
+  //Diagnostic-JSON-Objekt Observable
+  diagnostic$: Observable<any>;
 
   //Videoservice injecten
   constructor(private vs: VideoService) { }
 
-  //Videoliste aus Webseite und auf Server vergleichen (um Fehler zu finden)
-  checkVideolist() {
+  //Itemliste aus Webseite und auf Server vergleichen (um Fehler zu finden)
+  checkItemlist() {
 
     //Service aufrufen, der den Pi mit dem Vergleich beauftragt und Ergebnis auf Webseite anzeigen
-    this.vs.sendCheckVideolistRequest().subscribe(
-      json_respone => this.diagnostic = json_respone);
+    this.diagnostic$ = this.vs.sendCheckVideolistRequest();
   }
 }

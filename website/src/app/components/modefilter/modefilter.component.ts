@@ -14,8 +14,8 @@ export class ModefilterComponent implements OnInit {
   //Form fuer Filter-Buttons
   modeFilterForm;
 
-  //Filter-Werte dieses Videomodus
-  modeFilter;
+  //Filter-Werte als Observable
+  modeFilter$;
 
   //Services injecten
   constructor(private fb: FormBuilder, private fs: ResultfilterService, private vs: VideoService) { }
@@ -24,7 +24,7 @@ export class ModefilterComponent implements OnInit {
   ngOnInit() {
 
     //Liste der Mode-Filter per Service abbonieren
-    this.vs.getModeFilterList().subscribe(modeFilter => this.modeFilter = modeFilter);
+    this.modeFilter$ = this.vs.getModeFilterList();
 
     //Reactive Form fuer Filter-Buttons erstellen
     this.modeFilterForm = this.fb.group({
@@ -40,10 +40,10 @@ export class ModefilterComponent implements OnInit {
       this.fs.setModeFilter(mode);
     });
 
-    //Bei Navigation-Aenderung aendert sich der VideoMous
+    //Bei Navigation-Aenderung aendert sich der Video/Audio-Modus
     this.vs.getVideoMode().subscribe(
 
       //den Mode-Filter auf all setzen, damit alle Videos des neuen Modus angezeigt werden
-      videoMode => this.modeFilterForm.controls['mode'].setValue("all"));
+      newMode => this.modeFilterForm.controls['mode'].setValue("all"));
   }
 }
