@@ -10,18 +10,22 @@
     .fa-play {
         display: none;
     }
-    &:hover:not(.active-video) {
+    &:hover:not(.active-item) {
         background: $color-light-bg-hover;
         .fa-play {
             display: inline;
             opacity: .5;
         }
     }
-    &.active-video {
+    &.active-item {
         background: $color-light-bg-active;
         .fa-play {
             display: inline;
             opacity: 1;
         }
     }
+}
+
+.item-length-audio {
+    width: 69px;
 }

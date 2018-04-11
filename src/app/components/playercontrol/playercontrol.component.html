@@ -1,19 +1,31 @@
 <!-- Steuersymbole nur anzeigen, wenn gerade eine Playlist laeuft -->
 <ng-container *ngIf="(currentPlayedPlaylist$ | async) as currentPlayedPlaylist">
 
-        <!-- MM pausieren -->
+        <!-- Item pausieren -->
         <button (click)="controlPlayback('pause')"
                 class="fa fa-pause text-warning button-clean"></button>
 
-        <!-- MM 30 sec nach links -->
-        <button (click)="controlPlayback('seek-left')"
+        <!-- Item 30 sec nach links (derzeit nur bei Video) -->
+        <button *ngIf="appMode === 'video'"
+                (click)="controlPlayback('seek-left')"
                 class="fa fa-backward text-info button-clean"></button>
 
-        <!-- MM 30 sec nach rechts -->
-        <button (click)="controlPlayback('seek-right')"
+        <!-- Item 30 sec nach rechts (derzeit nur bei Video) -->
+        <button *ngIf="appMode === 'video'"
+                (click)="controlPlayback('seek-right')"
                 class="fa fa-forward text-info button-clean"></button>
 
-        <!-- MM stoppen -->
+        <!-- vorheriges Item (derzeit nur bei Audio) -->
+        <button *ngIf="appMode === 'audio'"
+                (click)="controlPlayback('previous-track')"
+                class="fa fa-fast-backward text-info button-clean"></button>
+
+        <!-- naechstes Item (derzeit nur bei Audio) -->
+        <button *ngIf="appMode === 'audio'"
+                (click)="controlPlayback('next-track')"
+                class="fa fa-fast-forward text-info button-clean"></button>
+
+        <!-- Playback stoppen -->
         <button (click)="stopPlayback()"
                 class="fa fa-stop text-danger button-clean"></button>
 </ng-container>

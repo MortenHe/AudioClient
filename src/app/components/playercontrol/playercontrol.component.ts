@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { VideoService } from '../../services/video.service';
 import { PlaylistService } from '../../services/playlist.service';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'playercontrol',
@@ -10,6 +11,9 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class PlayercontrolComponent {
+
+  //video vs. audio
+  appMode = environment.appMode;
 
   //Aktuell laufende Playlist als Observable
   currentPlayedPlaylist$: Observable<any>;

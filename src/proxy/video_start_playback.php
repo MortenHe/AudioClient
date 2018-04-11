@@ -5,9 +5,10 @@ header("Access-Control-Allow-Origin: *");
 $postdata = file_get_contents('php://input');
 $request = json_decode($postdata, true);
 
-//Videomodus fuer korrekte Link zu Video
+//Modus fuer Links zu Videos
 $mode = $request["mode"];
 
+/* weg ?
 //Unterschiedliche Verzeichnisse wo die Videos liegen fuer Produktivsystem
 if($request["production"] === "true") {
     $video_dir = "/media/usb_red/video/" . $mode . "/";
@@ -15,8 +16,9 @@ if($request["production"] === "true") {
 
 //und Test-System
 else {
-    $video_dir = "C:/Users/Martin/Desktop/media/done/video" . $mode . "/";
+    $video_dir = "C:/Users/Martin/Desktop/media/done/video/" . $mode . "/";
 }
+*/
 
 //Dateinamen Array um Pfad des Modus ergaenzen
 $playlist = array_map(function ($filename) {
@@ -29,8 +31,8 @@ $args = implode(" ", $playlist);
 
 echo "Playlist: " . $args . "<br>";
 
-//playlist.sh stoppen, damit keine weiteren Videos geladen werden
-echo shell_exec("kill -9 $(pgrep -f playlist.sh) 2>&1");
+//video_playlist.sh stoppen, damit keine weiteren Videos geladen werden
+echo shell_exec("kill -9 $(pgrep -f video_playlist.sh) 2>&1");
 
 //Playlist in OMXPlayer laden
-echo shell_exec("/home/pi/mh_prog/playlist.sh " . $args . " 2>&1");
+echo shell_exec("/home/pi/mh_prog/video_playlist.sh " . $args . " 2>&1");

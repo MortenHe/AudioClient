@@ -30,6 +30,7 @@ import { PlayercontrolComponent } from './components/playercontrol/playercontrol
 import { PicontrolComponent } from './components/picontrol/picontrol.component';
 import { ResultlistinspectorComponent } from './components/resultlistinspector/resultlistinspector.component';
 import { DebuginspectorComponent } from './components/debuginspector/debuginspector.component';
+import { PicontrolService } from './services/picontrol.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { DebuginspectorComponent } from './components/debuginspector/debuginspec
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
   ],
-  providers: [VideoService, PlaylistService, ResultfilterService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
+  providers: [VideoService, PlaylistService, ResultfilterService, PicontrolService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

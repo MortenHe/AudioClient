@@ -4,6 +4,7 @@ import { PlaylistService } from '../../services/playlist.service';
 import { VideoService } from '../../services/video.service';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'resultlist',
@@ -12,6 +13,9 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class ResultlistComponent {
+
+  //audio vs. video
+  appMode = environment.appMode
 
   //Itemliste als Observable. Wird in Template per async pipe ausgegeben
   items$: Observable<Item[]>;

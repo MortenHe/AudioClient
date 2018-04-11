@@ -2,8 +2,9 @@
 <div *ngFor="let item of items$ | async"
      class="row no-gutters align-items-center mt-2">
 
-  <!-- Item in Playlist einfuegen oder von dort entfernen -->
-  <button (click)="toggleInPlaylist(item)"
+  <!-- Item in Playlist einfuegen oder von dort entfernen (nur bei Video) -->
+  <button *ngIf="appMode === 'video'"
+          (click)="toggleInPlaylist(item)"
           class="fa button-clean mr-1"
           [ngClass]="{
           'fa-plus text-success': !isInPlaylist(item),
@@ -12,7 +13,7 @@
   </button>
 
   <!-- formattierte Laenge des Items -->
-  <div class="item-length text-right mr-2">
+  <div class="item-length item-length-{{appMode}} text-right mr-2 ">
     {{item.length | timeformatter}}
   </div>
 

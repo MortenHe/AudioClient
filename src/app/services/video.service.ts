@@ -141,28 +141,23 @@ export class VideoService {
     sendPlayRequest(itemList) {
 
         //Dateiname(n) und Modus mitschicken bei HTTP-Request
-        this.http.post(this.proxyUrl + this.appMode + "start_playback.php", JSON.stringify({ production: this.production, mode: this.mode, item_list: itemList })).subscribe();
+        this.http.post(this.proxyUrl + this.appMode + "_start_playback.php", JSON.stringify({ production: this.production, mode: this.mode, item_list: itemList })).subscribe();
     }
 
     //Anfrage an Proxy schicken, damit dieser das Playback stoppt
     sendPlaybackStopRequest(): any {
 
         //passenden Proxy fuer Video / Audio ansteuern
-        this.http.get(this.proxyUrl + this.appMode + "stop_playback.php").subscribe();
+        this.http.get(this.proxyUrl + this.appMode + "_stop_playback.php").subscribe();
     }
 
     //Anfrage an Proxy schicken, damit diese z.B: das Video pausiert oder 30 sek nach rechts sprint oder zum naechsten Audio-Titel wechselt
     sendPlaybackControlRequest(command): any {
-        this.http.get(this.proxyUrl + this.appMode + "control_playback.php?command=" + command).subscribe();
+        this.http.get(this.proxyUrl + this.appMode + "_control_playback.php?command=" + command).subscribe();
     }
 
     //Itemlists aus Webseite und auf Server vergleichen und Ergebnis zurueckliefern
     sendCompareItemlistsRequest(): Observable<any> {
         return this.http.get(this.proxyUrl + "compare_itemlists.php?app_mode=" + this.appMode + "&production=" + this.production).map(response => response.json() as any);
-    }
-
-    //Anfrage an Proxy schicken, damit der Pi heruntergefahren wird
-    sendShutdownRequest(): any {
-        this.http.get(this.proxyUrl + "shutdown_pi.php").subscribe();
     }
 }

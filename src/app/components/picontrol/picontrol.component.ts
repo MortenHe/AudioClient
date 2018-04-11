@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../../services/video.service';
+import { PicontrolService } from '../../services/picontrol.service';
 
 @Component({
   selector: 'picontrol',
@@ -10,10 +11,10 @@ import { VideoService } from '../../services/video.service';
 export class PicontrolComponent {
 
   //Service injecten
-  constructor(private vs: VideoService) { }
+  constructor(private pcs: PicontrolService) { }
 
   //Pi per Service herunterfahren
   shutdownPi() {
-    this.vs.sendShutdownRequest();
+    this.pcs.sendShutdownRequest();
   }
 }
