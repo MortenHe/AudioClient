@@ -23,7 +23,7 @@ import { ResultlistComponent } from './components/resultlist/resultlist.componen
 import { ModefilterComponent } from './components/modefilter/modefilter.component';
 import { SearchfilterComponent } from './components/searchfilter/searchfilter.component';
 import { SortfilterComponent } from './components/sortfilter/sortfilter.component';
-import { SelectvideomodeComponent } from './components/selectvideomode/selectvideomode.component';
+import { SelectmodeComponent } from './components/selectmode/selectmode.component';
 import { CurrentplayedplaylistinspectorComponent } from './components/currentplayedplaylistinspector/currentplayedplaylistinspector.component';
 import { PlaylistgeneratorComponent } from './components/playlistgenerator/playlistgenerator.component';
 import { PlayercontrolComponent } from './components/playercontrol/playercontrol.component';
@@ -41,7 +41,7 @@ import { DebuginspectorComponent } from './components/debuginspector/debuginspec
     ModefilterComponent,
     SearchfilterComponent,
     SortfilterComponent,
-    SelectvideomodeComponent,
+    SelectmodeComponent,
     CurrentplayedplaylistinspectorComponent,
     PlaylistgeneratorComponent,
     PlayercontrolComponent,

@@ -17,3 +17,6 @@ export class Item {
 //Inspektor Variablen als async obs
 //Video / Audio suchen placeholder bei searchfilter
 //Items um track (optional) erweitern oder single vs. typeplaylist
+//PI Shutdown in eigenen Service
+//Lautstaerke CEC
+//checkVideolist -> Proxy Pfad mitgeben nach PHP

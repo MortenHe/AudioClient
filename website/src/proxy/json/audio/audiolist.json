@@ -1,0 +1,47 @@
+{
+    "hsp": {
+        "filter": [
+            {
+                "id": "all",
+                "icon": "all",
+                "active": true
+            },
+            {
+                "id": "bibi-tina",
+                "icon": "bibi-tina",
+                "active": true
+            },
+            {
+                "id": "janosch",
+                "icon": "janosch",
+                "active": true
+            }
+        ],
+        "items": []
+    },
+    "kindermusik": {
+        "filter": [
+            {
+                "id": "all",
+                "label": "Alle",
+                "active": true
+            },
+            {
+                "id": "rz",
+                "label": "Rolf Zuckowski",
+                "active": true
+            },
+            {
+                "id": "kinderhits",
+                "label": "Kinderhits",
+                "active": true
+            },
+            {
+                "id": "misc",
+                "label": "Sontige",
+                "active": true
+            }
+        ],
+        "items": []
+    }
+}

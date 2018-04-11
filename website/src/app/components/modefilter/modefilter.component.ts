@@ -41,7 +41,7 @@ export class ModefilterComponent implements OnInit {
     });
 
     //Bei Navigation-Aenderung aendert sich der Video/Audio-Modus
-    this.vs.getVideoMode().subscribe(
+    this.vs.getMode().subscribe(
 
       //den Mode-Filter auf all setzen, damit alle Videos des neuen Modus angezeigt werden
       newMode => this.modeFilterForm.controls['mode'].setValue("all"));

@@ -26,7 +26,7 @@ export class PlayercontrolComponent {
 
   //MM per Service pausieren oder wieder starten oder 30 sec nach links/rechts springen
   controlPlayback(command) {
-    this.vs.sendVideoControlRequest(command);
+    this.vs.sendPlaybackControlRequest(command);
   }
 
   //Video stoppen
@@ -36,6 +36,6 @@ export class PlayercontrolComponent {
     this.pls.resetCurrentPlayedPlaylist();
 
     //Video per Service stoppen
-    this.vs.sendVideoStopRequest();
+    this.vs.sendPlaybackStopRequest();
   }
 }

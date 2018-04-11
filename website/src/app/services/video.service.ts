@@ -16,11 +16,17 @@ export class VideoService {
     //URL wo die Proxyskripte liegen aus config laden
     proxyUrl = environment.proxyUrl;
 
-    //Komplette Videoliste wird nur 1 Mal geholt
-    videoListFull;
+    //audio vs. video
+    appMode = environment.appMode;
 
-    //Videomode als Variable
-    videoMode;
+    //produktiv-System?
+    production = environment.production;
+
+    //Komplette Itemliste wird nur 1 Mal geholt
+    itemListFull;
+
+    //Mode als Variable
+    mode;
 
     //Mode-Filter (conni, heidi)
     modeFilter;
@@ -34,98 +40,96 @@ export class VideoService {
     //umgekehrte Reihenfolge
     reverseOrder;
 
-    //Videomodus als BS, das abboniert werden kann
-    videoModeBS = new BehaviorSubject("kinder");
+    //Modus als BS, das abboniert werden kann
+    modeBS = new BehaviorSubject("kinder");
 
-    //gefilterte und sortierte Videolist als BS, das abboniert werden kann
-    videoListFilteredBS = new BehaviorSubject([]);
+    //gefilterte und sortierte Itemliste als BS, das abboniert werden kann
+    itemListFilteredBS = new BehaviorSubject([]);
 
-    //Liste der Mode Filter dieses Video-Modus als BS, das abboniert werden kann
+    //Liste der Mode Filter dieses Modus als BS, das abboniert werden kann
     modeFilterListSB = new BehaviorSubject([]);
 
     //Service injekten
     constructor(private http: Http, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
     }
 
-    //Videoliste laden
-    loadFullVideolist() {
+    //Itemlist laden
+    loadFullItemlist() {
 
-        console.log(this.proxyUrl);
+        //Itemlist holen per HTTP-Request
+        this.http.get(this.proxyUrl + "get_itemlist.php?app_mode=" + environment.appMode).map(response => response.json()).subscribe(itemlist => {
 
-        //Videoliste holen per HTTP-Request
-        this.http.get(this.proxyUrl + "get_videolist.php").map(response => response.json()).subscribe(videolist => {
+            //komplette Itemliste speichern
+            this.itemListFull = itemlist;
 
-            //Videoliste speichern
-            this.videoListFull = videolist;
+            //Wenn sich der Modus aendert
+            this.modeBS.subscribe(mode => {
 
-            //Wenn sich Videomodus aendert
-            this.videoModeBS.subscribe(videoMode => {
+                //Modus in Variable speichern (fuer Start Playlist Funktion)
+                this.mode = mode;
 
-                //Videomodus in Variable speichern (fuer Playlist start)
-                this.videoMode = videoMode;
+                //Filter-Modus-Liste des aktuellen Modus setzen
+                this.modeFilterListSB.next(this.itemListFull[mode].filter);
 
-                //Filter-Modus-Liste des aktuellen Videomodus setzen
-                this.modeFilterListSB.next(this.videoListFull[videoMode].filter);
-
-                //gefilterte Videoliste erstellen
-                this.filterVideoList();
+                //gefilterte Itemliste erstellen
+                this.filterItemList();
             });
 
-            //Aenderungen an ModeFilter abbonieren, speichern und Videoliste neu erstellen
+            //Aenderungen an ModeFilter abbonieren, speichern und Itemliste neu erstellen
             this.fs.getModeFilter().subscribe(modeFilter => {
                 this.modeFilter = modeFilter;
-                this.filterVideoList();
+                this.filterItemList();
             });
 
-            //Aenderungen an Suchterm abbonieren, speichern und Videoliste neu erstellen
+            //Aenderungen an Suchterm abbonieren, speichern und Itemliste neu erstellen
             this.fs.getSearchTerm().subscribe(searchTerm => {
                 this.searchTerm = searchTerm;
-                this.filterVideoList();
+                this.filterItemList();
             });
 
-            //Aenderungen an Sortierfeld abbonieren, speichern und Videoliste neu erstellen
+            //Aenderungen an Sortierfeld abbonieren, speichern und Itemliste neu erstellen
             this.fs.getOrderField().subscribe(orderField => {
                 this.orderField = orderField;
-                this.filterVideoList();
+                this.filterItemList();
             });
 
-            //Aenderungen an umgekehrter abbonieren, speichern und Videoliste neu erstellen
+            //Aenderungen an umgekehrter Sortierung abbonieren, speichern und Itemliste neu erstellen
             this.fs.getReverseOrder().subscribe(reverseOrder => {
                 this.reverseOrder = reverseOrder;
-                this.filterVideoList();
+                this.filterItemList();
             });
         });
     }
 
-    //Wenn Videomodus / Filter / Sortierung angepasst wurde, muss Videoliste neu erstellt / gefiltert / sortiert werden
-    filterVideoList() {
+    //Wenn Modus / Filter / Sortierung angepasst wurde, muss Itemliste neu erstellt / gefiltert / sortiert werden
+    filterItemList() {
 
-        //Mode-Filter auf Videos dieses Videomodus anwenden
-        let filteredVideoList = this.modeFilterPipe.transform(this.videoListFull[this.videoMode].videos, this.modeFilter);
+        //Mode-Filter auf Items dieses Modus anwenden
+        let filteredItemList = this.modeFilterPipe.transform(this.itemListFull[this.mode].items, this.modeFilter);
 
         //Suchfeld-Filter anwenden
-        filteredVideoList = this.searchFilterPipe.transform(filteredVideoList, this.searchTerm);
+        filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm);
 
         //Sortierung anwenden
-        filteredVideoList = this.orderByPipe.transform(filteredVideoList, this.orderField, this.reverseOrder);
+        filteredItemList = this.orderByPipe.transform(filteredItemList, this.orderField, this.reverseOrder);
 
-        //neue Videoliste in BS schieben
-        this.videoListFilteredBS.next(filteredVideoList);
+        //neue Itemliste in BS schieben
+        this.itemListFilteredBS.next(filteredItemList);
     }
 
-    //Videomodus liefern
-    getVideoMode() {
-        return this.videoModeBS;
+    //Modus liefern
+    getMode() {
+        return this.modeBS;
     }
 
-    //Videomodus setzen
-    setVideoMode(mode) {
-        this.videoModeBS.next(mode);
+    //Modus setzen
+    setMode(mode) {
+        this.modeBS.next(mode);
     }
 
-    //gefilterte und sortierte Videoliste liefern
-    getFilteredVideolist() {
-        return this.videoListFilteredBS;
+    //gefilterte und sortierte Itemliste liefern
+    getFilteredItemlist() {
+        return this.itemListFilteredBS;
     }
 
     //Liste der Filter-Optionen liefern
@@ -133,30 +137,32 @@ export class VideoService {
         return this.modeFilterListSB;
     }
 
-    //Anfrage an Proxy schicken, damit dieser ein Video / Liste von Videos startet
-    sendVideoPlayRequest(videoList) {
+    //Anfrage an Proxy schicken, damit dieser Item(s) startet
+    sendPlayRequest(itemList) {
 
         //Dateiname(n) und Modus mitschicken bei HTTP-Request
-        this.http.post(this.proxyUrl + "start_playlist.php", JSON.stringify({ video_mode: this.videoMode, video_list: videoList })).subscribe();
+        this.http.post(this.proxyUrl + this.appMode + "start_playback.php", JSON.stringify({ production: this.production, mode: this.mode, item_list: itemList })).subscribe();
     }
 
-    //Anfrage an Proxy schicken, damit dieser das Videoplayback stoppt
-    sendVideoStopRequest(): any {
-        this.http.get(this.proxyUrl + "stop_video.php").subscribe();
+    //Anfrage an Proxy schicken, damit dieser das Playback stoppt
+    sendPlaybackStopRequest(): any {
+
+        //passenden Proxy fuer Video / Audio ansteuern
+        this.http.get(this.proxyUrl + this.appMode + "stop_playback.php").subscribe();
+    }
+
+    //Anfrage an Proxy schicken, damit diese z.B: das Video pausiert oder 30 sek nach rechts sprint oder zum naechsten Audio-Titel wechselt
+    sendPlaybackControlRequest(command): any {
+        this.http.get(this.proxyUrl + this.appMode + "control_playback.php?command=" + command).subscribe();
+    }
+
+    //Itemlists aus Webseite und auf Server vergleichen und Ergebnis zurueckliefern
+    sendCompareItemlistsRequest(): Observable<any> {
+        return this.http.get(this.proxyUrl + "compare_itemlists.php?app_mode=" + this.appMode + "&production=" + this.production).map(response => response.json() as any);
     }
 
     //Anfrage an Proxy schicken, damit der Pi heruntergefahren wird
     sendShutdownRequest(): any {
         this.http.get(this.proxyUrl + "shutdown_pi.php").subscribe();
-    }
-
-    //Videoliste aus Webseite und auf Server vergleichen und Ergebnis zurueckliefern
-    sendCheckVideolistRequest(): Observable<any> {
-        return this.http.get(this.proxyUrl + "check_videolist.php").map(response => response.json() as any);
-    }
-
-    //Anfrage an Proxy schicken, damit diese z.B: das Video pausiert oder 30 sek nach rechts sprint
-    sendVideoControlRequest(command): any {
-        this.http.get(this.proxyUrl + "video_control.php?command=" + command).subscribe();
     }
 }

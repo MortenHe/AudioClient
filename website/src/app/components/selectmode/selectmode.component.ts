@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { VideoService } from '../../services/video.service';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment.video-dev';
+import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'selectvideomode',
-  templateUrl: './selectvideomode.component.html',
-  styleUrls: ['./selectvideomode.component.scss']
+  selector: 'selectmode',
+  templateUrl: './selectmode.component.html',
+  styleUrls: ['./selectmode.component.scss']
 })
-export class SelectvideomodeComponent implements OnInit {
+export class SelectmodeComponent implements OnInit {
 
   //Liste der Modes
   modes: any[];
@@ -40,7 +40,7 @@ export class SelectvideomodeComponent implements OnInit {
     );
 
     //Wen sich der Modus aendert (z.B. URL annavigiert oder Aenderung per Select)
-    this.vs.getVideoMode().subscribe(mode => {
+    this.vs.getMode().subscribe(mode => {
 
       //ausgewaehlten Modus in Select setzen, dabei kein changeevent triggern
       this.selectModeForm.controls["select-mode"].setValue(mode, { emitEvent: false });

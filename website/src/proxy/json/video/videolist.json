@@ -47,7 +47,7 @@
                 "active": true
             }
         ],
-        "videos": []
+        "items": []
     },
     "jahresvideo": {
         "filter": [
@@ -67,6 +67,6 @@
                 "active": true
             }
         ],
-        "videos": []
+        "items": []
     }
 }

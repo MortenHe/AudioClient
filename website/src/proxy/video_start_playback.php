@@ -6,16 +6,23 @@ $postdata = file_get_contents('php://input');
 $request = json_decode($postdata, true);
 
 //Videomodus fuer korrekte Link zu Video
-$video_mode = $request["video_mode"];
+$mode = $request["mode"];
 
-$video_dir = "/media/usb_red/video/" . $videoMode . "/";
-//$video_dir = "C:/Users/Martin/Desktop/media/done/" . $videoMode . "/";
+//Unterschiedliche Verzeichnisse wo die Videos liegen fuer Produktivsystem
+if($request["production"] === "true") {
+    $video_dir = "/media/usb_red/video/" . $mode . "/";
+}
+
+//und Test-System
+else {
+    $video_dir = "C:/Users/Martin/Desktop/media/done/video" . $mode . "/";
+}
 
 //Dateinamen Array um Pfad des Modus ergaenzen
 $playlist = array_map(function ($filename) {
-    global $video_mode;
-    return $video_mode . "/" . $filename;
-}, $request["video_list"]);
+    global $mode;
+    return $mode . "/" . $filename;
+}, $request["item_list"]);
 
 //Fuer sh-Skript Playlist als space-sep. String
 $args = implode(" ", $playlist);

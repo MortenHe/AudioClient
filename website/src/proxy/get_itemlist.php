@@ -1,11 +1,14 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-//Sollen alle Videos geliefert werden, z.B. fuer Admin?
+//Sollen alle Items geliefert werden, z.B. fuer Admin?
 $get_all = (isset($_GET["all"]) && $_GET["all"] === "true") ? true : false;
 
-//Main-JSON laden, wo festgelegt ist, welche Video-Modi geladen werden
-$main_json = json_decode(file_get_contents("json/videolist.json"), true);
+//App-Mode laden (video vs. audio)
+$app_mode = $_GET["app_mode"];
+
+//Main-JSON laden, wo festgelegt ist, welche Modi geladen werden
+$main_json = json_decode(file_get_contents("json/" . $app_mode . "/" . $app_mode . "list.json"), true);
 
 //Ueber Main-JSON gehen
 foreach($main_json as $key => $mode) {
@@ -25,23 +28,23 @@ foreach($main_json as $key => $mode) {
                 //aktiv Status kann entfernt werden (wird in Oberflaeche nicht benoetigt)
                 unset($main_json[$key]["filter"][$i]["active"]);
 
-                //Videos aus diesem Modus laden (z.B. alle Conni-Videos)
-                $mode_json = json_decode(file_get_contents("json/" . $key . "/" . $mode["id"] . ".json"), true);
+                //Items aus diesem Modus laden (z.B. alle Conni-Videos)
+                $mode_json = json_decode(file_get_contents("json/" . $app_mode . "/" . $key . "/" . $mode["id"] . ".json"), true);
           
-                //Ueber Videos dieses Modus gehen
-            foreach($mode_json as $video) {
+            //Ueber Items dieses Modus gehen
+            foreach($mode_json as $item) {
 
-                //Wenn das Video aktiv ist oder alle Infos geladen werden sollen
-                if ($video["active"] || $get_all) {
+                //Wenn das Item aktiv ist oder alle Infos geladen werden sollen
+                if ($item["active"] || $get_all) {
 
                       //aktiv Status kann entfernt werden (wird in Oberflaeche nicht benoetigt)
-                    unset($video["active"]);
+                    unset($item["active"]);
                 
-                //Modus-Merkmal setzen (fuer Filterung ueber Buttons)
-                    $video["mode"] = $mode["id"];
+                    //Modus-Merkmal setzen (fuer Filterung ueber Buttons)
+                    $item["mode"] = $mode["id"];
 
-                    //Video-Infos in Array dieses Video-Modus sammeln
-                $main_json[$key]["videos"][] = $video;
+                    //Item-Infos in Array dieses Modus sammeln
+                    $main_json[$key]["items"][] = $item;
                 }
             }
         }
@@ -49,7 +52,7 @@ foreach($main_json as $key => $mode) {
         //Modus ist nicht aktiv (z.B. kein Bobo-Folgen laden)
         else {
 
-            //Modus aus Liste entfernen, Videos wurden eh nicht geladen
+            //Modus aus Liste entfernen, Items wurden eh nicht geladen
             array_splice($main_json[$key]["filter"], $i, 1);
         }
     }
@@ -57,11 +60,11 @@ foreach($main_json as $key => $mode) {
     //beim Modus all
     else {
     
-            //aktiv Status kann entfernt werden (wird in Oberflaeche nicht benoetigt)
+        //aktiv Status kann entfernt werden (wird in Oberflaeche nicht benoetigt)
         unset($main_json[$key]["filter"][$i]["active"]);
-    }
+        }
     }
 }
 
-//Liste der Filter und Videos als JSON zurueckgeben
+//Liste der Filter und Items als JSON zurueckgeben
 echo json_encode($main_json, true);

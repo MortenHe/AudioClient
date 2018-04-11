@@ -26,7 +26,7 @@ export class ResultlistComponent {
   ngOnInit() {
 
     //gefilterte und sortierte Itemliste per Service abbonieren
-    this.items$ = this.vs.getFilteredVideolist();
+    this.items$ = this.vs.getFilteredItemlist();
 
     //Aktuell laufende Playlist per Service abbonieren
     this.pls.getCurrentPlayedPlaylist().subscribe(currentPlayedPlaylist => {

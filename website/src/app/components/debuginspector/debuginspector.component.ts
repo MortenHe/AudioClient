@@ -15,7 +15,7 @@ import { Observable } from 'rxjs/Observable';
 export class DebuginspectorComponent implements OnInit {
 
   //Observables fuer Anzeige
-  items: Observable<Item[]>;
+  items$: Observable<Item[]>;
   videoMode: string;
   modeFilter: string;
   searchTerm: string;
@@ -38,8 +38,8 @@ export class DebuginspectorComponent implements OnInit {
   ngOnInit() {
 
     //Werte aus Services abbonieren und fuer Anzeige speichern
-    this.items = this.vs.getFilteredVideolist();
-    this.vs.getVideoMode().subscribe(videoMode => this.videoMode = videoMode);
+    this.items$ = this.vs.getFilteredItemlist();
+    this.vs.getMode().subscribe(videoMode => this.videoMode = videoMode);
     this.fs.getModeFilter().subscribe(modeFilter => this.modeFilter = modeFilter);
     this.fs.getSearchTerm().subscribe(searchTerm => this.searchTerm = searchTerm);
     this.fs.getOrderField().subscribe(orderField => this.orderField = orderField);

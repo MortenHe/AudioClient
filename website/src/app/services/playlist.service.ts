@@ -113,6 +113,6 @@ export class PlaylistService {
     this.resetPlaylist();
 
     //Service aufrufen, der das/die Video(s) startet
-    this.vs.sendVideoPlayRequest(videoList);
+    this.vs.sendPlayRequest(videoList);
   }
 }

@@ -20,6 +20,6 @@ export class ResultlistinspectorComponent implements OnInit {
   ngOnInit() {
 
     //Aenderungen bei Videoliste verfolgen, damit Anzahl der Treffer angepasst werden kann
-    this.items$ = this.vs.getFilteredVideolist();
+    this.items$ = this.vs.getFilteredItemlist();
   }
 }

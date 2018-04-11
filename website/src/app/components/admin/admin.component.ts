@@ -21,6 +21,6 @@ export class AdminComponent {
   checkItemlist() {
 
     //Service aufrufen, der den Pi mit dem Vergleich beauftragt und Ergebnis auf Webseite anzeigen
-    this.diagnostic$ = this.vs.sendCheckVideolistRequest();
+    this.diagnostic$ = this.vs.sendCompareItemlistsRequest();
   }
 }

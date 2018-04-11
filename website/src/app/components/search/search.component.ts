@@ -23,7 +23,7 @@ export class SearchComponent {
   ngOnInit() {
 
     //Komplettliste der Items in Service laden
-    this.vs.loadFullVideolist();
+    this.vs.loadFullItemlist();
 
     //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert
     this.route.paramMap.subscribe(params => {
@@ -42,7 +42,7 @@ export class SearchComponent {
       }
 
       //Modus per Service setzen
-      this.vs.setVideoMode(mode);
+      this.vs.setMode(mode);
 
       //Playlist per Service zuruecksetzen
       this.pls.resetPlaylist();

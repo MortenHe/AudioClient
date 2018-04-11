@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Pop-Songs",
+        "file": "pop-songs",
+        "length": "00:26:00",
+        "active": true
+    },
+    {
+        "name": "Hitparade 1992",
+        "file": "hitparade-1992",
+        "length": "00:25:08",
+        "active": true
+    }
+]
