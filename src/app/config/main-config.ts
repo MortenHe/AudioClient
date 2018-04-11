@@ -5,7 +5,7 @@ export class Item {
     file: string;
     length: string;
     active: boolean;
-    //tracks: string[];
+    tracks: string[];
 }
 
 //subscribe innerhalb von subscribe
@@ -15,3 +15,5 @@ export class Item {
 //Items um track (optional) erweitern oder single vs. typeplaylist, Trackinfos ein / ausblenden
 //Lautstaerke CEC
 //unsubscribe
+//Standardwerte für BS (z.B: backendservice)
+//Bessere Loesung fuer doppelte Async-Pipe bei show-Tracks vs. FormControl

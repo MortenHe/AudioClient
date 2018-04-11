@@ -1,14 +1,51 @@
 [
     {
-        "name": "Pop-Songs",
-        "file": "pop-songs",
-        "length": "00:26:00",
-        "active": true
+        "name": "Giraffenaffen 3",
+        "file": "giraffenaffen3",
+        "length": "00:51:01",
+        "active": true,
+        "tracks": [
+            "Giraffenaffenzeit",
+            "Hej, Pippi Langstrumpf",
+            "Unter dem Meer",
+            "Auf der Mauer, auf der Lauer",
+            "Kommt ein Vogel geflogen",
+            "Schlaft alle",
+            "Der Kuckuck und der Esel",
+            "Nessaja",
+            "Jule wäscht sich nie",
+            "Brüderchen, komm tanz mit mir",
+            "An de Eck steiht'n Jung mit'n Tüddelband",
+            "Anne Kaffeekanne",
+            "Vielen Dank für die Blumen",
+            "Wickie",
+            "Trautes Heim",
+            "Froh zu sein Bedarf es wenig",
+            "Schlaf, Kindlein schlaf"
+        ]
     },
     {
-        "name": "Hitparade 1992",
-        "file": "hitparade-1992",
-        "length": "00:25:08",
-        "active": true
+        "name": "Ministars '92",
+        "file": "ministars-92",
+        "length": "00:49:42",
+        "active": true,
+        "tracks": [
+            "Ein Lied für dich",
+            "Black And White",
+            "Mein Wlkman",
+            "Wer nie trommelt versäumt ganz schön viel",
+            "In meinem Stofftierzoo",
+            "Kein sieg für Pearly Spencer",
+            "Sing! (den la la la la Song)",
+            "Der Li-La-Launebär",
+            "Wir sind die Champions von morgen",
+            "Das Rendezvous",
+            "Hab' meinen Sittich gern",
+            "Mein Schlauchboot",
+            "Nessie, Nessie",
+            "1000 Worte will ich lernen",
+            "Der Schatz am Ende des Regenbogens",
+            "Mach's gut, bye, bye"
+        ]
     }
 ]

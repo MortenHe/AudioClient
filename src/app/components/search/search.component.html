@@ -42,7 +42,20 @@
     <resultlistinspector class="item-count text-right mr-2"></resultlistinspector>
 
     <!-- Suchfeld fuer Filterung -->
-    <searchfilter class="col"></searchfilter>
+    <searchfilter class="col mr-2"></searchfilter>
+
+    <!-- Anzeige von Tracks steuern -->
+    <button *ngIf="appMode === 'audio'"
+            (click)="toggleShowTracks()"
+            class="btn mr-2">
+      <i class="fa fa-fw"
+         [ngClass]="{
+                 'fa-square-o': !(showTracks$ | async),
+                 'fa-check-square-o': showTracks$ | async
+               }"></i>
+
+      Tracks anzeigen
+    </button>
 
     <!-- Sortierbuttons -->
     <sortfilter class="d-flex align-items-center"></sortfilter>

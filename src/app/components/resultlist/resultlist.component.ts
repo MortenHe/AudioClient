@@ -20,17 +20,23 @@ export class ResultlistComponent {
   //Itemliste als Observable. Wird in Template per async pipe ausgegeben
   items$: Observable<Item[]>;
 
+  //Flag ob Tracks angezeigt werden sollen
+  showTracks$: Observable<boolean>;
+
   //welches Item in der Liste wurde angeklickt?
   activeItem: Item;
 
   //Services injecten, TODO fs raus
-  constructor(private pls: PlaylistService, private bs: BackendService) { }
+  constructor(private pls: PlaylistService, private bs: BackendService, private fs: ResultfilterService) { }
 
   //beim Init
   ngOnInit() {
 
     //gefilterte und sortierte Itemliste per Service abbonieren
     this.items$ = this.bs.getFilteredItemlist();
+
+    //flag ob Tracks angezeigt werden abbonieren
+    this.showTracks$ = this.fs.getShowTracks();
 
     //Aktuell laufende Playlist per Service abbonieren
     this.pls.getCurrentPlayedPlaylist().subscribe(currentPlayedPlaylist => {

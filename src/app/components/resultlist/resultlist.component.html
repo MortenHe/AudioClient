@@ -27,5 +27,14 @@
 
     <!-- Itemname -->
     {{item.name}}
+
+    <!-- Wenn Tracks angezeigt werden sollen -->
+    <ul *ngIf="showTracks$ | async">
+
+      <!-- Tracks ausgeben -->
+      <li *ngFor="let track of item.tracks">
+        {{track}}
+      </li>
+    </ul>
   </button>
 </div>

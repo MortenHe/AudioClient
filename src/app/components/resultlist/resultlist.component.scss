@@ -24,6 +24,14 @@
             opacity: 1;
         }
     }
+    ul {
+        margin-bottom: 0;
+        padding-left: 25px;
+        li {
+            list-style-type: decimal-leading-zero;
+            color: $color-light-grey;
+        }
+    }
 }
 
 .item-length-audio {

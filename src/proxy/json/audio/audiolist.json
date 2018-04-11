@@ -39,7 +39,7 @@
             {
                 "id": "misc",
                 "label": "Sontige",
-                "active": true
+                "active": false
             }
         ],
         "items": []
