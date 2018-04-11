@@ -3,6 +3,7 @@ import { Item } from '../../config/main-config';
 import { VideoService } from '../../services/video.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../../environments/environment'
 
 @Component({
   selector: 'app-admin',
@@ -10,6 +11,9 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
+
+  //Name der App fuer Ueberschrift (z.B. Video Player (dev))
+  envName = environment.envName;
 
   //Diagnostic-JSON-Objekt Observable
   diagnostic$: Observable<any>;

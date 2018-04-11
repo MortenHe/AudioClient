@@ -15,7 +15,7 @@ if ($_GET["production"] === "true") {
 //und Testsystem
 else {
     $item_dir = "C:/Users/Martin/Desktop/media/done/" . $app_mode . "/*/*/*";
-    $config_url = "http://localhost/WebPlayer/website/src/proxy/get_itemlist.php?app_mode=" . $app_mode . "&all=true";
+    $config_url = "http://localhost/WebPlayer/src/proxy/get_itemlist.php?app_mode=" . $app_mode . "&all=true";
 }
 
 //Config-Daten per cURL holen

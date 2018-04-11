@@ -1,5 +1,7 @@
-/website/src/tools/connection.php
-/website/nbproject/private/
-/website/nbproject/project.properties
-/website/nbproject/project.xml
-/website/package-lock.json
+/src/tools/connection.php
+/nbproject/private/
+/nbproject/project.properties
+/nbproject/project.xml
+/package-lock.json
+/node_modules
+/.vscode
