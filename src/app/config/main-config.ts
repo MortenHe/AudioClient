@@ -5,18 +5,13 @@ export class Item {
     file: string;
     length: string;
     active: boolean;
+    //tracks: string[];
 }
 
 //subscribe innerhalb von subscribe
-//unsubscribe
 //serach weiter aufteilen (2. Inspektor, 2. Suchfeld)
 //Pagination
 //Playlist-Generator mit nur einem Container
-//selectvideomode Komponente umbenennen
-//Videoservice umbenennen
-//Inspektor Variablen als async obs
-//Video / Audio suchen placeholder bei searchfilter
-//Items um track (optional) erweitern oder single vs. typeplaylist
-//PI Shutdown in eigenen Service
+//Items um track (optional) erweitern oder single vs. typeplaylist, Trackinfos ein / ausblenden
 //Lautstaerke CEC
-//checkVideolist -> Proxy Pfad mitgeben nach PHP
+//unsubscribe

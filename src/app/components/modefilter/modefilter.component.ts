@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
 import { ResultfilterService } from '../../services/resultfilter.service';
-import { VideoService } from '../../services/video.service';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   selector: 'modefilter',
@@ -18,13 +18,13 @@ export class ModefilterComponent implements OnInit {
   modeFilter$;
 
   //Services injecten
-  constructor(private fb: FormBuilder, private fs: ResultfilterService, private vs: VideoService) { }
+  constructor(private fb: FormBuilder, private fs: ResultfilterService, private bs: BackendService) { }
 
   //Beim Init
   ngOnInit() {
 
     //Liste der Mode-Filter per Service abbonieren
-    this.modeFilter$ = this.vs.getModeFilterList();
+    this.modeFilter$ = this.bs.getModeFilterList();
 
     //Reactive Form fuer Filter-Buttons erstellen
     this.modeFilterForm = this.fb.group({
@@ -41,7 +41,7 @@ export class ModefilterComponent implements OnInit {
     });
 
     //Bei Navigation-Aenderung aendert sich der Video/Audio-Modus
-    this.vs.getMode().subscribe(
+    this.bs.getMode().subscribe(
 
       //den Mode-Filter auf all setzen, damit alle Videos des neuen Modus angezeigt werden
       newMode => this.modeFilterForm.controls['mode'].setValue("all"));

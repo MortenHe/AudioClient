@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VideoService } from '../../services/video.service';
+import { BackendService } from '../../services/backend.service';
 import { PlaylistService } from '../../services/playlist.service';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
@@ -19,7 +19,7 @@ export class PlayercontrolComponent {
   currentPlayedPlaylist$: Observable<any>;
 
   //Services injecten
-  constructor(private vs: VideoService, private pls: PlaylistService) { }
+  constructor(private bs: BackendService, private pls: PlaylistService) { }
 
   //Beim Init
   ngOnInit() {
@@ -30,7 +30,7 @@ export class PlayercontrolComponent {
 
   //MM per Service pausieren oder wieder starten oder 30 sec nach links/rechts springen
   controlPlayback(command) {
-    this.vs.sendPlaybackControlRequest(command);
+    this.bs.sendPlaybackControlRequest(command);
   }
 
   //Video stoppen
@@ -40,6 +40,6 @@ export class PlayercontrolComponent {
     this.pls.resetCurrentPlayedPlaylist();
 
     //Video per Service stoppen
-    this.vs.sendPlaybackStopRequest();
+    this.bs.sendPlaybackStopRequest();
   }
 }

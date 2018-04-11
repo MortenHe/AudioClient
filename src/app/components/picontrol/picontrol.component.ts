@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { VideoService } from '../../services/video.service';
 import { PicontrolService } from '../../services/picontrol.service';
 
 @Component({

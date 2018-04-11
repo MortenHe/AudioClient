@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { VideoService } from '../../services/video.service';
+import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
@@ -18,7 +18,7 @@ export class SelectmodeComponent implements OnInit {
   selectModeForm;
 
   //Services injecten
-  constructor(private fb: FormBuilder, private vs: VideoService, private router: Router) { }
+  constructor(private fb: FormBuilder, private bs: BackendService, private router: Router) { }
 
   //beim Init
   ngOnInit() {
@@ -40,7 +40,7 @@ export class SelectmodeComponent implements OnInit {
     );
 
     //Wen sich der Modus aendert (z.B. URL annavigiert oder Aenderung per Select)
-    this.vs.getMode().subscribe(mode => {
+    this.bs.getMode().subscribe(mode => {
 
       //ausgewaehlten Modus in Select setzen, dabei kein changeevent triggern
       this.selectModeForm.controls["select-mode"].setValue(mode, { emitEvent: false });

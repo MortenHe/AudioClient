@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { VideoService } from './video.service';
+import { BackendService } from './backend.service';
 import { add, str } from 'timelite'
 
 @Injectable()
@@ -17,7 +17,7 @@ export class PlaylistService {
   curretPlayedPlaylistBS: BehaviorSubject<any> = new BehaviorSubject(null);
 
   //Service injecten
-  constructor(private vs: VideoService) { }
+  constructor(private bs: BackendService) { }
 
   //Playlist zurueckgeben
   getPlaylist(): BehaviorSubject<any> {
@@ -113,6 +113,6 @@ export class PlaylistService {
     this.resetPlaylist();
 
     //Service aufrufen, der das/die Video(s) startet
-    this.vs.sendPlayRequest(videoList);
+    this.bs.sendPlayRequest(videoList);
   }
 }

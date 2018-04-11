@@ -29,8 +29,8 @@
   <!-- Filter-Buttons -->
   <modefilter></modefilter>
 
-  <!-- Uebersicht ueber gerade erstellte Playlist -->
-  <playlistgenerator></playlistgenerator>
+  <!-- Uebersicht ueber gerade erstellte Playlist, nur bei Video -->
+  <playlistgenerator *ngIf="appMode === 'video'"></playlistgenerator>
 
   <!-- Trennlinie -->
   <hr>

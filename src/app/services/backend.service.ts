@@ -10,8 +10,7 @@ import { OrderByPipe } from '../pipes/order-by.pipe';
 import { environment } from '../../environments/environment';
 
 @Injectable()
-
-export class VideoService {
+export class BackendService {
 
     //URL wo die Proxyskripte liegen aus config laden
     proxyUrl = environment.proxyUrl;

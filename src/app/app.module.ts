@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 //eigenes Services
-import { VideoService } from './services/video.service';
+import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
 import { PlaylistService } from './services/playlist.service';
 
@@ -63,7 +63,7 @@ import { PicontrolService } from './services/picontrol.service';
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
   ],
-  providers: [VideoService, PlaylistService, ResultfilterService, PicontrolService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
+  providers: [BackendService, PlaylistService, ResultfilterService, PicontrolService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

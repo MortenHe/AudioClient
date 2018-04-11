@@ -4,11 +4,12 @@ envName: {{envName}}
 <br> proxyUrl: {{proxyUrl}}
 <br> domainModes: {{domainModes | json}}
 <br>
-<br> VideoMode: {{videoMode}}
-<br> ModeFilter: {{modeFilter}}
-<br> SearchFilter: {{searchTerm}}
-<br> OrderField: {{orderField}}
-<br> ReverseOrder: {{reverseOrder}}
-<br> Playlist: {{playlist | json}}
-<br> CurrentPlayedPlaylist: {{currentPlayedPlaylist | json}}
+<br> mode: {{mode$ | async}}
+<br> modeFilter: {{modeFilter$ | async}}
+<br> searchTerm: {{searchTerm$ | async}}
+<br> orderField: {{orderField$ | async}}
+<br> reverseOrder: {{reverseOrder$ | async}}
+<br> playlist: {{playlist$ | async| json}}
+<br> currentPlayedPlaylist: {{currentPlayedPlaylist$ | async | json}}
+<br>
 <br> Itemlist: {{items$ | async | json}}

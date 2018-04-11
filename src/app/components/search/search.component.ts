@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VideoService } from '../../services/video.service';
+import { BackendService } from '../../services/backend.service';
 import { PlaylistService } from '../../services/playlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment'
@@ -12,18 +12,21 @@ import { environment } from '../../../environments/environment'
 
 export class SearchComponent {
 
+  //video vs. audio
+  appMode = environment.appMode;
+
   //Name der App fuer Ueberschrift (z.B. Video Player (dev))
   envName = environment.envName;
 
   //Services und Router injecten
-  constructor(private vs: VideoService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router) {
+  constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router) {
   }
 
   //Beim Init
   ngOnInit() {
 
     //Komplettliste der Items in Service laden
-    this.vs.loadFullItemlist();
+    this.bs.loadFullItemlist();
 
     //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert
     this.route.paramMap.subscribe(params => {
@@ -42,7 +45,7 @@ export class SearchComponent {
       }
 
       //Modus per Service setzen
-      this.vs.setMode(mode);
+      this.bs.setMode(mode);
 
       //Playlist per Service zuruecksetzen
       this.pls.resetPlaylist();

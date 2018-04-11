@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VideoService } from '../../services/video.service';
+import { BackendService } from '../../services/backend.service';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { PlaylistService } from '../../services/playlist.service';
 import { Item } from '../../config/main-config';
@@ -16,13 +16,13 @@ export class DebuginspectorComponent implements OnInit {
 
   //Observables fuer Anzeige
   items$: Observable<Item[]>;
-  videoMode: string;
-  modeFilter: string;
-  searchTerm: string;
-  orderField: string;
-  reverseOrder: boolean;
-  playlist: any[];
-  currentPlayedPlaylist: any;
+  mode$: Observable<string>;
+  modeFilter$: Observable<string>;
+  searchTerm$: Observable<string>;
+  orderField$: Observable<string>;
+  reverseOrder$: Observable<boolean>;
+  playlist$: Observable<any[]>;
+  currentPlayedPlaylist$: Observable<any>;
 
   //Env-Werte
   appMode = environment.appMode;
@@ -32,19 +32,19 @@ export class DebuginspectorComponent implements OnInit {
   proxyUrl = environment.proxyUrl;
 
   //Services injecten
-  constructor(private vs: VideoService, private fs: ResultfilterService, private pls: PlaylistService) { }
+  constructor(private bs: BackendService, private fs: ResultfilterService, private pls: PlaylistService) { }
 
   //beim Init
   ngOnInit() {
 
     //Werte aus Services abbonieren und fuer Anzeige speichern
-    this.items$ = this.vs.getFilteredItemlist();
-    this.vs.getMode().subscribe(videoMode => this.videoMode = videoMode);
-    this.fs.getModeFilter().subscribe(modeFilter => this.modeFilter = modeFilter);
-    this.fs.getSearchTerm().subscribe(searchTerm => this.searchTerm = searchTerm);
-    this.fs.getOrderField().subscribe(orderField => this.orderField = orderField);
-    this.fs.getReverseOrder().subscribe(reverseOrder => this.reverseOrder = reverseOrder);
-    this.pls.getPlaylist().subscribe(playlist => this.playlist = playlist);
-    this.pls.getCurrentPlayedPlaylist().subscribe(currentPlayedPlaylist => this.currentPlayedPlaylist = currentPlayedPlaylist);
+    this.items$ = this.bs.getFilteredItemlist();
+    this.mode$ = this.bs.getMode();
+    this.modeFilter$ = this.fs.getModeFilter();
+    this.searchTerm$ = this.fs.getSearchTerm();
+    this.orderField$ = this.fs.getOrderField();
+    this.reverseOrder$ = this.fs.getReverseOrder();
+    this.playlist$ = this.pls.getPlaylist();
+    this.currentPlayedPlaylist$ = this.pls.getCurrentPlayedPlaylist();
   }
 }
