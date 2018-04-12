@@ -36,8 +36,7 @@ export class SelectmodeComponent implements OnInit {
 
       //zu passender URL navigieren
       this.router.navigate(['/search', mode]);
-    }
-    );
+    });
 
     //Wen sich der Modus aendert (z.B. URL annavigiert oder Aenderung per Select)
     this.bs.getMode().subscribe(mode => {

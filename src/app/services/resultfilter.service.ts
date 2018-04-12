@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 
@@ -9,10 +10,10 @@ export class ResultfilterService {
   constructor() { }
 
   //modeFilter als BS, das abboniert werden kann
-  modeFilterBehaviorSubject = new BehaviorSubject("all");
+  modeFilterBS = new BehaviorSubject("all");
 
   //Suchfeld-Wert als BS, das abboniert werden kann
-  searchTermBehaviorSubject = new BehaviorSubject("");
+  searchTermBS = new BehaviorSubject("");
 
   //Sortierfeld als BS, das abboniert werden kann
   orderFieldBS = new BehaviorSubject("name");
@@ -25,22 +26,22 @@ export class ResultfilterService {
 
   //aktuell ausgewaehlten Mode-Filter liefern
   getModeFilter() {
-    return this.modeFilterBehaviorSubject;
+    return this.modeFilterBS;
   }
 
   //Filter setzen
   setModeFilter(mode: string) {
-    this.modeFilterBehaviorSubject.next(mode);
+    this.modeFilterBS.next(mode);
   }
 
   //aktuellen Suchbegriff liefern
   getSearchTerm() {
-    return this.searchTermBehaviorSubject;
+    return this.searchTermBS;
   }
 
   //Suchterm setzen
   setSearchTerm(serachTerm: string) {
-    this.searchTermBehaviorSubject.next(serachTerm);
+    this.searchTermBS.next(serachTerm);
   }
 
   //Sortierfeld liefern
@@ -68,13 +69,8 @@ export class ResultfilterService {
     return this.showTracksBS;
   }
 
-  //Track-Sichtbarkeit umkehren
-  toggleShowTracks() {
-
-    //aktuellen Wert des BS holen
-    let currentVal = this.showTracksBS.getValue();
-
-    //Wert toggeln und setzen
-    this.showTracksBS.next(!currentVal);
+  //Track-Sichtbarkeit setzen
+  setShowTracks(bool) {
+    this.showTracksBS.next(bool);
   }
 }

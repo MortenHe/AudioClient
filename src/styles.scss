@@ -2,7 +2,6 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 //Variablen importieren
 @import '~scss/variables.scss';
-
 /* Bootstrap changes */
 
 .btn {
@@ -12,7 +11,6 @@
 .btn-outline-primary:not([disabled]):not(.disabled).active {
     color: $color-white;
 }
-
 
 /* eigenes styles */
 

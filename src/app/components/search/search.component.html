@@ -2,7 +2,7 @@
 <div class="app-width container-fluid mt-3 mb-3 mr-0 ml-0">
 
   <!-- Inspektor mit den moeglichen Werten -->
-  <debuginspector class="d-flex"></debuginspector>
+  <debuginspector class="d-flex mb-3"></debuginspector>
 
   <!-- Zeile fuer Ueberschrift, Mode-Select und Shutdown-Button -->
   <div class="row no-gutters">
@@ -44,18 +44,9 @@
     <!-- Suchfeld fuer Filterung -->
     <searchfilter class="col mr-2"></searchfilter>
 
-    <!-- Anzeige von Tracks steuern -->
-    <button *ngIf="appMode === 'audio'"
-            (click)="toggleShowTracks()"
-            class="btn mr-2">
-      <i class="fa fa-fw"
-         [ngClass]="{
-                 'fa-square-o': !(showTracks$ | async),
-                 'fa-check-square-o': showTracks$ | async
-               }"></i>
-
-      Tracks anzeigen
-    </button>
+    <!-- Ansicht der Tracks zu toggeln (nur bei audio) -->
+    <toggletrackview *ngIf="appMode === 'audio'"
+                     class="mr-2"></toggletrackview>
 
     <!-- Sortierbuttons -->
     <sortfilter class="d-flex align-items-center"></sortfilter>

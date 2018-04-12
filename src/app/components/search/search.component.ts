@@ -19,9 +19,6 @@ export class SearchComponent {
   //Name der App fuer Ueberschrift (z.B. Video Player (dev))
   envName = environment.envName;
 
-  //Anzeige von Tracks
-  showTracks$;
-
   //Services und Router injecten
   constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService) {
   }
@@ -54,20 +51,5 @@ export class SearchComponent {
       //Playlist per Service zuruecksetzen
       this.pls.resetPlaylist();
     });
-
-    //Bei Audio
-    if (this.appMode === 'audio') {
-
-      //Tracks anzeigen
-      this.fs.toggleShowTracks();
-    }
-
-    //Aenderungen abbonieren
-    this.showTracks$ = this.fs.getShowTracks();
-  }
-
-  //Track-Sichtbarkeit togglen
-  toggleShowTracks() {
-    this.fs.toggleShowTracks();
   }
 }

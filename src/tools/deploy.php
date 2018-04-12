@@ -1,8 +1,8 @@
 <?php
 
 //SFTP und Connection-Daten laden
-include('Net/SFTP.php');
-include('connection.php');
+include 'Net/SFTP.php';
+include 'connection.php';
 
 //Base Path auf Server
 $remote_base_path = "/var/www/html/";
@@ -23,41 +23,51 @@ $packages = [
     "assets" => [
         "active" => true,
         "dirs" => [[
-        "local" => "../assets/images",
-        "remote" => "assets/images"]]
+            "local" => "../assets/images",
+            "remote" => "assets/images"]],
     ],
     //PHP Proxy-Skripte
     "proxy" => [
         "active" => true,
         "dirs" => [[
-        "local" => "../proxy",
-        "remote" => "proxy"]]
+            "local" => "../proxy",
+            "remote" => "proxy"]],
     ],
-    //Videoliste als JSON
-    "videolist" => [
+    //Itemlist als JSON
+    "itemlist" => [
         "active" => true,
-        "dirs" => [[
-        "local" => "../proxy/json",
-        "remote" => "proxy/json"],
+        "dirs" => [
             [
-                "local" => "../proxy/json/jahresvideo",
-                "remote" => "proxy/json/jahresvideo"],
+                "local" => "../proxy/json/video",
+                "remote" => "proxy/json/video"],
             [
-                "local" => "../proxy/json/kinder",
-                "remote" => "proxy/json/kinder"]
-        ]
+                "local" => "../proxy/json/audio",
+                "remote" => "proxy/json/audio"],
+            [
+                "local" => "../proxy/json/video/jahresvideo",
+                "remote" => "proxy/json/video/jahresvideo"],
+            [
+                "local" => "../proxy/json/video/kinder",
+                "remote" => "proxy/json/video/kinder"],
+            [
+                "local" => "../proxy/json/audio/hsp",
+                "remote" => "proxy/json/audio/hsp"],
+            [
+                "local" => "../proxy/json/audio/kindermusik",
+                "remote" => "proxy/json/audio/kindermusik"],
+        ],
     ],
     //Angular-Dist Code
     "website" => [
         "active" => true,
         "dirs" => [[
-        "local" => "../../dist",
-        "remote" => "wvp"]]
-    ]
+            "local" => "../../dist",
+            "remote" => "wap"]],
+    ],
 ];
 
 //Welche Dateien / Verzeichnisse sollen beim Loeschen / Hochladen ingnoriert werden?
-$ignore_list = [".", "..", ".htaccess", "json", "jahresvideo", "kinder", "assets"];
+$ignore_list = [".", "..", ".htaccess", "json", "audio", "video", "jahresvideo", "kinder", "hsp", "kindermusik", "assets"];
 
 //Ueber packages gehen
 foreach ($packages as $package => $obj) {
@@ -84,7 +94,8 @@ foreach ($packages as $package => $obj) {
 }
 
 //Dateien auf Server loeschen
-function delete_files_on_server($dir) {
+function delete_files_on_server($dir)
+{
     global $sftp, $ignore_list;
 
     //Wenn es das angewaehlte Verzeichnis gibt
@@ -115,7 +126,8 @@ function delete_files_on_server($dir) {
 }
 
 //Dateien auf Server laden
-function upload_files_to_server($local_dir, $remote_dir) {
+function upload_files_to_server($local_dir, $remote_dir)
+{
     global $sftp, $ignore_list;
 
     //Wenn es das angewaehlte Verzeichnis gibt

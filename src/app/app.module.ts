@@ -31,6 +31,7 @@ import { PicontrolComponent } from './components/picontrol/picontrol.component';
 import { ResultlistinspectorComponent } from './components/resultlistinspector/resultlistinspector.component';
 import { DebuginspectorComponent } from './components/debuginspector/debuginspector.component';
 import { PicontrolService } from './services/picontrol.service';
+import { ToggletrackviewComponent } from './components/toggletrackview/toggletrackview.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +50,11 @@ import { PicontrolService } from './services/picontrol.service';
     PicontrolComponent,
     ResultlistinspectorComponent,
     DebuginspectorComponent,
+    ToggletrackviewComponent,
     ModeFilterPipe,
     SearchFilterPipe,
     OrderByPipe
+
   ],
   imports: [
     BrowserModule,

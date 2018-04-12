@@ -10,14 +10,28 @@ $playlist_dir = "/media/usb_red/audio/" . $request["mode"] . "/" . $request["ite
 
 echo "Playlist-Dir: " . $playlist_dir . "<br>";
 
+$command = "sudo /home/pi/mh_prog/audio_playlist.sh " . $playlist_dir . " 2>&1";
+echo $command . "<br>";
+
+//Playlist in OMXPlayer laden
+echo shell_exec($command);
+
+
+/*
 //bisherige Playlist leeren
 echo shell_exec("mocp --clear");
+
+echo "cleared<br>";
 
 //Playback stoppen
 echo shell_exec("mocp --stop");
 
+echo "stopped<br>";
+
 //neue Playlist laden
 echo shell_exec("mocp -a " . $playlist_dir);
+echo "playlist added<br>";
 
 //Playback der neuen Playlist starten
-echo shell_exec("mocp --p");
+echo shell_exec("mocp --play");
+echo "start play";

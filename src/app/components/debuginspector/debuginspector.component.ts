@@ -21,6 +21,7 @@ export class DebuginspectorComponent implements OnInit {
   searchTerm$: Observable<string>;
   orderField$: Observable<string>;
   reverseOrder$: Observable<boolean>;
+  showTracks$: Observable<boolean>;
   playlist$: Observable<any[]>;
   currentPlayedPlaylist$: Observable<any>;
 
@@ -44,6 +45,7 @@ export class DebuginspectorComponent implements OnInit {
     this.searchTerm$ = this.fs.getSearchTerm();
     this.orderField$ = this.fs.getOrderField();
     this.reverseOrder$ = this.fs.getReverseOrder();
+    this.showTracks$ = this.fs.getShowTracks();
     this.playlist$ = this.pls.getPlaylist();
     this.currentPlayedPlaylist$ = this.pls.getCurrentPlayedPlaylist();
   }
