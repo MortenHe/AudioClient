@@ -57,11 +57,18 @@ $packages = [
                 "remote" => "proxy/json/audio/kindermusik"],
         ],
     ],
-    //Angular-Dist Code
-    "website" => [
+    //Angular-Dist Code fuer Video
+    "website-video" => [
         "active" => true,
         "dirs" => [[
-            "local" => "../../dist",
+            "local" => "../../dist-video",
+            "remote" => "wvp"]],
+    ],
+    //Angular-Dist Code fuer Audio
+    "website-audio" => [
+        "active" => true,
+        "dirs" => [[
+            "local" => "../../dist-audio",
             "remote" => "wap"]],
     ],
 ];
