@@ -19,13 +19,14 @@ if (!$sftp->login($connection["user"], $connection["password"])) {
 
 //Welche Verzeichnisse sollen auf dem Server erneuert werden?
 $packages = [
-//Bilder-Ordner
-    "assets" => [
-        "active" => true,
-        "dirs" => [[
-            "local" => "../assets/images",
-            "remote" => "assets/images"]],
-    ],
+/*Bilder-Ordner
+"assets" => [
+"active" => true,
+"dirs" => [[
+"local" => "../assets/images",
+"remote" => "assets/images"]],
+],
+ */
     //PHP Proxy-Skripte
     "proxy" => [
         "active" => true,
@@ -74,7 +75,7 @@ $packages = [
 ];
 
 //Welche Dateien / Verzeichnisse sollen beim Loeschen / Hochladen ingnoriert werden?
-$ignore_list = [".", "..", ".htaccess", "json", "audio", "video", "jahresvideo", "kinder", "hsp", "kindermusik", "assets"];
+$ignore_list = [".", "..", ".htaccess", "json", "audio", "video", "jahresvideo", "kinder", "hsp", "kindermusik"];
 
 //Ueber packages gehen
 foreach ($packages as $package => $obj) {

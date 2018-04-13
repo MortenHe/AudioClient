@@ -53,12 +53,14 @@
 .switch-label:before {
     content: attr(data-off);
     right: 11px;
+    font-size: 14px;
     color: #aaa; //text-shadow: 0 1px rgba(255, 255, 255, 0.5);
 }
 
 .switch-label:after {
     content: attr(data-on);
     left: 11px;
+    font-size: 14px;
     color: white; //text-shadow: 0 1px rgba(0, 0, 0, 0.2);
     opacity: 0;
 }
