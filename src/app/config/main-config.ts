@@ -11,5 +11,3 @@ export class Item {
 //subscribe innerhalb von subscribe
 //Lautstaerke CEC
 //unsubscribe
-//Bessere Loesung fuer doppelte Async-Pipe bei show-Tracks vs. FormControl
-//Tracks durchsuchen

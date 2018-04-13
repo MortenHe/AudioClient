@@ -42,6 +42,11 @@
                 "active": true
             },
             {
+                "id": "maja",
+                "icon": "maja",
+                "active": true
+            },
+            {
                 "id": "misc",
                 "icon": "misc",
                 "active": true

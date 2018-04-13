@@ -33,6 +33,9 @@ export class BackendService {
     //Suchefeld-Filter
     searchTerm;
 
+    //sollen auch Tracks durchsucht werden
+    searchIncludeTracks;
+
     //Sortierfeld
     orderField;
 
@@ -86,6 +89,12 @@ export class BackendService {
                 this.filterItemList();
             });
 
+            //Aenderungen an Track-Sichtbarkeit abbonieren, speichern und Itemliste neu erstellen
+            this.fs.getShowTracks().subscribe(showTracks => {
+                this.searchIncludeTracks = showTracks;
+                this.filterItemList();
+            });
+
             //Aenderungen an Sortierfeld abbonieren, speichern und Itemliste neu erstellen
             this.fs.getOrderField().subscribe(orderField => {
                 this.orderField = orderField;
@@ -107,7 +116,7 @@ export class BackendService {
         let filteredItemList = this.modeFilterPipe.transform(this.itemListFull[this.mode].items, this.modeFilter);
 
         //Suchfeld-Filter anwenden
-        filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm);
+        filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm, this.searchIncludeTracks);
 
         //Sortierung anwenden
         filteredItemList = this.orderByPipe.transform(filteredItemList, this.orderField, this.reverseOrder);
