@@ -8,18 +8,6 @@ $request = json_decode($postdata, true);
 //Modus fuer Links zu Videos
 $mode = $request["mode"];
 
-/* weg ?
-//Unterschiedliche Verzeichnisse wo die Videos liegen fuer Produktivsystem
-if($request["production"] === "true") {
-    $video_dir = "/media/usb_red/video/" . $mode . "/";
-}
-
-//und Test-System
-else {
-    $video_dir = "C:/Users/Martin/Desktop/media/done/video/" . $mode . "/";
-}
-*/
-
 //Dateinamen Array um Pfad des Modus ergaenzen
 $playlist = array_map(function ($filename) {
     global $mode;
@@ -32,7 +20,7 @@ $args = implode(" ", $playlist);
 echo "Playlist: " . $args . "<br>";
 
 //video_playlist.sh stoppen, damit keine weiteren Videos geladen werden
-echo shell_exec("kill -9 $(pgrep -f video_playlist.sh) 2>&1");
+echo shell_exec("sudo kill -9 $(pgrep -f video_playlist.sh) 2>&1");
 
 //Playlist in OMXPlayer laden
-echo shell_exec("/home/pi/mh_prog/video_playlist.sh " . $args . " 2>&1");
+echo shell_exec("sudo /home/pi/mh_prog/video_playlist.sh " . $args . " 2>&1");

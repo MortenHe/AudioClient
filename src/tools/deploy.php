@@ -19,14 +19,20 @@ if (!$sftp->login($connection["user"], $connection["password"])) {
 
 //Welche Verzeichnisse sollen auf dem Server erneuert werden?
 $packages = [
-/*Bilder-Ordner
-"assets" => [
-"active" => true,
-"dirs" => [[
-"local" => "../assets/images",
-"remote" => "assets/images"]],
-],
- */
+    //Video-Bilder-Ordner
+    "assets-video" => [
+        "active" => true,
+        "dirs" => [[
+            "local" => "../../dist-video/assets/images",
+            "remote" => "wvp/assets/images"]],
+    ],
+    //Video-Bilder-Ordner
+    "assets-audio" => [
+        "active" => true,
+        "dirs" => [[
+            "local" => "../../dist-audio/assets/images",
+            "remote" => "wap/assets/images"]],
+    ],
     //PHP Proxy-Skripte
     "proxy" => [
         "active" => true,
@@ -75,7 +81,7 @@ $packages = [
 ];
 
 //Welche Dateien / Verzeichnisse sollen beim Loeschen / Hochladen ingnoriert werden?
-$ignore_list = [".", "..", ".htaccess", "json", "audio", "video", "jahresvideo", "kinder", "hsp", "kindermusik"];
+$ignore_list = [".", "..", ".htaccess", "json", "audio", "video", "jahresvideo", "kinder", "hsp", "kindermusik", "assets"];
 
 //Ueber packages gehen
 foreach ($packages as $package => $obj) {
@@ -90,7 +96,7 @@ foreach ($packages as $package => $obj) {
         foreach ($obj["dirs"] as $dir) {
 
             //Pfad zu Dateien auf Server
-            $remote_dir = $remote_base_path . "/" . $dir["remote"];
+            $remote_dir = $remote_base_path . $dir["remote"];
 
             //Dateien auf Server loeschen
             delete_files_on_server($remote_dir);

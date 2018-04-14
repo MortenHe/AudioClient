@@ -5,24 +5,24 @@ header("Access-Control-Allow-Origin: *");
 $command = $_GET["command"];
 
 //passende Action ausfuehren
-switch($command) {
+switch ($command) {
 
     //toggle pause
     case "pause":
-        echo "pause / unpause";    
-        echo shell_exec("mocp --toggle-pause");
+        echo "pause / unpause";
+        echo shell_exec("sudo mocp --toggle-pause");
         break;
 
     //vorheriger Track
     case "previous-track":
         echo "previous track";
-        echo shell_exec("mocp --previous");
+        echo shell_exec("sudo mocp --previous");
         break;
 
     //Naechster Titel
     case "next-track":
         echo "next track";
-        echo shell_exec("mocp --next");
+        echo shell_exec("sudo mocp --next");
         break;
 
     //Command nicht gefunden

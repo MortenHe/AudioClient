@@ -5,24 +5,24 @@ header("Access-Control-Allow-Origin: *");
 $command = $_GET["command"];
 
 //passende Action ausfuehren
-switch($command) {
+switch ($command) {
 
     //toggle pause
     case "pause":
-        echo "pause / unpause";    
-        echo shell_exec("echo -n p > /home/pi/mh_prog/omxpipe");
+        echo "pause / unpause";
+        echo shell_exec("echo -n p | sudo tee --append /home/pi/mh_prog/omxpipe 2>&1");
         break;
 
     //30 sec nach links
     case "seek-left":
         echo "seek -30 sec";
-        echo shell_exec("echo -n $'\e'[D > /home/pi/mh_prog/omxpipe");
+        echo shell_exec("echo -n $'\e'[D | sudo tee --append /home/pi/mh_prog/omxpipe 2>&1");
         break;
 
     //30 sec nach rechts
     case "seek-right":
         echo "seek +30 sec";
-        echo shell_exec("echo -n $'\e'[C > /home/pi/mh_prog/omxpipe");
+        echo shell_exec("echo -n $'\e'[C | sudo tee --append /home/pi/mh_prog/omxpipe 2>&1");
         break;
 
     //Command nicht gefunden
