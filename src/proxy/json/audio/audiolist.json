@@ -7,6 +7,11 @@
                 "active": true
             },
             {
+                "id": "bobo",
+                "icon": "bobo",
+                "active": true
+            },
+            {
                 "id": "bibi-tina",
                 "icon": "bibi-tina",
                 "active": true
@@ -14,6 +19,11 @@
             {
                 "id": "janosch",
                 "icon": "janosch",
+                "active": true
+            },
+            {
+                "id": "leo-lausemaus",
+                "icon": "leo-lausemaus",
                 "active": true
             }
         ],
@@ -24,6 +34,11 @@
             {
                 "id": "all",
                 "label": "Alle",
+                "active": true
+            },
+            {
+                "id": "fredrik-vahle",
+                "label": "Fredrik Vahle",
                 "active": true
             },
             {
@@ -39,7 +54,7 @@
             {
                 "id": "misc",
                 "label": "Sontige",
-                "active": false
+                "active": true
             }
         ],
         "items": []

@@ -82,5 +82,17 @@
         "file": "bibi-tina-sorge-cleopatra.mp4",
         "length": "00:25:09",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das Gespensterpferd",
+        "file": "bibi-tina-gespensterpferd.mp4",
+        "length": "00:25:06",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Papi lernt reiten",
+        "file": "bibi-tina-papi-reiten.mp4",
+        "length": "00:25:09",
+        "active": true
     }
 ]

@@ -1,1 +1,74 @@
-[]
+[
+    {
+        "name": "Babylove Kinderlieder",
+        "file": "babylove-kinderlieder",
+        "length": "00:22:23",
+        "active": true,
+        "tracks": [
+            "01 - Es tanzt der Bi-Ba-Butzemann",
+            "02 - Kuckuck, Kuckuck, ruft's aus dem Wald",
+            "03 - Es regnet",
+            "04 - Schlaf, Kindchen, schlaf!",
+            "05 - Zeigt her eure Füße",
+            "06 - Ein Männlein steht im Walde",
+            "07 - Fuchs, Du hast die Gans gestohlen",
+            "08 - Der Kuckuck und der Esel",
+            "09 - Es klappert die Mühle",
+            "10 - Auf der Mauer auf der Lauer"
+        ]
+    },
+    {
+        "name": "22 Mitmachlieder",
+        "file": "mitmachlieder",
+        "length": "00:42:29",
+        "active": true,
+        "tracks": [
+            "Hallo,Hallo, schön dass Du da bist",
+            "Meine Hände sind verschwunden",
+            "Aramsamsam",
+            "Erst kommt der Sonnenkäferpapa",
+            "Backe,backe Kuchen",
+            "In meinem kleinen Apfel",
+            "Summ, summ,summ Bienchensumm herum",
+            "Zeigt her eure Füße",
+            "Das Krokodil vom Nil",
+            "Die Räder vom Bus",
+            "Ich flieg in meinem Flugzeug",
+            "Was müssen das für Bäume sein",
+            "Ich bin der kleine Hampelmann",
+            "Hände waschen",
+            "Zehn kleine Zappelmänner",
+            "Hoppe hoppe Reiter",
+            "Zwei lange Schlangen",
+            "Drei Chines mit dem Kontrabass",
+            "Häschen in der Grube",
+            "Rommel Bommel",
+            "Hoch am Himmel",
+            "Alle Leut"
+        ]
+    },
+    {
+        "name": "1, 2, 3 im Sauseschritt",
+        "file": "sauseschritt",
+        "length": "00:46:47",
+        "active": true,
+        "tracks": [
+            "Jetzt geht es los",
+            "1, 2, 3 im Sauseschritt",
+            "Wie wollen eine Reise machen",
+            "Wir gehen im Kreise",
+            "Ich möchte´ so gerne springen",
+            "Das Wachmacherlied",
+            "Wisst ihr, was die Bienen träumen",
+            "Ich male heute einen Baum",
+            "Heute muss ich Häuser bauen",
+            "Zauberer Schrappelschrut",
+            "Verkleidungs-ABC",
+            "Ich schaukel auf dem Wasser",
+            "Klikker klakker klix",
+            "Kleine braune Biene",
+            "Hoppelhase, sitz ganz still",
+            "Ich hab Pause"
+        ]
+    }
+]
