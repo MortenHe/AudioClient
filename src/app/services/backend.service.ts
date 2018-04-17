@@ -148,8 +148,11 @@ export class BackendService {
     //Anfrage an Proxy schicken, damit dieser Item(s) startet
     sendPlayRequest(itemList) {
 
+        //Zufaellig Wiedergabe?
+        let randomPlayback = false;
+
         //Dateiname(n) und Modus mitschicken bei HTTP-Request
-        this.http.post(this.proxyUrl + this.appMode + "_start_playback.php", JSON.stringify({ production: this.production, mode: this.mode, item_list: itemList })).subscribe();
+        this.http.post(this.proxyUrl + this.appMode + "_start_playback.php", JSON.stringify({ production: this.production, mode: this.mode, item_list: itemList, random_playback: randomPlayback })).subscribe();
     }
 
     //Anfrage an Proxy schicken, damit dieser das Playback stoppt
