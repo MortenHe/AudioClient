@@ -1,16 +1,4 @@
-Trackanzeige
-<label class="switch">
-
-  <!-- FormControl -->
-  <input type="checkbox"
-         [formControl]="showTracksCheckbox"
-         class="switch-input">
-
-  <!-- Label fuer toggle-switch -->
-  <span class="switch-label"
-        data-on="an"
-        data-off="aus"></span>
-
-  <!-- toggle-switch UI Element -->
-  <span class="switch-handle"></span>
-</label>
+<!-- FormControl wird per directive zu toggle-swit gestylt -->
+<input type="checkbox"
+       [formControl]="showTracksCheckbox"
+       appToggleCheckbox="Tracks" />

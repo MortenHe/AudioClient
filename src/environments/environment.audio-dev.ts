@@ -10,5 +10,9 @@ export const environment = {
   {
     "id": "kindermusik",
     "label": "Kindermusik"
+  },
+  {
+    "id": "musikmh",
+    "label": "Musik MH"
   }]
 };

@@ -8,12 +8,16 @@ import { HttpModule } from '@angular/http';
 import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
 import { PlaylistService } from './services/playlist.service';
+import { PicontrolService } from './services/picontrol.service';
 
 //eigenes Pipes
 import { ModeFilterPipe } from './pipes/mode-filter.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { TimeformatterPipe } from './pipes/timeformatter.pipe';
+
+//eigenes Directives
+import { ToggleCheckboxDirective } from './directies/toggle-checkbox.directive';
 
 //eigene Komponenten
 import { AppComponent } from './components/app/app.component';
@@ -30,8 +34,8 @@ import { PlayercontrolComponent } from './components/playercontrol/playercontrol
 import { PicontrolComponent } from './components/picontrol/picontrol.component';
 import { ResultlistinspectorComponent } from './components/resultlistinspector/resultlistinspector.component';
 import { DebuginspectorComponent } from './components/debuginspector/debuginspector.component';
-import { PicontrolService } from './services/picontrol.service';
 import { ToggletrackviewComponent } from './components/toggletrackview/toggletrackview.component';
+import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 
 @NgModule({
   declarations: [
@@ -53,8 +57,9 @@ import { ToggletrackviewComponent } from './components/toggletrackview/toggletra
     ToggletrackviewComponent,
     ModeFilterPipe,
     SearchFilterPipe,
-    OrderByPipe
-
+    OrderByPipe,
+    ToggleCheckboxDirective,
+    RandomPlaybackComponent
   ],
   imports: [
     BrowserModule,

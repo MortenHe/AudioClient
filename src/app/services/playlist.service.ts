@@ -94,10 +94,10 @@ export class PlaylistService {
   //Video(s) starten
   startVideoPlaylist(playmode) {
 
-    //VideoPlaylist setzen mit Array der Namen der Video + Laenge der Playlist
+    //VideoPlaylist setzen mit items + Laenge der Playlist. playmode, damit activeItem in Trefferliste ggf. zurueckgesetzt werden kann
     let currentPlayedPlaylist = {
       playmode: playmode,
-      items: this.playlist.map(item => item.name),
+      items: this.playlist,
       length: this.getPlaylistLength()
     }
 

@@ -1,8 +1,8 @@
 <!-- auesserer Container -->
-<div class="app-width container-fluid mt-3 mb-3 mr-0 ml-0">
+<div class="app-width container mt-3 mb-3 mr-0 ml-0 no-gutters">
 
   <!-- Inspektor mit den moeglichen Werten -->
-  <debuginspector class="d-none mb-3"></debuginspector>
+  <debuginspector class="d-flex mb-3"></debuginspector>
 
   <!-- Zeile fuer Ueberschrift, Mode-Select und Shutdown-Button -->
   <div class="row no-gutters">
@@ -20,6 +20,10 @@
     <picontrol class="d-flex"></picontrol>
   </div>
 
+  <!-- Zufaellige Wiedergabe (nur bei audio) -->
+  <random-playback *ngIf="appMode === 'audio' && (mode$ | async) !== 'hsp'"
+                   class="d-flex mt-2"></random-playback>
+
   <!-- Anischt der aktuellen laufenden Playlist -->
   <currentplayedplaylistinspector></currentplayedplaylistinspector>
 
@@ -36,20 +40,26 @@
   <hr>
 
   <!-- Infos zu Anzahl der Items, Suchfeld und Sortierbuttons -->
-  <div class="row no-gutters d-flex align-items-center">
+  <div class="row no-gutters">
 
-    <!-- Anzahl der Items in Trefferliste -->
-    <resultlistinspector class="item-count text-right mr-2"></resultlistinspector>
+    <div class="col-12 col-sm mr-sm-2 row no-gutters d-flex align-items-center">
 
-    <!-- Suchfeld fuer Filterung -->
-    <searchfilter class="col mr-2"></searchfilter>
+      <!-- Anzahl der Items in Trefferliste -->
+      <resultlistinspector class="item-count text-right mr-2"></resultlistinspector>
 
-    <!-- Ansicht der Tracks zu toggeln (nur bei audio) -->
-    <toggletrackview *ngIf="appMode === 'audio'"
-                     class="mr-2"></toggletrackview>
+      <!-- Suchfeld fuer Filterung -->
+      <searchfilter class="col"></searchfilter>
+    </div>
 
-    <!-- Sortierbuttons -->
-    <sortfilter class="d-flex align-items-center"></sortfilter>
+    <div class="col-12 mt-2 col-sm mt-sm-0 row no-gutters d-flex align-items-center">
+
+      <!-- Ansicht der Tracks zu toggeln (nur bei audio) -->
+      <toggletrackview *ngIf="appMode === 'audio'"
+                       class="col mr-2 d-flex justify-content-end"></toggletrackview>
+
+      <!-- Sortierbuttons -->
+      <sortfilter class="d-flex align-items-center justify-content-end"></sortfilter>
+    </div>
   </div>
 
   <!-- Trefferliste -->

@@ -27,7 +27,8 @@
                 "active": true
             }
         ],
-        "items": []
+        "items": [],
+        "allowRandom": false
     },
     "kindermusik": {
         "filter": [
@@ -57,6 +58,38 @@
                 "active": true
             }
         ],
-        "items": []
+        "items": [],
+        "allowRandom": true
+    },
+    "musikmh": {
+        "filter": [
+            {
+                "id": "all",
+                "label": "Alle",
+                "active": true
+            },
+            {
+                "id": "beatles",
+                "label": "Beatles",
+                "active": true
+            },
+            {
+                "id": "jahre",
+                "label": "Jahre",
+                "active": true
+            },
+            {
+                "id": "musical",
+                "label": "Musical",
+                "active": true
+            },
+            {
+                "id": "misc",
+                "label": "Sonstige",
+                "active": true
+            }
+        ],
+        "items": [],
+        "allowRandom": true
     }
 }

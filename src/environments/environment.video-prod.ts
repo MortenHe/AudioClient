@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  envName: 'Video (prod)',
+  envName: 'Video Player',
   production: true,
   appMode: 'video',
   proxyUrl: 'http://192.168.0.150/proxy/',

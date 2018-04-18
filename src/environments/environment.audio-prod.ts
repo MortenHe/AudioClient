@@ -1,5 +1,5 @@
 export const environment = {
-  envName: 'Audio (prod)',
+  envName: 'Audio Player',
   production: true,
   appMode: 'audio',
   proxyUrl: 'http://192.168.0.150/proxy/',
@@ -10,5 +10,9 @@ export const environment = {
   {
     "id": "kindermusik",
     "label": "Kindermusik"
+  },
+  {
+    "id": "musikmh",
+    "label": "Musik MH"
   }]
 };

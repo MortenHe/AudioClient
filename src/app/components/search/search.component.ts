@@ -19,6 +19,9 @@ export class SearchComponent {
   //Name der App fuer Ueberschrift (z.B. Video Player (dev))
   envName = environment.envName;
 
+  //mode (Kindermusik vs. HSP)
+  mode$;
+
   //Services und Router injecten
   constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService) {
   }
@@ -28,6 +31,9 @@ export class SearchComponent {
 
     //Komplettliste der Items in Service laden
     this.bs.loadFullItemlist();
+
+    //Modus abonnieren (fuer Anzeige gewisser Komponenten)
+    this.mode$ = this.bs.getMode();
 
     //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert
     this.route.paramMap.subscribe(params => {

@@ -8,6 +8,7 @@ import { ModeFilterPipe } from '../pipes/mode-filter.pipe';
 import { SearchFilterPipe } from '../pipes/search-filter.pipe';
 import { OrderByPipe } from '../pipes/order-by.pipe';
 import { environment } from '../../environments/environment';
+import { PlaylistService } from './playlist.service';
 
 @Injectable()
 export class BackendService {
@@ -42,6 +43,9 @@ export class BackendService {
     //umgekehrte Reihenfolge
     reverseOrder;
 
+    //Zufallswiedergabe
+    randomPlaybackBS = new BehaviorSubject(false);
+
     //Modus als BS, das abboniert werden kann
     modeBS = new BehaviorSubject("kinder");
 
@@ -69,6 +73,13 @@ export class BackendService {
 
                 //Modus in Variable speichern (fuer Start Playlist Funktion)
                 this.mode = mode;
+
+                //Wenn in diesem Modus kein Random erlaubt
+                if (!this.itemListFull[mode].allowRandom) {
+
+                    //Random Playback auf false stellen (weil es gar nicht in alle Modes setzbar ist)
+                    this.setRandomPlayback(false);
+                }
 
                 //Filter-Modus-Liste des aktuellen Modus setzen
                 this.modeFilterListSB.next(this.itemListFull[mode].filter);
@@ -135,6 +146,16 @@ export class BackendService {
         this.modeBS.next(mode);
     }
 
+    //Zufallswiedergabe liefern
+    getRandomPlayback() {
+        return this.randomPlaybackBS;
+    }
+
+    //Zufallswiedergabe setzen
+    setRandomPlayback(bool) {
+        this.randomPlaybackBS.next(bool);
+    }
+
     //gefilterte und sortierte Itemliste liefern
     getFilteredItemlist() {
         return this.itemListFilteredBS;
@@ -148,8 +169,8 @@ export class BackendService {
     //Anfrage an Proxy schicken, damit dieser Item(s) startet
     sendPlayRequest(itemList) {
 
-        //Zufaellig Wiedergabe?
-        let randomPlayback = false;
+        //Zufaellige Wiedergabe? Aktuellen Wert aus Observable holen
+        let randomPlayback = this.getRandomPlayback().getValue();
 
         //Dateiname(n) und Modus mitschicken bei HTTP-Request
         this.http.post(this.proxyUrl + this.appMode + "_start_playback.php", JSON.stringify({ production: this.production, mode: this.mode, item_list: itemList, random_playback: randomPlayback })).subscribe();
