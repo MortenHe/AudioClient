@@ -25,6 +25,7 @@ export class DebuginspectorComponent implements OnInit {
   playlist$: Observable<any[]>;
   currentPlayedPlaylist$: Observable<any>;
   randomPlayback$: Observable<boolean>;
+  allowRandom$: Observable<boolean>;
 
   //Env-Werte
   appMode = environment.appMode;
@@ -50,5 +51,6 @@ export class DebuginspectorComponent implements OnInit {
     this.playlist$ = this.pls.getPlaylist();
     this.currentPlayedPlaylist$ = this.pls.getCurrentPlayedPlaylist();
     this.randomPlayback$ = this.bs.getRandomPlayback();
+    this.allowRandom$ = this.bs.getAllowRandom();
   }
 }

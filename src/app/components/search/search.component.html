@@ -20,8 +20,8 @@
     <picontrol class="d-flex"></picontrol>
   </div>
 
-  <!-- Zufaellige Wiedergabe (nur bei audio) -->
-  <random-playback *ngIf="appMode === 'audio' && (mode$ | async) !== 'hsp'"
+  <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben) -->
+  <random-playback *ngIf="allowRandom$ | async"
                    class="d-flex mt-2"></random-playback>
 
   <!-- Anischt der aktuellen laufenden Playlist -->

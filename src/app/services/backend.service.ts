@@ -55,6 +55,9 @@ export class BackendService {
     //Liste der Mode Filter dieses Modus als BS, das abboniert werden kann
     modeFilterListSB = new BehaviorSubject([]);
 
+    //Random Playback erlaubt als BS, das abboniert werden kann
+    allowRandomBS = new BehaviorSubject(false);
+
     //Service injekten
     constructor(private http: Http, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
     }
@@ -74,12 +77,8 @@ export class BackendService {
                 //Modus in Variable speichern (fuer Start Playlist Funktion)
                 this.mode = mode;
 
-                //Wenn in diesem Modus kein Random erlaubt
-                if (!this.itemListFull[mode].allowRandom) {
-
-                    //Random Playback auf false stellen (weil es gar nicht in alle Modes setzbar ist)
-                    this.setRandomPlayback(false);
-                }
+                //Wert in BS setzen, ob Random in diesem Modus erlaubt ist
+                this.allowRandomBS.next(this.itemListFull[mode].allowRandom);
 
                 //Filter-Modus-Liste des aktuellen Modus setzen
                 this.modeFilterListSB.next(this.itemListFull[mode].filter);
@@ -146,6 +145,11 @@ export class BackendService {
         this.modeBS.next(mode);
     }
 
+    //Random erlaubt liefern
+    getAllowRandom() {
+        return this.allowRandomBS;
+    }
+
     //Zufallswiedergabe liefern
     getRandomPlayback() {
         return this.randomPlaybackBS;
@@ -169,8 +173,15 @@ export class BackendService {
     //Anfrage an Proxy schicken, damit dieser Item(s) startet
     sendPlayRequest(itemList) {
 
-        //Zufaellige Wiedergabe? Aktuellen Wert aus Observable holen
-        let randomPlayback = this.getRandomPlayback().getValue();
+        //davon ausgehen, dass es keine zufaellige Wiedergabe ist
+        let randomPlayback = false;
+
+        //Wenn Zufaellige Wiedergabe erlaubt ist (Aktuellen Wert aus Observable holen)
+        if (this.getAllowRandom().getValue()) {
+
+            //Aktuellen Random Playback Wert aus Observable holen und setzen            
+            randomPlayback = this.getRandomPlayback().getValue();
+        }
 
         //Dateiname(n) und Modus mitschicken bei HTTP-Request
         this.http.post(this.proxyUrl + this.appMode + "_start_playback.php", JSON.stringify({ production: this.production, mode: this.mode, item_list: itemList, random_playback: randomPlayback })).subscribe();

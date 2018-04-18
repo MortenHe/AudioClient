@@ -19,8 +19,8 @@ export class SearchComponent {
   //Name der App fuer Ueberschrift (z.B. Video Player (dev))
   envName = environment.envName;
 
-  //mode (Kindermusik vs. HSP)
-  mode$;
+  //ist random playback erlaubt (Kindermusik vs. HSP)?
+  allowRandom$;
 
   //Services und Router injecten
   constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService) {
@@ -33,7 +33,7 @@ export class SearchComponent {
     this.bs.loadFullItemlist();
 
     //Modus abonnieren (fuer Anzeige gewisser Komponenten)
-    this.mode$ = this.bs.getMode();
+    this.allowRandom$ = this.bs.getAllowRandom();
 
     //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert
     this.route.paramMap.subscribe(params => {

@@ -17,7 +17,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { TimeformatterPipe } from './pipes/timeformatter.pipe';
 
 //eigenes Directives
-import { ToggleCheckboxDirective } from './directies/toggle-checkbox.directive';
+import { ToggleCheckboxDirective } from './directives/toggle-checkbox.directive';
 
 //eigene Komponenten
 import { AppComponent } from './components/app/app.component';

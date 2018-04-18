@@ -25,7 +25,7 @@ export class RandomPlaybackComponent implements OnInit {
   //Beim Init
   ngOnInit() {
 
-    //Aenderungen an random-Wert verfolgen (z.B. wenn per Code Wert geandert wird)
+    //Aenderungen an random-Wert verfolgen (z.B. wenn per Code Wert geandert wird oder wenn Komponent nach destroy neu erstellt wird)
     this.bs.getRandomPlayback().takeUntil(this.ngUnsubscribe).subscribe(bool => {
 
       //Checkbox-Wert (ohne Event) setzen
