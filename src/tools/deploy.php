@@ -62,6 +62,9 @@ $packages = [
             [
                 "local" => "../proxy/json/audio/kindermusik",
                 "remote" => "proxy/json/audio/kindermusik"],
+            [
+                "local" => "../proxy/json/audio/musikmh",
+                "remote" => "proxy/json/audio/musikmh"],
         ],
     ],
     //Angular-Dist Code fuer Video
@@ -81,7 +84,7 @@ $packages = [
 ];
 
 //Welche Dateien / Verzeichnisse sollen beim Loeschen / Hochladen ingnoriert werden?
-$ignore_list = [".", "..", ".htaccess", "json", "audio", "video", "jahresvideo", "kinder", "hsp", "kindermusik", "assets"];
+$ignore_list = [".", "..", ".htaccess", "json", "audio", "video", "jahresvideo", "kinder", "hsp", "kindermusik", "musikmh", "assets"];
 
 //Ueber packages gehen
 foreach ($packages as $package => $obj) {

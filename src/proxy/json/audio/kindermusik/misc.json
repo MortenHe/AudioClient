@@ -1,5 +1,15 @@
 [
     {
+        "name": "Kindi",
+        "file": "kindi",
+        "length": "00:07:54",
+        "active": true,
+        "tracks": [
+            "Kleine Raupe Nimmersatt (pop mix)",
+            "Kleine Raupe Nimmersatt (slow mix)"
+        ]
+    },
+    {
         "name": "Babylove Kinderlieder",
         "file": "babylove-kinderlieder",
         "length": "00:22:23",

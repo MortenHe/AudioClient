@@ -36,6 +36,7 @@ import { ResultlistinspectorComponent } from './components/resultlistinspector/r
 import { DebuginspectorComponent } from './components/debuginspector/debuginspector.component';
 import { ToggletrackviewComponent } from './components/toggletrackview/toggletrackview.component';
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
+import { VolumeControlComponent } from './components/volume-control/volume-control.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { RandomPlaybackComponent } from './components/random-playback/random-pla
     SearchFilterPipe,
     OrderByPipe,
     ToggleCheckboxDirective,
-    RandomPlaybackComponent
+    RandomPlaybackComponent,
+    VolumeControlComponent
   ],
   imports: [
     BrowserModule,

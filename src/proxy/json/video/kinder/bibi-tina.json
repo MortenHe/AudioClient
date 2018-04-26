@@ -94,5 +94,23 @@
         "file": "bibi-tina-papi-reiten.mp4",
         "length": "00:25:09",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Der Hufschmied",
+        "file": "bibi-tina-hufschmied.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Ein Pony zum Knuddeln",
+        "file": "bibi-tina-pony-knuddeln.mp4",
+        "length": "00:25:10",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Ein unfaires Rennen",
+        "file": "bibi-tina-unfaires-rennen.mp4",
+        "length": "00:25:10",
+        "active": true
     }
 ]

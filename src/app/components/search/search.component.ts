@@ -19,6 +19,9 @@ export class SearchComponent {
   //Name der App fuer Ueberschrift (z.B. Video Player (dev))
   envName = environment.envName;
 
+  //dev vs. produktiv
+  production = environment.production;
+
   //ist random playback erlaubt (Kindermusik vs. HSP)?
   allowRandom$;
 
