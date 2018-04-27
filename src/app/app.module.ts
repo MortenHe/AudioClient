@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+//Angular Material
+import { MatSliderModule } from '@angular/material/slider';
+
 //eigenes Services
 import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
@@ -37,6 +40,7 @@ import { DebuginspectorComponent } from './components/debuginspector/debuginspec
 import { ToggletrackviewComponent } from './components/toggletrackview/toggletrackview.component';
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
+import { VolumeSliderComponent } from './components/volume-slider/volume-slider.component';
 
 @NgModule({
   declarations: [
@@ -61,12 +65,14 @@ import { VolumeControlComponent } from './components/volume-control/volume-contr
     OrderByPipe,
     ToggleCheckboxDirective,
     RandomPlaybackComponent,
-    VolumeControlComponent
+    VolumeControlComponent,
+    VolumeSliderComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     ReactiveFormsModule,
+    MatSliderModule,
     RouterModule.forRoot([
       { path: 'search/:mode', component: SearchComponent },
       { path: 'admin', component: AdminComponent },

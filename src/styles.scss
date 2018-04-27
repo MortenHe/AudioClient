@@ -1,6 +1,10 @@
-//Bootstrap imporiteren
-@import "~bootstrap/dist/css/bootstrap.css";
-//Variablen importieren
+//Eigenes Theme fuer Bootstrap importieren
+@import 'customize-bootstrap.scss';
+//Bootstrap importieren
+@import '../node_modules/bootstrap/scss/bootstrap';
+//Angular Material CSS
+@import 'customize-material.scss';
+//MH Variablen importieren
 @import '~scss/variables.scss';
 /* Bootstrap changes */
 
