@@ -14,8 +14,7 @@ switch ($command) {
     //toggle mute
     case "toggle-mute":
         echo "toggle mute<br>";
-        $shell_command = "sudo amixer sset 'PCM' mute";
-        //echo shell_exec("sudo amixer -D pulse set Master 1+ toggle");
+        $shell_command = "sudo amixer set 'PCM' toggle";
         echo $shell_command;
         echo shell_exec($shell_command);
         break;
