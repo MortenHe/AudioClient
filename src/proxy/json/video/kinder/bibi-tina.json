@@ -112,5 +112,29 @@
         "file": "bibi-tina-unfaires-rennen.mp4",
         "length": "00:25:10",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das Pferdequiz",
+        "file": "bibi-tina-pferdequiz.mp4",
+        "length": "00:25:10",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Amadeus verliebt sich",
+        "file": "bibi-tina-amadeus-verliebt.mp4",
+        "length": "00:25:10",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Aufregung auf dem Kupferberg",
+        "file": "bibi-tina-kupferberg.mp4",
+        "length": "00:25:10",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Trubel in der Wolfsschlucht",
+        "file": "bibi-tina-wolfsschlucht.mp4",
+        "length": "00:25:10",
+        "active": true
     }
 ]

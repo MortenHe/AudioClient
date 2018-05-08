@@ -22,7 +22,7 @@ switch ($command) {
     //lauter leiser um +/- x %
     case "change-volume":
         echo "change volume<br>";
-        $shell_command = "sudo amixer sset 'PCM' " . $request["params"]["step"] . "%" . $request["params"]["direction"];
+        $shell_command = "sudo amixer sset 'PCM' " . $request["params"]["step"] . "%" . $request["params"]["direction"] . " -M";
         echo $shell_command;
         echo shell_exec($shell_command);
         break;
@@ -30,7 +30,7 @@ switch ($command) {
     //Volume Wert setzen (in %)
     case "set-volume":
         echo "set volume<br>";
-        $shell_command = "sudo amixer sset 'PCM' " . $request["params"]["volume"] . "%";
+        $shell_command = "sudo amixer sset 'PCM' " . $request["params"]["volume"] . "% -M";
         echo $shell_command;
         echo shell_exec($shell_command);
         break;
