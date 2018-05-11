@@ -41,6 +41,7 @@ import { ToggletrackviewComponent } from './components/toggletrackview/toggletra
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
 import { VolumeSliderComponent } from './components/volume-slider/volume-slider.component';
+import { FileNamePipe } from './pipes/file-name.pipe';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
     ToggleCheckboxDirective,
     RandomPlaybackComponent,
     VolumeControlComponent,
-    VolumeSliderComponent
+    VolumeSliderComponent,
+    FileNamePipe
   ],
   imports: [
     BrowserModule,

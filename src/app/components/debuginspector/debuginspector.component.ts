@@ -23,7 +23,6 @@ export class DebuginspectorComponent implements OnInit {
   reverseOrder$: Observable<boolean>;
   showTracks$: Observable<boolean>;
   playlist$: Observable<any[]>;
-  currentPlayedPlaylist$: Observable<any>;
   randomPlayback$: Observable<boolean>;
   allowRandom$: Observable<boolean>;
 
@@ -49,8 +48,7 @@ export class DebuginspectorComponent implements OnInit {
     this.reverseOrder$ = this.fs.getReverseOrder();
     this.showTracks$ = this.fs.getShowTracks();
     this.playlist$ = this.pls.getPlaylist();
-    this.currentPlayedPlaylist$ = this.pls.getCurrentPlayedPlaylist();
-    this.randomPlayback$ = this.bs.getRandomPlayback();
+    this.randomPlayback$ = this.bs.getRandom();
     this.allowRandom$ = this.bs.getAllowRandom();
   }
 }

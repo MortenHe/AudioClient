@@ -32,9 +32,4 @@ export class PlaylistgeneratorComponent implements OnInit {
   toggleInPlaylist(item) {
     this.pls.toggleInPlaylist(item);
   }
-
-  //Playlist aus ggf. mehreren Items ("multi") per Service starten
-  startPlaylist() {
-    this.pls.startVideoPlaylist("multi");
-  }
 }

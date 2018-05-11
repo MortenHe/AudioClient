@@ -9,12 +9,20 @@ import { SearchFilterPipe } from '../pipes/search-filter.pipe';
 import { OrderByPipe } from '../pipes/order-by.pipe';
 import { environment } from '../../environments/environment';
 import { PlaylistService } from './playlist.service';
+import { Subject } from 'rxjs/Subject';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class BackendService {
 
     //URL wo die Proxyskripte liegen aus config laden
     proxyUrl = environment.proxyUrl;
+
+    //URL fuer WebSocketServer
+    wssUrl = environment.wssUrl;
+
+    //WebSocket
+    socket: Subject<any>;
 
     //audio vs. video
     appMode = environment.appMode;
@@ -43,9 +51,6 @@ export class BackendService {
     //umgekehrte Reihenfolge
     reverseOrder;
 
-    //Zufallswiedergabe
-    randomPlaybackBS = new BehaviorSubject(false);
-
     //Modus als BS, das abboniert werden kann
     modeBS = new BehaviorSubject("kinder");
 
@@ -58,8 +63,29 @@ export class BackendService {
     //Random Playback erlaubt als BS, das abboniert werden kann
     allowRandomBS = new BehaviorSubject(false);
 
+    //Lautstaerke
+    volume$: Subject<number> = new Subject<number>();
+
+    //Zeit innerhalb items
+    time$: Subject<string> = new Subject<string>();
+
+    //Die Dateien, die gerade abgespielt werden
+    files$: Subject<any[]> = new Subject<any[]>();
+
+    //Aktueller Index in Titelliste
+    position$: Subject<number> = new Subject<number>();
+
+    //aktueller Pause-Zustand
+    paused$: Subject<boolean> = new Subject<boolean>();
+
+    //aktueller Random-Zustand
+    random$: Subject<boolean> = new Subject<boolean>();
+
     //Service injekten
     constructor(private http: Http, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
+
+        //WebSocket erstellen
+        this.createWebsocket();
     }
 
     //Itemlist laden
@@ -150,16 +176,6 @@ export class BackendService {
         return this.allowRandomBS;
     }
 
-    //Zufallswiedergabe liefern
-    getRandomPlayback() {
-        return this.randomPlaybackBS;
-    }
-
-    //Zufallswiedergabe setzen
-    setRandomPlayback(bool) {
-        this.randomPlaybackBS.next(bool);
-    }
-
     //gefilterte und sortierte Itemliste liefern
     getFilteredItemlist() {
         return this.itemListFilteredBS;
@@ -170,30 +186,6 @@ export class BackendService {
         return this.modeFilterListSB;
     }
 
-    //Anfrage an Proxy schicken, damit dieser Item(s) startet
-    sendPlayRequest(itemList) {
-
-        //davon ausgehen, dass es keine zufaellige Wiedergabe ist
-        let randomPlayback = false;
-
-        //Wenn Zufaellige Wiedergabe erlaubt ist (Aktuellen Wert aus Observable holen)
-        if (this.getAllowRandom().getValue()) {
-
-            //Aktuellen Random Playback Wert aus Observable holen und setzen            
-            randomPlayback = this.getRandomPlayback().getValue();
-        }
-
-        //Dateiname(n) und Modus mitschicken bei HTTP-Request
-        this.http.post(this.proxyUrl + this.appMode + "_start_playback.php", JSON.stringify({ production: this.production, mode: this.mode, item_list: itemList, random_playback: randomPlayback })).subscribe();
-    }
-
-    //Anfrage an Proxy schicken, damit dieser das Playback stoppt
-    sendPlaybackStopRequest(): any {
-
-        //passenden Proxy fuer Video / Audio ansteuern
-        this.http.get(this.proxyUrl + this.appMode + "_stop_playback.php").subscribe();
-    }
-
     //Anfrage an Proxy schicken, damit diese z.B: das Video pausiert oder 30 sek nach rechts sprint oder zum naechsten Audio-Titel wechselt
     sendPlaybackControlRequest(command): any {
         this.http.get(this.proxyUrl + this.appMode + "_control_playback.php?command=" + command).subscribe();
@@ -202,5 +194,111 @@ export class BackendService {
     //Itemlists aus Webseite und auf Server vergleichen und Ergebnis zurueckliefern
     sendCompareItemlistsRequest(): Observable<any> {
         return this.http.get(this.proxyUrl + "compare_itemlists.php?app_mode=" + this.appMode + "&production=" + this.production).map(response => response.json() as any);
+    }
+
+    //Verbindung zu WSS herstellen
+    public createWebsocket() {
+        console.log("connect to wss");
+
+        //Socket-Verbindung mit URL aus Config anlegen
+        let socket = new WebSocket(this.wssUrl);
+        let observable = Observable.create(
+            (observer: Observer<MessageEvent>) => {
+                socket.onmessage = observer.next.bind(observer);
+                socket.onerror = observer.error.bind(observer);
+                socket.onclose = observer.complete.bind(observer);
+                return socket.close.bind(socket);
+            }
+        );
+        let observer = {
+            next: (data: Object) => {
+                if (socket.readyState === WebSocket.OPEN) {
+                    socket.send(JSON.stringify(data));
+                }
+                else {
+                    console.log("ready state ist " + socket.readyState)
+                }
+            }
+        };
+
+        //WebSocket anlegen
+        this.socket = Subject.create(observer, observable);
+
+        //auf Nachrichten vom Server reagieren
+        this.socket.subscribe(message => {
+
+            //console.log((JSON.parse(message.data.toString())));
+            let obj = JSON.parse(message.data);
+            let type = obj.type;
+            let value = obj.value;
+
+            //Switch anhand Message-Types
+            switch (obj.type) {
+                case "set-volume": case "change-volume":
+                    this.volume$.next(value);
+                    break;
+
+                case "time":
+                    this.time$.next(value);
+                    break;
+
+                case "set-position":
+                    this.position$.next(value);
+                    break;
+
+                case "toggle-paused":
+                    this.paused$.next(value);
+                    break;
+
+                case "set-files":
+                    this.files$.next(value);
+                    break;
+
+                case "toggle-random":
+                    this.random$.next(value);
+                    break;
+            }
+        });
+    }
+
+    //Nachricht an WSS schicken
+    sendMessage(messageObj) {
+        console.log(messageObj);
+        this.socket.next(messageObj);
+    }
+
+    //Volume liefern
+    getVolume() {
+        return this.volume$;
+    }
+
+    //Zeit liefern
+    getTime() {
+        return this.time$;
+    }
+
+    //Files liefern
+    getFiles() {
+        return this.files$;
+    }
+
+    //Position liefern
+    getPosition() {
+        return this.position$;
+    }
+
+    //Position setzen
+    setPosition(position) {
+        this.position$.next(position);
+    }
+
+    //Pause liefern
+    getPaused() {
+        return this.paused$;
+    }
+
+    //Random liefern
+    getRandom() {
+        return this.random$;
     }
 }

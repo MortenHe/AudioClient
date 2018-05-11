@@ -4,8 +4,8 @@
   <!-- Lautstaerke Kontrolle -->
   <volume-control class="d-flex justify-content-evenly mb-2"></volume-control>
 
-  <!-- Lautstaerke als Slider -->
-  <volume-slider class="d-flex justify-content-center"></volume-slider>
+  <!-- Steuerelemente (play, stop, seek) fuer Item-Wiedergabe -->
+  <playercontrol class="col d-flex justify-content-around"></playercontrol>
 
   <!-- Inspektor mit den moeglichen Werten, wird nur bei dev angezeigt -->
   <debuginspector class="d-flex mb-3"
@@ -18,10 +18,7 @@
   <div class="row no-gutters">
 
     <!-- Ueberschrift z.B. "Web Video Player (dev)" -->
-    <h1>{{envName}}</h1>
-
-    <!-- Steuerelemente (play, stop, seek) fuer Item-Wiedergabe -->
-    <playercontrol class="col d-flex justify-content-around mr-2 ml-2"></playercontrol>
+    <h1 class="col">{{envName}}</h1>
 
     <!-- Umschalter fuer Modus (Kindervideos vs. Jahresvideos) -->
     <selectmode class="mr-2"></selectmode>
@@ -31,8 +28,7 @@
   </div>
 
   <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben) -->
-  <random-playback *ngIf="allowRandom$ | async"
-                   class="d-flex mt-2"></random-playback>
+  <random-playback class="d-flex mt-2"></random-playback>
 
   <!-- Anischt der aktuellen laufenden Playlist -->
   <currentplayedplaylistinspector></currentplayedplaylistinspector>

@@ -1,7 +1,10 @@
 <!-- leiser -->
-<button (click)="controlVolume('change-volume', {step: 10, direction: '-'})"
+<button (click)="changeVolume(false)"
         class="ripple fa fa-volume-down text-info button-clean"></button>
 
+<!-- aktueller Lautstaerkewert -->
+{{volume$ | async}}
+
 <!-- lauter -->
-<button (click)="controlVolume('change-volume', {step: 10, direction: '+'})"
+<button (click)="changeVolume(true)"
         class="ripple fa fa-volume-up text-info button-clean"></button>

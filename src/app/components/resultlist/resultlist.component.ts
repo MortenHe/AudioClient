@@ -5,6 +5,7 @@ import { BackendService } from '../../services/backend.service';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'resultlist',
@@ -16,6 +17,9 @@ export class ResultlistComponent {
 
   //audio vs. video
   appMode = environment.appMode;
+
+  //Modus hsp vs. kindermusik
+  mode$: BehaviorSubject<string>;
 
   //Itemliste als Observable. Wird in Template per async pipe ausgegeben
   items$: Observable<Item[]>;
@@ -38,27 +42,8 @@ export class ResultlistComponent {
     //flag ob Tracks angezeigt werden abbonieren
     this.showTracks$ = this.fs.getShowTracks();
 
-    //Aktuell laufende Playlist per Service abbonieren
-    this.pls.getCurrentPlayedPlaylist().subscribe(currentPlayedPlaylist => {
-
-      //Wenn es eine Playlist gibt
-      if (currentPlayedPlaylist) {
-
-        //und sie durch den Playlistgenerator erstellt wurde
-        if (currentPlayedPlaylist.playmode === "multi") {
-
-          //kein Item in der Trefferliste als aktiv anzeigen
-          this.activeItem = null;
-        }
-      }
-
-      //es gibt keine Playlist (mehr)
-      else {
-
-        //kein Item in der Trefferliste (mehr) als aktiv anzeigen
-        this.activeItem = null;
-      }
-    });
+    //Modus abbonieren
+    this.mode$ = this.bs.getMode();
   }
 
   //per Service pruefen ob Item in Playlist ist
@@ -77,10 +62,13 @@ export class ResultlistComponent {
     //aktives Item setzen und dadurch in Liste optisch anpassen
     this.activeItem = item.file;
 
-    //Playlist bestehend aus 1 Item setzen
-    this.pls.setPlaylist([item]);
+    //aktuellen Modus auslesen (hsp vs. kindermusik)
+    let mode = this.mode$.getValue();
 
-    //Service aufrufen, der das Video startet
-    this.pls.startVideoPlaylist("single");
+    //Ordner fuer Playback erstellen
+    let dir = "/media/usb_red/" + this.appMode + "/" + mode + "/" + item.mode + "/" + item.file;
+
+    //Message an WSS
+    this.bs.sendMessage({ type: "set-playlist", value: dir });
   }
 }

@@ -13,9 +13,6 @@ export class PlaylistService {
   //BS fuer Playlist, das andere Komponenten subscriben koennen
   playlistBS: BehaviorSubject<any[]> = new BehaviorSubject([]);
 
-  //BS fuer aktuell laufende Playlist, das andere Komponenten subscriben koennen
-  curretPlayedPlaylistBS: BehaviorSubject<any> = new BehaviorSubject(null);
-
   //Service injecten
   constructor(private bs: BackendService) { }
 
@@ -24,10 +21,6 @@ export class PlaylistService {
     return this.playlistBS;
   }
 
-  //aktuell laufende Playlist zurueckgeben
-  getCurrentPlayedPlaylist(): BehaviorSubject<any> {
-    return this.curretPlayedPlaylistBS;
-  }
 
   //Pruefen ob Video in Playlist ist
   isInPlaylist(video) {
@@ -84,35 +77,5 @@ export class PlaylistService {
     //Playlist leeren und in BS schieben
     this.playlist = [];
     this.playlistBS.next(this.playlist);
-  }
-
-  //aktuell laufende Playlist zuruecksetzen
-  resetCurrentPlayedPlaylist() {
-    this.curretPlayedPlaylistBS.next(null);
-  }
-
-  //Video(s) starten
-  startVideoPlaylist(playmode) {
-
-    //VideoPlaylist setzen mit items + Laenge der Playlist. playmode, damit activeItem in Trefferliste ggf. zurueckgesetzt werden kann
-    let currentPlayedPlaylist = {
-      playmode: playmode,
-      items: this.playlist,
-      length: this.getPlaylistLength()
-    }
-
-    //aktuell laufende Playlist in BS schieben
-    this.curretPlayedPlaylistBS.next(currentPlayedPlaylist);
-
-    //Liste der Dateinname fuer Serveranfrage
-    let videoList = this.playlist.map(item => {
-      return item.mode + "/" + item.file
-    });
-
-    //Playlist leeren
-    this.resetPlaylist();
-
-    //Service aufrufen, der das/die Video(s) startet
-    this.bs.sendPlayRequest(videoList);
   }
 }

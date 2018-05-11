@@ -2,6 +2,7 @@ export const environment = {
   envName: 'Audio Player',
   production: true,
   appMode: 'audio',
+  wssUrl: 'ws://192.168.0.150:8080',
   proxyUrl: 'http://192.168.0.150/proxy/',
   domainModes: [{
     "id": "hsp",

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { PicontrolService } from '../../services/picontrol.service';
+import { BackendService } from '../../services/backend.service';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'volume-control',
@@ -9,12 +10,21 @@ import { PicontrolService } from '../../services/picontrol.service';
 
 export class VolumeControlComponent {
 
-  //Service injecten
-  constructor(private ps: PicontrolService) { }
+  //Aktueller Lautstaerkewert
+  volume$: Subject<number>;
 
-  //Command an Service weiterreichen, wenn keine params kommen, leeres Objekt mitliefern
-  controlVolume(command, params = {}) {
-    this.ps.sendControlVolumeRequest(command, params);
+  //Service injecten
+  constructor(private bs: BackendService) { }
+
+  //Beim Init
+  ngOnInit() {
+
+    //Aktuelle Lautstaerke abbonieren
+    this.volume$ = this.bs.getVolume();
   }
 
+  //Volume leiser oder lauter an WSS schicken
+  changeVolume(increase) {
+    this.bs.sendMessage({ type: "change-volume", value: increase });
+  }
 }

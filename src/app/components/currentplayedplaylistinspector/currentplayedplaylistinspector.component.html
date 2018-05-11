@@ -1,19 +1,12 @@
 <!-- Info ueber aktuell laufende Playlist -->
-<ng-container *ngIf="(currentPlayedPlaylist$ | async) as currentPlayedPlaylist">
 
-  <!-- Trennlinie -->
-  <hr>
 
-  <!-- Ueberschrift: "Gerade laeuft (die Playlist):" -->
-  <div class="d-flex">
-    <span class="font-weight-bold">Gerade läuft</span>
-    <span class="font-weight-bold"
-          *ngIf="currentPlayedPlaylist.items.length > 1">&nbsp;die Playlist</span>
-    &nbsp;(Länge:&nbsp;{{currentPlayedPlaylist.length | timeformatter}})
-  </div>
+<div *ngFor="let file of files$ | async; let i = index">
 
-  <!-- Titel der akutell laufenden Playlist -->
-  <div *ngFor="let item of currentPlayedPlaylist.items">
-    {{item.name}}
-  </div>
-</ng-container>
+  <!-- Titel. Fett anzeigen -->
+  <span [class.font-weight-bold]="i === position">{{(i + 1)}} {{file|fileName}}
+
+    <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
+    <ng-container *ngIf="i === position && time !== ''"> ({{time}})</ng-container>
+  </span>
+</div>

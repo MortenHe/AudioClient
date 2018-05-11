@@ -25,8 +25,8 @@ export class RandomPlaybackComponent implements OnInit {
   //Beim Init
   ngOnInit() {
 
-    //Aenderungen an random-Wert verfolgen (z.B. wenn per Code Wert geandert wird oder wenn Komponent nach destroy neu erstellt wird)
-    this.bs.getRandomPlayback().takeUntil(this.ngUnsubscribe).subscribe(bool => {
+    //Aenderungen an random-Wert verfolgen (z.B. wenn per Code Wert geandert wird oder wenn Komponente nach destroy neu erstellt wird)
+    this.bs.getRandom().takeUntil(this.ngUnsubscribe).subscribe(bool => {
 
       //Checkbox-Wert (ohne Event) setzen
       this.randomPlaybackCheckbox.setValue(bool, { 'emitEvent': false })
@@ -35,25 +35,9 @@ export class RandomPlaybackComponent implements OnInit {
     //Aenderungen an Checkbox in Template verfolgen
     this.randomPlaybackCheckbox.valueChanges.subscribe(bool => {
 
-      //Wert in Service setzen
-      this.bs.setRandomPlayback(bool);
-
-      //Aktuell laufende Playlist ermitteln
-      let currentPlayedPlaylist = this.pls.getCurrentPlayedPlaylist().getValue();
-
-      //Wenn gerade eine Playlist laeuft: Playlist laeuft normal -> gleiche Playlist auf random (oder umgekehrt)
-      if (currentPlayedPlaylist) {
-
-        //Aktuell laufende Playlist holen
-        let playlist = currentPlayedPlaylist.items[0];
-
-        //Playlist bestehend aus 1 Item setzen
-        this.pls.setPlaylist([playlist]);
-
-        //Service aufrufen, der das Video startet (dort wird dann das random-Merkmal ausgewertet)
-        this.pls.startVideoPlaylist("single");
-      }
-    })
+      //Message an WSS schicken
+      this.bs.sendMessage({ type: "toggle-random", value: "" });
+    });
   }
 
   //Wenn Komponente zerstoert wird

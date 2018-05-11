@@ -51,6 +51,11 @@ input:focus {
     box-shadow: none !important;
 }
 
+button:disabled {
+    opacity: .5;
+    cursor: default;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }

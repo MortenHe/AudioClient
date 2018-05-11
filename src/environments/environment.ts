@@ -8,5 +8,6 @@ export const environment = {
   production: false,
   appMode: '',
   proxyUrl: '',
+  wssUrl: '',
   domainModes: []
 };

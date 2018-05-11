@@ -15,8 +15,14 @@ export class PlayercontrolComponent {
   //video vs. audio
   appMode = environment.appMode;
 
-  //Aktuell laufende Playlist als Observable
-  currentPlayedPlaylist$: Observable<any>;
+  //aktueller Pausenzustand
+  paused: boolean;
+
+  //aktueller Index in Titellsite
+  position: number;
+
+  //aktuelle Liste der abgespielten files
+  files: any[] = [];
 
   //Services injecten
   constructor(private bs: BackendService, private pls: PlaylistService) { }
@@ -24,22 +30,27 @@ export class PlayercontrolComponent {
   //Beim Init
   ngOnInit() {
 
-    //Aktuell laufende Playlist abbonieren, damit Steuercontrols ein- und ausgeblendet werden koennen
-    this.currentPlayedPlaylist$ = this.pls.getCurrentPlayedPlaylist();
+    //aktuellen Pausenzustand abonnieren und in Variable schreiben (fuer CSS-Klasse)
+    this.bs.getPaused().subscribe(paused => this.paused = paused);
+
+    //aktuellen Index der Titelliste abonnieren und in Variable schreiben (fuer disabled der Buttons)
+    this.bs.getPosition().subscribe(position => this.position = position);
+
+    //aktuelle Liste der Files abbonieren und in Variable schreiben (fuer disabled der Buttons)
+    this.bs.getFiles().subscribe(files => this.files = files);
   }
 
-  //MM per Service pausieren oder wieder starten oder 30 sec nach links/rechts springen
-  controlPlayback(command) {
-    this.bs.sendPlaybackControlRequest(command);
+  //Paused-Zustand toggeln
+  togglePaused() {
+    this.bs.sendMessage({ type: "toggle-paused", value: "" });
   }
 
-  //Video stoppen
-  stopPlayback() {
+  //zum vorherigen / naechten Titel wechseln
+  changeSong(increase: boolean) {
+    this.bs.sendMessage({ type: "change-song", value: increase });
 
-    //aktuell abgespielte Playlist per Service zuruecksetzen
-    this.pls.resetCurrentPlayedPlaylist();
-
-    //Video per Service stoppen
-    this.bs.sendPlaybackStopRequest();
+    //Neue Position direkt setzten (geht schneller als per Nachricht von WSS)
+    let newPosition = increase ? this.position + 1 : this.position - 1;
+    this.bs.setPosition(newPosition);
   }
 }
