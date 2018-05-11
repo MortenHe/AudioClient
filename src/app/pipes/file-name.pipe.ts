@@ -9,7 +9,13 @@ export class FileNamePipe implements PipeTransform {
   //String formattieren
   transform(value: string, args?: any): any {
 
-    //Datei kommt als kompletter Pfad: nur Dateiname ausgeben: ^\d+ - um 01 - zu filtern
-    return path.basename(value);
+    //Datei kommt als kompletter Pfad: nur Dateiname ausgeben
+    let fileName = path.basename(value);
+
+    //Zahlen filtern
+    fileName = fileName.replace(/\d+( -)* \d*/g, '');
+
+    //gefilterten Namen zurueckliefern
+    return fileName.trim();
   }
 }

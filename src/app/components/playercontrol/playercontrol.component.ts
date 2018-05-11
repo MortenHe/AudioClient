@@ -48,9 +48,5 @@ export class PlayercontrolComponent {
   //zum vorherigen / naechten Titel wechseln
   changeSong(increase: boolean) {
     this.bs.sendMessage({ type: "change-song", value: increase });
-
-    //Neue Position direkt setzten (geht schneller als per Nachricht von WSS)
-    let newPosition = increase ? this.position + 1 : this.position - 1;
-    this.bs.setPosition(newPosition);
   }
 }
