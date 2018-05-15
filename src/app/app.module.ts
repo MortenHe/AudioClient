@@ -12,12 +12,14 @@ import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
 import { PlaylistService } from './services/playlist.service';
 import { PicontrolService } from './services/picontrol.service';
+import { JsondataService } from './services/jsondata.service';
 
 //eigenes Pipes
 import { ModeFilterPipe } from './pipes/mode-filter.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { TimeformatterPipe } from './pipes/timeformatter.pipe';
+import { FileNamePipe } from './pipes/file-name.pipe';
 
 //eigenes Directives
 import { ToggleCheckboxDirective } from './directives/toggle-checkbox.directive';
@@ -41,7 +43,7 @@ import { ToggletrackviewComponent } from './components/toggletrackview/toggletra
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
 import { VolumeSliderComponent } from './components/volume-slider/volume-slider.component';
-import { FileNamePipe } from './pipes/file-name.pipe';
+
 
 @NgModule({
   declarations: [
@@ -81,7 +83,7 @@ import { FileNamePipe } from './pipes/file-name.pipe';
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
   ],
-  providers: [BackendService, PlaylistService, ResultfilterService, PicontrolService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
+  providers: [BackendService, PlaylistService, ResultfilterService, PicontrolService, JsondataService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -136,5 +136,23 @@
         "file": "bibi-tina-wolfsschlucht.mp4",
         "length": "00:25:10",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das Mittelalterfest",
+        "file": "bibi-tina-mittelalterfest.mp4",
+        "length": "00:25:10",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Wirbel um die Pferdegala",
+        "file": "bibi-tina-wirbel-pferdegala.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Wölfe in Falkenstein",
+        "file": "bibi-tina-woelfe-falkenstein.mp4",
+        "length": "00:25:09",
+        "active": true
     }
 ]

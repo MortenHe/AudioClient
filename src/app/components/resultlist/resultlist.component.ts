@@ -59,8 +59,10 @@ export class ResultlistComponent {
   //einzelnes Item abspielen
   playSingleItem(item) {
 
+    console.log(item);
+
     //aktives Item setzen und dadurch in Liste optisch anpassen
-    this.activeItem = item.file;
+    this.activeItem = item;
 
     //aktuellen Modus auslesen (hsp vs. kindermusik)
     let mode = this.mode$.getValue();

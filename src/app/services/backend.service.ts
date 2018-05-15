@@ -11,6 +11,8 @@ import { environment } from '../../environments/environment';
 import { PlaylistService } from './playlist.service';
 import { Subject } from 'rxjs/Subject';
 import { Observer } from 'rxjs/Observer';
+import { JsondataService } from './jsondata.service';
+import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class BackendService {
@@ -81,8 +83,8 @@ export class BackendService {
     //aktueller Random-Zustand
     random$: Subject<boolean> = new Subject<boolean>();
 
-    //Service injekten
-    constructor(private http: Http, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
+    //Services injekten
+    constructor(private http: Http, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
 
         //WebSocket erstellen
         this.createWebsocket();
@@ -92,10 +94,12 @@ export class BackendService {
     loadFullItemlist() {
 
         //Itemlist holen per HTTP-Request
-        this.http.get(this.proxyUrl + "get_itemlist.php?app_mode=" + environment.appMode).map(response => response.json()).subscribe(itemlist => {
+        this.jds.loadJson(this.appMode, false).switchMap(fullList => {
+            return fullList;
+        }).subscribe(itemList => {
 
             //komplette Itemliste speichern
-            this.itemListFull = itemlist;
+            this.itemListFull = itemList;
 
             //Wenn sich der Modus aendert
             this.modeBS.subscribe(mode => {
