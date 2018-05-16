@@ -7,3 +7,6 @@
 /.vscode
 /dist-audio
 /dist-video
+/dist
+/myDist.zip
+/src/tools/connection.js
