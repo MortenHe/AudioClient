@@ -27,7 +27,6 @@ import { ToggleCheckboxDirective } from './directives/toggle-checkbox.directive'
 //eigene Komponenten
 import { AppComponent } from './components/app/app.component';
 import { SearchComponent } from './components/search/search.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { ResultlistComponent } from './components/resultlist/resultlist.component';
 import { ModefilterComponent } from './components/modefilter/modefilter.component';
 import { SearchfilterComponent } from './components/searchfilter/searchfilter.component';
@@ -48,7 +47,6 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
     SearchComponent,
     ResultlistComponent,
     TimeformatterPipe,
@@ -79,7 +77,6 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
     MatSliderModule,
     RouterModule.forRoot([
       { path: 'search/:mode', component: SearchComponent },
-      { path: 'admin', component: AdminComponent },
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
   ],

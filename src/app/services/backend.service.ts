@@ -94,7 +94,7 @@ export class BackendService {
     loadFullItemlist() {
 
         //Itemlist holen per HTTP-Request
-        this.jds.loadJson(this.appMode, false).switchMap(fullList => {
+        this.jds.loadJson(this.appMode).switchMap(fullList => {
             return fullList;
         }).subscribe(itemList => {
 

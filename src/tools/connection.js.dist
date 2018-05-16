@@ -1,5 +1,14 @@
 module.exports = {
-    host: '',
-    user: '',
-    password: ''
+    connection: {
+        pi: {
+            host: '',
+            user: '',
+            password: ''
+        },
+        vb: {
+            host: '',
+            user: '',
+            password: ''
+        }
+    }
 };

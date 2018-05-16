@@ -13,7 +13,7 @@ export class JsondataService {
   constructor(private http: Http) { }
 
   //JSON-Daten aus files laden
-  loadJson(appMode, showAllInfo: boolean) {
+  loadJson(appMode) {
 
     //per HTTP JSON Hauptfile holen (audiolist.json vs. videolist.json)
     return this.http.get("assets/json/" + appMode + "/" + appMode + "list.json").map(data => {
@@ -39,8 +39,8 @@ export class JsondataService {
           //All-Filter wird immer angezeigt
           if (filterID !== "all") {
 
-            //Wenn alle Infos geliefert werden sollen oder Modus aktiv ist
-            if (showAllInfo || filterData["active"]) {
+            //Wenn Modus aktiv ist
+            if (filterData["active"]) {
 
               //Feld "active" loeschen (wird nicht fuer die Oberflaeche benoetigt)
               delete jsonObj[mode]["filter"][index]["active"];
@@ -96,8 +96,8 @@ export class JsondataService {
           //Ueber Daten (z.B. einzelne Audio-Playlists) gehen
           result["data"].forEach(modeItem => {
 
-            //Wenn alle Daten geliefert werden sollen oder Playlist / Video ist
-            if (showAllInfo || modeItem["active"]) {
+            //Wenn Playlist / Video ist
+            if (modeItem["active"]) {
 
               //Feld "active" loeschen
               delete modeItem["active"];

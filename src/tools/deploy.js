@@ -1,6 +1,10 @@
 //Connection laden
 const connection = require("./connection.js");
 
+//Wohin sollen die Daten deployed werden? wenn kein Argument kommt -> pi
+const runMode = process.argv[2] ? process.argv[2] : "pi";
+console.log("build and deploy to " + runMode);
+
 //Projekt bauen
 const { execSync } = require('child_process');
 console.log("start build");
@@ -35,9 +39,9 @@ zipFolder('../../dist', '../../myDist.zip', function (err) { });
 //gezippte Daten per SSH auf Server spielen und entpacken
 var SSH2Promise = require('ssh2-promise');
 var ssh = new SSH2Promise({
-    host: connection.host,
-    username: connection.user,
-    password: connection.password
+    host: connection[runMode].host,
+    username: connection[runMode].user,
+    password: connection[runMode].password
 });
 
 //SSH Session erzeugen
