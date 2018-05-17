@@ -35,7 +35,7 @@ export class SearchComponent {
     //Komplettliste der Items in Service laden
     this.bs.loadFullItemlist();
 
-    //Modus abonnieren (fuer Anzeige gewisser Komponenten)
+    //AllowRandom abonnieren (fuer Anzeige gewisser Komponenten)
     this.allowRandom$ = this.bs.getAllowRandom();
 
     //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert

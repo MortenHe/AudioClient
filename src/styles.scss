@@ -260,3 +260,7 @@ button:disabled {
     opacity: .2;
     transition: 0s;
 }
+
+.hidden {
+    display: none !important;
+}

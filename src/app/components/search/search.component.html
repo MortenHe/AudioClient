@@ -28,7 +28,8 @@
   </div>
 
   <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben) -->
-  <random-playback class="d-flex mt-2"></random-playback>
+  <random-playback [class.hidden]="!(allowRandom$ | async)"
+                   class="d-flex mt-2 mb-2"></random-playback>
 
   <!-- Anischt der aktuellen laufenden Playlist -->
   <currentplayedplaylistinspector></currentplayedplaylistinspector>

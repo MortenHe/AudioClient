@@ -27,6 +27,9 @@ export class ResultlistComponent {
   //Flag ob Tracks angezeigt werden sollen
   showTracks$: Observable<boolean>;
 
+  //Ist Random erlaubt?
+  allowRandom$: BehaviorSubject<boolean>;
+
   //welches Item in der Liste wurde angeklickt?
   activeItem: Item;
 
@@ -44,6 +47,9 @@ export class ResultlistComponent {
 
     //Modus abbonieren
     this.mode$ = this.bs.getMode();
+
+    //AllowRandom abbonieren
+    this.allowRandom$ = this.bs.getAllowRandom();
   }
 
   //per Service pruefen ob Item in Playlist ist
@@ -59,18 +65,19 @@ export class ResultlistComponent {
   //einzelnes Item abspielen
   playSingleItem(item) {
 
-    console.log(item);
-
     //aktives Item setzen und dadurch in Liste optisch anpassen
     this.activeItem = item;
 
     //aktuellen Modus auslesen (hsp vs. kindermusik)
     let mode = this.mode$.getValue();
 
+    //aktuellen Wert fuer allowRandom holen
+    let allowRandom = this.allowRandom$.getValue();
+
     //Ordner fuer Playback erstellen
     let dir = "/media/usb_red/" + this.appMode + "/" + mode + "/" + item.mode + "/" + item.file;
 
-    //Message an WSS
-    this.bs.sendMessage({ type: "set-playlist", value: dir });
+    //Message an WSS welches Verzeichnis abgespielt werden sollen und ob random erlaubt ist
+    this.bs.sendMessage({ type: "set-playlist", value: { dir: dir, allowRandom: allowRandom } });
   }
 }
