@@ -13,7 +13,10 @@ export class FileNamePipe implements PipeTransform {
     let fileName = path.basename(value);
 
     //Zahlen filtern
-    fileName = fileName.replace(/\d+( -)* \d*/g, '');
+    fileName = fileName.replace(/\d+( -|-|_)*\.*\d*/g, '');
+
+    //Datei-Endung mp3 entfernen
+    fileName = fileName.replace(/.mp3/i, '');
 
     //gefilterten Namen zurueckliefern
     return fileName.trim();
