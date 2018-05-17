@@ -6,14 +6,12 @@
                         "fa-pause text-warning": !paused
                 }'></button>
 
-<!-- Item 30 sec nach links (derzeit nur bei Video) -->
-<button *ngIf="appMode === 'video'"
-        (click)="controlPlayback('seek-left')"
+<!-- Item nach links spulen -->
+<button (click)="seek(false)"
         class="ripple fa fa-backward text-info button-clean"></button>
 
-<!-- Item 30 sec nach rechts (derzeit nur bei Video) -->
-<button *ngIf="appMode === 'video'"
-        (click)="changeSong('seek-right')"
+<!-- Item nach rechts spulen -->
+<button (click)="seek(true)"
         class="ripple fa fa-forward text-info button-clean"></button>
 
 <!-- vorheriges Item (derzeit nur bei Audio) -->

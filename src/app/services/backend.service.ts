@@ -202,8 +202,6 @@ export class BackendService {
 
     //Verbindung zu WSS herstellen
     public createWebsocket() {
-        console.log("connect to wss");
-
         //Socket-Verbindung mit URL aus Config anlegen
         let socket = new WebSocket(this.wssUrl);
         let observable = Observable.create(

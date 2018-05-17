@@ -36,4 +36,9 @@ export class CurrentplayedplaylistinspectorComponent implements OnInit {
     //aktuellen Index in Titelliste abbonieren und in Variable schreiben (fuer CSS-Klasse)
     this.bs.getPosition().subscribe(position => this.position = position);
   }
+
+  //zu gewissem Titel in Playlist springen
+  jumpTo(position: number) {
+    this.bs.sendMessage({ type: "jump-to", value: position });
+  }
 }

@@ -49,4 +49,9 @@ export class PlayercontrolComponent {
   changeSong(increase: boolean) {
     this.bs.sendMessage({ type: "change-song", value: increase });
   }
+
+  //innerhalb des Items spulen
+  seek(forward: boolean) {
+    this.bs.sendMessage({ type: "seek", value: forward });
+  }
 }
