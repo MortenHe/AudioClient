@@ -30,10 +30,11 @@
                    class="d-flex mt-2 mb-2"></random-playback>
 
   <!-- Anischt der aktuellen laufenden Playlist -->
-  <currentplayedplaylistinspector></currentplayedplaylistinspector>
+  <currentplayedplaylistinspector [class.hidden]="position === -1"></currentplayedplaylistinspector>
 
   <!-- Steuerelemente (play, stop, seek) fuer Item-Wiedergabe -->
-  <playercontrol class="col d-flex justify-content-between"></playercontrol>
+  <playercontrol *ngIf="position !== -1"
+                 class="col d-flex justify-content-between"></playercontrol>
 
   <!-- Uebersicht ueber gerade erstellte Playlist, nur bei Video -->
   <playlistgenerator *ngIf="appMode === 'video'"></playlistgenerator>

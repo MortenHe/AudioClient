@@ -31,7 +31,7 @@ export class ResultlistComponent {
   allowRandom$: BehaviorSubject<boolean>;
 
   //welches Item in der Liste wurde angeklickt?
-  activeItem: Item;
+  activeItem$;
 
   //Services injecten, TODO fs raus
   constructor(private pls: PlaylistService, private bs: BackendService, private fs: ResultfilterService) { }
@@ -50,6 +50,9 @@ export class ResultlistComponent {
 
     //AllowRandom abbonieren
     this.allowRandom$ = this.bs.getAllowRandom();
+
+    //ActiveItem abbonieren
+    this.activeItem$ = this.bs.getActiveItem();
   }
 
   //per Service pruefen ob Item in Playlist ist
@@ -65,9 +68,6 @@ export class ResultlistComponent {
   //einzelnes Item abspielen
   playSingleItem(item) {
 
-    //aktives Item setzen und dadurch in Liste optisch anpassen
-    //this.activeItem = item;
-
     //aktuellen Modus auslesen (hsp vs. kindermusik)
     let mode = this.mode$.getValue();
 
@@ -81,7 +81,7 @@ export class ResultlistComponent {
       let dir = "/media/usb_red/audio/" + mode + "/" + item.mode + "/" + item.file;
 
       //Message an WSS welches Verzeichnis abgespielt werden sollen und ob random erlaubt ist
-      this.bs.sendMessage({ type: "set-playlist", value: { dir: dir, allowRandom: allowRandom } });
+      this.bs.sendMessage({ type: "set-playlist", value: { dir: dir, allowRandom: allowRandom, activeItem: item.mode + "/" + item.file } });
     }
 
     //Video-Mode
@@ -91,7 +91,8 @@ export class ResultlistComponent {
       let files = [{
         "path": item.mode + "/" + item.file,
         "name": item.name,
-        "mode": mode
+        "mode": mode,
+        "activeItem": item.mode + "/" + item.file
       }];
 
       //Video-Playlist starten

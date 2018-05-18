@@ -25,6 +25,9 @@ export class SearchComponent {
   //ist random playback erlaubt (Kindermusik vs. HSP)?
   allowRandom$;
 
+  //Position in Playlist
+  position: number;
+
   //Services und Router injecten
   constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService) {
   }
@@ -60,5 +63,10 @@ export class SearchComponent {
       //Playlist per Service zuruecksetzen
       this.pls.resetPlaylist();
     });
+
+    //Position in Playlist abbonieren
+    this.bs.getPosition().subscribe(position => {
+      this.position = position;
+    })
   }
 }

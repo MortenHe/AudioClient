@@ -83,6 +83,9 @@ export class BackendService {
     //aktueller Random-Zustand
     random$: Subject<boolean> = new Subject<boolean>();
 
+    //aktives Item
+    activeItem$: Subject<string> = new Subject<string>();
+
     //Services injekten
     constructor(private http: Http, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
 
@@ -259,6 +262,10 @@ export class BackendService {
                 case "toggle-random":
                     this.random$.next(value);
                     break;
+
+                case "active-item":
+                    this.activeItem$.next(value);
+                    break;
             }
         });
     }
@@ -302,5 +309,10 @@ export class BackendService {
     //Random liefern
     getRandom() {
         return this.random$;
+    }
+
+    //ActiveItem liefern
+    getActiveItem() {
+        return this.activeItem$;
     }
 }
