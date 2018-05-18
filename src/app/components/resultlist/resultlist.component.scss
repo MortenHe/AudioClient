@@ -2,8 +2,9 @@
 @import '~scss/variables.scss';
 //eigenes styles
 .box {
-    border: 1px solid $color-grey;
-    border-radius: $border-radius;
+    //border-bottom: 1px solid $color-grey; //border-radius: $border-radius;
+    border: none;
+    border-top: 1px solid $color-grey;
     padding: 5px;
     background: $color-light-bg;
     cursor: pointer;

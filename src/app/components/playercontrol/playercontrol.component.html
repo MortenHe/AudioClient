@@ -1,27 +1,25 @@
-<!-- Item pausieren -->
-<button (click)="togglePaused()"
-        class="ripple fa button-clean"
-        [ngClass]='{
-                        "fa-play text-success": paused,
-                        "fa-pause text-warning": !paused
-                }'></button>
+<!-- vorheriges Item -->
+<button (click)="changeSong(false)"
+        [disabled]="position === 0"
+        class="ripple fa fa-fast-backward text-info button-clean"></button>
 
 <!-- Item nach links spulen -->
 <button (click)="seek(false)"
         class="ripple fa fa-backward text-info button-clean"></button>
 
+<!-- toggle pause -->
+<button (click)="togglePaused()"
+        class="ripple fa button-clean"
+        [ngClass]='{
+                "fa-play text-success": paused,
+                "fa-pause text-warning": !paused
+        }'></button>
+
 <!-- Item nach rechts spulen -->
 <button (click)="seek(true)"
         class="ripple fa fa-forward text-info button-clean"></button>
 
-<!-- vorheriges Item (derzeit nur bei Audio) -->
-<button *ngIf="appMode === 'audio'"
-        (click)="changeSong(false)"
-        [disabled]="position === 0"
-        class="ripple fa fa-fast-backward text-info button-clean"></button>
-
-<!-- naechstes Item (derzeit nur bei Audio) -->
-<button *ngIf="appMode === 'audio'"
-        (click)="changeSong(true)"
+<!-- naechstes Item -->
+<button (click)="changeSong(true)"
         [disabled]="position === (files.length - 1)"
         class="ripple fa fa-fast-forward text-info button-clean"></button>

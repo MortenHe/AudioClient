@@ -3,7 +3,6 @@ import { Http } from '@angular/http';
 import { forkJoin } from "rxjs/observable/forkJoin";
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import * as path from 'path'
 import 'rxjs/add/operator/finally';
 
 @Injectable()
@@ -48,12 +47,12 @@ export class JsondataService {
               //Request erstellen, der JSON dieses Filters holt (z.B. bibi-tina.json)
               let request = this.http.get("assets/json/" + appMode + "/" + mode + "/" + filterID + ".json").map(response => {
 
-                //Modus (hsp) und filterID (bibi-tina) merken, da Info sonst spaeter ueberschrieben wurde
-                let mode = path.dirname(response.url);
-                let filterID = path.basename(response.url, '.json');
+                //filterID (bibi-tina) und Modus (hsp) merken, da Info sonst spaeter ueberschrieben wurde
+                let filterIDFile = (response.url).split(/[\\/]/).pop();
+                let filterID = filterIDFile.replace('.json', '');
 
                 //Ergebnis des Reqeusts als JSON + weitere Parameter weiterreichen
-                return { data: response.json(), filterID: filterID, mode: path.basename(mode) };
+                return { data: response.json(), filterID: filterID, mode: mode };
               });
 
               //Request sammeln -> werden spaeter per forkjoin ausgefuehrt

@@ -8,7 +8,7 @@ console.log("build and deploy to " + runMode);
 //Projekt bauen
 const { execSync } = require('child_process');
 console.log("start build");
-execSync("ng build --env=audio-dev --base-href=/wap/ --prod");
+execSync("ng build --env=audio-prod --base-href=/wap/ --prod");
 console.log("build done");
 
 //htacces Schablone in dist Ordner kopieren

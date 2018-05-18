@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from '../../services/playlist.service';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   selector: 'playlistgenerator',
@@ -11,10 +13,10 @@ import { Observable } from 'rxjs/Observable';
 export class PlaylistgeneratorComponent implements OnInit {
 
   //Playlist, die zusammengestellt wird
-  playlist$: Observable<any>;
+  playlist$: BehaviorSubject<any>;
 
-  //Service injecten
-  constructor(private pls: PlaylistService) { }
+  //Services injecten
+  constructor(private pls: PlaylistService, private bs: BackendService) { }
 
   //beim Init
   ngOnInit() {
@@ -31,5 +33,35 @@ export class PlaylistgeneratorComponent implements OnInit {
   //per Service Item in Playlist toggeln
   toggleInPlaylist(item) {
     this.pls.toggleInPlaylist(item);
+  }
+
+  //Playlist starten
+  startPlaylist() {
+
+    //kinder vs. jahresvideo
+    let mode = this.bs.getMode().getValue();
+
+    //Dateien sammeln
+    let files = [];
+
+    //Aktuelle Playlist holen
+    let playlist = this.playlist$.getValue();
+
+    //Ueber Files der Playlist gehen
+    playlist.forEach(videoObj => {
+
+      //Objekt mit passenden Infos erstellen
+      files.push({
+        "path": videoObj.mode + "/" + videoObj.file,
+        "name": videoObj.name,
+        "mode": mode
+      });
+    });
+
+    //Video-Playlist starten
+    this.bs.sendMessage({ type: "set-video-playlist", value: files });
+
+    //generierte Playlist wieder leeren
+    this.pls.resetPlaylist();
   }
 }

@@ -1,18 +1,13 @@
 <!-- auesserer Container -->
 <div class="app-width container mt-3 mb-3 mr-0 ml-0 no-gutters">
 
-  <!-- Lautstaerke Kontrolle -->
-  <volume-control class="d-flex justify-content-evenly mb-2"></volume-control>
-
-  <!-- Steuerelemente (play, stop, seek) fuer Item-Wiedergabe -->
-  <playercontrol class="col d-flex justify-content-around"></playercontrol>
-
   <!-- Inspektor mit den moeglichen Werten, wird nur bei dev angezeigt -->
+  <!--
   <debuginspector class="d-flex mb-3"
                   [ngClass]="{
-                    'd-flex': !production, 
+                    'd-none': !production, 
                     'd-none': production
-                  }"></debuginspector>
+                  }"></debuginspector>-->
 
   <!-- Zeile fuer Ueberschrift, Mode-Select und Shutdown-Button -->
   <div class="row no-gutters">
@@ -27,6 +22,9 @@
     <picontrol class="d-flex"></picontrol>
   </div>
 
+  <!-- Lautstaerke Kontrolle -->
+  <volume-control class="d-flex justify-content-evenly mb-2"></volume-control>
+
   <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben) -->
   <random-playback [class.hidden]="!(allowRandom$ | async)"
                    class="d-flex mt-2 mb-2"></random-playback>
@@ -34,35 +32,39 @@
   <!-- Anischt der aktuellen laufenden Playlist -->
   <currentplayedplaylistinspector></currentplayedplaylistinspector>
 
+  <!-- Steuerelemente (play, stop, seek) fuer Item-Wiedergabe -->
+  <playercontrol class="col d-flex justify-content-between"></playercontrol>
+
+  <!-- Uebersicht ueber gerade erstellte Playlist, nur bei Video -->
+  <playlistgenerator *ngIf="appMode === 'video'"></playlistgenerator>
+
   <!-- Trennlinie -->
   <hr class="mode-filter-hr">
 
   <!-- Filter-Buttons -->
   <modefilter></modefilter>
 
-  <!-- Uebersicht ueber gerade erstellte Playlist, nur bei Video -->
-  <playlistgenerator *ngIf="appMode === 'video'"></playlistgenerator>
-
   <!-- Trennlinie -->
-  <hr>
+  <!-- <hr> -->
 
   <!-- Infos zu Anzahl der Items, Suchfeld und Sortierbuttons -->
-  <div class="row no-gutters">
+  <div class="row no-gutters mb-3 mt-3">
 
+    <!-- Suchfeld und Anzahl der Treffer -->
     <div class="col-12 col-sm mr-sm-2 row no-gutters d-flex align-items-center">
-
-      <!-- Anzahl der Items in Trefferliste -->
-      <resultlistinspector class="item-count text-right mr-2"></resultlistinspector>
 
       <!-- Suchfeld fuer Filterung -->
       <searchfilter class="col"></searchfilter>
+
+      <!-- Anzahl der Items in Trefferliste -->
+      <resultlistinspector class="ml-2"></resultlistinspector>
     </div>
 
-    <div class="col-12 mt-2 col-sm mt-sm-0 row no-gutters d-flex align-items-center">
+    <!-- Infos toggeln und Sortierbuttons -->
+    <div class="col-12 mt-2 col-sm mt-sm-0 row no-gutters d-flex align-items-center justify-content-between justify-content-sm-end">
 
-      <!-- Ansicht der Tracks zu toggeln (nur bei audio) -->
-      <toggletrackview *ngIf="appMode === 'audio'"
-                       class="col mr-2 d-flex justify-content-end"></toggletrackview>
+      <!-- Ansicht der Infos zu toggeln -->
+      <toggletrackview class="mr-2 d-flex justify-content-end"></toggletrackview>
 
       <!-- Sortierbuttons -->
       <sortfilter class="d-flex align-items-center justify-content-end"></sortfilter>

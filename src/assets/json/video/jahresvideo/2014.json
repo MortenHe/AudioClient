@@ -3,7 +3,10 @@
         "name": "2014-01 - Januar 2014",
         "file": "2014-01.mp4",
         "length": "00:03:26",
-        "active": true
+        "active": true,
+        "tracks": [
+            "Umzug nach Pfaffenweiler"
+        ]
     },
     {
         "name": "2014-02 - Februar 2014",
@@ -45,7 +48,10 @@
         "name": "2014-08 - August 2014",
         "file": "2014-08.m2ts",
         "length": "00:18:57",
-        "active": true
+        "active": true,
+        "tracks": [
+            "Geburt Laila"
+        ]
     },
     {
         "name": "2014-09 - September 2014",
@@ -69,6 +75,9 @@
         "name": "2014-12 - Dezember 2014",
         "file": "2014-12.m2ts",
         "length": "00:26:38",
-        "active": true
+        "active": true,
+        "tracks": [
+            "Weihnachten in Bische"
+        ]
     }
 ]

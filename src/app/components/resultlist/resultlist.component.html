@@ -1,6 +1,6 @@
 <!-- Ueber Items-Array gehen und die bereits gefilterte und sortierte Liste ausgeben -->
 <div *ngFor="let item of items$ | async"
-     class="row no-gutters align-items-center mt-2">
+     class="row no-gutters align-items-center">
 
   <!-- Item in Playlist einfuegen oder von dort entfernen (nur bei Video) -->
   <button *ngIf="appMode === 'video'"
@@ -12,21 +12,25 @@
         }">
   </button>
 
-  <!-- formattierte Laenge des Items -->
-  <div class="item-length item-length-{{appMode}} text-right mr-2 ">
-    {{item.length | timeformatter}}
-  </div>
-
   <!-- Button um einzelnes Item direkt zu starten -->
   <button (click)="playSingleItem(item)"
           class="box col text-left pl-2"
           [class.active-item]="item === activeItem">
 
-    <!-- Play-Symbol wird nur bei hover und active angezeigt -->
-    <i class="fa fa-play ml-1 mr-1"></i>
+    <!-- Zeile mit (hover-) Playsymbol, Name der Playlist und Laenge -->
+    <div class="row no-gutters align-items-center">
 
-    <!-- Itemname -->
-    {{item.name}}
+      <!-- Play-Symbol wird nur bei hover und active angezeigt -->
+      <i class="fa fa-play mr-2"></i>
+
+      <!-- Itemname -->
+      <span class="col">{{item.name}}</span>
+
+      <!-- formattierte Laenge des Items -->
+      <div class="item-length item-length-{{appMode}} text-right ml-1">
+        {{item.length | timeformatter}}
+      </div>
+    </div>
 
     <!-- Wenn Tracks angezeigt werden sollen -->
     <ul *ngIf="showTracks$ | async">

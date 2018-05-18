@@ -66,18 +66,36 @@ export class ResultlistComponent {
   playSingleItem(item) {
 
     //aktives Item setzen und dadurch in Liste optisch anpassen
-    this.activeItem = item;
+    //this.activeItem = item;
 
     //aktuellen Modus auslesen (hsp vs. kindermusik)
     let mode = this.mode$.getValue();
 
-    //aktuellen Wert fuer allowRandom holen
-    let allowRandom = this.allowRandom$.getValue();
+    //Bei Audio
+    if (this.appMode === "audio") {
 
-    //Ordner fuer Playback erstellen
-    let dir = "/media/usb_red/" + this.appMode + "/" + mode + "/" + item.mode + "/" + item.file;
+      //aktuellen Wert fuer allowRandom holen
+      let allowRandom = this.allowRandom$.getValue();
 
-    //Message an WSS welches Verzeichnis abgespielt werden sollen und ob random erlaubt ist
-    this.bs.sendMessage({ type: "set-playlist", value: { dir: dir, allowRandom: allowRandom } });
+      //Ordner fuer Playback erstellen
+      let dir = "/media/usb_red/audio/" + mode + "/" + item.mode + "/" + item.file;
+
+      //Message an WSS welches Verzeichnis abgespielt werden sollen und ob random erlaubt ist
+      this.bs.sendMessage({ type: "set-playlist", value: { dir: dir, allowRandom: allowRandom } });
+    }
+
+    //Video-Mode
+    else {
+
+      //Playlist-Array mit nur einem Eintrag erstellen
+      let files = [{
+        "path": item.mode + "/" + item.file,
+        "name": item.name,
+        "mode": mode
+      }];
+
+      //Video-Playlist starten
+      this.bs.sendMessage({ type: "set-video-playlist", value: files });
+    }
   }
 }
