@@ -3,7 +3,7 @@
         class="ripple fa fa-volume-down text-info button-clean"></button>
 
 <!-- aktueller Lautstaerkewert -->
-{{volume$ | async}}
+<span class="volume-display">{{volume$ | async}}</span>
 
 <!-- lauter -->
 <button (click)="changeVolume(true)"

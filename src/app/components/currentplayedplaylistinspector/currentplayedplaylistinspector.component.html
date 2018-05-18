@@ -1,12 +1,17 @@
 <!-- Info ueber aktuell laufende Playlist -->
-<div *ngFor="let file of files$ | async; let i = index"
-     class="cursor-pointer">
+<ng-container *ngFor="let file of files$ | async; let i = index">
 
   <!-- Titel. Fett anzeigen -->
-  <span (click)="jumpTo(i)"
-        [class.font-weight-bold]="i === position">{{(i + 1).toString().padStart(2, "0")}} {{file|fileName}}
+  <div (click)="jumpTo(i)"
+       class="item"
+       [class.waiting]="i === jumpPosition"
+       [class.font-weight-bold]="i === position">{{(i + 1).toString().padStart(2, "0")}} - {{file|fileName}}
 
     <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
     <ng-container *ngIf="i === position && time !== ''"> ({{time|timeformatter}})</ng-container>
-  </span>
-</div>
+
+    <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen werden soll -->
+    <i class="fa fa-spinner fa-spin"
+       *ngIf="i === jumpPosition"></i>
+  </div>
+</ng-container>

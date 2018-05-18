@@ -1,40 +1,54 @@
 //Variable importerein
 @import '~scss/variables.scss';
 //eigenes styles
-.box {
-    //border-bottom: 1px solid $color-grey; //border-radius: $border-radius;
-    border: none;
-    border-top: 1px solid $color-grey;
-    padding: 5px;
-    background: $color-light-bg;
-    cursor: pointer;
-    .fa-play {
-        display: none;
-    }
-    &:hover:not(.active-item) {
-        background: $color-light-bg-hover;
+.items {
+    .box {
+        //border-bottom: 1px solid $color-grey; //border-radius: $border-radius;
+        border: none;
+        border-top: 1px solid $color-grey;
+        padding: 5px;
+        background: $color-light-bg;
+        cursor: pointer;
         .fa-play {
-            display: inline;
-            opacity: .5;
+            display: none;
+        }
+        &:hover:not(.active-item) {
+            background: $color-light-bg-hover;
+            .fa-play {
+                display: inline;
+                opacity: .5;
+            }
+        }
+        &.active-item {
+            background: $color-light-bg-active;
+            .fa-play {
+                display: inline;
+                opacity: 1;
+            }
+        }
+        ul {
+            margin-bottom: 0;
+            padding-left: 25px;
+            li {
+                //list-style-type: decimal-leading-zero;
+                color: $color-light-grey;
+            }
         }
     }
-    &.active-item {
-        background: $color-light-bg-active;
-        .fa-play {
-            display: inline;
-            opacity: 1;
-        }
-    }
-    ul {
-        margin-bottom: 0;
-        padding-left: 25px;
-        li {
-            //list-style-type: decimal-leading-zero;
-            color: $color-light-grey;
+    &:last-of-type {
+        .box {
+            border-bottom: 1px solid $color-grey;
         }
     }
 }
 
-.item-length-audio {
-    width: 69px;
+@media (hover: none) {
+    .box {
+        &:hover:not(.active-item) {
+            background: $color-light-bg !important;
+            .fa-play {
+                display: none !important;
+            }
+        }
+    }
 }

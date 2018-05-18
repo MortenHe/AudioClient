@@ -1,6 +1,6 @@
 <!-- Ueber Items-Array gehen und die bereits gefilterte und sortierte Liste ausgeben -->
 <div *ngFor="let item of items$ | async"
-     class="row no-gutters align-items-center">
+     class="row no-gutters align-items-center items">
 
   <!-- Item in Playlist einfuegen oder von dort entfernen (nur bei Video) -->
   <button *ngIf="appMode === 'video'"
