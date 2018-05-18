@@ -1,14 +1,30 @@
 //Connection laden
 const connection = require("./connection.js");
 
-//Wohin sollen die Daten deployed werden? wenn kein Argument kommt -> pi
+//Wohin sollen die Daten deployed werden (vb vs. pi)? wenn kein Argument kommt -> pi
 const runMode = process.argv[2] ? process.argv[2] : "pi";
-console.log("build and deploy to " + runMode);
+
+//Welches Projekt audio vs. video soll deployed werden? Wenn kein Argument kommt -> audio
+let appMode = process.argv[3] ? process.argv[3] : "audio";
+console.log("build and deploy " + appMode + " to " + runMode);
+
+//Unter welchem Unterpfad wird die App auf dem Server laufen?
+let base_href = appMode === "audio" ? "wap" : "wvp";
+
+//davon ausgehen, dass fuer pi gebaut wird
+let production = "prod";
+
+//Bei Virtualbox
+if (runMode === "vb") {
+
+    //Andere configuration
+    production = "dev";
+}
 
 //Projekt bauen
 const { execSync } = require('child_process');
 console.log("start build");
-execSync("ng build --env=audio-prod --base-href=/wap/ --prod");
+execSync("ng build --configuration=" + appMode + "-" + production + " --base-href=/" + base_href + "/ --prod");
 console.log("build done");
 
 //htacces Schablone in dist Ordner kopieren
@@ -21,15 +37,26 @@ var replace = require("replace");
 console.log("update htacces");
 replace({
     regex: "###PATH###",
-    replacement: "wap",
+    replacement: base_href,
     paths: ['../../dist/htaccess'],
     recursive: true,
     silent: true
 });
 
-//Bei Audio wird Video json nicht benoetigt
+//Bei Audio
 console.log("remove unused json");
-fs.removeSync('../../dist/assets/json/video');
+if (appMode === "audio") {
+
+    //wird Video json nicht benoetigt
+    fs.removeSync('../../dist/assets/json/video');
+}
+
+//bei Video
+else {
+
+    //wird Audio json nicht benoetigt
+    fs.removeSync('../../dist/assets/json/audio');
+}
 
 //Dist-Folder zippen
 var zipFolder = require('zip-folder');
@@ -50,29 +77,29 @@ ssh.connect().then(() => {
     //SFT Session erzeugen
     ssh.sftp().then((sftp) => {
 
-        //wap Ordner loeschen
+        //wap/wvp Ordner loeschen
         console.log("remove old remote dir");
-        ssh.exec("rm -fr /var/www/html/wap").then((data) => {
+        ssh.exec("rm -fr /var/www/html/" + base_href).then((data) => {
 
-            //wap Ordner anlegen
+            //wap/wvp Ordner anlegen
             console.log("create new remote dir")
-            sftp.mkdir("/var/www/html/wap", function () {
+            sftp.mkdir("/var/www/html/" + base_href, function () {
 
                 //ZIP-Datei hochladen
                 console.log("upload zipped data");
-                sftp.fastPut("../../myDist.zip", "/var/www/html/wap/myDist.zip", function (data) {
+                sftp.fastPut("../../myDist.zip", "/var/www/html/" + base_href + "/myDist.zip", function (data) {
 
                     //ZIP-Datei entpacken
                     console.log("unzip remote data");
-                    ssh.exec("cd /var/www/html/wap && unzip myDist.zip").then((data) => {
+                    ssh.exec("cd /var/www/html/" + base_href + " && unzip myDist.zip").then((data) => {
 
                         //htaccess Datei umbenennen
                         console.log("rename htaccess");
-                        ssh.exec("mv /var/www/html/wap/htaccess /var/www/html/wap/.htaccess").then(function (data) {
+                        ssh.exec("mv /var/www/html/" + base_href + "/htaccess /var/www/html/" + base_href + "/.htaccess").then(function (data) {
 
                             //ZIP-Datei loeschen
                             console.log("delete remote zip file");
-                            sftp.unlink("/var/www/html/wap/myDist.zip", function (data) {
+                            sftp.unlink("/var/www/html/" + base_href + "/myDist.zip", function (data) {
 
                                 //Rechte anpassen, damit Apache files lesen kann
                                 console.log("grant permission");
