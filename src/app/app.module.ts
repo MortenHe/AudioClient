@@ -11,7 +11,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
 import { PlaylistService } from './services/playlist.service';
-import { PicontrolService } from './services/picontrol.service';
 import { JsondataService } from './services/jsondata.service';
 
 //eigenes Pipes
@@ -80,7 +79,7 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
   ],
-  providers: [BackendService, PlaylistService, ResultfilterService, PicontrolService, JsondataService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
+  providers: [BackendService, PlaylistService, ResultfilterService, JsondataService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

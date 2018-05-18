@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { PicontrolService } from '../../services/picontrol.service';
 
 @Component({
   selector: 'volume-slider',
@@ -11,7 +10,7 @@ import { PicontrolService } from '../../services/picontrol.service';
 export class VolumeSliderComponent {
 
   //Services injecten
-  constructor(private http: Http, private ps: PicontrolService) { }
+  constructor(private http: Http) { }
 
   //Bei Ziehen des Sliders
   sliderInput($event) {
@@ -20,6 +19,6 @@ export class VolumeSliderComponent {
     let volume = $event.value;
 
     //Service fuer Volumeanpassung aufrufen
-    this.ps.sendControlVolumeRequest('set-volume', { volume: volume });
+    //TODO auf WebSocket umstellen
   }
 }

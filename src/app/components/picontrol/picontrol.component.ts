@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PicontrolService } from '../../services/picontrol.service';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   selector: 'picontrol',
@@ -10,10 +10,10 @@ import { PicontrolService } from '../../services/picontrol.service';
 export class PicontrolComponent {
 
   //Service injecten
-  constructor(private pcs: PicontrolService) { }
+  constructor(private bs: BackendService) { }
 
   //Pi per Service herunterfahren
   shutdownPi() {
-    this.pcs.sendShutdownRequest();
+    this.bs.sendMessage({ type: "shutdown", value: "" });
   }
 }
