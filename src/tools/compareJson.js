@@ -31,7 +31,7 @@ fs.readdirSync("../assets/json/audio").forEach(folder => {
             json.forEach(function (item) {
 
                 //Pfad erstellen und merken .../hsp/bibi-tina/01-fohlen
-                itemsLocal.push("/media/usb_red/audio/" + folder + "/" + mode + "/" + item.file)
+                itemsLocal.push("/media/audio/" + folder + "/" + mode + "/" + item.file)
             });
         });
     }
@@ -49,7 +49,7 @@ var ssh = new SSH2Promise({
 ssh.connect().then(() => {
 
     //Folder auf Server liefern
-    ssh.exec("find /media/usb_red/audio -mindepth 3 -maxdepth 3 -type d").then((data) => {
+    ssh.exec("find /media/audio -mindepth 3 -maxdepth 3 -type d").then((data) => {
 
         //Listen-String trimmen und Array erzeugen (Zeilenumbruch als Trenner)
         let itemsRemote = data.trim().split("\n");
@@ -66,12 +66,12 @@ ssh.connect().then(() => {
 
         //Fehlende Werte in Config ausgeben
         for (let entry of missingConfig.entries()) {
-            console.log("missing in config: " + entry[0].replace("/media/usb_red/audio/", ""));
+            console.log("missing in config: " + entry[0].replace("/media/audio/", ""));
         }
 
         //Fehlende Werte auf Server ausgeben
         for (let entry of missingServer.entries()) {
-            console.log("missing on server: " + entry[0].replace("/media/usb_red/audio/", ""));
+            console.log("missing on server: " + entry[0].replace("/media/audio/", ""));
         }
 
         //Skript beenden

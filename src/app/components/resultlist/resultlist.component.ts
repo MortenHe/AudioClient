@@ -78,7 +78,7 @@ export class ResultlistComponent {
       let allowRandom = this.allowRandom$.getValue();
 
       //Ordner fuer Playback erstellen
-      let dir = "/media/usb_red/audio/" + mode + "/" + item.mode + "/" + item.file;
+      let dir = "/media/audio/" + mode + "/" + item.mode + "/" + item.file;
 
       //Message an WSS welches Verzeichnis abgespielt werden sollen und ob random erlaubt ist
       this.bs.sendMessage({ type: "set-playlist", value: { dir: dir, allowRandom: allowRandom, activeItem: item.mode + "/" + item.file } });
