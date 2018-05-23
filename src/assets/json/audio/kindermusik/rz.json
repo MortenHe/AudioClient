@@ -129,5 +129,52 @@
             "Immer wenn ein Vogelbaby größer wird",
             "Ein Vogel wollte Hochzeit machen (2)"
         ]
+    },
+    {
+        "name": "Rolf Zuckowski - Radio Lollipop",
+        "file": "lollipop",
+        "length": "00:36:03",
+        "active": true,
+        "tracks": [
+            "Auf Sendersuche",
+            "Papi, wach auf",
+            "Tweety",
+            "Verkehrsstudio",
+            "Schulbus",
+            "Die Lollipop-Melodie",
+            "Das Brummi-Lied",
+            "Verkehrsstudio",
+            "Uns're Schule hat keine Segel",
+            "Du da im Radio",
+            "Stups, der kleine Osterhase",
+            "Das Mittagskonzert",
+            "Wenn ich krank bin",
+            "Wie schön das Du geboren bist",
+            "Der Morgenmuffel",
+            "Die Lollipop-Melodie",
+            "Es macht Spaß",
+            "Die Büchermaus",
+            "Die Lollipo-Melodie"
+        ]
+    },
+    {
+        "name": "Rolf Zuckowski - Die Vogelhochzeit",
+        "file": "vogelhochzeit",
+        "length": "00:27:53",
+        "active": true,
+        "tracks": [
+            "Ein Vogel wollte Hochzeit machen",
+            "Hoch in der Luft",
+            "Guten Tag, guten Tag",
+            "Vöglein, Vöglein, tanz mit mir",
+            "Du und ich",
+            "Immer nur brüten",
+            "Tick, tick, tick",
+            "Hallo Mama, hallo Papa",
+            "Ein Vogelbaby wird niemals satt",
+            "Sieh nur die Sterne",
+            "Immer wenn ein Vogelbaby größer wird",
+            "Ein Vogel wollte Hochzeit machen (2)"
+        ]
     }
 ]

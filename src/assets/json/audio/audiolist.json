@@ -17,6 +17,11 @@
                 "active": true
             },
             {
+                "id": "conni",
+                "icon": "conni",
+                "active": true
+            },
+            {
                 "id": "janosch",
                 "icon": "janosch",
                 "active": true

@@ -47,5 +47,25 @@
             "Der Schatz am Ende des Regenbogens",
             "Mach's gut, bye, bye"
         ]
+    },
+    {
+        "name": "Kinderhitparade",
+        "file": "kinderhitparade",
+        "length": "00:42:31",
+        "active": true,
+        "tracks": [
+            "Alles Bingo",
+            "Aloha Heja He",
+            "Das Ganze Leben Ist Ein Quiz",
+            "Itsy Bitsy Teeny Weeny Obercooler Supermini",
+            "Kaputgeschmustes Kuscheltier",
+            "Reinhart",
+            "Verdammt Das Gibt's Nicht",
+            "Es Hat Zum Ersten Mal Geschneit",
+            "Mein Herzkuscheltier",
+            "Was Wäre Wenn",
+            "Mach Mich Nicht Fertig, Ne",
+            "Kleine Racker"
+        ]
     }
 ]

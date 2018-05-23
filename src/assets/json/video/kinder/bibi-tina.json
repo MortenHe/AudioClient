@@ -154,5 +154,23 @@
         "file": "bibi-tina-woelfe-falkenstein.mp4",
         "length": "00:25:09",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Gestüt Szendrö in Gefahr",
+        "file": "bibi-tina-gestuet-gefahr.mp4",
+        "length": "00:25:10",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Die Pferde sind krank",
+        "file": "bibi-tina-pferde-krank.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Tina in Gefahr",
+        "file": "bibi-tina-tina-gefahr.mp4",
+        "length": "00:25:09",
+        "active": true
     }
 ]
