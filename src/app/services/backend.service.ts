@@ -86,6 +86,9 @@ export class BackendService {
     //aktives Item
     activeItem$: Subject<string> = new Subject<string>();
 
+    //wurde Server heruntergefahren?
+    shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
     //Services injekten
     constructor(private http: Http, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
 
@@ -205,6 +208,7 @@ export class BackendService {
 
     //Verbindung zu WSS herstellen
     public createWebsocket() {
+
         //Socket-Verbindung mit URL aus Config anlegen
         let socket = new WebSocket(this.wssUrl);
         let observable = Observable.create(
@@ -222,6 +226,9 @@ export class BackendService {
                 }
                 else {
                     console.log("ready state ist " + socket.readyState)
+
+                    //Verbindung zu WSS wieder herstellen                    
+                    this.createWebsocket();
                 }
             }
         };
@@ -265,6 +272,10 @@ export class BackendService {
 
                 case "active-item":
                     this.activeItem$.next(value);
+                    break;
+
+                case "shutdown":
+                    this.shutdown$.next(true);
                     break;
             }
         });
@@ -314,5 +325,10 @@ export class BackendService {
     //ActiveItem liefern
     getActiveItem() {
         return this.activeItem$;
+    }
+
+    //Shutdown Zustand liefern
+    getShutdown() {
+        return this.shutdown$;
     }
 }

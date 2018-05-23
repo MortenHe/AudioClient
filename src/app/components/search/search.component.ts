@@ -28,6 +28,9 @@ export class SearchComponent {
   //Position in Playlist
   position: number;
 
+  //Shutdown Status
+  shutdown$;
+
   //Services und Router injecten
   constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService) {
   }
@@ -67,6 +70,17 @@ export class SearchComponent {
     //Position in Playlist abbonieren
     this.bs.getPosition().subscribe(position => {
       this.position = position;
-    })
+    });
+
+    //Shutdown Zustand abbonieren
+    this.shutdown$ = this.bs.getShutdown();
+
+    //Regelmassieg eine Nachricht an WSS schicken, damit ggf. die Verbindung wieder aufgebaut wird
+    setInterval(() => {
+      this.bs.sendMessage({
+        type: "ping",
+        value: ""
+      });
+    }, 5000);
   }
 }

@@ -3,6 +3,7 @@
 .item {
     padding-left: 5px;
     cursor: pointer;
+    user-select: none;
     &:hover:not(.active-item) {
         background: $color-light-bg-hover;
     }

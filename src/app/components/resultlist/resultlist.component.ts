@@ -31,7 +31,7 @@ export class ResultlistComponent {
   allowRandom$: BehaviorSubject<boolean>;
 
   //welches Item in der Liste wurde angeklickt?
-  activeItem$;
+  activeItem: string = "";
 
   //Services injecten, TODO fs raus
   constructor(private pls: PlaylistService, private bs: BackendService, private fs: ResultfilterService) { }
@@ -52,7 +52,9 @@ export class ResultlistComponent {
     this.allowRandom$ = this.bs.getAllowRandom();
 
     //ActiveItem abbonieren
-    this.activeItem$ = this.bs.getActiveItem();
+    this.bs.getActiveItem().subscribe(activeItem => {
+      this.activeItem = activeItem;
+    });
   }
 
   //per Service pruefen ob Item in Playlist ist
