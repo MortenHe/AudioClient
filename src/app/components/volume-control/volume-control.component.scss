@@ -1,8 +1,14 @@
+//MH Variablen importieren
+@import '~scss/variables.scss';
 :host {
     font-size: 25px;
 }
 
+button {
+    color: $color-white;
+}
+
 .volume-display {
     width: 50px;
-    text-align: right;
+    text-align: center;
 }

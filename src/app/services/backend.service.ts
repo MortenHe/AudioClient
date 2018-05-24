@@ -89,6 +89,9 @@ export class BackendService {
     //wurde Server heruntergefahren?
     shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+    //ist Random bei der aktuell laufenden Playlist erlaubt?
+    allowRandomRunning$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
     //Services injekten
     constructor(private http: Http, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
 
@@ -221,9 +224,19 @@ export class BackendService {
         );
         let observer = {
             next: (data: Object) => {
+
+                //Wenn Verbindung zu WSS existiert
                 if (socket.readyState === WebSocket.OPEN) {
-                    socket.send(JSON.stringify(data));
+
+                    //Wenn es nicht nur ein Ping Message ist (die ggf. Verbindung wieder herstellt)
+                    if (data["type"] !== "ping") {
+
+                        //Nachricht an WSS schicken
+                        socket.send(JSON.stringify(data));
+                    }
                 }
+
+                //keine Verbindung zu WSS
                 else {
                     console.log("ready state ist " + socket.readyState)
 
@@ -272,6 +285,10 @@ export class BackendService {
 
                 case "active-item":
                     this.activeItem$.next(value);
+                    break;
+
+                case "allow-random":
+                    this.allowRandomRunning$.next(value);
                     break;
 
                 case "shutdown":
@@ -330,5 +347,9 @@ export class BackendService {
     //Shutdown Zustand liefern
     getShutdown() {
         return this.shutdown$;
+    }
+
+    getAllowRandomRunning() {
+        return this.allowRandomRunning$;
     }
 }

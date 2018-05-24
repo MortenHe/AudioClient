@@ -1,25 +1,23 @@
-<!-- Sortierbutton Name -->
-<button class="btn btn-outline-secondary p-1 button-clean"
-      (click)="setOrder('name')">
-    <i class="fa fa-font"></i>
-    <i class="fa fa-fw"
-      [ngClass]="{
-          'fa-sort': orderField !== 'name',
-          'fa-sort-up': orderField === 'name'
-          }"></i>
-</button>
+<!-- Sortierung nach Name aufsteigend -->
+<div class="tag shadow d-flex align-items-center justify-content-center"
+     [class.activeFilter]="orderField + '-' + reverseOrder === 'name-false'"
+     (click)="setOrder('name', false)">
+  <i class="fa fa-font"></i>
+  <i class="ml-1 fa fa-sort-up"></i>
+</div>
 
-<!-- Trennlinie zwischen den Sortierbuttons -->
-<div class="vertical-line"></div>
+<!-- Sortierung nach Dauer aufsteigend -->
+<div class="tag shadow d-flex align-items-center justify-content-center"
+     [class.activeFilter]="orderField + '-' + reverseOrder === 'length-false'"
+     (click)="setOrder('length', false)">
+  <i class="fa fa-clock-o"></i>
+  <i class="ml-1 fa fa-sort-up"></i>
+</div>
 
-<!-- Sortierbutton Länge -->
-<button class="btn btn-outline-secondary p-1 button-clean"
-      (click)="setOrder('length')">
-    <i class="fa fa-clock-o"></i>
-    <i class="fa fa-fw"
-      [ngClass]="{
-        'fa-sort': orderField !== 'length',
-        'fa-sort-up': orderField === 'length' && !reverseOrder,
-        'fa-sort-down': orderField === 'length' && reverseOrder
-      }"></i>
-</button>
+<!-- Sortierung nach Dauer absteigend -->
+<div class="tag shadow d-flex align-items-center justify-content-center"
+     [class.activeFilter]="orderField + '-' + reverseOrder === 'length-true'"
+     (click)="setOrder('length', true)">
+  <i class="fa fa-clock-o"></i>
+  <i class="ml-1 fa fa-sort-down"></i>
+</div>

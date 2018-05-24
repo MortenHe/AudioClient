@@ -4,6 +4,7 @@ import { PlaylistService } from '../../services/playlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment'
 import { ResultfilterService } from '../../services/resultfilter.service';
+import { ViewControlService } from '../../services/view-control.service';
 
 @Component({
   selector: 'app-search',
@@ -22,8 +23,8 @@ export class SearchComponent {
   //dev vs. produktiv
   production = environment.production;
 
-  //ist random playback erlaubt (Kindermusik vs. HSP)?
-  allowRandom$;
+  //ist random playback erlaubt bei laufender Playlist?
+  allowRandomRunning$;
 
   //Position in Playlist
   position: number;
@@ -31,8 +32,11 @@ export class SearchComponent {
   //Shutdown Status
   shutdown$;
 
+  //Welcher Bereich (Suche, Playlist) ist gerade aktiv und somit sichtbar
+  activeView: string;
+
   //Services und Router injecten
-  constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService) {
+  constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService, private vcs: ViewControlService) {
   }
 
   //Beim Init
@@ -42,7 +46,7 @@ export class SearchComponent {
     this.bs.loadFullItemlist();
 
     //AllowRandom abonnieren (fuer Anzeige gewisser Komponenten)
-    this.allowRandom$ = this.bs.getAllowRandom();
+    this.allowRandomRunning$ = this.bs.getAllowRandomRunning();
 
     //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert
     this.route.paramMap.subscribe(params => {
@@ -72,6 +76,11 @@ export class SearchComponent {
       this.position = position;
     });
 
+    //activeView (search vs. playlist) abbonieren
+    this.vcs.getView().subscribe(view => {
+      this.activeView = view;
+    });
+
     //Shutdown Zustand abbonieren
     this.shutdown$ = this.bs.getShutdown();
 
@@ -82,5 +91,10 @@ export class SearchComponent {
         value: ""
       });
     }, 5000);
+  }
+
+  //Zwischen Views umschalten (Playlist, Search)
+  setActive(view) {
+    this.vcs.setView(view);
   }
 }

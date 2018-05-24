@@ -1,6 +1,6 @@
 //Variable importerein
 @import '~scss/variables.scss';
-//eigenes styles
+//eigene styles
 .items {
     .box {
         //border-bottom: 1px solid $color-grey; //border-radius: $border-radius;
@@ -28,16 +28,11 @@
         }
         ul {
             margin-bottom: 0;
-            padding-left: 25px;
+            padding-left: 21px;
             li {
-                //list-style-type: decimal-leading-zero;
+                list-style-type: none;
                 color: $color-light-grey;
             }
-        }
-    }
-    &:last-of-type {
-        .box {
-            border-bottom: 1px solid $color-grey;
         }
     }
 }

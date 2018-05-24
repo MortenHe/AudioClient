@@ -1,6 +1,36 @@
+<!-- Steuerelemente links -->
+<nav>
+
+  <!-- Elemente wandern mit Seite mit (fixed) -->
+  <div class="wrap">
+
+    <!-- Link auf Such-Div -->
+    <div class="tag fa fa-search shadow d-flex align-items-center justify-content-center"
+         [class.active]="activeView === 'search'"
+         (click)="setActive('search')"></div>
+
+    <!-- Link auf Playlist -->
+    <div class="tag fa fa-list shadow d-flex align-items-center justify-content-center"
+         [class.active]="activeView === 'playlist'"
+         (click)="setActive('playlist')"></div>
+
+    <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben) -->
+    <random-playback [class.hidden]="activeView !== 'playlist' || !(allowRandomRunning$ | async)"
+                     class="d-flex mt-4"></random-playback>
+
+    <!-- Ansicht der Infos zu toggeln -->
+    <toggletrackview [class.hidden]="activeView !== 'search'"
+                     class="d-flex mt-4"></toggletrackview>
+
+    <!-- Sortierbuttons -->
+    <sortfilter [class.hidden]="activeView !== 'search'"
+                class="d-block mt-2"></sortfilter>
+  </div>
+</nav>
+
 <!-- auesserer Container -->
 <div *ngIf="!(shutdown$ | async); else shutdownTemp"
-     class="app-width container mt-3 mb-3 mr-0 ml-0 no-gutters">
+     class="app-content container no-gutters p-0 shadow">
 
   <!-- Inspektor mit den moeglichen Werten, wird nur bei dev angezeigt -->
   <!--
@@ -11,75 +41,56 @@
                   }"></debuginspector>-->
 
   <!-- Zeile fuer Ueberschrift, Mode-Select und Shutdown-Button -->
-  <div class="row no-gutters">
+  <div class="header-{{appMode}} row no-gutters align-items-center pt-2 pb-2 pl-3 pr-3">
 
     <!-- Ueberschrift z.B. "Web Video Player (dev)" -->
-    <h1 class="col">{{envName}}</h1>
+    <h1 class="col-8">{{envName}}</h1>
 
-    <!-- Umschalter fuer Modus (Kindervideos vs. Jahresvideos) -->
-    <selectmode class="mr-2"></selectmode>
-
-    <!-- Pi-Kontrolle zum Herunterfahren -->
-    <picontrol class="d-flex"></picontrol>
+    <!-- Lautstaerke Kontrolle -->
+    <volume-control class="col-4 d-flex justify-content-between"></volume-control>
   </div>
 
-  <!-- Lautstaerke Kontrolle -->
-  <volume-control class="d-flex justify-content-evenly mb-2"></volume-control>
 
-  <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben) -->
-  <random-playback [class.hidden]="!(allowRandom$ | async)"
-                   class="d-flex mt-2 mb-2"></random-playback>
 
-  <!-- Anischt der aktuellen laufenden Playlist -->
-  <currentplayedplaylistinspector [class.hidden]="position === -1"></currentplayedplaylistinspector>
+  <!-- Pi-Kontrolle zum Herunterfahren -->
+  <!-- <picontrol class="d-flex"></picontrol> -->
 
   <!-- Steuerelemente (play, stop, seek) fuer Item-Wiedergabe -->
   <playercontrol *ngIf="position !== -1"
-                 class="col d-flex justify-content-between"></playercontrol>
+                 class="pl-3 pr-3 col d-flex justify-content-between"></playercontrol>
+
+
+  <!-- Playlist View -->
+  <div [class.hidden]="activeView !== 'playlist'"
+       class="m-2">
+
+    <!-- Anischt der aktuellen laufenden Playlist -->
+    <currentplayedplaylistinspector class="d-block"></currentplayedplaylistinspector>
+  </div>
 
   <!-- Uebersicht ueber gerade erstellte Playlist, nur bei Video -->
   <playlistgenerator *ngIf="appMode === 'video'"></playlistgenerator>
 
-  <!-- Trennlinie -->
-  <hr class="mode-filter-hr">
+  <!-- Suchbereich View -->
+  <div [class.hidden]="activeView !== 'search'">
 
-  <!-- Filter-Buttons -->
-  <modefilter></modefilter>
+    <!-- Umschalter fuer Modus (Kindervideos vs. Jahresvideos) -->
+    <selectmode class="d-flex ml-2 mr-2 mt-2"></selectmode>
 
-  <!-- Trennlinie -->
-  <!-- <hr> -->
+    <!-- Filter-Buttons -->
+    <modefilter class="d-flex ml-2 mr-2"></modefilter>
 
-  <!-- Infos zu Anzahl der Items, Suchfeld und Sortierbuttons -->
-  <div class="row no-gutters mb-3 mt-3">
+    <!-- Suchfeld fuer Filterung -->
+    <searchfilter class="d-flex ml-2 mr-2 mt-2"></searchfilter>
 
-    <!-- Suchfeld und Anzahl der Treffer -->
-    <div class="col-12 col-sm mr-sm-2 row no-gutters d-flex align-items-center">
-
-      <!-- Suchfeld fuer Filterung -->
-      <searchfilter class="col"></searchfilter>
-
-      <!-- Anzahl der Items in Trefferliste -->
-      <resultlistinspector class="ml-2"></resultlistinspector>
-    </div>
-
-    <!-- Infos toggeln und Sortierbuttons -->
-    <div class="col-12 mt-2 col-sm mt-sm-0 row no-gutters d-flex align-items-center justify-content-between justify-content-sm-end">
-
-      <!-- Ansicht der Infos zu toggeln -->
-      <toggletrackview class="mr-2 d-flex justify-content-end"></toggletrackview>
-
-      <!-- Sortierbuttons -->
-      <sortfilter class="d-flex align-items-center justify-content-end"></sortfilter>
-    </div>
+    <!-- Trefferliste -->
+    <resultlist class="mt-2 d-block"></resultlist>
   </div>
-
-  <!-- Trefferliste -->
-  <resultlist></resultlist>
 </div>
 
 <!-- Anzeigen, wenn Pi heruntergefahren wurde -->
 <ng-template #shutdownTemp>
-  <div class="app-width container mt-3 mb-3 mr-0 ml-0 no-gutters">
+  <div class="container mt-3 mb-3 mr-0 ml-0 no-gutters">
     Die Anwendung wurde beendet
   </div>
 </ng-template>

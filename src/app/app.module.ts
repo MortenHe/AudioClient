@@ -12,6 +12,7 @@ import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
 import { PlaylistService } from './services/playlist.service';
 import { JsondataService } from './services/jsondata.service';
+import { ViewControlService } from './services/view-control.service';
 
 //eigenes Pipes
 import { ModeFilterPipe } from './pipes/mode-filter.pipe';
@@ -41,7 +42,6 @@ import { ToggletrackviewComponent } from './components/toggletrackview/toggletra
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
 import { VolumeSliderComponent } from './components/volume-slider/volume-slider.component';
-
 
 @NgModule({
   declarations: [
@@ -79,7 +79,7 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
   ],
-  providers: [BackendService, PlaylistService, ResultfilterService, JsondataService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
+  providers: [BackendService, PlaylistService, ResultfilterService, JsondataService, ViewControlService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

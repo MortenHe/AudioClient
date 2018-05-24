@@ -6,6 +6,7 @@ import { ResultfilterService } from '../../services/resultfilter.service';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ViewControlService } from '../../services/view-control.service';
 
 @Component({
   selector: 'resultlist',
@@ -33,8 +34,8 @@ export class ResultlistComponent {
   //welches Item in der Liste wurde angeklickt?
   activeItem: string = "";
 
-  //Services injecten, TODO fs raus
-  constructor(private pls: PlaylistService, private bs: BackendService, private fs: ResultfilterService) { }
+  //Services injecten
+  constructor(private pls: PlaylistService, private bs: BackendService, private fs: ResultfilterService, private vcs: ViewControlService) { }
 
   //beim Init
   ngOnInit() {
@@ -100,5 +101,8 @@ export class ResultlistComponent {
       //Video-Playlist starten
       this.bs.sendMessage({ type: "set-video-playlist", value: files });
     }
+
+    //Ansicht auf Playlist umstellen
+    this.vcs.setView('playlist');
   }
 }
