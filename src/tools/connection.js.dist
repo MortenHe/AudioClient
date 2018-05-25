@@ -1,5 +1,4 @@
 module.exports = {
-    connection: {
         pi: {
             host: '',
             user: '',
@@ -10,5 +9,4 @@ module.exports = {
             user: '',
             password: ''
         }
-    }
 };
