@@ -80,11 +80,15 @@ export class ResultlistComponent {
       //aktuellen Wert fuer allowRandom holen
       let allowRandom = this.allowRandom$.getValue();
 
-      //Ordner fuer Playback erstellen
-      let dir = "/media/audio/" + mode + "/" + item.mode + "/" + item.file;
-
       //Message an WSS welches Verzeichnis abgespielt werden sollen und ob random erlaubt ist
-      this.bs.sendMessage({ type: "set-playlist", value: { dir: dir, allowRandom: allowRandom, activeItem: item.mode + "/" + item.file } });
+      this.bs.sendMessage({
+        type: "set-playlist",
+        value: {
+          mode: mode,
+          path: item.mode + "/" + item.file,
+          allowRandom: allowRandom
+        }
+      });
     }
 
     //Video-Mode
@@ -92,10 +96,9 @@ export class ResultlistComponent {
 
       //Playlist-Array mit nur einem Eintrag erstellen
       let files = [{
-        "path": item.mode + "/" + item.file,
-        "name": item.name,
         "mode": mode,
-        "activeItem": item.mode + "/" + item.file
+        "path": item.mode + "/" + item.file,
+        "name": item.name
       }];
 
       //Video-Playlist starten
