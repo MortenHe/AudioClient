@@ -46,8 +46,8 @@ export class PlayercontrolComponent {
   }
 
   //zum vorherigen / naechten Titel wechseln
-  changeSong(increase: boolean) {
-    this.bs.sendMessage({ type: "change-song", value: increase });
+  changeItem(increase: boolean) {
+    this.bs.sendMessage({ type: "change-item", value: increase });
   }
 
   //innerhalb des Items spulen
