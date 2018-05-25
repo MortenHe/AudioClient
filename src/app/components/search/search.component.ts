@@ -27,7 +27,7 @@ export class SearchComponent {
   allowRandomRunning$;
 
   //Position in Playlist
-  position: number;
+  position: number = -1;
 
   //Shutdown Status
   shutdown$;

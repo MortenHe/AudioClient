@@ -24,7 +24,7 @@
 
     <!-- Sortierbuttons -->
     <sortfilter [class.hidden]="activeView !== 'search'"
-                class="d-block mt-2"></sortfilter>
+                class="d-block mt-4"></sortfilter>
   </div>
 </nav>
 
@@ -44,13 +44,11 @@
   <div class="header-{{appMode}} row no-gutters align-items-center pt-2 pb-2 pl-3 pr-3">
 
     <!-- Ueberschrift z.B. "Web Video Player (dev)" -->
-    <h1 class="col-8">{{envName}}</h1>
+    <h1 class="col">{{envName}}</h1>
 
     <!-- Lautstaerke Kontrolle -->
-    <volume-control class="col-4 d-flex justify-content-between"></volume-control>
+    <volume-control class="col d-flex justify-content-between"></volume-control>
   </div>
-
-
 
   <!-- Pi-Kontrolle zum Herunterfahren -->
   <!-- <picontrol class="d-flex"></picontrol> -->
@@ -58,7 +56,6 @@
   <!-- Steuerelemente (play, stop, seek) fuer Item-Wiedergabe -->
   <playercontrol *ngIf="position !== -1"
                  class="pl-3 pr-3 col d-flex justify-content-between"></playercontrol>
-
 
   <!-- Playlist View -->
   <div [class.hidden]="activeView !== 'playlist'"
