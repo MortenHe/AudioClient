@@ -65,11 +65,12 @@
     <currentplayedplaylistinspector class="d-block"></currentplayedplaylistinspector>
   </div>
 
-  <!-- Uebersicht ueber gerade erstellte Playlist, nur bei Video -->
-  <playlistgenerator *ngIf="appMode === 'video'"></playlistgenerator>
-
   <!-- Suchbereich View -->
   <div [class.hidden]="activeView !== 'search'">
+
+    <!-- Uebersicht ueber gerade erstellte Playlist, nur bei Video -->
+    <playlistgenerator *ngIf="appMode === 'video'"
+                       class="d-block mt-2"></playlistgenerator>
 
     <!-- Umschalter fuer Modus (Kindervideos vs. Jahresvideos) -->
     <selectmode class="d-flex ml-2 mr-2 mt-2"></selectmode>

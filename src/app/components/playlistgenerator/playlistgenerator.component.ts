@@ -3,6 +3,7 @@ import { PlaylistService } from '../../services/playlist.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { BackendService } from '../../services/backend.service';
+import { ViewControlService } from '../../services/view-control.service';
 
 @Component({
   selector: 'playlistgenerator',
@@ -16,7 +17,7 @@ export class PlaylistgeneratorComponent implements OnInit {
   playlist$: BehaviorSubject<any>;
 
   //Services injecten
-  constructor(private pls: PlaylistService, private bs: BackendService) { }
+  constructor(private pls: PlaylistService, private bs: BackendService, private vcs: ViewControlService) { }
 
   //beim Init
   ngOnInit() {
@@ -63,5 +64,8 @@ export class PlaylistgeneratorComponent implements OnInit {
 
     //generierte Playlist wieder leeren
     this.pls.resetPlaylist();
+
+    //Ansicht auf Playlist umstellen
+    this.vcs.setView('playlist');
   }
 }

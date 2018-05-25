@@ -4,39 +4,33 @@
   <!-- Wenn es Eintraege in der Playlist gibt -->
   <ng-container *ngIf="playlist.length">
 
-    <!-- Trennlinie -->
-    <hr>
-
-    <!-- Ueberschrift "Playlist erstellen" -->
-    <div class="font-weight-bold mb-1">Playlist erstellen</div>
-
     <!-- Ueber Titel in Playlist gehen -->
     <div *ngFor="let item of playlist, last as last"
-         class="row no-gutters">
+         class="row no-gutters item">
 
       <!-- Button, um Titel aus Playlist zu loeschen -->
-      <button class="fa fa-minus text-danger button-clean mr-1"
+      <button class="fa fa-minus button-clean mr-1 remove-item"
               (click)="toggleInPlaylist(item)"></button>
 
       <!-- formattierte Laenge des Items -->
-      <div class="item-length text-right mr-2">{{item.length | timeformatter}}</div>
+      <div class="item-length text-right mr-2 pt-1 pb-1">{{item.length | timeformatter}}</div>
 
       <!-- Name des Items -->
-      <div class="col">{{item.name}}</div>
+      <div class="col pt-1 pb-1">{{item.name}}</div>
     </div>
 
     <!-- Playlist starten -->
-    <div class="row no-gutters cursor-pointer mt-3"
+    <div class="row no-gutters cursor-pointer item start-playlist"
          (click)="startPlaylist()">
 
       <!-- Play-Symbol -->
-      <button class="fa fa-play text-success button-clean mr-1"></button>
+      <button class="fa fa-play button-clean mr-1 play-item"></button>
 
       <!-- formattierte Laenge der gesamten Playlist -->
-      <div class="item-length text-right mr-2">{{getPlaylistLength() | timeformatter}}</div>
+      <div class="item-length text-right mr-2 pt-1 pb-1">{{getPlaylistLength() | timeformatter}}</div>
 
       <!-- Text "Playlist starten" -->
-      <div class="col font-weight-bold">Playlist starten</div>
+      <div class="col font-weight-bold pt-1 pb-1">Playlist starten</div>
     </div>
   </ng-container>
 </ng-container>

@@ -5,10 +5,10 @@
   <!-- Item in Playlist einfuegen oder von dort entfernen (nur bei Video) -->
   <button *ngIf="appMode === 'video'"
           (click)="toggleInPlaylist(item)"
-          class="fa button-clean mr-1"
+          class="fa button-clean add-item"
           [ngClass]="{
-          'fa-plus text-success': !isInPlaylist(item),
-          'fa-minus text-danger': isInPlaylist(item)
+          'fa-plus': !isInPlaylist(item),
+          'fa-minus': isInPlaylist(item)
         }">
   </button>
 
