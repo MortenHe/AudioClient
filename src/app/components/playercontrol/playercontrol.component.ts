@@ -40,9 +40,11 @@ export class PlayercontrolComponent {
     this.bs.getFiles().subscribe(files => this.files = files);
   }
 
-  //Paused-Zustand toggeln
-  togglePaused() {
-    this.bs.sendMessage({ type: "toggle-paused", value: "" });
+  //Paused-Zustand toggeln oder Playlist nochmal neu starten
+  togglePausedRestart() {
+
+    //Wenn wir gerade in der Playlist sind, Pause toggeln ansnsonsten Playlist nochmal von vorne starten
+    this.bs.sendMessage({ type: "toggle-paused-restart", value: "" });
   }
 
   //zum vorherigen / naechten Titel wechseln

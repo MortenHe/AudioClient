@@ -1,25 +1,28 @@
 <!-- vorheriges Item -->
 <button (click)="changeItem(false)"
-        [disabled]="position === 0"
+        [disabled]="position <= 0"
         class="ripple fa fa-fast-backward text-info button-clean"></button>
 
 <!-- Item nach links spulen -->
 <button (click)="seek(false)"
+        [disabled]="position === -1"
         class="ripple fa fa-backward text-info button-clean"></button>
 
-<!-- toggle pause -->
-<button (click)="togglePaused()"
+<!-- toggle pause restart -->
+<button (click)="togglePausedRestart()"
         class="ripple fa button-clean"
         [ngClass]='{
-                "fa-play text-success": paused,
-                "fa-pause text-warning": !paused
+                "fa-play text-success": paused && position !== -1,
+                "fa-pause text-warning": !paused && position !== -1,
+                "fa-repeat text-info": position === -1
         }'></button>
 
 <!-- Item nach rechts spulen -->
 <button (click)="seek(true)"
+        [disabled]="position === -1"
         class="ripple fa fa-forward text-info button-clean"></button>
 
 <!-- naechstes Item -->
 <button (click)="changeItem(true)"
-        [disabled]="position === (files.length - 1)"
+        [disabled]="position === (files.length - 1) || position === -1"
         class="ripple fa fa-fast-forward text-info button-clean"></button>

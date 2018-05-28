@@ -172,5 +172,17 @@
         "file": "bibi-tina-tina-gefahr.mp4",
         "length": "00:25:09",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das Schlossfest",
+        "file": "bibi-tina-schlossfest.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Die Schmugglerpferde",
+        "file": "bibi-tina-schmugglerpferde.mp4",
+        "length": "00:25:09",
+        "active": true
     }
 ]

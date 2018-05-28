@@ -35,6 +35,9 @@ export class SearchComponent {
   //Welcher Bereich (Suche, Playlist) ist gerade aktiv und somit sichtbar
   activeView: string;
 
+  //AKtuelle Playlist
+  files: string[] = [];
+
   //Services und Router injecten
   constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService, private vcs: ViewControlService) {
   }
@@ -79,6 +82,11 @@ export class SearchComponent {
     //activeView (search vs. playlist) abbonieren
     this.vcs.getView().subscribe(view => {
       this.activeView = view;
+    });
+
+    //files (=Playlist) abonnieren
+    this.bs.getFiles().subscribe(files => {
+      this.files = files;
     });
 
     //Shutdown Zustand abbonieren
