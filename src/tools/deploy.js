@@ -5,21 +5,14 @@ const connection = require("./connection.js");
 const runMode = process.argv[2] ? process.argv[2] : "pi";
 
 //Welches Projekt audio vs. video soll deployed werden? Wenn kein Argument kommt -> audio
-let appMode = process.argv[3] ? process.argv[3] : "audio";
+const appMode = process.argv[3] ? process.argv[3] : "audio";
 console.log("build and deploy " + appMode + " to " + runMode);
 
 //Unter welchem Unterpfad wird die App auf dem Server laufen?
-let base_href = appMode === "audio" ? "wap" : "wvp";
+const base_href = appMode === "audio" ? "wap" : "wvp";
 
-//davon ausgehen, dass fuer pi gebaut wird
-let production = "prod";
-
-//Bei Virtualbox
-if (runMode === "vb") {
-
-    //Andere configuration
-    production = "dev";
-}
+//pi (production) vs. vb (dev)
+const production = runMode === "pi" ? "prod" : "dev";
 
 //Projekt bauen
 const { execSync } = require('child_process');
@@ -33,7 +26,7 @@ console.log("copy htacces");
 fs.copySync('.htaccess', '../../dist/htaccess');
 
 //htacces Schablone anpassen durch Pattern Ersetzung
-var replace = require("replace");
+const replace = require("replace");
 console.log("update htacces");
 replace({
     regex: "###PATH###",
@@ -59,13 +52,13 @@ else {
 }
 
 //Dist-Folder zippen
-var zipFolder = require('zip-folder');
+const zipFolder = require('zip-folder');
 console.log("zip data");
 zipFolder('../../dist', '../../myDist.zip', function (err) { });
 
 //gezippte Daten per SSH auf Server spielen und entpacken
-var SSH2Promise = require('ssh2-promise');
-var ssh = new SSH2Promise({
+const SSH2Promise = require('ssh2-promise');
+const ssh = new SSH2Promise({
     host: connection[runMode].host,
     username: connection[runMode].user,
     password: connection[runMode].password
