@@ -199,16 +199,6 @@ export class BackendService {
         return this.modeFilterListSB;
     }
 
-    //Anfrage an Proxy schicken, damit diese z.B: das Video pausiert oder 30 sek nach rechts sprint oder zum naechsten Audio-Titel wechselt
-    sendPlaybackControlRequest(command): any {
-        this.http.get(this.proxyUrl + this.appMode + "_control_playback.php?command=" + command).subscribe();
-    }
-
-    //Itemlists aus Webseite und auf Server vergleichen und Ergebnis zurueckliefern
-    sendCompareItemlistsRequest(): Observable<any> {
-        return this.http.get(this.proxyUrl + "compare_itemlists.php?app_mode=" + this.appMode + "&production=" + this.production).map(response => response.json() as any);
-    }
-
     //Verbindung zu WSS herstellen
     public createWebsocket() {
 
