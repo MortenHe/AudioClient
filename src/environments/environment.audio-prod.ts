@@ -1,5 +1,5 @@
 export const environment = {
-  envName: 'Audio Player',
+  envName: 'Musik Player',
   production: true,
   appMode: 'audio',
   wssUrl: 'ws://192.168.0.150:8080',

@@ -11,7 +11,7 @@ import { Subject } from 'rxjs/Subject';
 export class VolumeControlComponent {
 
   //Aktueller Lautstaerkewert
-  volume$: Subject<number>;
+  volume: number
 
   //Service injecten
   constructor(private bs: BackendService) { }
@@ -20,7 +20,9 @@ export class VolumeControlComponent {
   ngOnInit() {
 
     //Aktuelle Lautstaerke abbonieren
-    this.volume$ = this.bs.getVolume();
+    this.bs.getVolume().subscribe(volume => {
+      this.volume = volume;
+    });
   }
 
   //Volume leiser oder lauter an WSS schicken

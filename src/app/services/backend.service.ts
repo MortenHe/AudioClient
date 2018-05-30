@@ -249,7 +249,7 @@ export class BackendService {
 
             //Switch anhand Message-Types
             switch (obj.type) {
-                case "set-volume": case "change-volume":
+                case "change-volume":
                     this.volume$.next(value);
                     break;
 

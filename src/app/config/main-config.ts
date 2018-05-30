@@ -10,7 +10,5 @@ export class Item {
 
 //subscribe innerhalb von subscribe
 //unsubscribe
-//index.php schoenere Buttons
-//webseite zentriert
 //track-Anzeige in neue Zeile bei kleiner Aufloesung
 //Mode-Filter space-between mit media query
