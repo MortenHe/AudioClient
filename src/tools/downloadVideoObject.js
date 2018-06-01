@@ -12,7 +12,7 @@ const { execSync } = require('child_process');
 const downloadDir = "C:/Users/Martin/Desktop/media/down";
 
 //Praefix fuer Dateiname
-const mode = "bibi-tina";
+const mode = "conni";
 
 //Video-Promises sammeln
 videoPromises = [];
