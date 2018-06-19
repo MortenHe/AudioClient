@@ -154,5 +154,17 @@
         "file": "conni-ballett-tivi.mp4",
         "length": "00:11:30",
         "active": true
+    },
+    {
+        "name": "Conni sucht Kater Mau",
+        "file": "conni-sucht-mau-tivi.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni auf der Burg",
+        "file": "conni-burg-tivi.mp4",
+        "length": "00:11:29",
+        "active": true
     }
 ]

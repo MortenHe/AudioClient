@@ -200,5 +200,34 @@
             "Pixie Paris - Es rappelt im Karton",
             "Rihanna - Work"
         ]
+    },
+    {
+        "name": "Nola Note - Auf musikalischer Weltreise",
+        "file": "nola-note-weltreise-1",
+        "active": true,
+        "length": "00:51:12",
+        "tracks": [
+            "01 - Die Reise beginnt... auf nach Mexiko.mp3",
+            "02 - Trompeten von Mexiko.mp3",
+            "03 - Nola Note in Argentinien.mp3",
+            "04 - Argentinischer Tango mit Bandoneon.mp3",
+            "05 - Nola Note in Nordamerika.mp3",
+            "06 - Die Indianerflöte.mp3",
+            "07 - Nola Note in Irland.mp3",
+            "08 - Wenn die Geige Fiddle heißt.mp3",
+            "09 - Nola Note in Schottland.mp3",
+            "10 - Der gute alte Dudelsack.mp3",
+            "11 - Nola Note in Spanien.mp3",
+            "12 - Die Gitarre spielt Flamenco.mp3",
+            "13 - Nola Note in Afrika.mp3",
+            "14 - Die Sprache der Musik - Trommeln in Afrika.mp3",
+            "15 - Nola Note in Australien.mp3",
+            "16 - Diggeridoo.mp3",
+            "17 - Nola Note in Asien.mp3",
+            "18 - Fremder Klang - Yin Yan.mp3",
+            "19 - Nola Note in Russland.mp3",
+            "20 - Balalaika - Russische Seele.mp3",
+            "21 - Noch mal von vorne.mp3"
+        ]
     }
 ]

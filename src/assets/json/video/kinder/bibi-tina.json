@@ -184,5 +184,23 @@
         "file": "bibi-tina-schmugglerpferde.mp4",
         "length": "00:25:09",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Nadja und Nafari",
+        "file": "bibi-tina-nadja-nafari.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Felix, der Filmstar",
+        "file": "bibi-tina-felix-filmstar.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das große Wettreiten",
+        "file": "bibi-tina-wettreiten.mp4",
+        "length": "00:25:09",
+        "active": true
     }
 ]

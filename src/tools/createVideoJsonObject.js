@@ -7,7 +7,7 @@ const getDuration = require('get-video-duration');
 const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
-const dataDir = "C:/Users/Martin/Desktop/media/done/video/kinder/conni";
+const dataDir = "C:/Users/Martin/Desktop/media/done";
 const prefix = "Bibi und Tina - "
 
 //Video-Infos sammeln
@@ -22,37 +22,42 @@ fs.readdir(dataDir, (err, files) => {
     //Ueber Dateien gehen
     for (let file of files) {
 
-        //Promises sammeln, da Zeit-Ermittlung asynchron laeuft
-        durationPromises.push(new Promise((resolve, reject) => {
+        //Wenn es eine Datei ist
+        let stat = fs.statSync(dataDir + "/" + file);
+        if (stat && stat.isFile()) {
 
-            //Laenge errechnen fuer Datei
-            getDuration(dataDir + "/" + file).then((duration) => {
+            //Promises sammeln, da Zeit-Ermittlung asynchron laeuft
+            durationPromises.push(new Promise((resolve, reject) => {
 
-                //Gesamtzeit als formattierten String. Zunaechst Float zu int: 13.4323 => 13
-                let totalSeconds = Math.trunc(duration);
+                //Laenge errechnen fuer Datei
+                getDuration(dataDir + "/" + file).then((duration) => {
 
-                //Umrechung der Sekunden in [h, m, s] fuer formattierte Darstellung
-                let hours = Math.floor(totalSeconds / 3600);
-                totalSeconds %= 3600;
-                let minutes = Math.floor(totalSeconds / 60);
-                let seconds = totalSeconds % 60;
+                    //Gesamtzeit als formattierten String. Zunaechst Float zu int: 13.4323 => 13
+                    let totalSeconds = Math.trunc(duration);
 
-                //h, m, s-Werte in Array packen
-                let timeOutput = [hours, minutes, seconds];
+                    //Umrechung der Sekunden in [h, m, s] fuer formattierte Darstellung
+                    let hours = Math.floor(totalSeconds / 3600);
+                    totalSeconds %= 3600;
+                    let minutes = Math.floor(totalSeconds / 60);
+                    let seconds = totalSeconds % 60;
 
-                //[2,44,1] => 02:44:01
-                let timeOutputString = timelite.str(timeOutput);
+                    //h, m, s-Werte in Array packen
+                    let timeOutput = [hours, minutes, seconds];
 
-                //Video-Objekt erstellen und sammeln
-                outputArray.push({
-                    "name": prefix,
-                    "file": file,
-                    "length": timeOutputString,
-                    "active": true
+                    //[2,44,1] => 02:44:01
+                    let timeOutputString = timelite.str(timeOutput);
+
+                    //Video-Objekt erstellen und sammeln
+                    outputArray.push({
+                        "name": prefix,
+                        "file": file,
+                        "length": timeOutputString,
+                        "active": true
+                    });
+                    resolve();
                 });
-                resolve();
-            });
-        }));
+            }));
+        }
     }
 
     //warten bis alle Promises abgeschlossen sind
