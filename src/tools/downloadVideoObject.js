@@ -25,7 +25,7 @@ for (let i = 1; i <= 155; i++) {
 
     //Link mit passendem Segment-Identifier
     link = "";
-    
+
     //Videos-Promises sammeln
     videoPromises.push(new Promise((resolve, reject) => {
 

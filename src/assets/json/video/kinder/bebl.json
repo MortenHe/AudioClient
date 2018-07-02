@@ -22,5 +22,11 @@
         "file": "bebl-winni-waschbaer.mp4",
         "length": "00:26:00",
         "active": true
+    },
+    {
+        "name": "Benjamin Blümchen - Als Babysitter",
+        "file": "bebl-babysitter.mp4",
+        "length": "00:26:00",
+        "active": true
     }
 ]

@@ -166,5 +166,77 @@
         "file": "conni-burg-tivi.mp4",
         "length": "00:11:29",
         "active": true
+    },
+    {
+        "name": "Conni und der Babysitter",
+        "file": "conni-babysitter-tivi.mp4",
+        "length": "00:11:30",
+        "active": true
+    },
+    {
+        "name": "Conni beim Frisör",
+        "file": "conni-frisör-tivi.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni lässt einen Drachen steigen",
+        "file": "conni-drache-tivi.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni und das Froschkonzert",
+        "file": "conni-froschkonzert-tivi.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni geht auf Waldsafari",
+        "file": "conni-waldsafari-tivi.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni übernachtet bei Julia",
+        "file": "conni-uebernachtet-bei-julia-tivi.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni auf der Baustelle",
+        "file": "conni-baustelle.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni macht Flohmarkt",
+        "file": "conni-flohmarkt.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni feiert Fasching",
+        "file": "conni-fasching.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni hilft Papa im Garten",
+        "file": "conni-hilft-garten.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni im Straßenverkehr",
+        "file": "conni-strassenverkehr.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni wird Clown",
+        "file": "conni-clown.mp4",
+        "length": "00:11:29",
+        "active": true
     }
 ]

@@ -8,7 +8,7 @@ const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
 const dataDir = "C:/Users/Martin/Desktop/media/done";
-const prefix = "Bibi und Tina - "
+const prefix = "Conni - "
 
 //Video-Infos sammeln
 outputArray = [];

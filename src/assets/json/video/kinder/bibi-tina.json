@@ -202,5 +202,41 @@
         "file": "bibi-tina-wettreiten.mp4",
         "length": "00:25:09",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Janoschs Geburtstag",
+        "file": "bibi-tina-janoschs-geburtstag.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das zottelige Trio",
+        "file": "bibi-tina-zottelige-trio.mp4",
+        "length": "00:25:10",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Spuk auf der Ferieninsel",
+        "file": "bibi-tina-spukferieninsel.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Der kleine Ausreißer",
+        "file": "bibi-tina-ausreisser.mp4",
+        "length": "00:25:08",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Der Birkenhof",
+        "file": "bibi-tina-birkenhof.mp4",
+        "length": "00:25:08",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Der Austauschschüler",
+        "file": "bibi-tina-austauschschueler.mp4",
+        "length": "00:25:09",
+        "active": true
     }
 ]

@@ -1,3 +1,6 @@
+<!-- Inspektor mit den moeglichen Werten, wird nur bei dev angezeigt -->
+<!-- <debuginspector class="d-flex"></debuginspector> -->
+
 <!--Wrapper fuer sichtbare Elemte, waehrend Anwendung laueft: Nav links, Main, Shutdown rechts -->
 <div *ngIf="!(shutdown$ | async); else shutdownTemp"
      class="d-flex position-relative col no-gutters p-0">
@@ -37,14 +40,6 @@
 
   <!-- auesserer Container -->
   <div class="app-content container no-gutters p-0 shadow">
-
-    <!-- Inspektor mit den moeglichen Werten, wird nur bei dev angezeigt -->
-    <!--
-  <debuginspector class="d-flex mb-3"
-                  [ngClass]="{
-                    'd-none': !production, 
-                    'd-none': production
-                  }"></debuginspector>-->
 
     <!-- Zeile fuer Ueberschrift, Mode-Select und Shutdown-Button -->
     <div class="header-{{appMode}} row no-gutters align-items-center pt-2 pb-2 pl-3 pr-3">
