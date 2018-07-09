@@ -13,6 +13,7 @@ const downloadDir = "C:/Users/Martin/Desktop/media/down";
 
 //Praefix fuer Dateiname
 const mode = "conni";
+const name = "";
 
 //Video-Promises sammeln
 videoPromises = [];
@@ -53,6 +54,6 @@ Promise.all(videoPromises).then(() => {
     console.log("putting single files together done");
 
     //ts-Datei nach mp4 konvertieren
-    execSync("ffmpeg -i " + downloadDir + "/joined_files.ts -acodec copy -vcodec copy " + downloadDir + "/" + mode + "-.mp4");
+    execSync("ffmpeg -i " + downloadDir + "/joined_files.ts -acodec copy -vcodec copy " + downloadDir + "/../done/" + mode + "-" + name + ".mp4");
     console.log("creating mp4 file done")
 });

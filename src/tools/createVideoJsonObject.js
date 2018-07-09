@@ -8,7 +8,12 @@ const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
 const dataDir = "C:/Users/Martin/Desktop/media/done";
-const prefix = "Conni - "
+const mode = "bibi-tina";
+
+//Benennung des Titels
+naming = [];
+naming["conni"] = "Conni ";
+naming["bibi-tina"] = "Bibi und Tina - ";
 
 //Video-Infos sammeln
 outputArray = [];
@@ -22,9 +27,9 @@ fs.readdir(dataDir, (err, files) => {
     //Ueber Dateien gehen
     for (let file of files) {
 
-        //Wenn es eine Datei ist
+        //Wenn es eine Datei ist und zum aktuellen Modus gehoert
         let stat = fs.statSync(dataDir + "/" + file);
-        if (stat && stat.isFile()) {
+        if (stat && stat.isFile() && file.startsWith(mode)) {
 
             //Promises sammeln, da Zeit-Ermittlung asynchron laeuft
             durationPromises.push(new Promise((resolve, reject) => {
@@ -49,7 +54,7 @@ fs.readdir(dataDir, (err, files) => {
 
                     //Video-Objekt erstellen und sammeln
                     outputArray.push({
-                        "name": prefix,
+                        "name": naming[mode],
                         "file": file,
                         "length": timeOutputString,
                         "active": true

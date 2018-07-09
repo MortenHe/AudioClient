@@ -238,5 +238,47 @@
         "file": "conni-clown.mp4",
         "length": "00:11:29",
         "active": true
+    },
+    {
+        "name": "Conni fährt Bahn",
+        "file": "conni-faehrt-bahn.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni und der fiese Schnupfen",
+        "file": "conni-fiese-schnupfen.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni und der Dreck-weg-Tag",
+        "file": "conni-dreck-weg-tag.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni spielt Theater",
+        "file": "conni-spielt-theater.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni kann nicht einschlafen",
+        "file": "conni-kann-nicht-einschlafen.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni turnt",
+        "file": "conni-turnt.mp4",
+        "length": "00:11:29",
+        "active": true
+    },
+    {
+        "name": "Conni und der Hundebesuch",
+        "file": "conni-hundebesuch.mp4",
+        "length": "00:11:29",
+        "active": true
     }
 ]
