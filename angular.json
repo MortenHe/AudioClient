@@ -52,6 +52,14 @@
                 }
               ]
             },
+            "audio-win": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.audio-win.ts"
+                }
+              ]
+            },
             "audio-prod": {
               "optimization": true,
               "outputHashing": "all",
@@ -107,6 +115,9 @@
             },
             "audio-dev": {
               "browserTarget": "website:build:audio-dev"
+            },
+            "audio-win": {
+              "browserTarget": "website:build:audio-win"
             },
             "audio-prod": {
               "browserTarget": "website:build:audio-prod"
