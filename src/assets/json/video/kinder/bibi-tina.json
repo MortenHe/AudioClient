@@ -256,5 +256,11 @@
         "file": "bibi-tina-schwarze-diamant.mp4",
         "length": "00:25:08",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Der Schatz der Schimmelreiter",
+        "file": "bibi-tina-schatz-schimmelreiter.mp4",
+        "length": "00:25:09",
+        "active": true
     }
 ]
