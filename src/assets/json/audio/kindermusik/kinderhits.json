@@ -67,5 +67,23 @@
             "Mach Mich Nicht Fertig, Ne",
             "Kleine Racker"
         ]
+    },
+    {
+        "name": "Eule findet den Beat auf Europatour",
+        "file": "eule-europa",
+        "active": true,
+        "length": "00:22:22",
+        "tracks": [
+            "Eule findet den Beat auf Europatour.mp3",
+            "Im Schlagerhimmel.mp3",
+            "C'est la vie.mp3",
+            "Olé Olé.mp3",
+            "Am Ende des Regenbogens.mp3",
+            "Wo wir tanzen und singen.mp3",
+            "Kalimera.mp3",
+            "Yalla.mp3",
+            "Hej Midsommar.mp3",
+            "Finde deinen Beat.mp3"
+        ]
     }
 ]
