@@ -98,7 +98,7 @@ export class SearchComponent {
         type: "ping",
         value: ""
       });
-    }, 5000);
+    }, 1500);
   }
 
   //Zwischen Views umschalten (Playlist, Search)
