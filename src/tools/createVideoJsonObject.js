@@ -12,7 +12,7 @@ const mode = "bibi-tina";
 
 //Benennung des Titels
 naming = [];
-naming["conni"] = "Conni ";
+naming["conni"] = "Conni - ";
 naming["bibi-tina"] = "Bibi und Tina - ";
 
 //Video-Infos sammeln
