@@ -9,7 +9,7 @@ const appMode = process.argv[3] ? process.argv[3] : "audio";
 console.log("compare local " + appMode + " files with " + runMode);
 
 //Pfade wo die Dateien liegen
-const appModePath = appMode === "audio" ? "audio" : "usb_red/video";
+const appModePath = appMode === "audio" ? "audio" : "pi/usb_red/video";
 
 //Werden Verzeichnis- oder Dateinamen verglichen?
 const searchType = appMode === "audio" ? "d" : "f";
