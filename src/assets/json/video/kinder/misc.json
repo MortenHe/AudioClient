@@ -1,17 +1,5 @@
 [
     {
-        "name": "Andis Welt - Hier bin ich",
-        "file": "vid1.mp4",
-        "length": "00:00:05",
-        "active": true
-    },
-    {
-        "name": "Andis Welt - Wo bist du?",
-        "file": "vid2.mp4",
-        "length": "00:00:07",
-        "active": false
-    },
-    {
         "name": "The Snowman",
         "file": "the-snowman.mp4",
         "length": "00:25:38",

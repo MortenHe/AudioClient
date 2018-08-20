@@ -1,5 +1,6 @@
 <!-- vorheriges Item -->
 <button (click)="changeItem(false)"
+        [class.invisible]="files.length === 1"
         [disabled]="position <= 0"
         class="ripple fa fa-fast-backward text-info button-clean"></button>
 
@@ -24,5 +25,6 @@
 
 <!-- naechstes Item -->
 <button (click)="changeItem(true)"
+        [class.invisible]="files.length === 1"
         [disabled]="position === (files.length - 1) || position === -1"
         class="ripple fa fa-fast-forward text-info button-clean"></button>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { PlaylistService } from '../../services/playlist.service';
-import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 
 @Component({
