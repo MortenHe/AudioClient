@@ -8,7 +8,6 @@ import { ModeFilterPipe } from '../pipes/mode-filter.pipe';
 import { SearchFilterPipe } from '../pipes/search-filter.pipe';
 import { OrderByPipe } from '../pipes/order-by.pipe';
 import { environment } from '../../environments/environment';
-import { PlaylistService } from './playlist.service';
 import { Subject } from 'rxjs/Subject';
 import { Observer } from 'rxjs/Observer';
 import { JsondataService } from './jsondata.service';
@@ -85,6 +84,9 @@ export class BackendService {
 
     //aktives Item
     activeItem$: Subject<string> = new Subject<string>();
+
+    //Anzahl der Sekunden bis Shutdown
+    countdownTime$: Subject<number> = new Subject<number>();
 
     //wurde Server heruntergefahren?
     shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -244,7 +246,6 @@ export class BackendService {
 
             //console.log((JSON.parse(message.data.toString())));
             let obj = JSON.parse(message.data);
-            let type = obj.type;
             let value = obj.value;
 
             //Switch anhand Message-Types
@@ -279,6 +280,10 @@ export class BackendService {
 
                 case "allow-random":
                     this.allowRandomRunning$.next(value);
+                    break;
+
+                case "set-countdown-time":
+                    this.countdownTime$.next(value);
                     break;
 
                 case "shutdown":
@@ -332,6 +337,11 @@ export class BackendService {
     //ActiveItem liefern
     getActiveItem() {
         return this.activeItem$;
+    }
+
+    //Anzahl der Sekunden bis Countdown liefern
+    getCountdownTime() {
+        return this.countdownTime$;
     }
 
     //Shutdown Zustand liefern

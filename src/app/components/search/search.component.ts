@@ -38,6 +38,9 @@ export class SearchComponent {
   //AKtuelle Playlist
   files: string[] = [];
 
+  //Anzahl der Sekunden bis Shutdown
+  countdownTime: number;
+
   //Services und Router injecten
   constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService, private vcs: ViewControlService) {
   }
@@ -75,19 +78,16 @@ export class SearchComponent {
     });
 
     //Position in Playlist abbonieren
-    this.bs.getPosition().subscribe(position => {
-      this.position = position;
-    });
+    this.bs.getPosition().subscribe(position => this.position = position);
 
     //activeView (search vs. playlist) abbonieren
-    this.vcs.getView().subscribe(view => {
-      this.activeView = view;
-    });
+    this.vcs.getView().subscribe(view => this.activeView = view);
 
     //files (=Playlist) abonnieren
-    this.bs.getFiles().subscribe(files => {
-      this.files = files;
-    });
+    this.bs.getFiles().subscribe(files => this.files = files);
+
+    //Anzahl der Sekunden bis Shutdown abbonieren
+    this.bs.getCountdownTime().subscribe(countdownTime => this.countdownTime = countdownTime);
 
     //Shutdown Zustand abbonieren
     this.shutdown$ = this.bs.getShutdown();
