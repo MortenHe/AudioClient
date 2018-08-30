@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from '../../services/playlist.service';
-import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { BackendService } from '../../services/backend.service';
 import { ViewControlService } from '../../services/view-control.service';

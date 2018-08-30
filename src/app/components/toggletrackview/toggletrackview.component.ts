@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { FormControl } from '@angular/forms';
-import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'toggletrackview',

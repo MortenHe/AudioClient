@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from '../../services/playlist.service';
-import { Subject } from 'rxjs/Subject';
 import { BackendService } from '../../services/backend.service';
 
 @Component({

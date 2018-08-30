@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
-import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'volume-control',
