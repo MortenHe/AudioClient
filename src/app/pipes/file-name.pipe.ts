@@ -16,7 +16,7 @@ export class FileNamePipe implements PipeTransform {
     fileName = fileName.replace(/.mp4/i, '');
 
     //Zahlen filtern
-    fileName = fileName.replace(/\d+( -|-|_)*\.*\d*/g, '');
+    fileName = fileName.replace(/([0-9]{4}-[0-9]{2} - | - [0-9][0-9]|^[0-9][0-9] - |^[0-9][0-9] )/g, '');
 
     //gefilterten Namen zurueckliefern
     return fileName.trim();

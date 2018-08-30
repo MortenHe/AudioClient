@@ -15,7 +15,7 @@ export class CurrentplayedplaylistinspectorComponent implements OnInit {
   time: string = "";
 
   //Liste der Dateien, die abgespielt werden
-  files$: Subject<any[]>;
+  files: any[];
 
   //aktueller Index in Titelliste
   position: number;
@@ -32,8 +32,8 @@ export class CurrentplayedplaylistinspectorComponent implements OnInit {
     //akutelle Zeit per Service abbonieren und in Variable schreiben
     this.bs.getTime().subscribe(time => this.time = time);
 
-    //Liste des aktuellen laufenden Files abbonieren
-    this.files$ = this.bs.getFiles();
+    //Liste des aktuellen per Service abbonieren und in Variable schreiben
+    this.bs.getFiles().subscribe(files => this.files = files);
 
     //aktuellen Index in Titelliste abbonieren und in Variable schreiben (fuer CSS-Klasse)
     this.bs.getPosition().subscribe(position => {
