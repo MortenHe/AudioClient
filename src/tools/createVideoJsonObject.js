@@ -9,7 +9,7 @@ const timelite = require('timelite');
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
 const dataDir = "C:/Users/Martin/Desktop/media/done";
 //const dataDir = "F:/Video (geschnitten)/Jahresvideo HWH + MH/2015 - Jahresvideo";
-const mode = "bibi-tina";
+const mode = "2015";
 
 //Benennung des Titels
 naming = [];
@@ -41,6 +41,8 @@ fs.readdir(dataDir, (err, files) => {
 
                     //Gesamtzeit als formattierten String. Zunaechst Float zu int: 13.4323 => 13
                     let totalSeconds = Math.trunc(duration);
+
+                    console.log(totalSeconds)
 
                     //Umrechung der Sekunden in [h, m, s] fuer formattierte Darstellung
                     let hours = Math.floor(totalSeconds / 3600);
