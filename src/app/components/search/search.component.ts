@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment'
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { ViewControlService } from '../../services/view-control.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -22,6 +23,9 @@ export class SearchComponent {
 
   //dev vs. produktiv
   production = environment.production;
+
+  //Zustand ob Verbindung zu WSS existiert
+  connected: boolean;
 
   //ist random playback erlaubt bei laufender Playlist?
   allowRandomRunning$;
@@ -91,6 +95,9 @@ export class SearchComponent {
 
     //Shutdown Zustand abbonieren
     this.shutdown$ = this.bs.getShutdown();
+
+    //Zustand abbonieren, ob Verbindung zu WSS besteht
+    this.bs.getConnected().subscribe(connected => this.connected = connected);
 
     //Regelmassieg eine Nachricht an WSS schicken, damit ggf. die Verbindung wieder aufgebaut wird
     setInterval(() => {

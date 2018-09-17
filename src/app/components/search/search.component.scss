@@ -34,10 +34,19 @@
     color: $color-white;
 }
 
-.countdown {
+.connection {
     position: absolute;
     right: 0px;
     top: 55px;
     width: 40px;
-    text-align: center
+    font-size: 25px;
+    text-align: center;
+}
+
+.countdown {
+    position: absolute;
+    right: 0px;
+    top: 85px;
+    width: 40px;
+    text-align: center;
 }

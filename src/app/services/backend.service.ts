@@ -94,6 +94,9 @@ export class BackendService {
     //ist Random bei der aktuell laufenden Playlist erlaubt?
     allowRandomRunning$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+    //Ist die App gerade mit dem WSS verbunden?
+    connected$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
     //Services injekten
     constructor(private http: Http, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
 
@@ -220,6 +223,9 @@ export class BackendService {
                 //Wenn Verbindung zu WSS existiert
                 if (socket.readyState === WebSocket.OPEN) {
 
+                    //App ist mit WSS verbunden
+                    this.connected$.next(true);
+
                     //Wenn es nicht nur ein Ping Message ist (die ggf. Verbindung wieder herstellt)
                     if (data["type"] !== "ping") {
 
@@ -230,7 +236,9 @@ export class BackendService {
 
                 //keine Verbindung zu WSS
                 else {
-                    console.log("ready state ist " + socket.readyState)
+                    //App ist nicht mit WSS verbunden
+                    this.connected$.next(false);
+                    console.log("ready state ist " + socket.readyState);
 
                     //Verbindung zu WSS wieder herstellen                    
                     this.createWebsocket();
@@ -349,7 +357,13 @@ export class BackendService {
         return this.shutdown$;
     }
 
+    //AllowRandom Zustand liefern
     getAllowRandomRunning() {
         return this.allowRandomRunning$;
+    }
+
+    //Verbindungszustand mit WSS liefern
+    getConnected() {
+        return this.connected$;
     }
 }

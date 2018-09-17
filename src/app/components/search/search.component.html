@@ -38,6 +38,13 @@
   <!-- Pi-Kontrolle zum Herunterfahren -->
   <picontrol class="d-flex shadow"></picontrol>
 
+  <!-- Zustand ueber Verbindung zu WSS -->
+  <div class="connection"><i class="fa fa-wifi"
+       [ngClass]='{
+     "text-danger": !connected,
+     "text-success": connected
+    }'></i></div>
+
   <!-- Countdown -->
   <div [class.hidden]="countdownTime >= 180"
        class="countdown">{{countdownTime}}</div>
