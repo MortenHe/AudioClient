@@ -84,6 +84,9 @@ export class ResultlistComponent {
           allowRandom: allowRandom
         }
       });
+
+      //Ansicht auf Playlist umstellen
+      this.vcs.setView('playlist');
     }
 
     //Video-Mode
@@ -98,8 +101,5 @@ export class ResultlistComponent {
         }
       });
     }
-
-    //Ansicht auf Playlist umstellen
-    this.vcs.setView('playlist');
   }
 }

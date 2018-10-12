@@ -40,5 +40,23 @@
         "file": "wizard-off.mp4",
         "length": "00:01:10",
         "active": true
+    },
+    {
+        "name": "Der Zauberer von Oz - Somewhere Over The Rainbow",
+        "file": "over-the-rainbow.mp4",
+        "length": "00:02:09",
+        "active": true
+    },
+    {
+        "name": "Laili auf der Rutsche",
+        "file": "laila-rutsche.mp4",
+        "length": "00:00:46",
+        "active": true
+    },
+    {
+        "name": "Die Opas singen 'Poor Boy'",
+        "file": "poor-boy.mp4",
+        "length": "00:00:34",
+        "active": true
     }
 ]
