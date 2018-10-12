@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PlaylistService } from '../../services/playlist.service';
 import { BackendService } from '../../services/backend.service';
 
 @Component({
@@ -23,7 +22,7 @@ export class CurrentplayedplaylistinspectorComponent implements OnInit {
   jumpPosition: number = -1;
 
   //Service injecten
-  constructor(private pls: PlaylistService, private bs: BackendService) { }
+  constructor(private bs: BackendService) { }
 
   //beim Init
   ngOnInit() {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BackendService } from '../../services/backend.service';
-import { PlaylistService } from '../../services/playlist.service';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 
@@ -20,7 +19,7 @@ export class RandomPlaybackComponent implements OnInit {
   randomPlaybackCheckbox = new FormControl();
 
   //Services injecten
-  constructor(private bs: BackendService, private pls: PlaylistService) { }
+  constructor(private bs: BackendService) { }
 
   //Beim Init
   ngOnInit() {

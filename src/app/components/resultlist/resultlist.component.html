@@ -2,16 +2,6 @@
 <div *ngFor="let item of items$ | async"
      class="row no-gutters align-items-center items">
 
-  <!-- Item in Playlist einfuegen oder von dort entfernen (nur bei Video) -->
-  <button *ngIf="appMode === 'video'"
-          (click)="toggleInPlaylist(item)"
-          class="fa button-clean add-item"
-          [ngClass]="{
-          'fa-plus': !isInPlaylist(item),
-          'fa-minus': isInPlaylist(item)
-        }">
-  </button>
-
   <!-- Button um einzelnes Item direkt zu starten -->
   <button (click)="playSingleItem(item)"
           class="box col text-left pl-2"
@@ -20,8 +10,17 @@
     <!-- Zeile mit (hover-) Playsymbol, Name der Playlist und Laenge -->
     <div class="row no-gutters align-items-center">
 
-      <!-- Play-Symbol wird nur bei hover und active angezeigt -->
-      <i class="fa fa-play mr-2"></i>
+      <!-- Play-Symbol wird nur bei Audio mit hover und active angezeigt -->
+      <i *ngIf="appMode === 'audio'"
+         class="fa fa-play mr-2"></i>
+
+      <!-- Play/Enque-Symbol wird nur bei Video mit hover und active angezeigt -->
+      <i *ngIf="appMode === 'video'"
+         class="fa mr-2"
+         [ngClass]="{
+        'fa-play': !files.length,
+        'fa-plus': files.length
+      }"></i>
 
       <!-- Itemname -->
       <span class="col">{{item.name}}</span>

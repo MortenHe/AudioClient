@@ -19,19 +19,22 @@
         padding: 5px;
         background: $color-light-bg;
         cursor: pointer;
-        .fa-play {
+        .fa-play,
+        .fa-plus {
             display: none;
         }
         &:hover:not(.active-item) {
             background: $color-light-bg-hover;
-            .fa-play {
+            .fa-play,
+            .fa-plus {
                 display: inline;
                 opacity: .5;
             }
         }
         &.active-item {
             background: $color-light-bg-active;
-            .fa-play {
+            .fa-play,
+            .fa-plus {
                 display: inline;
                 opacity: 1;
             }
@@ -51,7 +54,8 @@
     .box {
         &:hover:not(.active-item) {
             background: $color-light-bg !important;
-            .fa-play {
+            .fa-play,
+            .fa-plus {
                 display: none !important;
             }
         }

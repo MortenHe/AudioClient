@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../../config/main-config';
-import { PlaylistService } from '../../services/playlist.service';
 import { BackendService } from '../../services/backend.service';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { Observable } from 'rxjs/Observable';
@@ -34,8 +33,11 @@ export class ResultlistComponent {
   //welches Item in der Liste wurde angeklickt?
   activeItem: string = "";
 
+  //Aktuelle Playlist (kommt von Server)
+  files: any[] = [];
+
   //Services injecten
-  constructor(private pls: PlaylistService, private bs: BackendService, private fs: ResultfilterService, private vcs: ViewControlService) { }
+  constructor(private bs: BackendService, private fs: ResultfilterService, private vcs: ViewControlService) { }
 
   //beim Init
   ngOnInit() {
@@ -56,16 +58,9 @@ export class ResultlistComponent {
     this.bs.getActiveItem().subscribe(activeItem => {
       this.activeItem = activeItem;
     });
-  }
 
-  //per Service pruefen ob Item in Playlist ist
-  isInPlaylist(item) {
-    return this.pls.isInPlaylist(item);
-  }
-
-  //per Service ein Item in Playlist togglen
-  toggleInPlaylist(item) {
-    this.pls.toggleInPlaylist(item);
+    //Laufende Playlist abbonieren
+    this.bs.getFiles().subscribe(files => this.files = files);
   }
 
   //einzelnes Item abspielen
@@ -94,15 +89,14 @@ export class ResultlistComponent {
     //Video-Mode
     else {
 
-      //Playlist-Array mit nur einem Eintrag erstellen
-      let files = [{
-        "mode": mode,
-        "path": item.mode + "/" + item.file,
-        "name": item.name
-      }];
-
-      //Video-Playlist starten
-      this.bs.sendMessage({ type: "set-video-playlist", value: files });
+      //Video-Playback starten oder neuen Titel enquen
+      this.bs.sendMessage({
+        type: "add-to-video-playlist", value: {
+          "mode": mode,
+          "path": item.mode + "/" + item.file,
+          "name": item.name
+        }
+      });
     }
 
     //Ansicht auf Playlist umstellen

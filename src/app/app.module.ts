@@ -10,7 +10,6 @@ import { MatSliderModule } from '@angular/material/slider';
 //eigenes Services
 import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
-import { PlaylistService } from './services/playlist.service';
 import { JsondataService } from './services/jsondata.service';
 import { ViewControlService } from './services/view-control.service';
 
@@ -33,7 +32,6 @@ import { SearchfilterComponent } from './components/searchfilter/searchfilter.co
 import { SortfilterComponent } from './components/sortfilter/sortfilter.component';
 import { SelectmodeComponent } from './components/selectmode/selectmode.component';
 import { CurrentplayedplaylistinspectorComponent } from './components/currentplayedplaylistinspector/currentplayedplaylistinspector.component';
-import { PlaylistgeneratorComponent } from './components/playlistgenerator/playlistgenerator.component';
 import { PlayercontrolComponent } from './components/playercontrol/playercontrol.component';
 import { PicontrolComponent } from './components/picontrol/picontrol.component';
 import { ResultlistinspectorComponent } from './components/resultlistinspector/resultlistinspector.component';
@@ -54,7 +52,6 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
     SortfilterComponent,
     SelectmodeComponent,
     CurrentplayedplaylistinspectorComponent,
-    PlaylistgeneratorComponent,
     PlayercontrolComponent,
     PicontrolComponent,
     ResultlistinspectorComponent,
@@ -79,7 +76,7 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
   ],
-  providers: [BackendService, PlaylistService, ResultfilterService, JsondataService, ViewControlService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
+  providers: [BackendService, ResultfilterService, JsondataService, ViewControlService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

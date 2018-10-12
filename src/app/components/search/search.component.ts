@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
-import { PlaylistService } from '../../services/playlist.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment'
 import { ResultfilterService } from '../../services/resultfilter.service';
@@ -39,14 +38,14 @@ export class SearchComponent {
   //Welcher Bereich (Suche, Playlist) ist gerade aktiv und somit sichtbar
   activeView: string;
 
-  //AKtuelle Playlist
+  //Aktuelle Playlist
   files: string[] = [];
 
   //Anzahl der Sekunden bis Shutdown
   countdownTime: number;
 
   //Services und Router injecten
-  constructor(private bs: BackendService, private pls: PlaylistService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService, private vcs: ViewControlService) {
+  constructor(private bs: BackendService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService, private vcs: ViewControlService) {
   }
 
   //Beim Init
@@ -76,9 +75,6 @@ export class SearchComponent {
 
       //Modus per Service setzen
       this.bs.setMode(mode);
-
-      //Playlist per Service zuruecksetzen
-      this.pls.resetPlaylist();
     });
 
     //Position in Playlist abbonieren

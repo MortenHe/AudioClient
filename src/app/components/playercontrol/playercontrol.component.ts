@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
-import { PlaylistService } from '../../services/playlist.service';
 import { environment } from '../../../environments/environment';
 import { ViewControlService } from '../../services/view-control.service';
 
@@ -25,7 +24,7 @@ export class PlayercontrolComponent {
     files: any[] = [];
 
     //Services injecten
-    constructor(private bs: BackendService, private pls: PlaylistService, private vcs: ViewControlService) { }
+    constructor(private bs: BackendService, private vcs: ViewControlService) { }
 
     //Beim Init
     ngOnInit() {
