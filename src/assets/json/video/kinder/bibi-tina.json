@@ -262,5 +262,23 @@
         "file": "bibi-tina-schatz-schimmelreiter.mp4",
         "length": "00:25:09",
         "active": true
+    },
+    {
+        "name": "Bibi und Tina - Das Zirkuspony",
+        "file": "bibi-tina-zirkuspony.mp4",
+        "length": "00:25:09",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Abenteuer in der Burgruine",
+        "file": "bibi-tina-burgruine.mp4",
+        "length": "00:25:08",
+        "active": true
+    },
+    {
+        "name": "Bibi und Tina - Sabrina wird entführt",
+        "file": "bibi-tina-sabrina-entfuehrt.mp4",
+        "length": "00:25:09",
+        "active": true
     }
 ]

@@ -9,7 +9,8 @@ const timelite = require('timelite');
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
 const dataDir = "C:/Users/Martin/Desktop/media/done";
 //const dataDir = "F:/Video (geschnitten)/Jahresvideo HWH + MH/2015 - Jahresvideo";
-const mode = "2015";
+//2015, bibi-tina
+const mode = "wizard";
 
 //Benennung des Titels
 naming = [];
@@ -42,8 +43,6 @@ fs.readdir(dataDir, (err, files) => {
                     //Gesamtzeit als formattierten String. Zunaechst Float zu int: 13.4323 => 13
                     let totalSeconds = Math.trunc(duration);
 
-                    console.log(totalSeconds)
-
                     //Umrechung der Sekunden in [h, m, s] fuer formattierte Darstellung
                     let hours = Math.floor(totalSeconds / 3600);
                     totalSeconds %= 3600;
@@ -56,9 +55,12 @@ fs.readdir(dataDir, (err, files) => {
                     //[2,44,1] => 02:44:01
                     let timeOutputString = timelite.str(timeOutput);
 
+                    //Name (z.B. Bibi und Tina - ) setzen, sofern in Config hinterlegt
+                    let name = naming[mode] ? naming[mode] : " - ";
+
                     //Video-Objekt erstellen und sammeln
                     outputArray.push({
-                        "name": naming[mode],
+                        "name": name,
                         "file": file,
                         "length": timeOutputString,
                         "active": true

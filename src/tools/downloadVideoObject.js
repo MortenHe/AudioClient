@@ -11,10 +11,10 @@ const { execSync } = require('child_process');
 //Wo sollen Videos gespeichert werden
 const downloadDir = "C:/Users/Martin/Desktop/media/down";
 
-//Praefix fuer Dateiname (conni)
-const mode = "conni";
+//Praefix fuer Dateiname (conni, bibi-tina)
+const mode = "bibi-tina";
 
-//Dateiname der mp4-Datei (baustelle)
+//Dateiname der mp4-Datei (baustelle, zirkuspony)
 const name = "";
 
 //Video-Promises sammeln

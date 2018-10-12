@@ -22,5 +22,23 @@
         "file": "the-snowman.mp4",
         "length": "00:25:38",
         "active": true
+    },
+    {
+        "name": "Rolfs neue Vogelhochzeit",
+        "file": "rolfs-neue-vogelhochzeit.mp4",
+        "length": "00:22:43",
+        "active": true
+    },
+    {
+        "name": "Der Zauberer von Oz - We're off to see the wizard (long mix)",
+        "file": "wizard-off-long.mp4",
+        "length": "00:02:45",
+        "active": true
+    },
+    {
+        "name": "Der Zauberer von Oz - We're off to see the wizard",
+        "file": "wizard-off.mp4",
+        "length": "00:01:10",
+        "active": true
     }
 ]
