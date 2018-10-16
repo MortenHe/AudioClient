@@ -15,9 +15,6 @@ import { ViewControlService } from '../../services/view-control.service';
 
 export class ResultlistComponent {
 
-  //audio vs. video
-  appMode = environment.appMode;
-
   //Modus hsp vs. kindermusik
   mode$: BehaviorSubject<string>;
 
@@ -69,37 +66,20 @@ export class ResultlistComponent {
     //aktuellen Modus auslesen (hsp vs. kindermusik)
     let mode = this.mode$.getValue();
 
-    //Bei Audio
-    if (this.appMode === "audio") {
+    //aktuellen Wert fuer allowRandom holen
+    let allowRandom = this.allowRandom$.getValue();
 
-      //aktuellen Wert fuer allowRandom holen
-      let allowRandom = this.allowRandom$.getValue();
+    //Message an WSS welches Verzeichnis abgespielt werden sollen und ob random erlaubt ist
+    this.bs.sendMessage({
+      type: "set-playlist",
+      value: {
+        mode: mode,
+        path: item.mode + "/" + item.file,
+        allowRandom: allowRandom
+      }
+    });
 
-      //Message an WSS welches Verzeichnis abgespielt werden sollen und ob random erlaubt ist
-      this.bs.sendMessage({
-        type: "set-playlist",
-        value: {
-          mode: mode,
-          path: item.mode + "/" + item.file,
-          allowRandom: allowRandom
-        }
-      });
-
-      //Ansicht auf Playlist umstellen
-      this.vcs.setView('playlist');
-    }
-
-    //Video-Mode
-    else {
-
-      //Video-Playback starten oder neuen Titel enquen
-      this.bs.sendMessage({
-        type: "add-to-video-playlist", value: {
-          "mode": mode,
-          "path": item.mode + "/" + item.file,
-          "name": item.name
-        }
-      });
-    }
+    //Ansicht auf Playlist umstellen
+    this.vcs.setView('playlist');
   }
 }

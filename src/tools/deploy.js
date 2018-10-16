@@ -5,11 +5,10 @@ const connection = require("./connection.js");
 const runMode = process.argv[2] ? process.argv[2] : "pi";
 
 //Welches Projekt audio vs. video soll deployed werden? Wenn kein Argument kommt -> audio
-const appMode = process.argv[3] ? process.argv[3] : "audio";
-console.log("build and deploy " + appMode + " to " + runMode);
+console.log("build and deploy audio to " + runMode);
 
 //Unter welchem Unterpfad wird die App auf dem Server laufen?
-const base_href = appMode === "audio" ? "wap" : "wvp";
+const base_href = "wap";
 
 //pi (production) vs. vb (dev)
 const production = runMode === "pi" ? "prod" : "dev";
@@ -17,7 +16,7 @@ const production = runMode === "pi" ? "prod" : "dev";
 //Projekt bauen
 const { execSync } = require('child_process');
 console.log("start build");
-execSync("ng build --configuration=" + appMode + "-" + production + " --base-href=/" + base_href + "/ --prod");
+execSync("ng build --configuration=audio-" + production + " --base-href=/" + base_href + "/ --prod");
 console.log("build done");
 
 //htacces Schablone in dist Ordner kopieren
@@ -35,21 +34,6 @@ replace({
     recursive: true,
     silent: true
 });
-
-//Bei Audio
-console.log("remove unused json");
-if (appMode === "audio") {
-
-    //wird Video json nicht benoetigt
-    fs.removeSync('../../dist/assets/json/video');
-}
-
-//bei Video
-else {
-
-    //wird Audio json nicht benoetigt
-    fs.removeSync('../../dist/assets/json/audio');
-}
 
 //Dist-Folder zippen
 const zipFolder = require('zip-folder');

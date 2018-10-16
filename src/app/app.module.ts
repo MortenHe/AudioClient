@@ -34,12 +34,10 @@ import { SelectmodeComponent } from './components/selectmode/selectmode.componen
 import { CurrentplayedplaylistinspectorComponent } from './components/currentplayedplaylistinspector/currentplayedplaylistinspector.component';
 import { PlayercontrolComponent } from './components/playercontrol/playercontrol.component';
 import { PicontrolComponent } from './components/picontrol/picontrol.component';
-import { ResultlistinspectorComponent } from './components/resultlistinspector/resultlistinspector.component';
 import { DebuginspectorComponent } from './components/debuginspector/debuginspector.component';
 import { ToggletrackviewComponent } from './components/toggletrackview/toggletrackview.component';
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
-import { VolumeSliderComponent } from './components/volume-slider/volume-slider.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +52,6 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
     CurrentplayedplaylistinspectorComponent,
     PlayercontrolComponent,
     PicontrolComponent,
-    ResultlistinspectorComponent,
     DebuginspectorComponent,
     ToggletrackviewComponent,
     ModeFilterPipe,
@@ -63,7 +60,6 @@ import { VolumeSliderComponent } from './components/volume-slider/volume-slider.
     ToggleCheckboxDirective,
     RandomPlaybackComponent,
     VolumeControlComponent,
-    VolumeSliderComponent,
     FileNamePipe
   ],
   imports: [

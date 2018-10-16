@@ -53,9 +53,9 @@
   <div class="app-content container no-gutters p-0 shadow">
 
     <!-- Zeile fuer Ueberschrift, Mode-Select und Shutdown-Button -->
-    <div class="header-{{appMode}} row no-gutters align-items-center pt-2 pb-2 pl-3 pr-3">
+    <div class="header-audio row no-gutters align-items-center pt-2 pb-2 pl-3 pr-3">
 
-      <!-- Ueberschrift z.B. "Web Video Player (dev)" -->
+      <!-- Ueberschrift z.B. "Web Audio Player (dev)" -->
       <h1 class="col">{{envName}}</h1>
 
       <!-- Lautstaerke Kontrolle -->
@@ -77,7 +77,7 @@
     <!-- Suchbereich View -->
     <div [class.hidden]="activeView !== 'search'">
 
-      <!-- Umschalter fuer Modus (Kindervideos vs. Jahresvideos) -->
+      <!-- Umschalter fuer Modus (HSP vs. Musik MH) -->
       <selectmode class="d-flex ml-2 mr-2 mt-2"></selectmode>
 
       <!-- Filter-Buttons -->

@@ -11,22 +11,13 @@
     <div class="row no-gutters align-items-center">
 
       <!-- Play-Symbol wird nur bei Audio mit hover und active angezeigt -->
-      <i *ngIf="appMode === 'audio'"
-         class="fa fa-play mr-2"></i>
-
-      <!-- Play/Enque-Symbol wird nur bei Video mit hover und active angezeigt -->
-      <i *ngIf="appMode === 'video'"
-         class="fa mr-2"
-         [ngClass]="{
-        'fa-play': !files.length,
-        'fa-plus': files.length
-      }"></i>
+      <i class="fa fa-play mr-2"></i>
 
       <!-- Itemname -->
       <span class="col">{{item.name}}</span>
 
       <!-- formattierte Laenge des Items -->
-      <div class="item-length item-length-{{appMode}} text-right ml-1 mr-1">
+      <div class="item-length item-length-audio text-right ml-1 mr-1">
         {{item.length | timeformatter}}
       </div>
     </div>

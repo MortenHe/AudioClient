@@ -77,31 +77,6 @@
                 }
               ]
             },
-            "video-dev": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.video-dev.ts"
-                }
-              ]
-            },
-            "video-prod": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.video-prod.ts"
-                }
-              ]
-            }
           }
         },
         "serve": {
@@ -121,12 +96,6 @@
             },
             "audio-prod": {
               "browserTarget": "website:build:audio-prod"
-            },
-            "video-dev": {
-              "browserTarget": "website:build:video-dev"
-            },
-            "video-prod": {
-              "browserTarget": "website:build:video-prod"
             }
           }
         },

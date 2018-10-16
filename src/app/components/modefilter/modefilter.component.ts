@@ -40,10 +40,10 @@ export class ModefilterComponent implements OnInit {
       this.fs.setModeFilter(mode);
     });
 
-    //Bei Navigation-Aenderung aendert sich der Video/Audio-Modus
+    //Bei Navigation-Aenderung aendert sich der Audio-Modus
     this.bs.getMode().subscribe(
 
-      //den Mode-Filter auf all setzen, damit alle Videos des neuen Modus angezeigt werden
+      //den Mode-Filter auf all setzen, damit alle Items des neuen Modus angezeigt werden
       newMode => this.modeFilterForm.controls['mode'].setValue("all"));
   }
 }

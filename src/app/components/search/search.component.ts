@@ -14,10 +14,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export class SearchComponent {
 
-  //video vs. audio
-  appMode = environment.appMode;
-
-  //Name der App fuer Ueberschrift (z.B. Video Player (dev))
+  //Name der App fuer Ueberschrift (z.B. Audio Player (dev))
   envName = environment.envName;
 
   //dev vs. produktiv
@@ -57,10 +54,10 @@ export class SearchComponent {
     //AllowRandom abonnieren (fuer Anzeige gewisser Komponenten)
     this.allowRandomRunning$ = this.bs.getAllowRandomRunning();
 
-    //immer wenn sich die Route /serach/kinder -> /search/jahresvideo aendert
+    //immer wenn sich die Route /serach/hsp -> /search/musikmh aendert
     this.route.paramMap.subscribe(params => {
 
-      //Modus (kinder vs. jahresvideo) aus URL-Parameter auslesen
+      //Modus (hsp vs. musikmh) aus URL-Parameter auslesen
       let mode = params.get('mode');
 
       //Modes, die es in der der Config gibt

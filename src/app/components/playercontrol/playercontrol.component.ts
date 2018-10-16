@@ -11,9 +11,6 @@ import { ViewControlService } from '../../services/view-control.service';
 
 export class PlayercontrolComponent {
 
-    //video vs. audio
-    appMode = environment.appMode;
-
     //aktueller Pausenzustand
     paused: boolean;
 
