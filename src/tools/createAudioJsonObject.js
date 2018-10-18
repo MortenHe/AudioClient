@@ -89,7 +89,7 @@ fs.readdirSync(dataDir).forEach(folder => {
                 let timeOutput = [hours, minutes, seconds];
 
                 //[2,44,1] => 02:44:01
-                let timeOutputString = timelite.str(timeOutput);
+                let timeOutputString = timelite.time.str(timeOutput);
 
                 //Laenge setzen
                 outputArray[folder]["length"] = timeOutputString;

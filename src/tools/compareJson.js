@@ -6,7 +6,7 @@ const runMode = process.argv[2] ? process.argv[2] : "pi";
 console.log("compare local audio files with " + runMode);
 
 //Pfade wo die Dateien liegen
-const audioPath = "/media/pi/audio";
+const audioPath = "/media/audio";
 
 //libraries laden fuer Dateizugriff
 const fs = require('fs-extra')
@@ -34,7 +34,7 @@ fs.readdirSync("../assets/json").forEach(folder => {
             json.forEach(function (item) {
 
                 //Pfad erstellen und merken .../hsp/bibi-tina/01-fohlen
-                itemsLocal.push("/media/" + audioPath + "/" + folder + "/" + mode + "/" + item.file)
+                itemsLocal.push(audioPath + "/" + folder + "/" + mode + "/" + item.file)
             });
         });
     }
@@ -50,6 +50,7 @@ var ssh = new SSH2Promise({
 
 //SSH Session erzeugen
 ssh.connect().then(() => {
+
 
     //Folder auf Server liefern
     ssh.exec("find " + audioPath + " -mindepth 3 -maxdepth 3 -type d").then((data) => {
@@ -76,6 +77,7 @@ ssh.connect().then(() => {
         for (let entry of missingServer.entries()) {
             console.log("missing on server: " + entry[0].replace(audioPath + "/", ""));
         }
+
 
         //Skript beenden
         process.exit();
