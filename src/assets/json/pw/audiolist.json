@@ -74,18 +74,8 @@
                 "active": true
             },
             {
-                "id": "beatles",
-                "label": "Beatles",
-                "active": true
-            },
-            {
                 "id": "jahre",
                 "label": "Jahre",
-                "active": true
-            },
-            {
-                "id": "musical",
-                "label": "Musical",
                 "active": true
             },
             {

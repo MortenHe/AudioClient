@@ -91,6 +91,7 @@
         "length": "01:03:04",
         "active": true,
         "tracks": [
+            "a-ha - Under The Makeup",
             "Adele - Hello",
             "Alan Parker - Faded",
             "Coldplay - Adventure Of A Lifetime",
@@ -107,8 +108,7 @@
             "Rihanna - Work",
             "Tim Bendzko - Keine Maschine",
             "Walk The Moon - Shut Up and Dance",
-            "Zara Larsson - Lush Life",
-            "a-ha - Under The Makeup"
+            "Zara Larsson - Lush Life"
         ]
     },
     {
@@ -117,10 +117,12 @@
         "length": "00:31:04",
         "active": true,
         "tracks": [
+            "Alice Merton - No Roots",
             "Coldplay - Everglow",
             "Ed Sheeran - Castle on the Hill",
             "Ed Sheeran - Shape of You",
             "Enrique Iglesias - Bailando",
+            "Helene Fischer - Die schönste Reise",
             "Imany - Don't Be So Shy",
             "Luis Fonsi - Despacito",
             "Mark Forster - Chöre",
@@ -133,8 +135,14 @@
         "length": "00:14:59",
         "active": true,
         "tracks": [
+            "Alvaro Soler - La Cintura",
+            "Alvaro Soler - Sofia",
+            "Dua Lipa - IDGAF",
             "Ed Sheeran - Perfect",
+            "Lea - Zu dir",
             "Luane - On était beau (ich denk an dich)",
+            "Mark Forster - Sowieso",
+            "Namika - Je ne parle pas francais",
             "Pink - What About Us",
             "Rita Ora - Your Song"
         ]
