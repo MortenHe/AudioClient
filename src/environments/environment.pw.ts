@@ -1,8 +1,8 @@
 export const environment = {
-  envName: 'Audio (dev)',
-  production: false,
-  wssUrl: 'ws://132.230.25.79:8080',
-  proxyUrl: 'http://localhost/WebPlayer/src/proxy/',
+  envName: 'Musik Player',
+  appId: 'pw',
+  production: true,
+  wssUrl: 'ws://192.168.0.149:8080',
   domainModes: [{
     "id": "hsp",
     "label": "Hörspiele"

@@ -1,0 +1,30 @@
+[
+    {
+        "name": "2017",
+        "file": "2017",
+        "length": "00:31:04",
+        "active": true,
+        "tracks": [
+            "Coldplay - Everglow",
+            "Ed Sheeran - Castle on the Hill",
+            "Ed Sheeran - Shape of You",
+            "Enrique Iglesias - Bailando",
+            "Imany - Don't Be So Shy",
+            "Luis Fonsi - Despacito",
+            "Mark Forster - Chöre",
+            "Max Giesinger - Wenn sie tanzt"
+        ]
+    },
+    {
+        "name": "2018",
+        "file": "2018",
+        "length": "00:14:59",
+        "active": true,
+        "tracks": [
+            "Ed Sheeran - Perfect",
+            "Luane - On était beau (ich denk an dich)",
+            "Pink - What About Us",
+            "Rita Ora - Your Song"
+        ]
+    }
+]

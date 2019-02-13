@@ -1,0 +1,41 @@
+[
+    {
+        "name": "Rolf Zuckowski - Starke Kinder",
+        "file": "starke-kinder",
+        "length": "00:38:59",
+        "active": true,
+        "tracks": [
+            "Starke Kinder",
+            "Kleine Europäer",
+            "So wie Du bist",
+            "Die Monster kommen",
+            "Manchmal wär' ich gerne wieder klein",
+            "Tip Tap",
+            "Riesenglück",
+            "Die Kinder des Rock 'n' Roll",
+            "Ich glaub' ich hab' Dich lieb",
+            "Ryrksnglynks",
+            "Kinder macht Euch startbereit"
+        ]
+    },
+    {
+        "name": "Rolf Zuckowski - Rolfs Vogelhochzeit",
+        "file": "vogelhochzeit",
+        "length": "00:27:53",
+        "active": true,
+        "tracks": [
+            "Ein Vogel wollte Hochzeit machen",
+            "Hoch in der Luft",
+            "Guten Tag, guten Tag",
+            "Vöglein, Vöglein, tanz mit mir",
+            "Du und ich",
+            "Immer nur brüten",
+            "Tick, tick, tick",
+            "Hallo Mama, hallo Papa",
+            "Ein Vogelbaby wird niemals satt",
+            "Sieh nur die Sterne",
+            "Immer wenn ein Vogelbaby größer wird",
+            "Ein Vogel wollte Hochzeit machen (2)"
+        ]
+    }
+]

@@ -1,9 +1,13 @@
+//node .\compareLocalJsonWithServer.js pw pw (= PW Assets mit PW Pi vergleichen)
+//node .\compareLocalJsonWithServer.js marlen vb (= Marlen Assets mit VB vergleichen)
+
 //Connection laden
 const connection = require("./connection.js");
 
-//Je nach Ausfuerung lokale Werte mit pi oder vb vergleichen. Wenn kein Argument kommt -> pi
-const runMode = process.argv[2] ? process.argv[2] : "pi";
-console.log("compare local audio files with " + runMode);
+//welche assets (pw vs. marlen) vergleichen auf welcher Maschine (pw / marlen / vb) 
+const appId = process.argv[2] || "pw";
+const targetMachine = process.argv[3] || "pw";
+console.log("compare local audio files (" + appId + ") with server " + targetMachine);
 
 //Pfade wo die Dateien liegen
 const audioPath = "/media/audio";
@@ -16,19 +20,19 @@ const path = require('path');
 itemsLocal = [];
 
 //Ueber ueber filter-dirs des aktuellen modes gehen (hsp, kindermusik,...)
-fs.readdirSync("../assets/json").forEach(folder => {
+fs.readdirSync("../assets/json/" + appId).forEach(folder => {
 
     //Wenn es ein dir ist
-    if (fs.lstatSync("../assets/json/" + folder).isDirectory()) {
+    if (fs.lstatSync("../assets/json/" + appId + "/" + folder).isDirectory()) {
 
         //JSON-Files in diesem Dir auslesen
-        fs.readdirSync("../assets/json/" + folder).forEach(file => {
+        fs.readdirSync("../assets/json/" + appId + "/" + folder).forEach(file => {
 
             //modus in Variable speichern (bobo.json -> bobo)
             let mode = path.basename(file, ".json");
 
             //JSON-File einlesen
-            const json = fs.readJsonSync("../assets/json/" + folder + "/" + file);
+            const json = fs.readJsonSync("../assets/json/" + appId + "/" + folder + "/" + file);
 
             //Ueber items (= Folgen) des JSON files gehen
             json.forEach(function (item) {
@@ -43,9 +47,9 @@ fs.readdirSync("../assets/json").forEach(folder => {
 //SSH Verbindung aufbauen
 var SSH2Promise = require('ssh2-promise');
 var ssh = new SSH2Promise({
-    host: connection[runMode].host,
-    username: connection[runMode].user,
-    password: connection[runMode].password
+    host: connection[targetMachine].host,
+    username: connection[targetMachine].user,
+    password: connection[targetMachine].password
 });
 
 //SSH Session erzeugen

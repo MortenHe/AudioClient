@@ -1,0 +1,45 @@
+{
+    "hsp": {
+        "filter": [
+            {
+                "id": "janosch",
+                "icon": "janosch",
+                "active": true
+            }
+        ],
+        "items": [],
+        "allowRandom": false
+    },
+    "kindermusik": {
+        "filter": [
+            {
+                "id": "rz",
+                "label": "Rolf Zuckowski",
+                "active": true
+            }
+        ],
+        "items": [],
+        "allowRandom": true
+    },
+    "musikmh": {
+        "filter": [
+            {
+                "id": "all",
+                "label": "Alle",
+                "active": true
+            },
+            {
+                "id": "beatles",
+                "label": "Beatles",
+                "active": true
+            },
+            {
+                "id": "jahre",
+                "label": "Jahre",
+                "active": true
+            }
+        ],
+        "items": [],
+        "allowRandom": true
+    }
+}

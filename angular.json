@@ -27,7 +27,7 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "pw": {
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -40,43 +40,18 @@
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.pw.ts"
                 }
               ]
             },
-            "audio-dev": {
+            "marlen": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.audio-dev.ts"
+                  "with": "src/environments/environment.marlen.ts"
                 }
               ]
-            },
-            "audio-win": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.audio-win.ts"
-                }
-              ]
-            },
-            "audio-prod": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.audio-prod.ts"
-                }
-              ]
-            },
+            }
           }
         },
         "serve": {
@@ -85,17 +60,11 @@
             "browserTarget": "website:build"
           },
           "configurations": {
-            "production": {
+            "pw": {
               "browserTarget": "website:build:production"
             },
-            "audio-dev": {
-              "browserTarget": "website:build:audio-dev"
-            },
-            "audio-win": {
-              "browserTarget": "website:build:audio-win"
-            },
-            "audio-prod": {
-              "browserTarget": "website:build:audio-prod"
+            "marlen": {
+              "browserTarget": "website:build:marlen"
             }
           }
         },
