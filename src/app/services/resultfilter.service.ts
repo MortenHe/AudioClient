@@ -21,7 +21,7 @@ export class ResultfilterService {
   reverseOrderBS = new BehaviorSubject(false);
 
   //Sollen Track angezeigt werden als BS, das abboniert werden kann
-  showTracksBS = new BehaviorSubject(true);
+  showTracksBS = new BehaviorSubject(false);
 
   //aktuell ausgewaehlten Mode-Filter liefern
   getModeFilter() {

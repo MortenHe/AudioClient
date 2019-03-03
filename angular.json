@@ -61,7 +61,7 @@
           },
           "configurations": {
             "pw": {
-              "browserTarget": "website:build:production"
+              "browserTarget": "website:build:pw"
             },
             "marlen": {
               "browserTarget": "website:build:marlen"

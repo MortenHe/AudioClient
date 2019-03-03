@@ -59,14 +59,14 @@
             },
             {
                 "id": "misc",
-                "label": "Sontige",
+                "label": "Sonstige",
                 "active": true
             }
         ],
         "items": [],
         "allowRandom": true
     },
-    "musikmh": {
+    "cds": {
         "filter": [
             {
                 "id": "all",
@@ -74,8 +74,19 @@
                 "active": true
             },
             {
-                "id": "jahre",
-                "label": "Jahre",
+                "id": "misc",
+                "label": "Sonstige",
+                "active": true
+            }
+        ],
+        "items": [],
+        "allowRandom": true
+    },
+    "musik": {
+        "filter": [
+            {
+                "id": "all",
+                "label": "Alle",
                 "active": true
             },
             {
