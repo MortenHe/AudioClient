@@ -1,6 +1,6 @@
 export const environment = {
   envName: 'Audio (dev)',
-  appId: 'marlen',
+  appId: 'pw',
   production: false,
   wssUrl: 'ws://132.230.25.79:8080',
   domainModes: [{
@@ -12,7 +12,11 @@ export const environment = {
     "label": "Kindermusik"
   },
   {
-    "id": "musikmh",
-    "label": "Musik MH"
+    "id": "cds",
+    "label": "CDs"
+  },
+  {
+    "id": "musik",
+    "label": "Musiksammlung"
   }]
 };

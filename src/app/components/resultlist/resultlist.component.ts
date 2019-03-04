@@ -27,6 +27,9 @@ export class ResultlistComponent {
   //Ist Random erlaubt?
   allowRandom$: BehaviorSubject<boolean>;
 
+  //Ist gerade random?
+  random: boolean;
+
   //welches Item in der Liste wurde angeklickt?
   activeItem: string = "";
 
@@ -50,6 +53,9 @@ export class ResultlistComponent {
 
     //AllowRandom abbonieren
     this.allowRandom$ = this.bs.getAllowRandom();
+
+    //Random abbonieren
+    this.bs.getRandom().subscribe(random => this.random = random);
 
     //ActiveItem abbonieren
     this.bs.getActiveItem().subscribe(activeItem => {
@@ -78,6 +84,11 @@ export class ResultlistComponent {
         allowRandom: allowRandom
       }
     });
+
+    //Musiksammlung mit random starten (setzen falls nicht schon random)
+    if (mode === 'musik' && !this.random) {
+      this.bs.sendMessage({ type: "toggle-random", value: "" });
+    }
 
     //Ansicht auf Playlist umstellen
     this.vcs.setView('playlist');

@@ -297,7 +297,7 @@ export class BackendService {
 
     //Nachricht an WSS schicken
     sendMessage(messageObj) {
-        console.log(messageObj);
+        //console.log(messageObj);
         this.socket.next(messageObj);
     }
 

@@ -34,10 +34,10 @@ import { SelectmodeComponent } from './components/selectmode/selectmode.componen
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { PlayercontrolComponent } from './components/playercontrol/playercontrol.component';
 import { PicontrolComponent } from './components/picontrol/picontrol.component';
-import { DebuginspectorComponent } from './components/debuginspector/debuginspector.component';
 import { ToggletrackviewComponent } from './components/toggletrackview/toggletrackview.component';
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
+import { PlaylistSearchPipe } from './pipes/playlist-search.pipe';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,6 @@ import { VolumeControlComponent } from './components/volume-control/volume-contr
     PlaylistComponent,
     PlayercontrolComponent,
     PicontrolComponent,
-    DebuginspectorComponent,
     ToggletrackviewComponent,
     ModeFilterPipe,
     SearchFilterPipe,
@@ -60,7 +59,8 @@ import { VolumeControlComponent } from './components/volume-control/volume-contr
     ToggleCheckboxDirective,
     RandomPlaybackComponent,
     VolumeControlComponent,
-    FileNamePipe
+    FileNamePipe,
+    PlaylistSearchPipe
   ],
   imports: [
     BrowserModule,

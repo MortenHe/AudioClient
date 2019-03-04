@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment'
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { ViewControlService } from '../../services/view-control.service';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -19,6 +18,12 @@ export class SearchComponent {
 
   //dev vs. produktiv
   production = environment.production;
+
+  //In welchem Bereich sind wir (hsp, cds, musik)
+  mode = null;
+
+  //welche ModeFilter gibt es (all, conni, janosch, misc)
+  showModeFilterList: boolean = false;
 
   //Zustand ob Verbindung zu WSS existiert
   connected: boolean;
@@ -72,6 +77,18 @@ export class SearchComponent {
 
       //Modus per Service setzen
       this.bs.setMode(mode);
+    });
+
+    //Modus abbonieren
+    this.bs.getMode().subscribe(mode => this.mode = mode);
+
+    //Liste der Modefilter abonnieren
+    this.bs.getModeFilterList().subscribe(modeFilterlist => {
+
+      //Filter-Buttons nur anzeigen, wenn es neben "Alle" und "Sonstige" noch andere Filter gibt
+      this.showModeFilterList = modeFilterlist.some(elem => {
+        return (elem.id !== 'all' && elem.id !== 'misc');
+      });
     });
 
     //Position in Playlist abbonieren

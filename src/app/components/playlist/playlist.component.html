@@ -1,11 +1,43 @@
+<!-- Button-Group bestehend aus Suchfeld und Loeschen-Button, nur im Musiksammlungsmodus sichtbar -->
+<div *ngIf="mode === 'musik'"
+     class="btn-group mb-1">
+
+  <!-- Label besteht auch Icon und Suchfeld -->
+  <label class="search-field form-control d-flex no-gutters align-items-center p-1"
+         [class.unrounded]="playlistFilterInput.value.length > 0"
+         for="playlistSearchField">
+
+    <!-- Such-Symbol -->
+    <i class="fa fa-search ml-2"></i>
+
+    <!-- Suchefeld fuer Filterung der Playlist -->
+    <input autofocus
+           autocomplete="off"
+           id="playlistSearchField"
+           placeholder="Liste durchsuchen"
+           class="col ml-2"
+           id="playlistSearchField"
+           type="text"
+           name="playlistSearch"
+           [formControl]="playlistFilterInput">
+  </label>
+
+  <!-- Inhalt des Suchfeldes zuruecksetzen -->
+  <button *ngIf="playlistFilterInput.value.length > 0"
+          (click)="playlistFilterInput.value = ''"
+          class="btn btn-danger"><i class="fa fa-times"></i></button>
+</div>
+
 <!-- Info ueber aktuell laufende Playlist -->
 <ng-container *ngFor="let file of files; let i = index">
 
-  <!-- Titel. Fett anzeigen (bei >=10 Titel fuehrende 0 bei Zaehlung) -->
+  <!-- Titel. Fett anzeigen (bei >=10 Titel fuehrende 0 bei Zaehlung), ggf. nicht sichtbar, wenn Suchfeld aktiv -->
   <div (click)="jumpTo(i)"
        class="item"
+       [hidden]="file | playlistSearch:playlistFilterInput.value"
        [class.waiting]="i === jumpPosition"
-       [class.font-weight-bold]="i === position">{{(i + 1).toString().padStart(files.length.toString().length, "0")}})&nbsp;{{file|fileName}}
+       [class.font-weight-bold]="i === position">
+    {{(i + 1).toString().padStart(files.length.toString().length, "0")}})&nbsp;{{file}}
 
     <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
     <ng-container *ngIf="i === position && time !== ''"> ({{time|timeformatter}})</ng-container>

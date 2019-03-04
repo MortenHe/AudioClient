@@ -18,6 +18,5 @@ export const environment = {
   {
     "id": "musik",
     "label": "Musiksammlung"
-  }
-  ]
+  }]
 };

@@ -1,8 +1,15 @@
 [
     {
-        "name": "Musiksammlung",
-        "file": "all",
-        "length": "99:99:99",
+        "name": "Musiksammlung MH",
+        "file": "mh",
+        "length": null,
+        "active": true,
+        "tracks": []
+    },
+    {
+        "name": "Musiksammlung Kids",
+        "file": "kids",
+        "length": null,
         "active": true,
         "tracks": []
     }
