@@ -24,7 +24,7 @@
 
   <!-- Inhalt des Suchfeldes zuruecksetzen -->
   <button *ngIf="playlistFilterInput.value.length > 0"
-          (click)="playlistFilterInput.value = ''"
+          (click)="resetSearch()"
           class="btn btn-danger"><i class="fa fa-times"></i></button>
 </div>
 

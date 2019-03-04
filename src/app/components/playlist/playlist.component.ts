@@ -81,4 +81,9 @@ export class PlaylistComponent implements OnInit {
       this.jumpPosition = position;
     }
   }
+
+  //Suchfeld fuer Playlist wieder zuruecksetzen
+  resetSearch() {
+    this.playlistFilterInput.setValue("");
+  }
 }
