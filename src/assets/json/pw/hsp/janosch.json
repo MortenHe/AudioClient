@@ -1,6 +1,6 @@
 [
     {
-        "name": "Janosch - Emil Grünbär",
+        "name": "Janosch - Emil Grünbär und seine Bande",
         "file": "emil-gruenbaer",
         "length": "00:30:19",
         "active": true
@@ -89,6 +89,78 @@
         "tracks": [
             "Traumstunde für Siebenschläfer",
             "Oh, wie schön ist Panama"
+        ]
+    },
+    {
+        "name": "Janosch - Emil Grünbär - Der Frosch sitzt auf der Ofenbank",
+        "file": "emil-gruenbaer-frosch",
+        "active": true,
+        "length": "00:39:12",
+        "tracks": []
+    },
+    {
+        "name": "Janosch - Emil Grünbär - Pflaumenkuchen für Rbellen",
+        "file": "emil-gruenbaer-pflaumenkuchen",
+        "active": true,
+        "length": "00:31:29",
+        "tracks": []
+    },
+    {
+        "name": "Janosch - Der Froschkönig",
+        "file": "froschkoenig",
+        "active": true,
+        "length": "00:33:54",
+        "tracks": [
+            "Der Froschkönig",
+            "Die Tigerente und der Frosch",
+            "Der Frosch, der fliegt",
+            "Der Frosch und die Ziege"
+        ]
+    },
+    {
+        "name": "Janosch - Lukas Kümmel",
+        "file": "kuemmel",
+        "active": true,
+        "length": "00:38:21",
+        "tracks": [
+            "Lukas Kümmel",
+            "Die Schneckenbahn hat 12 Stationen"
+        ]
+    },
+    {
+        "name": "Janosch - Löwenzahn und Seidenpfote",
+        "file": "loewenzahn",
+        "active": true,
+        "length": "00:36:43",
+        "tracks": [
+            "Löwenzahn und Seidenpfote",
+            "Der Hase Robinson",
+            "Der Esel und die Eule"
+        ]
+    },
+    {
+        "name": "Janosch - Die neuen Hasenkinder",
+        "file": "neue-hasenkinder",
+        "active": true,
+        "length": "00:35:56",
+        "tracks": []
+    },
+    {
+        "name": "Janosch - Der Rabe Josef",
+        "file": "rabe-josef",
+        "active": true,
+        "length": "00:37:52",
+        "tracks": []
+    },
+    {
+        "name": "Janosch - Ach lieber Schneemann",
+        "file": "schneemann",
+        "active": true,
+        "length": "00:34:58",
+        "tracks": [
+            "Ach lieber Schneemann",
+            "Komm nach Iglau, Krokodil",
+            "Bärenzirkus Zampano"
         ]
     }
 ]

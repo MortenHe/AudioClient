@@ -26,9 +26,6 @@ export class PlaylistComponent implements OnInit {
   //temp. Wert, wohin gerade gesprungen werden soll
   jumpPosition: number = -1;
 
-  //In welchem Modus sind wir (hsp, cds, musik)
-  mode: string;
-
   //Service injecten
   constructor(private bs: BackendService) { }
 
@@ -52,11 +49,6 @@ export class PlaylistComponent implements OnInit {
         fileNamesClean.push(fileNameClean);
       }
       this.files = fileNamesClean;
-    });
-
-    //Mode abbonieren
-    this.bs.getMode().subscribe(mode => {
-      this.mode = mode;
     });
 
     //aktuellen Index in Titelliste abbonieren und in Variable schreiben (fuer CSS-Klasse)
