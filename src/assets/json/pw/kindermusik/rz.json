@@ -129,5 +129,47 @@
             "Immer wenn ein Vogelbaby größer wird",
             "Ein Vogel wollte Hochzeit machen (2)"
         ]
+    },
+    {
+        "name": "Rolf Zuckowski - Rolfs Hasengeschichte",
+        "file": "rolfs-hasengeschichte",
+        "active": true,
+        "length": "00:39:49",
+        "tracks": [
+            "Häschen in der Grube (1).mp3",
+            "Das Lied vom Hasendocktor.mp3",
+            "Du musst essen, Häschen.mp3",
+            "Jetzt kommt die Osterzeit.mp3",
+            "Im großen Osterhasenbuch.mp3",
+            "In der Osterhasenmalerwekstatt.mp3",
+            "Vom Tauchen und Tunken.mp3",
+            "Wer guckt da über meine Schulter.mp3",
+            "Wenn es Frühling wird im Hasenland.mp3",
+            "So malen wir Hasen.mp3",
+            "Ich bin stark.mp3",
+            "Aufbruch.mp3",
+            "Häschen in der Grube (2).mp3",
+            "Frohe Ostern.mp3"
+        ]
+    },
+    {
+        "name": "Rolf Zuckowski - Schmunzelhasen-Frühlings-Hits",
+        "file": "schmunzelhasen",
+        "active": true,
+        "length": "00:31:32",
+        "tracks": [
+            "Ich will einen Schmunzelhasen.mp3",
+            "Immer wieder kommt ein neuer Frühling.mp3",
+            "Bunter Regenbogenfisch.mp3",
+            "Ich bin ein kleiner Hase.mp3",
+            "Wenn dann den.mp3",
+            "Ur-ur-urwaldmaus.mp3",
+            "Rabba dabba ding dong Hasen song .mp3",
+            "Halt's Maul Maulwurf.mp3",
+            "Halt das Känguruh fest.mp3",
+            "April April.mp3",
+            "Der Eierbecher.mp3",
+            "Ahoi-Juhe.mp3"
+        ]
     }
 ]
