@@ -7,6 +7,16 @@
                 "active": true
             },
             {
+                "id": "bebl",
+                "icon": "bebl",
+                "active": false
+            },
+            {
+                "id": "bibi",
+                "icon": "bibi",
+                "active": false
+            },
+            {
                 "id": "bibi-tina",
                 "icon": "bibi-tina",
                 "active": true
@@ -29,6 +39,16 @@
             {
                 "id": "leo-lausemaus",
                 "icon": "leo-lausemaus",
+                "active": true
+            },
+            {
+                "id": "lieselotte",
+                "icon": "lieselotte",
+                "active": true
+            },
+            {
+                "id": "max",
+                "icon": "max",
                 "active": true
             }
         ],

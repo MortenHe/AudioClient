@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Max geht in den Kindergarten & Max geht zum Kinderarzt",
+        "file": "kindergarten",
+        "active": true,
+        "length": "00:26:00",
+        "tracks": []
+    },
+    {
+        "file": "rad",
+        "name": "Max lernt Rad fahren & Max kocht Spaghetti",
+        "active": true,
+        "length": "00:33:46",
+        "tracks": []
+    }
+]

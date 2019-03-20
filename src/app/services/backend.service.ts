@@ -232,7 +232,7 @@ export class BackendService {
                 else {
                     //App ist nicht mit WSS verbunden
                     this.connected$.next(false);
-                    console.log("ready state ist " + socket.readyState);
+                    //console.log("ready state ist " + socket.readyState);
 
                     //Verbindung zu WSS wieder herstellen                    
                     this.createWebsocket();
