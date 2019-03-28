@@ -4,19 +4,19 @@ export const environment = {
   production: true,
   wssUrl: 'ws://192.168.0.149:8080',
   domainModes: [{
-    "id": "hsp",
-    "label": "Hörspiele"
-  },
-  {
     "id": "kindermusik",
     "label": "Kindermusik"
   },
   {
-    "id": "cds",
-    "label": "CDs"
+    "id": "hsp",
+    "label": "Hörspiele"
   },
   {
     "id": "musik",
     "label": "Musiksammlung"
+  },
+  {
+    "id": "cds",
+    "label": "CDs"
   }]
 };

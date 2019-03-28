@@ -51,8 +51,9 @@ fs.readdirSync(dataDir).forEach(folder => {
                             reject(err.message);
                         }
 
-                        //Tracks sammeln
-                        tracks[folder].push(file);
+                        //Dateinamen kuerzen und sammeln -> Fuehrende Zahlen entfernen und Endung .mp3 mit Hilfe von Gruppe mit OR ( | )
+                        fileNameShort = file.replace(/(^\d\d ?-? ?|.mp3$)/g, '');
+                        tracks[folder].push(fileNameShort);
                         resolve();
                     }));
 

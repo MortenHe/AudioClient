@@ -47,6 +47,11 @@
                 "active": true
             },
             {
+                "id": "lindgren",
+                "icon": "lindgren",
+                "active": true
+            },
+            {
                 "id": "max",
                 "icon": "max",
                 "active": true
@@ -64,7 +69,7 @@
             },
             {
                 "id": "fredrik-vahle",
-                "label": "Fredrik Vahle",
+                "label": "F. Vahle",
                 "active": true
             },
             {
