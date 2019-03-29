@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http";
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -15,6 +15,9 @@ import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class BackendService {
+
+    //URL fuer Server (um App zu aktivieren)
+    serverUrl = environment.serverUrl;
 
     //URL fuer WebSocketServer
     wssUrl = environment.wssUrl;
@@ -92,7 +95,7 @@ export class BackendService {
     connected$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     //Services injekten
-    constructor(private http: Http, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
+    constructor(private http: HttpClient, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
 
         //WebSocket erstellen
         this.createWebsocket();
@@ -359,5 +362,10 @@ export class BackendService {
     //Verbindungszustand mit WSS liefern
     getConnected() {
         return this.connected$;
+    }
+
+    //App aktivieren = WSS starten
+    activateApp() {
+        return this.http.get(this.serverUrl + "/php/activateApp.php?mode=audio");
     }
 }

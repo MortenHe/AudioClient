@@ -1,10 +1,11 @@
 //node .\deployWebsiteToServer.js pw pw (= PW Webseite auf PW Pi laden)
 //node .\deployWebsiteToServer.js marlen vb (= Marlen Webseite auf VB laden)
+//node .\deployWebsiteToServer.js vb vb (= VB Webseite auf VB laden)
 
 //Connection laden
 const connection = require("./connection.js");
 
-//Welche Website (pw vs. marlen) wohin deployen (pw / marlen / vb)
+//Welche Website (pw / marlen / vb) wohin deployen (pw / marlen / vb)
 const appId = process.argv[2] || "pw";
 const targetMachine = process.argv[3] || "pw";
 console.log("build and deploy audio (" + appId + ") to server " + targetMachine);
@@ -21,7 +22,7 @@ console.log("build done");
 //Assets (=JSON-Configs) loeschen, die nicht zu dieser App gehoeren
 const fs = require('fs-extra');
 fs.readdirSync("../assets/json").forEach(folder => {
-    if (folder !== appId) {
+    if (folder !== appId && appId !== 'vb') {
         console.log("delete assets from app " + folder);
         fs.removeSync("../../dist/assets/json/" + folder);
     }

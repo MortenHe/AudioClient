@@ -122,4 +122,9 @@ export class SearchComponent {
   setActive(view) {
     this.vcs.setView(view);
   }
+
+  //App aktivieren (WSS per PHP starten)
+  activateApp() {
+    this.bs.activateApp().subscribe();
+  }
 }
