@@ -33,17 +33,23 @@
 
   <!-- Titel. Fett anzeigen (bei >=10 Titel fuehrende 0 bei Zaehlung), ggf. nicht sichtbar, wenn Suchfeld aktiv -->
   <div (click)="jumpTo(i)"
-       class="item"
+       class="item d-flex align-items-baseline"
        [hidden]="file | playlistSearch:playlistFilterInput.value"
        [class.waiting]="i === jumpPosition"
        [class.font-weight-bold]="i === position">
-    {{(i + 1).toString().padStart(files.length.toString().length, "0")}})&nbsp;{{file}}
+
+    <!-- Zaehler ggf. mit fuehrender 0 -->
+    <span class="counter">{{(i + 1).toString().padStart(files.length.toString().length, "0")}})</span>
+
+    <!-- Dateiname -->
+    <span class="file-name ml-1">{{file}}</span>
 
     <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
-    <ng-container *ngIf="i === position && time !== ''"> ({{time|timeformatter}})</ng-container>
+    <span class="time ml-1"
+          *ngIf="i === position && time !== ''"> ({{time|timeformatter}})</span>
 
-    <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen werden soll -->
-    <i class="fa fa-spinner fa-spin"
+    <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
+    <i class="fa fa-spinner fa-spin ml-1"
        *ngIf="i === jumpPosition"></i>
   </div>
 </ng-container>
