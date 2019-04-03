@@ -55,6 +55,11 @@
                 "id": "max",
                 "icon": "max",
                 "active": true
+            },
+            {
+                "id": "olchis",
+                "icon": "olchis",
+                "active": true
             }
         ],
         "items": [],

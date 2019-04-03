@@ -1,17 +1,5 @@
 [
     {
-        "name": "Kindi",
-        "file": "kindi",
-        "length": "00:07:54",
-        "active": true,
-        "tracks": [
-            "Eine kleine Welle",
-            "Kleine Raupe Nimmersatt (pop mix)",
-            "Kleine Raupe Nimmersatt (slow mix)",
-            "Komm, wir machen eine Fahrradtour"
-        ]
-    },
-    {
         "name": "Babylove Kinderlieder",
         "file": "babylove-kinderlieder",
         "length": "00:22:23",
@@ -81,45 +69,6 @@
             "Kleine braune Biene",
             "Hoppelhase, sitz ganz still",
             "Ich hab Pause"
-        ]
-    },
-    {
-        "name": "Deutsch",
-        "file": "deutsch",
-        "length": "01:28:25",
-        "active": true,
-        "tracks": []
-    },
-    {
-        "name": "Serien",
-        "file": "serien",
-        "length": "00:33:09",
-        "active": true,
-        "tracks": []
-    },
-    {
-        "name": "Tanz",
-        "file": "tanz",
-        "length": "00:56:48",
-        "active": true,
-        "tracks": [
-            "Aqua - Barbie Girl",
-            "Chilli - Tic, Tic Tac",
-            "Donikkl - Fliegerlied",
-            "EFF - Stimme",
-            "Felix Jaehn - Book Of Love",
-            "Harry Belafonte - Banana Boat",
-            "Jennifer Lopez - Ain't Your Mama",
-            "Los Del Rio - Macarena",
-            "Louane - Avenir (Radio Edit)",
-            "Lucilectric - Mädchen",
-            "Martin Garrix - Animals (Pate-Siff!!)",
-            "Mika - Boum Boum Boum",
-            "Mr. President - Coco Jambo",
-            "Pitbull feat. Ke$ha - Timber",
-            "Pixie Paris - Es rappelt im Karton",
-            "Rednex - Cotton Eye Joe",
-            "Rihanna - Work"
         ]
     },
     {
@@ -252,6 +201,115 @@
             "Froschkönigs Reich",
             "Der Luftballon",
             "Schlafe, leg dich zur Ruh"
+        ]
+    },
+    {
+        "name": "Deutsch",
+        "file": "deutsch",
+        "active": true,
+        "length": null,
+        "tracks": [
+            "Andreas Gabalier - Hulapalu",
+            "Claudia Jung - Stumme Signale",
+            "Comedian Harmonists - Mein kleiner grüner Kaktus",
+            "Connie Francis - Schöner fremder Mann",
+            "Conny Froboess - Lady Sunshine und Mr. Moon",
+            "Conny Froboess - Zwei kleine Italiener",
+            "Cro - Bye Bye",
+            "Donikkl - Fliegerlied ",
+            "EAV - Ding Dong",
+            "EAV - Drei Weiße Tauben",
+            "Helene Fischer - Die schönste Reise",
+            "Helene Fischer - Mit keinem anderen",
+            "Helge Schneider - Katzenklo",
+            "Jan & Kjeld - Banjo Boy",
+            "Joy Guttman - Schnappi",
+            "Jürgen Marcus - Auf dem Karussell",
+            "Markus Becker - Das rote Pferd",
+            "Olaf Henning - Cowboy und Indianer",
+            "Reinhard Mey - Über den Wolken",
+            "Roy Black - Schön ist es auf der Welt zu sein",
+            "Sissi - Mein kleines Pony",
+            "Stephen Janetzko - Der Herbst ist da",
+            "Stephen Janetzko - Die Herbstzeit ist da",
+            "Stephen Janetzko - Kleine Raupe Nimmersatt",
+            "Uli Führe - La Ola",
+            "Volker Rosin - Komm, wir machen eine Fahrradtour",
+            "Wum - Kleine Miezekatze"
+        ]
+    },
+    {
+        "name": "Sonstige",
+        "file": "sonstige",
+        "active": true,
+        "length": null,
+        "tracks": [
+            "Lass die Sonne in dein Herz",
+            "Alles hat ein Ende nur die Wurst hat zwei",
+            "Unter einer kleinen Decke in der Nacht",
+            "Mein kleines Pony",
+            "Electrica Salsa",
+            "Ein Eis in der Sonne",
+            "Auf einem Baum ein Kuckuck",
+            "Das Wandern ist des Müllers Lust",
+            "Die Tiroler sind lustig",
+            "Kommt ein Vogel geflogen",
+            "TV-Hits - Biene Maja",
+            "TV-Hits - Heidi",
+            "TV-Hits - Hey, Pippi Langstrumpf",
+            "TV-Hits - Hurra, der Pumuckl ist da",
+            "TV-Hits - Sesamstraße"
+        ]
+    },
+    {
+        "name": "Tanz",
+        "file": "tanz",
+        "active": true,
+        "length": null,
+        "tracks": [
+            "Aqua - Barbie Girl",
+            "Chilli - Tic, Tic Tac",
+            "EFF - Stimme",
+            "Felix Jaehn - Book Of Love",
+            "Harry Belafonte - Banana Boat",
+            "Jennifer Lopez - Ain't Your Mama",
+            "Laing - Morgens immer müde",
+            "Los Del Rio - Macarena",
+            "Louane - Avenir",
+            "Lucilectric - Mädchen",
+            "Martin Garrix - Animals (Pate-Siff!!)",
+            "Mika - Boum Boum Boum",
+            "Mr. President - Coco Jambo",
+            "Of Monsters And Man - Little Talks",
+            "Pitbull feat. Ke$ha - Timber",
+            "Pixie Paris - Es rappelt im Karton",
+            "Rednex - Cotton Eye Joe",
+            "Rihanna - Work",
+            "Shakira - Loca"
+        ]
+    },
+    {
+        "name": "Serien",
+        "file": "serien",
+        "active": true,
+        "length": null,
+        "tracks": [
+            "Benjamin Blümchen",
+            "Bibi Blocksberg",
+            "Bibi und Tina",
+            "Conni",
+            "Elea Eluanda",
+            "Fünf Freunde",
+            "Hasenkinder sind nicht dumm",
+            "Ich bin ein Musikante",
+            "Schneckbahn-Tango",
+            "Käpt'n Balu",
+            "Leo Lausemaus",
+            "Mainzelmännchen",
+            "Mein Freund Max",
+            "Regina Regenbogen",
+            "TKKG",
+            "Xanti"
         ]
     }
 ]

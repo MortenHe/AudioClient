@@ -24,8 +24,18 @@ export class OrderByPipe implements PipeTransform {
       //Sortierung nach Laenge
       else if (orderField === 'length') {
 
-        //Wenn die Laenge unterschiedlich ist
-        if (a.length !== b.length) {
+        //Wenn ein Eintrag die Laenge null hat, diesen vorne hinsortieren
+        if (a.length === null && b.length !== null) {
+          return -1;
+        }
+
+        //Wenn ein Eintrag die Laenge null hat, diesen vorne hinsortieren
+        if (a.length !== null && b.length === null) {
+          return 1;
+        }
+
+        //Wenn die Laenge unterschiedlich ist und die Eintraege nicht null sind
+        if (a.length !== b.length && (a.length !== null && b.length !== null)) {
 
           //Aufsteigende Sortierung
           if (!reverseOrder) {
@@ -42,7 +52,7 @@ export class OrderByPipe implements PipeTransform {
           }
         }
 
-        //beide Items haben die gleichen Laenge
+        //beide Items haben die gleichen Laenge oder beide sind null
         else {
 
           //dann Namensfeld als 2. Sortierkritierum verwenden (aufsteigend)
