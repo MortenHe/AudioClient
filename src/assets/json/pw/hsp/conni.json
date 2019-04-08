@@ -12,5 +12,15 @@
         "length": "01:03:48",
         "active": true,
         "tracks": []
+    },
+    {
+        "name": "Conni und der Osterhase und spielt Fußball",
+        "file": "osterhase-fussball",
+        "active": true,
+        "length": "01:09:24",
+        "tracks": [
+            "Conni und der Osterhase",
+            "Conni spielt Fussball"
+        ]
     }
 ]
