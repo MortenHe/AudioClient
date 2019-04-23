@@ -1,5 +1,5 @@
 export const environment = {
-  envName: 'Audio (dev)',
+  envName: 'Audio',
   appId: 'pw',
   production: false,
   serverUrl: 'http://132.230.25.79',

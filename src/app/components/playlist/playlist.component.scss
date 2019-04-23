@@ -33,3 +33,27 @@ label {
         border: none;
     }
 }
+
+.counter-1 {
+    width: 19px;
+}
+
+.counter-2 {
+    width: 24px;
+
+    i {
+        margin-left: 3px
+    }
+}
+
+.counter-3 {
+    width: 33px;
+
+    i {
+        margin-left: 8px
+    }
+}
+
+.file-name {
+    flex: 1;
+}

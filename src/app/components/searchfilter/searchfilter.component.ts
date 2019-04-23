@@ -19,18 +19,18 @@ export class SearchfilterComponent implements OnInit {
   //beim Init
   ngOnInit() {
 
-      //Reactive Form fuer Suchfeld erstellen
-      this.searchFilterForm = this.fb.group({
+    //Reactive Form fuer Suchfeld erstellen
+    this.searchFilterForm = this.fb.group({
 
-        //Suchfeld fuer Filterung
-        "search": ""
-      });
-  
-      //Bei Aenderung des Suchfeldes
-      this.searchFilterForm.get('search').valueChanges.subscribe(searchTerm => {
-        
-        //Suchterm in Filterservice eintragen
-        this.fs.setSearchTerm(searchTerm);
-      });
+      //Suchfeld fuer Filterung
+      "search": ""
+    });
+
+    //Bei Aenderung des Suchfeldes
+    this.searchFilterForm.get('search').valueChanges.subscribe(searchTerm => {
+
+      //Suchterm in Filterservice eintragen
+      this.fs.setSearchTerm(searchTerm);
+    });
   }
 }
