@@ -1,5 +1,5 @@
 export const environment = {
-  envName: 'Musik Player',
+  envName: 'Musik',
   appId: 'marlen',
   production: true,
   serverUrl: 'http://192.168.2.39',

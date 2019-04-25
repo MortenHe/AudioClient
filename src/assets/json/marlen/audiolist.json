@@ -1,44 +1,53 @@
 {
     "hsp": {
-        "filter": [
-            {
-                "id": "janosch",
-                "icon": "janosch",
-                "active": true
-            }
-        ],
+        "filter": {
+            "display-type": "icon",
+            "filters": [
+                {
+                    "id": "janosch",
+                    "name": "janosch",
+                    "active": true
+                }
+            ]
+        },
         "items": [],
         "allowRandom": false
     },
     "kindermusik": {
-        "filter": [
-            {
-                "id": "rz",
-                "label": "Rolf Zuckowski",
-                "active": true
-            }
-        ],
+        "filter": {
+            "display-type": "label",
+            "filters": [
+                {
+                    "id": "rz",
+                    "name": "Zuckowski",
+                    "active": true
+                }
+            ]
+        },
         "items": [],
         "allowRandom": true
     },
     "musikmh": {
-        "filter": [
-            {
-                "id": "all",
-                "label": "Alle",
-                "active": true
-            },
-            {
-                "id": "beatles",
-                "label": "Beatles",
-                "active": true
-            },
-            {
-                "id": "jahre",
-                "label": "Jahre",
-                "active": true
-            }
-        ],
+        "filter": {
+            "display-type": "label",
+            "filters": [
+                {
+                    "id": "all",
+                    "name": "Alle",
+                    "active": true
+                },
+                {
+                    "id": "beatles",
+                    "name": "Beatles",
+                    "active": true
+                },
+                {
+                    "id": "jahre",
+                    "name": "Jahre",
+                    "active": true
+                }
+            ]
+        },
         "items": [],
         "allowRandom": true
     }

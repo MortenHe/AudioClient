@@ -85,10 +85,22 @@ export class SearchComponent {
     //Liste der Modefilter abonnieren
     this.bs.getModeFilterList().subscribe(modeFilterlist => {
 
-      //Filter-Buttons nur anzeigen, wenn es neben "Alle" und "Sonstige" noch andere Filter gibt
-      this.showModeFilterList = modeFilterlist.some(elem => {
-        return (elem.id !== 'all' && elem.id !== 'misc');
-      });
+      //Wenn Filter mit Inhalt kommt (z.B. Beginn liefert BS null)
+      if (modeFilterlist) {
+
+        //Filteritems holen
+        let modeFilterListItems = modeFilterlist["filters"];
+
+        //Filter-Buttons nur anzeigen, wenn es neben "Alle" und "Sonstige" noch andere Filter gibt
+        this.showModeFilterList = modeFilterListItems.some(elem => {
+          return (elem.id !== 'all' && elem.id !== 'misc');
+        });
+      }
+
+      //es kam null von BS
+      else {
+        return false;
+      }
     });
 
     //Position in Playlist abbonieren

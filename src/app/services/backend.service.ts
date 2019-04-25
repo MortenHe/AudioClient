@@ -56,7 +56,7 @@ export class BackendService {
     itemListFilteredBS = new BehaviorSubject([]);
 
     //Liste der Mode Filter dieses Modus als BS, das abboniert werden kann
-    modeFilterListSB = new BehaviorSubject([]);
+    modeFilterListBS = new BehaviorSubject(null);
 
     //Random Playback erlaubt als BS, das abboniert werden kann
     allowRandomBS = new BehaviorSubject(false);
@@ -122,7 +122,7 @@ export class BackendService {
                 this.allowRandomBS.next(this.itemListFull[mode].allowRandom);
 
                 //Filter-Modus-Liste des aktuellen Modus setzen
-                this.modeFilterListSB.next(this.itemListFull[mode].filter);
+                this.modeFilterListBS.next(this.itemListFull[mode].filter);
 
                 //gefilterte Itemliste erstellen
                 this.filterItemList();
@@ -198,7 +198,7 @@ export class BackendService {
 
     //Liste der Filter-Optionen liefern
     getModeFilterList() {
-        return this.modeFilterListSB;
+        return this.modeFilterListBS;
     }
 
     //Verbindung zu WSS herstellen

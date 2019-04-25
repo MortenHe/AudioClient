@@ -1,0 +1,78 @@
+[
+    {
+        "name": "Nola Note - Auf musikalischer Weltreise",
+        "file": "nola-note-weltreise-1",
+        "active": true,
+        "length": "00:51:12",
+        "tracks": [
+            "Die Reise beginnt... auf nach Mexiko",
+            "Trompeten von Mexiko",
+            "Nola Note in Argentinien",
+            "Argentinischer Tango mit Bandoneon",
+            "Nola Note in Nordamerika",
+            "Die Indianerflöte",
+            "Nola Note in Irland",
+            "Wenn die Geige Fiddle heißt",
+            "Nola Note in Schottland",
+            "Der gute alte Dudelsack",
+            "Nola Note in Spanien",
+            "Die Gitarre spielt Flamenco",
+            "Nola Note in Afrika",
+            "Die Sprache der Musik - Trommeln in Afrika",
+            "Nola Note in Australien",
+            "Diggeridoo",
+            "Nola Note in Asien",
+            "Fremder Klang - Yin Yan",
+            "Nola Note in Russland",
+            "Balalaika - Russische Seele",
+            "Noch mal von vorne"
+        ]
+    },
+    {
+        "name": "Der Löwe beim Frisör",
+        "file": "loewe-frisoer",
+        "active": true,
+        "length": "00:50:52",
+        "tracks": [
+            "Der Tausendfüßler",
+            "Die Tiere beim Frisör",
+            "Mein kleines braunes Pony",
+            "Die Muschel",
+            "Das Skelett",
+            "Wir sind Piraten",
+            "Kleine Männchen aus dem All",
+            "Jawoll, ja, das ist wahr",
+            "Kleiner Käfer",
+            "Hochzeit im Ozean",
+            "Der Mann im Mond",
+            "Kängurus",
+            "Mein bester Freund",
+            "Der Wackelzahn",
+            "In Aland lebt der Kakada",
+            "Fuchs und Maus und Elefant",
+            "Der Hoppelhase",
+            "Hallo, hallo, Dinosaurier",
+            "Froschkönigs Reich",
+            "Der Luftballon",
+            "Schlafe, leg dich zur Ruh"
+        ]
+    },
+    {
+        "name": "Eule findet den Beat auf Europatour",
+        "file": "eule-europa",
+        "active": true,
+        "length": "00:22:22",
+        "tracks": [
+            "Eule findet den Beat auf Europatour.mp3",
+            "Im Schlagerhimmel.mp3",
+            "C'est la vie.mp3",
+            "Olé Olé.mp3",
+            "Am Ende des Regenbogens.mp3",
+            "Wo wir tanzen und singen.mp3",
+            "Kalimera.mp3",
+            "Yalla.mp3",
+            "Hej Midsommar.mp3",
+            "Finde deinen Beat.mp3"
+        ]
+    }
+]
