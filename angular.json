@@ -45,6 +45,14 @@
                 }
               ]
             },
+            "pw-test": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.pw.ts"
+                }
+              ]
+            },
             "marlen": {
               "fileReplacements": [
                 {
@@ -63,6 +71,9 @@
           "configurations": {
             "pw": {
               "browserTarget": "website:build:pw"
+            },
+            "pw-test": {
+              "browserTarget": "website:build:pw-test"
             },
             "marlen": {
               "browserTarget": "website:build:marlen"
