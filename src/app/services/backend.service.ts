@@ -255,7 +255,7 @@ export class BackendService {
 
             //Switch anhand Message-Types
             switch (obj.type) {
-                case "change-volume":
+                case "volume":
                     this.volume$.next(value);
                     break;
 
@@ -263,27 +263,27 @@ export class BackendService {
                     this.time$.next(value);
                     break;
 
-                case "set-position":
+                case "position":
                     this.position$.next(value);
                     break;
 
-                case "toggle-paused":
+                case "paused":
                     this.paused$.next(value);
                     break;
 
-                case "set-files":
+                case "files":
                     this.files$.next(value);
                     break;
 
-                case "toggle-random":
+                case "random":
                     this.random$.next(value);
                     break;
 
-                case "active-item":
+                case "activeItem":
                     this.activeItem$.next(value);
                     break;
 
-                case "allow-random":
+                case "allowRandom":
                     this.allowRandomRunning$.next(value);
                     break;
 
