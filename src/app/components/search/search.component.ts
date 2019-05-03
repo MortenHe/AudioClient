@@ -43,9 +43,6 @@ export class SearchComponent {
   //Aktuelle Playlist
   files: string[] = [];
 
-  //Anzahl der Sekunden bis Shutdown
-  countdownTime: number;
-
   //Services und Router injecten
   constructor(private bs: BackendService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService, private vcs: ViewControlService) {
   }
@@ -111,9 +108,6 @@ export class SearchComponent {
 
     //files (=Playlist) abonnieren
     this.bs.getFiles().subscribe(files => this.files = files);
-
-    //Anzahl der Sekunden bis Shutdown abbonieren
-    this.bs.getCountdownTime().subscribe(countdownTime => this.countdownTime = countdownTime);
 
     //Shutdown Zustand abbonieren
     this.shutdown$ = this.bs.getShutdown();

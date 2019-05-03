@@ -82,9 +82,6 @@ export class BackendService {
     //aktives Item
     activeItem$: Subject<string> = new Subject<string>();
 
-    //Anzahl der Sekunden bis Shutdown
-    countdownTime$: Subject<number> = new Subject<number>();
-
     //wurde Server heruntergefahren?
     shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -287,10 +284,6 @@ export class BackendService {
                     this.allowRandomRunning$.next(value);
                     break;
 
-                case "set-countdown-time":
-                    this.countdownTime$.next(value);
-                    break;
-
                 case "shutdown":
                     this.shutdown$.next(true);
                     break;
@@ -342,11 +335,6 @@ export class BackendService {
     //ActiveItem liefern
     getActiveItem() {
         return this.activeItem$;
-    }
-
-    //Anzahl der Sekunden bis Countdown liefern
-    getCountdownTime() {
-        return this.countdownTime$;
     }
 
     //Shutdown Zustand liefern
