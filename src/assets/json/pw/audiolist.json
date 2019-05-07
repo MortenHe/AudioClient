@@ -62,6 +62,11 @@
                     "id": "olchis",
                     "name": "olchis",
                     "active": true
+                },
+                {
+                    "id": "pumuckl",
+                    "name": "pumuckl",
+                    "active": true
                 }
             ]
         },
