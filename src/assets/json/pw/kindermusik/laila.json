@@ -74,5 +74,33 @@
             "Hej Midsommar.mp3",
             "Finde deinen Beat.mp3"
         ]
+    },
+    {
+        "name": "Stephen Janetzko - Der Sommer ist da",
+        "file": "janetzko-sommer-ist-da",
+        "active": true,
+        "length": "01:01:54",
+        "tracks": [
+            "Der Sommer ist da",
+            "Sonnenlied",
+            "In unserm Kindergarten",
+            "Wir wollen uns begruessen",
+            "Hallo und guten Morgen",
+            "Die Finger gehen jetzt auf Reise",
+            "Hand in Hand",
+            "Kroko Tanz",
+            "Es tanzt der Baer",
+            "In meiner Bi-Ba-Badewanne",
+            "Seeraeuber Wackelzahn",
+            "Ritter Kunibert",
+            "Wenn Indianer tanzen",
+            "Der Sommer kommt",
+            "Regentropfen",
+            "Rot Gelb Blau Gruen alle Farben find ich schoen",
+            "Ich bin die Mutter Sonne",
+            "Fussball Fussball",
+            "Auf dem Spielplatz",
+            "Reich mir die Hand"
+        ]
     }
 ]
