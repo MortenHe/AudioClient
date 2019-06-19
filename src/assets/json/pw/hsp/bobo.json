@@ -1,7 +1,7 @@
 [
     {
         "name": "Bobo Siebenschläfer - TV 01",
-        "file": "bobo-tv-01",
+        "file": "tv-01",
         "length": "00:38:03",
         "active": true,
         "tracks": [
@@ -15,7 +15,7 @@
     },
     {
         "name": "Bobo Siebenschläfer - TV 02",
-        "file": "bobo-tv-02",
+        "file": "tv-02",
         "active": true,
         "length": "00:40:33",
         "tracks": [
