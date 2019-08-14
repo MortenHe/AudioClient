@@ -21,9 +21,10 @@ async function main() {
     let server_audio_path = "/var/www/html/" + base_href;
 
     //Projekt bauen
-    const { execSync } = require('child_process');
+    const util = require('util');
+    const exec = util.promisify(require('child_process').exec);
     console.log("start build");
-    execSync("ng build -c=" + appId + " --base-href=/" + base_href + "/");
+    await exec("ng build -c=" + appId + " --base-href=/" + base_href + "/");
     console.log("build done");
 
     //Assets (=JSON-Configs) loeschen, die nicht zu dieser App gehoeren
@@ -50,7 +51,6 @@ async function main() {
         recursive: true,
         silent: true
     });
-
 
     //JSON-Folder zippen
     const zipFolder = require('zip-a-folder');
