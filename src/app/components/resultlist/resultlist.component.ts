@@ -92,5 +92,8 @@ export class ResultlistComponent {
 
     //Ansicht auf Playlist umstellen
     this.vcs.setView('playlist');
+
+    //Beim Starten oder Einreihen eines Items das Suchfeld leeren
+    this.fs.setSearchTerm("");
   }
 }

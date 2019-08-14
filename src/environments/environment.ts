@@ -7,14 +7,12 @@ export const environment = {
   domainModes: [{
     "id": "kindermusik",
     "label": "Kindermusik"
-  }, {
+  },
+  {
     "id": "hsp",
     "label": "Hörspiele"
   },
   {
-    "id": "musik",
-    "label": "Musiksammlung"
-  }, {
     "id": "cds",
     "label": "CDs"
   }]

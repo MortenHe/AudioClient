@@ -140,24 +140,5 @@
         },
         "items": [],
         "allowRandom": true
-    },
-    "musik": {
-        "filter": {
-            "display-type": "label",
-            "filters": [
-                {
-                    "id": "all",
-                    "name": "Alle",
-                    "active": true
-                },
-                {
-                    "id": "misc",
-                    "name": "Sonstige",
-                    "active": true
-                }
-            ]
-        },
-        "items": [],
-        "allowRandom": true
     }
 }

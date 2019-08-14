@@ -1,5 +1,75 @@
 [
     {
+        "name": "Benjamin Blümchen - 01 - Der Wetterelefant",
+        "file": "01-wetterelefant",
+        "active": true,
+        "length": "00:40:32",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 02 - Rettet den Zoo",
+        "file": "02-rettet",
+        "active": true,
+        "length": "00:39:57",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 03 - Kampf dem Lärm",
+        "file": "03-kampf",
+        "active": true,
+        "length": "00:34:57",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 04 - In Afrika",
+        "file": "04-afrika",
+        "active": true,
+        "length": "00:36:09",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 05 - Auf hoher See",
+        "file": "05-hoher-see",
+        "active": true,
+        "length": "00:39:10",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 06 - Und die Schule",
+        "file": "06-schule",
+        "active": true,
+        "length": "00:36:59",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 07 - Verliebt sich",
+        "file": "07-verliebt",
+        "active": true,
+        "length": "00:39:50",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 08 - Auf dem Baum",
+        "file": "08-baum",
+        "active": true,
+        "length": "00:33:25",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 09 - Hat Geburtstag",
+        "file": "09-geburtstag",
+        "active": true,
+        "length": "00:41:48",
+        "tracks": []
+    },
+    {
+        "name": "Benjamin Blümchen - 10 - Und das Schloss",
+        "file": "10-schloss",
+        "active": true,
+        "length": "00:39:18",
+        "tracks": []
+    },
+    {
         "name": "Benjamin Blümchen - 28 - Rettet den Kindergarten",
         "file": "28-kindergarten",
         "length": "00:39:28",

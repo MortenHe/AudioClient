@@ -77,6 +77,9 @@
             },
             "marlen": {
               "browserTarget": "website:build:marlen"
+            },
+            "vb": {
+              "browserTarget": "website:build:vb"
             }
           }
         },

@@ -39,10 +39,8 @@ fs.readdirSync(dataDir).forEach(folder => {
             tracks[folder] = [];
             totalDuration[folder] = 0;
 
-            //Ueber Dateien gehen
+            //Ueber Dateien gehen und mp3 auswerten
             for (let file of files) {
-
-                //nur mp3-Dateien sammeln
                 if (path.extname(file).toLowerCase() === '.mp3') {
 
                     //Tracks per Promise sammeln

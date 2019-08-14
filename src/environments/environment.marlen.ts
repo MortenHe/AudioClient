@@ -13,7 +13,7 @@ export const environment = {
     "label": "Kindermusik"
   },
   {
-    "id": "musikmh",
-    "label": "Musik MH"
+    "id": "cds",
+    "label": "CDs"
   }]
 };

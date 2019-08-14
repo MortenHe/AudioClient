@@ -13,10 +13,6 @@ export const environment = {
     "label": "Hörspiele"
   },
   {
-    "id": "musik",
-    "label": "Musiksammlung"
-  },
-  {
     "id": "cds",
     "label": "CDs"
   }]
