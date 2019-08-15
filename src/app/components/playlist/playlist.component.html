@@ -1,42 +1,10 @@
-<!-- Button-Group bestehend aus Suchfeld und Loeschen-Button -->
-<div class="btn-group mb-1">
-
-  <!-- Label besteht auch Icon und Suchfeld -->
-  <label *ngIf="files.length"
-         class="search-field form-control d-flex no-gutters align-items-center p-1"
-         [class.unrounded]="playlistFilterInput.value.length > 0"
-         for="playlistSearchField">
-
-    <!-- Such-Symbol -->
-    <i class="fa fa-search ml-2"></i>
-
-    <!-- Suchefeld fuer Filterung der Playlist -->
-    <input autofocus
-           autocomplete="off"
-           id="playlistSearchField"
-           placeholder="Liste durchsuchen"
-           class="col ml-2"
-           id="playlistSearchField"
-           type="text"
-           name="playlistSearch"
-           [formControl]="playlistFilterInput">
-  </label>
-
-  <!-- Inhalt des Suchfeldes zuruecksetzen -->
-  <button *ngIf="playlistFilterInput.value.length > 0"
-          (click)="resetSearch()"
-          class="btn btn-danger"><i class="fa fa-times"></i></button>
-</div>
-
 <!-- Info ueber aktuell laufende Playlist -->
 <ng-container *ngFor="let file of files; let i = index">
 
   <!-- Titel. Fett anzeigen (bei >=10 Titel fuehrende 0 bei Zaehlung), ggf. nicht sichtbar, wenn Suchfeld aktiv -->
   <div (click)="jumpTo(i)"
-       class="item align-items-baseline"
+       class="item align-items-baseline d-flex"
        [ngClass]="{
-         'd-none': file | playlistSearch:playlistFilterInput.value,
-         'd-flex': !(file | playlistSearch:playlistFilterInput.value),
         'waiting': i === jumpPosition,
         'font-weight-bold': i === position
        }">

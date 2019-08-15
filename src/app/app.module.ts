@@ -37,7 +37,6 @@ import { PicontrolComponent } from './components/picontrol/picontrol.component';
 import { ToggletrackviewComponent } from './components/toggletrackview/toggletrackview.component';
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
-import { PlaylistSearchPipe } from './pipes/playlist-search.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,6 @@ import { PlaylistSearchPipe } from './pipes/playlist-search.pipe';
     RandomPlaybackComponent,
     VolumeControlComponent,
     FileNamePipe,
-    PlaylistSearchPipe
   ],
   imports: [
     BrowserModule,
