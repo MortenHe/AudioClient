@@ -10,7 +10,7 @@ const targetMachine = process.argv[3] || "pw";
 console.log("compare local audio files (" + appId + ") with server " + targetMachine);
 
 //Pfade wo die Dateien liegen
-const audioPath = "/media/audio";
+const audioPath = "/media/usb_audio/audio";
 
 //libraries laden fuer Dateizugriff
 const fs = require('fs-extra')
