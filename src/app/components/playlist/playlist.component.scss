@@ -15,6 +15,7 @@
     }
 }
 
+/* ignore hover on mobile devices */
 @media (hover: none) {
     .item {
         &:hover:not(.active-item):not(.waiting) {
