@@ -162,5 +162,38 @@
             "Komm nach Iglau, Krokodil",
             "Bärenzirkus Zampano"
         ]
+    },
+    {
+        "name": "Janosch - Das große Schnuddel Hörbuch",
+        "file": "schnuddel-hoerbuch",
+        "active": true,
+        "length": "01:04:30",
+        "tracks": [
+            "Schnuddel mit dem großen Hut",
+            "Honigblumen schmecken süß",
+            "Oh eine Botschaft",
+            "Was einen Schnuddel lustig macht",
+            "Schnuddel fängt einen Fisch",
+            "Kanarienvogels schönste Leib- und Königspeise",
+            "Wer besiegt den wilden Hund (Puschkin)",
+            "Schnuddelbuddel baut ein Haus",
+            "Wandertag nach Paderborn",
+            "Schnuddelbuddel fängt einen Hasen",
+            "Ein Kanarienvogelfederbaum",
+            "Hasenfutter eins zwei drei",
+            "Der Fuchs und der Hase",
+            "Kleiner Hase - Große Maus",
+            "Häschen in der Grube",
+            "Komm wir spielen Fang das Lieschen",
+            "Abzähler",
+            "Unser guter Onkel Dachs",
+            "Reite reite Häschen",
+            "Op uen schniewiesse Gans",
+            "Der Hase und der Fuchs",
+            "Abzähler",
+            "Alle Häslein singen leise",
+            "Der kluge Hahn",
+            "Der Vater und seine Kinder"
+        ]
     }
 ]
