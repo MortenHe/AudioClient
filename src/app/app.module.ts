@@ -4,9 +4,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-//Angular Material
-import { MatSliderModule } from '@angular/material/slider';
-
 //eigenes Services
 import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
@@ -64,7 +61,6 @@ import { VolumeControlComponent } from './components/volume-control/volume-contr
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatSliderModule,
     RouterModule.forRoot([
       { path: 'search/:mode', component: SearchComponent },
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }

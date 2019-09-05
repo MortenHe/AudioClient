@@ -1,6 +1,6 @@
 [
     {
-        "name": "Olchis - Ein Drachenfest für Feuerstuhl",
+        "name": "Die Olchis - Ein Drachenfest für Feuerstuhl",
         "file": "drachenfest",
         "active": true,
         "length": "00:42:57",
@@ -9,5 +9,26 @@
             "Ein Drachenfest für Feuerstuhl",
             "Olchi-Opas krötigste Abenteuer"
         ]
+    },
+    {
+        "name": "Die Olchis und der faule König",
+        "file": "koenig",
+        "active": true,
+        "length": "00:32:02",
+        "tracks": []
+    },
+    {
+        "name": "Die Olchis fliegen in die Schule",
+        "file": "schule",
+        "active": true,
+        "length": "00:25:08",
+        "tracks": []
+    },
+    {
+        "name": "Die Olchis ziehen um",
+        "file": "ziehen-um",
+        "active": true,
+        "length": "00:27:36",
+        "tracks": []
     }
 ]

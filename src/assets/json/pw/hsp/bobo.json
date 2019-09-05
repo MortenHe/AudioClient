@@ -42,5 +42,20 @@
             "Farbenlied",
             "Der Ausflug"
         ]
+    },
+    {
+        "name": "Bobo Siebenschläfer - Draußen ist es schön",
+        "file": "draussen",
+        "active": true,
+        "length": "00:44:30",
+        "tracks": [
+            "Sommerzeit ist Beerenzeit",
+            "Die Sonne steht hoch",
+            "Eine Höhle im Wald",
+            "Kleine Helden im Wald",
+            "Zelten am See",
+            "Kumbaya",
+            "In den Bergen"
+        ]
     }
 ]
