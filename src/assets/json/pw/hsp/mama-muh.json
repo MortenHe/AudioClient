@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Mama Muh fährt Rad, lernt tauchen und geht angeln",
+        "file": "rad",
+        "active": true,
+        "length": "00:39:26",
+        "tracks": []
+    },
+    {
+        "name": "Mama Muh fährt Schlitten, im Dunkeln und Sankta Mucia",
+        "file": "schlitten",
+        "active": true,
+        "length": "00:41:19",
+        "tracks": []
+    },
+    {
+        "name": "Mama Muh und der Kletterbaum",
+        "file": "kletterbaum",
+        "active": true,
+        "length": "00:36:05",
+        "tracks": []
+    }
+]
