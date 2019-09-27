@@ -29,10 +29,22 @@
         "active": true,
         "length": "00:51:14",
         "tracks": [
-            "Leo will sich nicht die Zähne putzen",
-            "Leo hat Geburtstag",
-            "Leo will nicht verreisen",
-            "Leo und der Schlafgut-Zwerg"
+            "Will sich nicht die Zähne putzen",
+            "Hat Geburtstag",
+            "Will nicht verreisen",
+            "Der Schlafgut-Zwerg"
+        ]
+    },
+    {
+        "name": "Leo Lausemaus - 04",
+        "file": "04",
+        "active": true,
+        "length": "00:47:38",
+        "tracks": [
+            "Will nicht baden",
+            "Mag nicht umziehen",
+            "Kann nicht verlieren",
+            "Auf zum Sport"
         ]
     },
     {

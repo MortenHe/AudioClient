@@ -108,16 +108,6 @@
                     "active": true
                 },
                 {
-                    "id": "laila",
-                    "name": "Laila",
-                    "active": true
-                },
-                {
-                    "id": "luis",
-                    "name": "Luis",
-                    "active": true
-                },
-                {
                     "id": "misc",
                     "name": "Sonstige",
                     "active": true

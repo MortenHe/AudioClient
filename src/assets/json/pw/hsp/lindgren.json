@@ -69,5 +69,17 @@
             "Ole bekommt eine Schwester",
             "Inga und ich machen Menschen glücklich"
         ]
+    },
+    {
+        "name": "Michel aus Lönneberga - Immer dieser Michel",
+        "file": "immer-dieser-michel",
+        "active": true,
+        "length": "00:59:54",
+        "tracks": [
+            "Als Michel auf der Festwiese ein lustiges Leben führte",
+            "Als Michel sich sein eigenes Pferd anschaffte",
+            "Als Michel seinen Vater in der Trissebude einsperrte",
+            "Als Michel eine Heldentat vollbrachte"
+        ]
     }
 ]

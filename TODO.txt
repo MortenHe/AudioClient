@@ -1,2 +1,5 @@
+MEDIUM
+- Shutdown
 - aktiver Track fett
 - Design wie Videoplayer
+- Name der aktuellen Playlist oben anzeigen (Leo Folge 4)
