@@ -19,7 +19,7 @@ export class SearchfilterComponent implements OnInit {
   //beim Init
   ngOnInit() {
 
-    //Bei Aenderung des Suchfeldes, Suchterm in Filterservice eintragen
+    //Bei Aenderung des Suchfeldes den Suchterm in Filterservice eintragen
     this.searchField.valueChanges.subscribe(searchTerm => {
       this.fs.setSearchTerm(searchTerm);
     });

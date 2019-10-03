@@ -1,51 +1,45 @@
-//Variable importerein
 @import '~scss/variables.scss';
-//eigene styles
-.items {
-    .add-item {
-        background: $color-light-bg;
-        align-self: stretch;
-        border-top: 1px solid $color-grey;
-        width: 35px;
+
+.box {
+    border: none;
+    border-top: 1px solid $color-light-border-grey;
+    padding: 5px;
+    background: $color-light-bg;
+    width: 100%;
+
+    .fa-play {
         color: $color-grey;
-        &:hover {
-            background: $color-light-bg-hover;
-        }
+        display: none;
     }
-    .box {
-        //border-bottom: 1px solid $color-grey; //border-radius: $border-radius;
-        border: none;
-        border-top: 1px solid $color-grey;
-        padding: 5px;
-        background: $color-light-bg;
-        cursor: pointer;
-        .fa-play,
-        .fa-plus {
-            display: none;
-        }
+
+    &:not(:disabled) {
         &:hover:not(.active-item) {
             background: $color-light-bg-hover;
-            .fa-play,
-            .fa-plus {
+
+            .fa-play {
                 display: inline;
-                opacity: .5;
             }
         }
-        &.active-item {
-            background: $color-light-bg-active;
-            .fa-play,
-            .fa-plus {
-                display: inline;
-                opacity: 1;
-            }
+    }
+
+    &.active-item {
+        background: $color-light-bg-active;
+        font-weight: bold;
+
+        .fa-play {
+            display: inline;
+            opacity: 1;
         }
-        ul {
-            margin-bottom: 0;
-            padding-left: 21px;
-            li {
-                list-style-type: none;
-                color: $color-light-grey;
-            }
+    }
+
+    ul {
+        margin-bottom: 0;
+        padding-left: 21px;
+
+        li {
+            text-align: left;
+            list-style-type: none;
+            color: $color-light-grey;
         }
     }
 }
@@ -54,10 +48,6 @@
     .box {
         &:hover:not(.active-item) {
             background: $color-light-bg !important;
-            .fa-play,
-            .fa-plus {
-                display: none !important;
-            }
         }
     }
 }

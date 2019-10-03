@@ -1,34 +1,29 @@
 <!-- Ueber Items-Array gehen und die bereits gefilterte und sortierte Liste ausgeben -->
-<div *ngFor="let item of items$ | async"
-     class="row no-gutters align-items-center items">
+<button (click)="playSingleItem(item)"
+        *ngFor="let item of items$ | async"
+        class="box col text-left pl-2"
+        [class.active-item]="item.mode + '/' + item.file === activeItem">
 
-  <!-- Button um einzelnes Item direkt zu starten -->
-  <button (click)="playSingleItem(item)"
-          class="box col text-left pl-2"
-          [class.active-item]="item.mode + '/' + item.file === activeItem">
+  <!-- Zeile mit (hover-) Playsymbol, Name der Playlist und Laenge -->
+  <div class="row no-gutters align-items-center">
 
-    <!-- Zeile mit (hover-) Playsymbol, Name der Playlist und Laenge -->
-    <div class="row no-gutters align-items-center">
+    <!-- Play-Symbol wird nur bei hover und active angezeigt -->
+    <i class="fa fa-play fa-fw mr-1 opacity-50"></i>
 
-      <!-- Play-Symbol wird nur bei Audio mit hover und active angezeigt -->
-      <i class="fa fa-play mr-2"></i>
+    <!-- Itemname -->
+    <span class="col">{{item.name|fileName:modeFilter}}</span>
 
-      <!-- Itemname -->
-      <span class="col">{{item.name}}</span>
-
-      <!-- formattierte Laenge des Items -->
-      <div class="item-length item-length-audio text-right ml-1 mr-1">
-        {{item.length | timeformatter}}
-      </div>
+    <!-- formattierte Laenge des Items -->
+    <div class="item-length item-length-audio text-right ml-1 mr-1">
+      {{item.length | timeformatter}}
     </div>
+  </div>
 
-    <!-- Wenn Tracks angezeigt werden sollen -->
-    <ul *ngIf="showTracks$ | async">
-
-      <!-- Tracks ausgeben -->
-      <li *ngFor="let track of item.tracks">
-        {{track}}
-      </li>
-    </ul>
-  </button>
-</div>
+  <!-- Wenn Tracks angezeigt werden sollen, Tracks ausgeben -->
+  <ul *ngIf="showTracks$ | async">
+    <li *ngFor="let track of item.tracks"
+        class="mr-1">
+      {{track}}
+    </li>
+  </ul>
+</button>

@@ -11,7 +11,7 @@
     flex: 1;
 
     &.grid-label {
-        grid-template-columns: repeat(auto-fill, 100px);
+        grid-template-columns: repeat(auto-fill, 95px);
     }
 
     &.grid-icon {
@@ -19,7 +19,7 @@
     }
 
     .mode-filter {
-        border: 3px solid $color-grey;
+        border: 3px solid rgba($color-grey, .3);
         border-radius: $border-radius;
         padding: 5px;
         user-select: none;
@@ -29,7 +29,7 @@
         }
 
         &:hover:not(.active) {
-            border: 3px solid $color-light-bg-hover;
+            border: 3px solid rgba($color-info-blue, .5);
 
             img {
                 filter: grayscale(.3);
@@ -37,7 +37,7 @@
         }
 
         &.active {
-            border: 3px solid $color-light-bg-active;
+            border: 3px solid $color-info-blue;
 
             img {
                 filter: grayscale(0);

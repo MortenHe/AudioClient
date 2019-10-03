@@ -1,23 +1,18 @@
-<!-- Sortierung nach Name aufsteigend -->
-<div class="tag shadow d-flex align-items-center justify-content-center"
-     [class.activeFilter]="orderField + '-' + reverseOrder === 'name-false'"
-     (click)="setOrder('name', false)">
-  <i class="fa fa-font"></i>
-  <i class="ml-1 fa fa-sort-up"></i>
-</div>
+<!-- 1 Sortierbutton fuer alle Optionen (Name aufsteigend vs. Laenge absteigend) -->
+<div class="tag d-flex align-items-center justify-content-center"
+     (click)="setNextOrder()">
 
-<!-- Sortierung nach Dauer aufsteigend -->
-<div class="tag shadow d-flex align-items-center justify-content-center"
-     [class.activeFilter]="orderField + '-' + reverseOrder === 'length-false'"
-     (click)="setOrder('length', false)">
-  <i class="fa fa-clock-o"></i>
-  <i class="ml-1 fa fa-sort-up"></i>
-</div>
+  <!-- Sortiersymbol (Buchstaben, Uhr) -->
+  <i class="fa"
+     [ngClass]="{
+    'fa-font': orderField === 'name',
+    'fa-clock-o': orderField === 'length'
+  }"></i>
 
-<!-- Sortierung nach Dauer absteigend -->
-<div class="tag shadow d-flex align-items-center justify-content-center"
-     [class.activeFilter]="orderField + '-' + reverseOrder === 'length-true'"
-     (click)="setOrder('length', true)">
-  <i class="fa fa-clock-o"></i>
-  <i class="ml-1 fa fa-sort-down"></i>
+  <!-- Aufsteigend / Absteigend sortieren Symbol -->
+  <i class="ml-1 fa"
+     [ngClass]="{
+        'fa-sort-up': !reverseOrder,
+        'fa-sort-down': reverseOrder
+      }"></i>
 </div>

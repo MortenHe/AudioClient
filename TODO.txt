@@ -1,5 +1,14 @@
+HIGH
+- fileName pipe
+
 MEDIUM
-- Shutdown
-- aktiver Track fett
-- Design wie Videoplayer
+- View change in Komponente
+- Playlist nur klickbar, wenn Playlist laeuft
+- Anzeige, dass Playlist läuft (z.B. Anzahl der Treffer)
+- Playlist-Link deaktivieren, wenn keine Playlist gewählt
+- Countdown
+- Playlist-View per Route ansteuern
+- Bei Wechsel von Kids auf HSP auf Suchview wechseln (wenn man in Playlist ist)
+- markjs für Suche
 - Name der aktuellen Playlist oben anzeigen (Leo Folge 4)
+- Resultlist.ts prüfen welche Abos benötigt

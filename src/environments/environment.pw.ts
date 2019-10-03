@@ -6,11 +6,11 @@ export const environment = {
   wssUrl: 'ws://192.168.0.149:8080',
   domainModes: [{
     "id": "kindermusik",
-    "label": "Kindermusik"
+    "label": "Kids"
   },
   {
     "id": "hsp",
-    "label": "Hörspiele"
+    "label": "HSP"
   },
   {
     "id": "cds",

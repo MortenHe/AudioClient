@@ -1,3 +1,4 @@
+<!-- Player-Funktionen -->
 <!-- vorheriges Item -->
 <button (click)="changeItem(false)"
         [class.invisible]="files.length === 1"
@@ -11,11 +12,11 @@
 
 <!-- toggle pause restart -->
 <button (click)="togglePausedRestart()"
-        class="ripple fa button-clean"
+        class="ripple fa button-clean text-info"
         [ngClass]='{
-                "fa-play text-success": paused && position !== -1,
-                "fa-pause text-warning": !paused && position !== -1,
-                "fa-repeat text-info": position === -1
+                "fa-play": paused && position !== -1,
+                "fa-pause": !paused && position !== -1,
+                "fa-repeat": position === -1
         }'></button>
 
 <!-- Item nach rechts spulen -->

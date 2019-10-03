@@ -36,6 +36,9 @@ export class ResultlistComponent {
   //Aktuelle Playlist (kommt von Server)
   files: any[] = [];
 
+  //Modefilter
+  modeFilter: string;
+
   //Services injecten
   constructor(private bs: BackendService, private fs: ResultfilterService, private vcs: ViewControlService) { }
 
@@ -64,6 +67,9 @@ export class ResultlistComponent {
 
     //Laufende Playlist abbonieren
     this.bs.getFiles().subscribe(files => this.files = files);
+
+    //ModeFilter (bibi, bibi-tina, all,...) abbonieren
+    this.fs.getModeFilter().subscribe(modeFilter => this.modeFilter = modeFilter);
   }
 
   //einzelnes Item abspielen
