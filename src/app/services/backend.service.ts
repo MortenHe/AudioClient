@@ -82,6 +82,9 @@ export class BackendService {
     //aktives Item
     activeItem$: Subject<string> = new Subject<string>();
 
+    //Name der aktiven Playlist: Rolf Zuckowski - Starke Kinder
+    activeItemName$: Subject<string> = new Subject<string>();
+
     //wurde Server heruntergefahren?
     shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -173,27 +176,22 @@ export class BackendService {
         this.itemListFilteredBS.next(filteredItemList);
     }
 
-    //Modus liefern
     getMode() {
         return this.modeBS;
     }
 
-    //Modus setzen
     setMode(mode) {
         this.modeBS.next(mode);
     }
 
-    //Random erlaubt liefern
     getAllowRandom() {
         return this.allowRandomBS;
     }
 
-    //gefilterte und sortierte Itemliste liefern
     getFilteredItemlist() {
         return this.itemListFilteredBS;
     }
 
-    //Liste der Filter-Optionen liefern
     getModeFilterList() {
         return this.modeFilterListBS;
     }
@@ -280,6 +278,10 @@ export class BackendService {
                     this.activeItem$.next(value);
                     break;
 
+                case "activeItemName":
+                    this.activeItemName$.next(value);
+                    break;
+
                 case "allowRandom":
                     this.allowRandomRunning$.next(value);
                     break;
@@ -297,57 +299,50 @@ export class BackendService {
         this.socket.next(messageObj);
     }
 
-    //Volume liefern
     getVolume() {
         return this.volume$;
     }
 
-    //Zeit liefern
     getTime() {
         return this.time$;
     }
 
-    //Files liefern
     getFiles() {
         return this.files$;
     }
 
-    //Position liefern
     getPosition() {
         return this.position$;
     }
 
-    //Position setzen
     setPosition(position) {
         this.position$.next(position);
     }
 
-    //Pause liefern
     getPaused() {
         return this.paused$;
     }
 
-    //Random liefern
     getRandom() {
         return this.random$;
     }
 
-    //ActiveItem liefern
     getActiveItem() {
         return this.activeItem$;
     }
 
-    //Shutdown Zustand liefern
+    getActiveItemName() {
+        return this.activeItemName$;
+    }
+
     getShutdown() {
         return this.shutdown$;
     }
 
-    //AllowRandom Zustand liefern
     getAllowRandomRunning() {
         return this.allowRandomRunning$;
     }
 
-    //Verbindungszustand mit WSS liefern
     getConnected() {
         return this.connected$;
     }

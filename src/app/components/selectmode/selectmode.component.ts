@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { ViewControlService } from '../../services/view-control.service';
 
 @Component({
   selector: 'selectmode',
@@ -18,7 +19,7 @@ export class SelectmodeComponent implements OnInit {
   modes: any[];
 
   //Services injecten
-  constructor(private fb: FormBuilder, private bs: BackendService, private router: Router) { }
+  constructor(private bs: BackendService, private router: Router, private vcs: ViewControlService) { }
 
   //beim Init
   ngOnInit() {
@@ -35,8 +36,13 @@ export class SelectmodeComponent implements OnInit {
     });
   }
 
-  //Wenn Modus gesetzt wird, zu passender URL navigieren
+  //Wenn Modus gesetzt wird
   setMode(mode) {
+
+    //zu passender URL navigieren
     this.router.navigate(['/search', mode]);
+
+    //Auf Suche-View umschalten
+    this.vcs.setView('search');
   }
 }

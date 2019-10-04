@@ -28,18 +28,11 @@
     <volume-control class="col row no-gutters justify-content-end"></volume-control>
   </div>
 
-  <!-- 3. Zeile: Zwischen Suche und Playlist umschalten -->
+  <!-- 3. Zeile: Zwischen Suche und Playlist umschalten + Random-Checkbox fuer Playlist -->
   <div class="d-flex mx-2 mt-3">
 
-    <!-- Suche sichtbar machen -->
-    <div class="tag fa fa-search d-flex align-items-center justify-content-center"
-         [class.activeView]="activeView === 'search'"
-         (click)="setActive('search')"></div>
-
-    <!-- Playlist sichtbar machen -->
-    <div class="ml-2 tag fa fa-list d-flex align-items-center justify-content-center"
-         [class.activeView]="activeView === 'playlist'"
-         (click)="setActive('playlist')"></div>
+    <!-- Views umschalten (Suche vs. Playlist) -->
+    <view-control></view-control>
 
     <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben und nur in Playlist View) -->
     <random-playback [class.hidden]="activeView !== 'playlist' || !(allowRandomRunning$ | async)"

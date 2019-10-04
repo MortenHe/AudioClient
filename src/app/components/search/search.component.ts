@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../../../environments/environment'
-import { ResultfilterService } from '../../services/resultfilter.service';
 import { ViewControlService } from '../../services/view-control.service';
 
 @Component({
@@ -44,7 +43,7 @@ export class SearchComponent {
   files: string[] = [];
 
   //Services und Router injecten
-  constructor(private bs: BackendService, private route: ActivatedRoute, private router: Router, private fs: ResultfilterService, private vcs: ViewControlService) {
+  constructor(private bs: BackendService, private route: ActivatedRoute, private router: Router, private vcs: ViewControlService) {
   }
 
   //Beim Init
@@ -122,15 +121,5 @@ export class SearchComponent {
         value: ""
       });
     }, 1500);
-  }
-
-  //Zwischen Views umschalten (Playlist, Search)
-  setActive(view) {
-    this.vcs.setView(view);
-  }
-
-  //App aktivieren (WSS per PHP starten)
-  activateApp() {
-    this.bs.activateApp().subscribe();
   }
 }

@@ -1,0 +1,9 @@
+@import '~scss/variables.scss';
+
+:host {
+    display: flex;
+}
+
+.activeView {
+    background: rgba($color-info-blue, .2);
+}

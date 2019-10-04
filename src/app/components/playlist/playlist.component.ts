@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { FormControl } from '@angular/forms';
-import { FileNamePipe } from '../../pipes/file-name.pipe';
 
 @Component({
   selector: 'playlist',
@@ -11,8 +10,8 @@ import { FileNamePipe } from '../../pipes/file-name.pipe';
 
 export class PlaylistComponent implements OnInit {
 
-  //Suchfeld fuer Playlist
-  playlistFilterInput: FormControl = new FormControl("");
+  //Name der aktuellen Playlist: Rolf Zuckowski - Starke Kiner
+  activeItemName: string = "";
 
   //aktuelle Zeit des laufenden Items
   time: string = "";
@@ -32,23 +31,15 @@ export class PlaylistComponent implements OnInit {
   //beim Init
   ngOnInit() {
 
+    //Name der aktuellen Playlist abbonieren
+    this.bs.getActiveItemName().subscribe(activeItemName => this.activeItemName = activeItemName);
+
     //akutelle Zeit per Service abbonieren und in Variable schreiben
     this.bs.getTime().subscribe(time => this.time = time);
 
     //Liste des aktuellen per Service abbonieren und in Variable schreiben
     this.bs.getFiles().subscribe(files => {
-
-      //Suchfeld fuer Playlist leeren
-      this.playlistFilterInput.setValue("");
-
-      //Dateien kommen mit ganzem Pfad -> per Pipe auf echten Dateinamen reduzieren, sammeln und daraus Liste fuer Anzeige erzeugen
-      let fileNamePipe = new FileNamePipe();
-      let fileNamesClean = [];
-      for (let file of files) {
-        let fileNameClean = fileNamePipe.transform(file);
-        fileNamesClean.push(fileNameClean);
-      }
-      this.files = fileNamesClean;
+      this.files = files;
     });
 
     //aktuellen Index in Titelliste abbonieren und in Variable schreiben (fuer CSS-Klasse)
@@ -72,10 +63,5 @@ export class PlaylistComponent implements OnInit {
       //bei diesem Eintrag einen Spinner anzeigen, bis der Titel geladen wurde
       this.jumpPosition = position;
     }
-  }
-
-  //Suchfeld fuer Playlist wieder zuruecksetzen
-  resetSearch() {
-    this.playlistFilterInput.setValue("");
   }
 }

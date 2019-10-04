@@ -1,6 +1,6 @@
 [
     {
-        "name": "Leo Lausemaus - 01",
+        "name": "Leo Lausemaus - 01 - Will nicht essen",
         "file": "01",
         "length": "00:46:34",
         "active": true,
@@ -12,7 +12,7 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 02",
+        "name": "Leo Lausemaus - 02 - Will nicht in den Kindergarten",
         "file": "02",
         "length": "00:49:55",
         "active": true,
@@ -24,7 +24,7 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 03",
+        "name": "Leo Lausemaus - 03 - Will sich nicht die Zähne putzen",
         "file": "03",
         "active": true,
         "length": "00:51:14",
@@ -36,7 +36,7 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 04",
+        "name": "Leo Lausemaus - 04 - Will nicht baden",
         "file": "04",
         "active": true,
         "length": "00:47:38",
@@ -48,7 +48,7 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 05",
+        "name": "Leo Lausemaus - 05 - Und sein erster Wackelzahn",
         "file": "05",
         "length": "00:44:31",
         "active": true,
@@ -60,7 +60,7 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 06",
+        "name": "Leo Lausemaus - 06 - Will nicht teilen",
         "file": "06",
         "length": "00:42:10",
         "active": true,
@@ -72,7 +72,7 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 07",
+        "name": "Leo Lausemaus - 07 - Geht in den Zirkus",
         "file": "07",
         "length": "00:43:32",
         "active": true,
@@ -84,7 +84,7 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 08",
+        "name": "Leo Lausemaus - 08 - Will nicht im Kindergarten übernachten",
         "file": "08",
         "length": "00:47:46",
         "active": true,
@@ -96,7 +96,7 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 09",
+        "name": "Leo Lausemaus - 09 - Will nicht groß sein",
         "file": "09",
         "length": "00:48:22",
         "active": true,
@@ -108,12 +108,12 @@
         ]
     },
     {
-        "name": "Leo Lausemaus - 10",
+        "name": "Leo Lausemaus - 10 - Will nicht draußen spielen",
         "file": "10",
         "length": "00:45:27",
         "active": true,
         "tracks": [
-            "Will nicht draussen spielen",
+            "Will nicht draußen spielen",
             "Geht auf Schatzsuche",
             "Mag nicht auf Wiedersehen sagen",
             "Mamas Geburtstag"

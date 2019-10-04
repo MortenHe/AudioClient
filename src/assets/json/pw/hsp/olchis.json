@@ -11,21 +11,21 @@
         ]
     },
     {
-        "name": "Die Olchis und der faule König",
+        "name": "Die Olchis - Der faule König",
         "file": "koenig",
         "active": true,
         "length": "00:32:02",
         "tracks": []
     },
     {
-        "name": "Die Olchis fliegen in die Schule",
+        "name": "Die Olchis - Fliegen in die Schule",
         "file": "schule",
         "active": true,
         "length": "00:25:08",
         "tracks": []
     },
     {
-        "name": "Die Olchis ziehen um",
+        "name": "Die Olchis - Ziehen um",
         "file": "ziehen-um",
         "active": true,
         "length": "00:27:36",

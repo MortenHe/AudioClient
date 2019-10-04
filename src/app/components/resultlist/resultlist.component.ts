@@ -85,6 +85,7 @@ export class ResultlistComponent {
     this.bs.sendMessage({
       type: "set-playlist",
       value: {
+        name: item.name,
         mode: mode,
         path: item.mode + "/" + item.file,
         allowRandom: allowRandom

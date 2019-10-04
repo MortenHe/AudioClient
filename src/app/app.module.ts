@@ -35,6 +35,7 @@ import { ToggletrackviewComponent } from './components/toggletrackview/toggletra
 import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
 import { ConnectionComponent } from './components/connection/connection.component';
+import { ViewControlComponent } from './components/view-control/view-control.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ConnectionComponent } from './components/connection/connection.componen
     VolumeControlComponent,
     FileNamePipe,
     ConnectionComponent,
+    ViewControlComponent,
   ],
   imports: [
     BrowserModule,

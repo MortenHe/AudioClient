@@ -1,39 +1,39 @@
-<!-- Info ueber aktuell laufende Playlist -->
-<ng-container *ngFor="let file of files; let i = index">
+<!-- Name der aktuellen Playlist -->
+<h1 class="mb-2 p-1">{{activeItemName}}</h1>
 
-  <!-- Titel. Fett anzeigen (bei >=10 Titel fuehrende 0 bei Zaehlung), ggf. nicht sichtbar, wenn Suchfeld aktiv -->
-  <div (click)="jumpTo(i)"
-       class="item align-items-baseline d-flex"
-       [ngClass]="{
+<!-- Titel fett anzeigen (bei >= 10 Titel fuehrende 0 bei Zaehlung) -->
+<div *ngFor="let file of files; let i = index"
+     (click)="jumpTo(i)"
+     class="item align-items-baseline d-flex"
+     [ngClass]="{
         'waiting': i === jumpPosition,
         'font-weight-bold': i === position
        }">
 
-    <!-- Zaehler ggf. mit fuehrender 0, unterschiedliche Breite bei >= 10 bzw. >= 100 Titel -->
-    <span [ngClass]="{
+  <!-- Zaehler ggf. mit fuehrender 0, unterschiedliche Breite bei >= 10 bzw. >= 100 Titel -->
+  <span [ngClass]="{
       'counter-1': files.length.toString().length === 1,
       'counter-2': files.length.toString().length === 2,
       'counter-3': files.length.toString().length === 3
     }">
 
-      <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
-      <i class="fa fa-spinner fa-spin"
-         *ngIf="i === jumpPosition"></i>
+    <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
+    <i class="fa fa-spinner fa-spin"
+       *ngIf="i === jumpPosition"></i>
 
-      <!-- Titelnummer anzeigen, wenn nicht gerade der Spinner angezeigt wird -->
-      <ng-container *ngIf="i !== jumpPosition">
-        {{(i + 1).toString().padStart(files.length.toString().length, "0")}})
-      </ng-container>
-    </span>
+    <!-- Titelnummer anzeigen, wenn nicht gerade der Spinner angezeigt wird -->
+    <ng-container *ngIf="i !== jumpPosition">
+      {{(i + 1).toString().padStart(files.length.toString().length, "0")}})
+    </ng-container>
+  </span>
 
-    <!-- Dateiname + Zeit -->
-    <span class="file-name ml-1">
+  <!-- Dateiname + Zeit -->
+  <span class="file-name ml-1">
 
-      <!-- Dateiname-->
-      {{file}}
+    <!-- Dateiname ohne fuehrende Ziffern -->
+    {{file|fileName:'digit'}}
 
-      <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
-      <ng-container *ngIf="i === position && time !== ''"> ({{time|timeformatter}})</ng-container>
-    </span>
-  </div>
-</ng-container>
+    <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
+    <ng-container *ngIf="i === position && time !== ''"> ({{time|timeformatter}})</ng-container>
+  </span>
+</div>

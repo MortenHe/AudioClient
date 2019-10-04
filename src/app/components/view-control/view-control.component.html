@@ -1,0 +1,9 @@
+<!-- Suche sichtbar machen -->
+<div class="tag fa fa-search d-flex align-items-center justify-content-center"
+     [class.activeView]="activeView === 'search'"
+     (click)="setActive('search')"></div>
+
+<!-- Playlist sichtbar machen -->
+<div class="ml-2 tag fa fa-list d-flex align-items-center justify-content-center"
+     [class.activeView]="activeView === 'playlist'"
+     (click)="setActive('playlist')"></div>
