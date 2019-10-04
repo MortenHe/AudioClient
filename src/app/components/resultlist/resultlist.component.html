@@ -10,8 +10,9 @@
     <!-- Play-Symbol wird nur bei hover und active angezeigt -->
     <i class="fa fa-play fa-fw mr-1 opacity-50"></i>
 
-    <!-- Itemname -->
-    <span class="col">{{item.name|fileName:modeFilter}}</span>
+    <!-- gekurzter Itemname mit Highlight -->
+    <span class="col"
+          [highlight]="searchTerm">{{item.name|fileName:modeFilter}}</span>
 
     <!-- formattierte Laenge des Items -->
     <div class="item-length item-length-audio text-right ml-1 mr-1">
@@ -19,10 +20,11 @@
     </div>
   </div>
 
-  <!-- Wenn Tracks angezeigt werden sollen, Tracks ausgeben -->
+  <!-- Wenn Tracks angezeigt werden sollen, Tracks ausgeben (mit Highlight) -->
   <ul *ngIf="showTracks$ | async">
     <li *ngFor="let track of item.tracks"
-        class="mr-1">
+        class="mr-1"
+        [highlight]="searchTerm">
       {{track}}
     </li>
   </ul>

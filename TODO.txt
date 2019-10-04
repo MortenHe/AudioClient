@@ -1,8 +1,10 @@
 HIGH
 
 MEDIUM
-- Countdown
-- Playlist-View per Route ansteuern
-- markjs für Suche
+- Countdown (konfigurierbar)
 - display:flex über :host in die Komponente ziehen aus search.html
 - Resultlist.ts, etc. prüfen welche Abos benötigt
+
+LOW
+- Playlist-View per Route ansteuern
+- Filter, Suchterm etc. per URL-Parameter setzen

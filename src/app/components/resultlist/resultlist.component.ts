@@ -39,6 +39,9 @@ export class ResultlistComponent {
   //Modefilter
   modeFilter: string;
 
+  //Suchterm fuer Markierung der Trefferliste
+  searchTerm: string;
+
   //Services injecten
   constructor(private bs: BackendService, private fs: ResultfilterService, private vcs: ViewControlService) { }
 
@@ -70,6 +73,9 @@ export class ResultlistComponent {
 
     //ModeFilter (bibi, bibi-tina, all,...) abbonieren
     this.fs.getModeFilter().subscribe(modeFilter => this.modeFilter = modeFilter);
+
+    //Suchterm abbonieren
+    this.fs.getSearchTerm().subscribe(searchTerm => this.searchTerm = searchTerm);
   }
 
   //einzelnes Item abspielen

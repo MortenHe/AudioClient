@@ -36,6 +36,7 @@ import { RandomPlaybackComponent } from './components/random-playback/random-pla
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
 import { ConnectionComponent } from './components/connection/connection.component';
 import { ViewControlComponent } from './components/view-control/view-control.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ViewControlComponent } from './components/view-control/view-control.com
     FileNamePipe,
     ConnectionComponent,
     ViewControlComponent,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
