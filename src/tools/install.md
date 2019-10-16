@@ -21,13 +21,13 @@
 - **root-PW** setzen
   
       sudo -i
-      passwd = **martin12**
+      passwd = martin12
 
 - **SSH root login** aktivieren
    
       nano /etc/ssh/sshd_config
   
-  #PermitRootLogin prohibit-password → #weg + yes (strg + w für Suche)
+  #PermitRootLogin prohibit-password → # weg + yes (strg + w für Suche)
   
       /etc/init.d/ssh restart
 
@@ -47,7 +47,7 @@
 
   alias ..='cd ..'
 
-  alias update='sudo apt-get update && sudo apt-get upgrade'
+  alias update='sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get upgrade'
 
   alias startnode='/home/pi/mh_prog/AudioServer/startnode.sh'
 
@@ -72,7 +72,7 @@
       iw dev wlan0 set power_save off
 - **Node** installieren
 
-      curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+      curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
       sudo apt-get install -y nodejs
 
 - **Servercode**
@@ -120,18 +120,25 @@
 
 ### **USB-Stick**
 - Stick unter Windows als **usb_audio** mit **ntfs** formattieren
-- Ordner **hsp**, **kindermusik**, **cds** anlegen
+- Ordner **audio** mit Unterordnern **hsp**, **kindermusik**, **cds** anlegen
 - USB **automount** aktivieren 
 
       sudo apt-get install ntfs-3g
       sudo mkdir /media/usb_audio
 
+  USB Stick einstecken
   UUID ermitteln
   
       sudo blkid -o list -w /dev/null
-      sudo nano -w /etc/
+      sudo nano -w /etc/fstab
       
     UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=pi,gid=pi,noatime 0
+    
+    Tinker mit 0, 0 über id Command Werte ermitteln
+    UUID=E012519312517010 /media/usb_audio/ ntfs-3g utf8,uid=0,gid=0,noatime 0
+
+    https://serverfault.com/questions/174181/how-do-you-validate-fstab-without-rebooting
+    mount -fav
 
     (Ist der USB-Stick nicht eingesteckt, kommt man in den Emergency Mode. Dort das Passwort eingebeben und in /etc/fstab die Zeile mit dem externen USB-Stick auskommentieren)
 

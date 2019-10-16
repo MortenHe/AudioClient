@@ -118,5 +118,17 @@
             "Mag nicht auf Wiedersehen sagen",
             "Mamas Geburtstag"
         ]
+    },
+    {
+        "name": "Leo Lausemaus - 11 - Will alles alleine machen",
+        "file": "11",
+        "active": true,
+        "length": "00:42:37",
+        "tracks": [
+            "Will alles alleine machen",
+            "Passt auf",
+            "Der Tag am Strand",
+            "Der neue Spielplatz"
+        ]
     }
 ]

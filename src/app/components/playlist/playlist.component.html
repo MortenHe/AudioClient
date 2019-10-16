@@ -6,6 +6,7 @@
      (click)="jumpTo(i)"
      class="item align-items-baseline d-flex"
      [ngClass]="{
+        'opacity-50': i < position,
         'waiting': i === jumpPosition,
         'font-weight-bold': i === position
        }">

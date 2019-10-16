@@ -12,7 +12,7 @@ async function main() {
     //Welche Website (pw / marlen / vb) wohin deployen (pw / marlen / vb)
     const appId = process.argv[2] || "pw";
     const targetMachine = process.argv[3] || "pw";
-    console.log("build and deploy audio (" + appId + ") to server " + targetMachine);
+    console.log("build and deploy audio (" + appId + ") to server " + targetMachine + ": " + connection[targetMachine].host);
 
     //Unter welchem Unterpfad wird die App auf dem Server laufen?
     const base_href = "wap";
@@ -77,7 +77,7 @@ async function main() {
 
     //gibt es schon einen Ordner (wap)
     console.log("check if exists: " + server_audio_path)
-    const dir_exists = sftp.exists(server_audio_path);
+    const dir_exists = await sftp.exists(server_audio_path);
 
     //Wenn Ordner (wap) existiert, diesen rekursiv loeschen
     if (dir_exists) {
