@@ -5,5 +5,23 @@
         "active": true,
         "length": "00:28:06",
         "tracks": []
+    },
+    {
+        "name": "Frieder - Wieder schreit der Frieder: Oma!",
+        "file": "frieder-wieder-schreit",
+        "active": true,
+        "length": "01:16:17",
+        "tracks": [
+            "Regen",
+            "Roboter",
+            "Feiern wie die Großen",
+            "Nikolaus",
+            "Lahmes Bein",
+            "Sonntag Mittagsschlaf",
+            "Neue Schuhe",
+            "Räuber",
+            "Eis holen",
+            "Im Schrank"
+        ]
     }
 ]

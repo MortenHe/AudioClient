@@ -1,6 +1,7 @@
 //Nur JSON-Config auf Server uebertragen
 //node .\deployJsonToServer.js pw pw (= PW JSON auf PW Pi laden)
 //node .\deployJsonToServer.js marlen vb (= Marlen JSON auf VB laden)
+//node .\deployJsonToServer.js pw laila (= PW JSON auf Lailas Player laden)
 
 //Async Methode fuer Await Aufrufe
 async function main() {

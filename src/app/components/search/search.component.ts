@@ -12,9 +12,6 @@ import { ViewControlService } from '../../services/view-control.service';
 
 export class SearchComponent {
 
-  //Name der App fuer Ueberschrift (z.B. Audio Player (dev))
-  envName = environment.envName;
-
   //dev vs. produktiv
   production = environment.production;
 

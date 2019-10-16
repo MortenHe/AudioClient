@@ -13,10 +13,8 @@ export class AppComponent {
   //App-Name aus Config holen
   envName = environment.envName;
 
-  //Service injecten
   public constructor(private titleService: Title) { }
 
-  //beim Init
   ngOnInit() {
 
     //HTML-Page-Title setzen

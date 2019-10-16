@@ -2,6 +2,7 @@
 //node .\deployWebsiteToServer.js pw pw (= PW Webseite auf PW Pi laden)
 //node .\deployWebsiteToServer.js marlen vb (= Marlen Webseite auf VB laden)
 //node .\deployWebsiteToServer.js vb vb (= VB Webseite auf VB laden)
+//node .\deployWebsiteToServer.js laila laila (= Laila Webseite auf Lailas Player laden)
 
 //Async Methode fuer Await Aufrufe
 async function main() {
@@ -28,11 +29,17 @@ async function main() {
     console.log("build done");
 
     //Assets (=JSON-Configs) loeschen, die nicht zu dieser App gehoeren (z.B. json von marlen loeschen, wenn pw json deployed wird)
-    const fs = require('fs-extra');
     console.log("delete other JSON-configs");
+
+    //laila und luis nutzen die Assets von pw
+    let assetsId = appId;
+    if (appId === 'laila' || appId === 'luis') {
+        assetsId = 'pw';
+    }
+    const fs = require('fs-extra');
     const folders = await fs.readdir("../assets/json");
     for (const folder of folders) {
-        if (folder !== appId && appId !== 'vb') {
+        if (folder !== assetsId && assetsId !== 'vb') {
             console.log("delete assets from app " + folder);
             await fs.remove("../../dist/assets/json/" + folder);
         }

@@ -4,22 +4,22 @@ module.exports = {
         user: '',
         password: ''
     },
-    vb: {
+    laila: {
+        host: '',
+        user: '',
+        password: ''
+    },
+    luis: {
         host: '',
         user: '',
         password: ''
     },
     marlen: {
-    host: '',
-    user: '',
-    password: ''
-    },
-    tinker-laila: {
         host: '',
         user: '',
         password: ''
     },
-    tinker-luis: {
+    vb: {
         host: '',
         user: '',
         password: ''
