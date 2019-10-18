@@ -1,4 +1,5 @@
 HIGH
+- color über environment (grün 149, rosa Laila)
 - config Digital(hifiberry)|PCM|Master(tinkerboard)
 /root/.mplayer
 aplay -l -> devices erkennen 0:0, 0:1, etc. durchprobieren
