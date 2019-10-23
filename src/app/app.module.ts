@@ -37,6 +37,7 @@ import { VolumeControlComponent } from './components/volume-control/volume-contr
 import { ConnectionComponent } from './components/connection/connection.component';
 import { ViewControlComponent } from './components/view-control/view-control.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { CountdownComponent } from './components/countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     ConnectionComponent,
     ViewControlComponent,
     HighlightDirective,
+    CountdownComponent,
   ],
   imports: [
     BrowserModule,

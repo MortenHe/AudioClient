@@ -67,6 +67,9 @@ export class BackendService {
     //Zeit innerhalb items
     time$: Subject<string> = new Subject<string>();
 
+    //Countdownzeit
+    countdownTime$: Subject<number> = new Subject<number>();
+
     //Die Dateien, die gerade abgespielt werden
     files$: Subject<any[]> = new Subject<any[]>();
 
@@ -258,6 +261,10 @@ export class BackendService {
                     this.time$.next(value);
                     break;
 
+                case "countdownTime":
+                    this.countdownTime$.next(value);
+                    break;
+
                 case "position":
                     this.position$.next(value);
                     break;
@@ -305,6 +312,10 @@ export class BackendService {
 
     getTime() {
         return this.time$;
+    }
+
+    getCountdownTime() {
+        return this.countdownTime$;
     }
 
     getFiles() {
