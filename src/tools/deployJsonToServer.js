@@ -31,11 +31,16 @@ async function main() {
     console.log("copy new assets");
     await fs.copy("../assets", "../../myAssets/assets");
 
+    //versch. environments koennen gemeinsame assets nutzen
+    assetConfig = await fs.readJSON("assetsConfig.json");
+    assetsId = assetConfig[appId] ? assetConfig[appId] : appId;
+    console.log("keep assets from app " + assetsId);
+
     //Assets (=JSON-Configs) loeschen, die nicht zu dieser App gehoeren (z.B. json von marlen loeschen, wenn pw json deployed wird)
     console.log("delete other JSON-configs");
     const folders = await fs.readdir("../../myAssets/assets/json")
     for (const folder of folders) {
-        if (folder !== appId) {
+        if (folder !== assetsId) {
             console.log("delete assets from app " + folder);
             await fs.remove("../../myAssets/assets/json/" + folder);
         }

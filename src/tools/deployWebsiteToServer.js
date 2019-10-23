@@ -29,14 +29,14 @@ async function main() {
     console.log("build done");
 
     //Assets (=JSON-Configs) loeschen, die nicht zu dieser App gehoeren (z.B. json von marlen loeschen, wenn pw json deployed wird)
+    const fs = require('fs-extra');
     console.log("delete other JSON-configs");
 
-    //laila und luis nutzen die Assets von pw
-    let assetsId = appId;
-    if (appId === 'laila' || appId === 'luis') {
-        assetsId = 'pw';
-    }
-    const fs = require('fs-extra');
+    //versch. environments koennen gemeinsame assets nutzen
+    assetConfig = await fs.readJSON("assetsConfig.json");
+    assetsId = assetConfig[appId] ? assetConfig[appId] : appId;
+    console.log("keep assets from app " + assetsId);
+
     const folders = await fs.readdir("../assets/json");
     for (const folder of folders) {
         if (folder !== assetsId && assetsId !== 'vb') {
