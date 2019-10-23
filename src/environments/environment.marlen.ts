@@ -1,6 +1,6 @@
 export const environment = {
   envName: 'Musik',
-  appId: 'marlen',
+  assetId: 'marlen',
   production: true,
   serverUrl: 'http://192.168.2.39',
   wssUrl: 'ws://192.168.2.39:8080',
