@@ -1,5 +1,6 @@
 //node .\compareLocalJsonWithServer.js pw pw (= PW Assets mit PW Pi vergleichen)
 //node .\compareLocalJsonWithServer.js marlen vb (= Marlen Assets mit VB vergleichen)
+//node .\compareLocalJsonWithServer.js marlen laila (= PW Assets mit Laila Player vergleichen)
 
 //Connection laden
 const connection = require("./connection.js");
@@ -7,7 +8,7 @@ const connection = require("./connection.js");
 //welche assets (pw vs. marlen) vergleichen auf welcher Maschine (pw / marlen / vb) 
 const appId = process.argv[2] || "pw";
 const targetMachine = process.argv[3] || "pw";
-console.log("compare local audio files (" + appId + ") with server " + targetMachine);
+console.log("compare local audio files (" + appId + ") with server " + targetMachine + ":" + connection[targetMachine].host);
 
 //Pfade wo die Dateien liegen
 const audioPath = "/media/usb_audio/audio";

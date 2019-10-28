@@ -2,6 +2,7 @@
     {
         "name": "Janosch - Emil Grünbär und seine Bande",
         "file": "emil-gruenbaer",
+        "rfid": "0007959183",
         "length": "00:30:19",
         "active": true
     },
@@ -200,6 +201,7 @@
         "name": "Janosch - Hallo Schiff Pyjamahose",
         "file": "schiff-pyjamahose",
         "active": true,
+        "rfid": "0003912128",
         "length": "00:39:07",
         "tracks": [
             "Hallo Schiff Pyjamahose",

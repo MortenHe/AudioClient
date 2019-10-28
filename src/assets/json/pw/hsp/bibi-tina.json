@@ -7,10 +7,31 @@
         "tracks": []
     },
     {
+        "name": "Bibi und Tina - 13 - Die Wildpferde Teil 1",
+        "file": "13-wildpferde1",
+        "active": true,
+        "length": "00:43:48",
+        "tracks": []
+    },
+    {
+        "name": "Bibi und Tina - 14 - Die Wildpferde Teil 2",
+        "file": "14-wildpferde2",
+        "active": true,
+        "length": "00:42:33",
+        "tracks": []
+    },
+    {
         "name": "Bibi und Tina - 17 - Das Herbstturnier",
         "file": "17-herbstturnier",
         "active": true,
         "length": "00:40:42",
+        "tracks": []
+    },
+    {
+        "name": "Bibi und Tina - 61 - Retten die Bieber",
+        "file": "61-bieber",
+        "active": true,
+        "length": "00:35:08",
         "tracks": []
     }
 ]

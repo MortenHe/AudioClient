@@ -98,13 +98,18 @@
                     "active": true
                 },
                 {
-                    "id": "rz",
-                    "name": "Zuckowski",
+                    "id": "herbst",
+                    "name": "Herbst",
                     "active": true
                 },
                 {
                     "id": "kinderhits",
                     "name": "Kinderhits",
+                    "active": true
+                },
+                {
+                    "id": "rz",
+                    "name": "Zuckowski",
                     "active": true
                 },
                 {
