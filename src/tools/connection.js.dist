@@ -2,26 +2,31 @@ module.exports = {
     pw: {
         host: '',
         user: '',
-        password: ''
+        password: '',
+        assetId: 'pw'
     },
     laila: {
         host: '',
         user: '',
-        password: ''
+        password: '',
+        assetId: 'pw'
     },
     luis: {
         host: '',
         user: '',
-        password: ''
+        password: '',
+        assetId: 'pw'
     },
     marlen: {
         host: '',
         user: '',
-        password: ''
+        password: '',
+        assetId: 'marlen'
     },
     vb: {
         host: '',
         user: '',
-        password: ''
+        password: '',
+        assetId: 'pw'
     }
 };
