@@ -7,7 +7,7 @@ const mp3Duration = require('mp3-duration');
 const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
-dataDir = "C:/Users/Martin/Desktop/media/done";
+dataDir = "C:/Users/Martin/Desktop/media/audioDone";
 
 //lokale Items (z.B. Audio-Ordner) sammeln
 outputArray = [];
@@ -25,9 +25,20 @@ fs.readdirSync(dataDir).forEach(folder => {
     let stat = fs.statSync(dataDir + "/" + folder);
     if (stat && stat.isDirectory() && folder !== "copy-save") {
 
+        //15-der-rote-hahn -> 15 der rote hahn
+        let name = folder.replace(/-/g, ' ');
+
+        //15 der rote hahn -> 15 - der rote hahn (nur wenn name mit Zahlen beginnt)
+        name = name.replace(/(\d+ )/, '$1- ');
+
+        //15 - der rote hahn -> 15 - Der Rote Hahn (Praefix Bibi und Tina + Aenderung Rote -> rote muss haendisch durchgefuehrt werden)
+        name = name.replace(/\b[a-z]/g, (chr) => {
+            return chr.toUpperCase();
+        });
+
         //JSON-Objekt fuer diese Folge erstellen
         outputArray[folder] = {
-            "name": "",
+            "name": " - " + name,
             "file": folder,
             "active": true
         };

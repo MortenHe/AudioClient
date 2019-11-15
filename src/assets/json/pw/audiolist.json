@@ -113,6 +113,11 @@
                     "active": true
                 },
                 {
+                    "id": "winter",
+                    "name": "Winter",
+                    "active": true
+                },
+                {
                     "id": "misc",
                     "name": "Sonstige",
                     "active": true

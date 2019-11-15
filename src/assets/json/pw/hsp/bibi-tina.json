@@ -21,6 +21,20 @@
         "tracks": []
     },
     {
+        "name": "Bibi und Tina - 15 - Der rote Hahn",
+        "file": "15-der-rote-hahn",
+        "active": true,
+        "length": "00:39:09",
+        "tracks": []
+    },
+    {
+        "name": "Bibi und Tina - 16 - Alle lieben Knuddel",
+        "file": "16-knuddel",
+        "active": true,
+        "length": "00:38:57",
+        "tracks": []
+    },
+    {
         "name": "Bibi und Tina - 17 - Das Herbstturnier",
         "file": "17-herbstturnier",
         "active": true,
