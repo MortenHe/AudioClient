@@ -28,11 +28,14 @@ export class SearchFilterPipe implements PipeTransform {
         let haystack = item.name;
 
         //Wenn auch Tracks durchsucht werden sollen
-        if (includeTracks && item.tracks) {
+        //if (includeTracks && item.tracks) {
 
-          //An Titel noch alle Tracks anhaengen: Janosch - Schnuddelgeschichten Wolkenzimmerhaus Oh wie einsam ist die Luft...
+        //@MH: 11.2019 -> Tracks immer durchsuchen
+        //An Titel noch alle Tracks anhaengen: Janosch - Schnuddelgeschichten Wolkenzimmerhaus Oh wie einsam ist die Luft...
+        if (item.tracks) {
           haystack += " " + item.tracks.join(" ");
         }
+        //}
 
         //durchsuchten String und Suchstring als lowercase: "Bobo Drache" -> "bobo drache"
         let haystackLower = haystack.toLowerCase();

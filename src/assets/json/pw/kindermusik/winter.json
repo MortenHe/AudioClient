@@ -253,5 +253,25 @@
             "Gloria (Hört ihr, wie die Engel singen)",
             "Wär uns der Himmel immer so nah"
         ]
+    },
+    {
+        "name": "Die kleine Backwerkstatt",
+        "file": "kleine-backwerkstatt",
+        "active": true,
+        "length": "00:38:01",
+        "tracks": [
+            "Wir backen einen Weihnachtsmann",
+            "In der Weihnachtsbäckerei",
+            "Wenn ich groß bin werd ich Bäcker",
+            "24 Türen",
+            "Das Weihnachtsgebäck ist schnell wieder weg",
+            "Weihnachtsmarkt vor'm alten Schloss",
+            "Lebkuchenmännchen die leben",
+            "Leider alles verbrannt",
+            "Weihnachtsplätzchen für mein Kätzchen",
+            "Oh du schöne Weihnachtszeit",
+            "Die Geschenkepackerei",
+            "Kekse für alle"
+        ]
     }
 ]

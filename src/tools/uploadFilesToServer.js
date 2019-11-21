@@ -1,4 +1,4 @@
-//Nur JSON-Config auf Server uebertragen
+//Audiodateien auf Server uebertragen
 //node .\deployJsonToServer.js pw (= Dateien auf PW Pi laden)
 //node .\deployJsonToServer.js vb (= Dateien auf VB laden)
 //node .\deployJsonToServer.js laila (= Dateien auf Lailas Player laden)
@@ -7,12 +7,8 @@
 const localAudioDir = "C:/Users/Martin/Desktop/media/audioDone";
 const remoteAudioDir = "/media/usb_audio/audio";
 
-//Connection laden
+//Connection und Libs laden
 const connection = require("./connection.js");
-
-//Libs
-const zipFolder = require('zip-a-folder');
-const SSH2Promise = require('ssh2-promise');
 const Client = require('ssh2-sftp-client');
 const fs = require('fs-extra');
 const glob = require("glob");
@@ -23,7 +19,7 @@ async function main() {
 
     //Wohin werden files hochgeladen?
     const targetMachine = process.argv[2] || "pw";
-    console.log("deploy audio files to server " + targetMachine + ": " + connection[targetMachine].host);
+    console.log("upload audio files to server " + targetMachine + ": " + connection[targetMachine].host);
 
     //Ermitteln wohin der Audio Ordner hochgeladen werden sollen, dazu ueber alle JSON-Configs gehen (janosch.json, bibi.json, rz.json,...)
     console.log("get file infos from local json");
@@ -44,15 +40,6 @@ async function main() {
         }
     };
 
-    //SSH Verbindung (fuer unzip)
-    console.log("connect ssh");
-    const ssh = new SSH2Promise({
-        host: connection[targetMachine].host,
-        username: connection[targetMachine].user,
-        password: connection[targetMachine].password
-    });
-    await ssh.connect();
-
     //sftp-Verbindung um files hochzuladen
     console.log("connect sftp");
     const sftp = new Client();
@@ -63,23 +50,18 @@ async function main() {
         password: connection[targetMachine].password
     });
 
-    //Lokale ZIPs Files werden nach Upload wieder geloescht
-    const localZipsToDelete = [];
-
     //Lokale Ordner ermitteln, die hochgeladen werden sollen
     console.log("get local folders to upload")
-    const localFolders = await fs.readdir(localAudioDir)
+    const localFolders = await fs.readdir(localAudioDir);
+    const filePromises = [];
     for (const localFolderName of localFolders) {
         const localAudioFolder = localAudioDir + "/" + localFolderName;
         if (fs.statSync(localAudioFolder).isDirectory()) {
 
-            //Zip erstellen von lokalem Ordner und fuer spaetere Loeschung merken
-            const localZipFolderPath = localAudioDir + "/" + localFolderName + ".zip"
-            console.log("create zip " + localZipFolderPath + " from " + localAudioFolder);
-            await zipFolder.zip(localAudioFolder, localZipFolderPath);
-            localZipsToDelete.push(localZipFolderPath);
+            //Dateien dieses Ordners einzeln hochladen
+            const $readAudioDir = fs.readdir(localAudioFolder);
 
-            //Wo sollen die Dateien auf Server liegen? Verzichnis ggf. loeschen und neu anlegen
+            //Wo sollen die Dateien auf Server liegen? Verzichnis ggf. loeschen und neu anlegen (damit es leer ist)
             const remoteAudioPath = remoteAudioDir + "/" + albumList[localFolderName] + "/" + localFolderName;
             const dir_exists = await sftp.exists(remoteAudioPath);
             if (dir_exists) {
@@ -89,35 +71,28 @@ async function main() {
 
             //Remote folder anlegen
             console.log("create remote folder " + remoteAudioPath);
-            await sftp.mkdir(remoteAudioPath, true);
+            const $makeRemoteDir = sftp.mkdir(remoteAudioPath, true);
 
-            //Zip-Upload
-            const remoteZipPath = remoteAudioPath + "/" + localFolderName + ".zip";
-            console.log("upload local zip " + localZipFolderPath + " to server " + remoteZipPath);
-            await sftp.fastPut(localZipFolderPath, remoteZipPath);
+            //Warten bis remote-Ordner angelegt wurde und lokale Dateien gelesen wurden
+            const folderPromises = await Promise.all([$makeRemoteDir, $readAudioDir]);
 
-            //Unzip
-            console.log("unzip remote file " + remoteZipPath + " to " + remoteAudioPath);
-            await ssh.exec("unzip " + remoteZipPath + " -d " + remoteAudioPath);
+            //Ueber einzelne Dateien gehen und hochladen
+            const filesToUpload = folderPromises[1];
+            for (file of filesToUpload) {
 
-            //Remote Zip loeschen
-            console.log("delete remote zip " + remoteZipPath);
-            await sftp.delete(remoteZipPath);
+                //Jeder Upload als Promise, damit mehrere Uploads gleichzeitig laufen koennen
+                console.log("Upload " + file + " to " + remoteAudioPath);
+                filePromises.push(sftp.fastPut(localAudioFolder + "/" + file, remoteAudioPath + "/" + file));
+            }
         }
-    };
-
-    //SFTP beenden, TODO aus SSH
-    console.log("upload done");
-    await sftp.end();
-    await ssh.close();
-
-    //Lokale ZIPs loeschen
-    for (zip of localZipsToDelete) {
-        console.log("delete local zip " + zip)
-        fs.removeSync(zip);
     }
 
-    //Programm beenden
+    //Warten bis alle Promises erfuellt sind (=alle Dateien hochgeladen wurden)
+    await Promise.all(filePromises);
+
+    //SFTP und Programm beenden
+    console.log("upload done");
+    await sftp.end();
     process.exit();
 }
 
