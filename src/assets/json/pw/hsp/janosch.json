@@ -11,6 +11,7 @@
         "file": "gesund",
         "length": "00:36:26",
         "active": true,
+        "rfid": "0002529404",
         "tracks": [
             "Ich mach dich gesund, sagte der Bär",
             "Herr Wuzzel und sein Karussell"
@@ -54,6 +55,7 @@
         "file": "post-tiger",
         "length": "00:36:16",
         "active": true,
+        "rfid": "0002475747",
         "tracks": [
             "Post für den Tiger",
             "Komm wir finden einen Schatz"
@@ -64,6 +66,7 @@
         "file": "riesenparty",
         "length": "00:38:09",
         "active": true,
+        "rfid": "0005475557",
         "tracks": [
             "Riesenparty für den Tiger",
             "Das Lumpengesindel",
@@ -75,6 +78,7 @@
         "file": "schnuddelgeschichten",
         "length": "00:36:45",
         "active": true,
+        "rfid": "0002515851",
         "tracks": [
             "Honigblumen schmecken süß",
             "Wolkenzimmerhaus",
@@ -132,6 +136,7 @@
         "name": "Janosch - Löwenzahn und Seidenpfote",
         "file": "loewenzahn",
         "active": true,
+        "rfid": "0005453606",
         "length": "00:36:43",
         "tracks": [
             "Löwenzahn und Seidenpfote",
@@ -157,6 +162,7 @@
         "name": "Janosch - Ach lieber Schneemann",
         "file": "schneemann",
         "active": true,
+        "rfid": "0005404970",
         "length": "00:34:58",
         "tracks": [
             "Ach lieber Schneemann",
@@ -201,7 +207,7 @@
         "name": "Janosch - Hallo Schiff Pyjamahose",
         "file": "schiff-pyjamahose",
         "active": true,
-        "rfid": "0003912128",
+        "rfid": "0005105726",
         "length": "00:39:07",
         "tracks": [
             "Hallo Schiff Pyjamahose",

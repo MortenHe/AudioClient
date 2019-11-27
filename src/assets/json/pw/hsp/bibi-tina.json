@@ -4,12 +4,14 @@
         "file": "01-fohlen",
         "length": "00:39:39",
         "active": true,
+        "rfid": "0005461600",
         "tracks": []
     },
     {
         "name": "Bibi und Tina - 13 - Die Wildpferde Teil 1",
         "file": "13-wildpferde1",
         "active": true,
+        "rfid": "0010021336",
         "length": "00:43:48",
         "tracks": []
     },
@@ -17,6 +19,7 @@
         "name": "Bibi und Tina - 14 - Die Wildpferde Teil 2",
         "file": "14-wildpferde2",
         "active": true,
+        "rfid": "0005097298",
         "length": "00:42:33",
         "tracks": []
     },
@@ -24,6 +27,7 @@
         "name": "Bibi und Tina - 15 - Der rote Hahn",
         "file": "15-der-rote-hahn",
         "active": true,
+        "rfid": "0010123286",
         "length": "00:39:09",
         "tracks": []
     },
@@ -31,6 +35,7 @@
         "name": "Bibi und Tina - 16 - Alle lieben Knuddel",
         "file": "16-knuddel",
         "active": true,
+        "rfid": "0010126391",
         "length": "00:38:57",
         "tracks": []
     },
@@ -38,6 +43,15 @@
         "name": "Bibi und Tina - 17 - Das Herbstturnier",
         "file": "17-herbstturnier",
         "active": true,
+        "rfid": "0002928720",
+        "length": "00:40:42",
+        "tracks": []
+    },
+    {
+        "name": "Bibi und Tina - 25 - Das Weihnachtsfest",
+        "file": "25-weihnachtsfest",
+        "active": false,
+        "rfid": "0005041428",
         "length": "00:40:42",
         "tracks": []
     },
