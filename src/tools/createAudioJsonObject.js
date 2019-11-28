@@ -7,7 +7,7 @@ const mp3Duration = require('mp3-duration');
 const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
-dataDir = "C:/Users/Martin/Desktop/media/audioDone";
+dataDir = "C:/Users/Martin/Desktop/media/audioDonePW";
 
 //lokale Items (z.B. Audio-Ordner) sammeln
 outputArray = [];

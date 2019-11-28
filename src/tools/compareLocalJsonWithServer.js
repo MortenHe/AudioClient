@@ -10,7 +10,7 @@ const appId = process.argv[2] || "pw";
 const targetMachine = process.argv[3] || "pw";
 console.log("compare local audio files (" + appId + ") with server " + targetMachine + ":" + connection[targetMachine].host);
 
-//Pfade wo die Dateien liegen
+//Pfade wo die Dateien liegen auf Server
 const audioPath = "/media/usb_audio/audio";
 
 //libraries laden fuer Dateizugriff
@@ -20,20 +20,25 @@ const path = require('path');
 //lokale Items (z.B. Audio-Ordner) sammeln
 itemsLocal = [];
 
+//versch. environments koennen gemeinsame assets nutzen
+assetConfig = await fs.readJSON("assetsConfig.json");
+assetsId = assetConfig[appId] ? assetConfig[appId] : appId;
+console.log("use assets " + assetsId);
+
 //Ueber ueber filter-dirs des aktuellen modes gehen (hsp, kindermusik,...)
-fs.readdirSync("../assets/json/" + appId).forEach(folder => {
+fs.readdirSync("../assets/json/" + assetsId).forEach(folder => {
 
     //Wenn es ein dir ist
-    if (fs.lstatSync("../assets/json/" + appId + "/" + folder).isDirectory()) {
+    if (fs.lstatSync("../assets/json/" + assetsId + "/" + folder).isDirectory()) {
 
         //JSON-Files in diesem Dir auslesen
-        fs.readdirSync("../assets/json/" + appId + "/" + folder).forEach(file => {
+        fs.readdirSync("../assets/json/" + assetsId + "/" + folder).forEach(file => {
 
             //modus in Variable speichern (bobo.json -> bobo)
             let mode = path.basename(file, ".json");
 
             //JSON-File einlesen
-            const json = fs.readJsonSync("../assets/json/" + appId + "/" + folder + "/" + file);
+            const json = fs.readJsonSync("../assets/json/" + assetsId + "/" + folder + "/" + file);
 
             //Ueber items (= Folgen) des JSON files gehen
             json.forEach(function (item) {
@@ -56,33 +61,31 @@ var ssh = new SSH2Promise({
 //SSH Session erzeugen
 ssh.connect().then(() => {
 
-
     //Folder auf Server liefern
     ssh.exec("find " + audioPath + " -mindepth 3 -maxdepth 3 -type d").then((data) => {
 
         //Listen-String trimmen und Array erzeugen (Zeilenumbruch als Trenner)
-        let itemsRemote = data.trim().split("\n");
+        const itemsRemote = data.trim().split("\n");
 
         //Sets erzeugen fuer Vergleich der Werte
-        let a = new Set(itemsRemote);
-        let b = new Set(itemsLocal);
+        const a = new Set(itemsRemote);
+        const b = new Set(itemsLocal);
 
         //Welche Werte sind bei Server aber nicht in Config?
-        let missingConfig = new Set([...a].filter(x => !b.has(x)));
+        const missingConfig = new Set([...a].filter(x => !b.has(x)));
 
         //Welche Werte sind in Config auf nicht auf Server?
-        let missingServer = new Set([...b].filter(x => !a.has(x)));
+        const missingServer = new Set([...b].filter(x => !a.has(x)));
 
         //Fehlende Werte in Config ausgeben
-        for (let entry of missingConfig.entries()) {
+        for (const entry of missingConfig.entries()) {
             console.log("missing in config: " + entry[0].replace(audioPath + "/", ""));
         }
 
         //Fehlende Werte auf Server ausgeben
-        for (let entry of missingServer.entries()) {
+        for (const entry of missingServer.entries()) {
             console.log("missing on server: " + entry[0].replace(audioPath + "/", ""));
         }
-
 
         //Skript beenden
         process.exit();

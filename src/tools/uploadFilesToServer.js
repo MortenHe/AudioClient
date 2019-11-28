@@ -3,12 +3,20 @@
 //node .\deployJsonToServer.js vb (= Dateien auf VB laden)
 //node .\deployJsonToServer.js laila (= Dateien auf Lailas Player laden)
 
+//Connection laden
+const connection = require("./connection.js");
+
+//Woher und wohin  files hochgeladen?
+const targetMachine = process.argv[2] || "pw";
+
 //Dort liegen / dorthin kommen die Dateien
-const localAudioDir = "C:/Users/Martin/Desktop/media/audioDone";
+const localAudioDir = "C:/Users/Martin/Desktop/media/audioDone" + targetMachine.toUpperCase();
 const remoteAudioDir = "/media/usb_audio/audio";
 
-//Connection und Libs laden
-const connection = require("./connection.js");
+console.log("upload audio files from " + localAudioDir);
+console.log("upload to server " + targetMachine + ": " + connection[targetMachine].host);
+
+//Libs laden
 const Client = require('ssh2-sftp-client');
 const fs = require('fs-extra');
 const glob = require("glob");
@@ -16,10 +24,6 @@ const path = require("path");
 
 //Async Methode fuer Await Aufrufe
 async function main() {
-
-    //Wohin werden files hochgeladen?
-    const targetMachine = process.argv[2] || "pw";
-    console.log("upload audio files to server " + targetMachine + ": " + connection[targetMachine].host);
 
     //Ermitteln wohin der Audio Ordner hochgeladen werden sollen, dazu ueber alle JSON-Configs gehen (janosch.json, bibi.json, rz.json,...)
     console.log("get file infos from local json");
