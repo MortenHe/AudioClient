@@ -33,13 +33,12 @@ async function main() {
     console.log("delete other JSON-configs");
 
     //versch. environments koennen gemeinsame assets nutzen
-    assetConfig = await fs.readJSON("assetsConfig.json");
-    assetsId = assetConfig[appId] ? assetConfig[appId] : appId;
+    assetsId = connection[appId].assetId;
     console.log("keep assets from app " + assetsId);
 
     const folders = await fs.readdir("../assets/json");
     for (const folder of folders) {
-        if (folder !== assetsId && assetsId !== 'vb') {
+        if (folder !== assetsId) {
             console.log("delete assets from app " + folder);
             await fs.remove("../../dist/assets/json/" + folder);
         }

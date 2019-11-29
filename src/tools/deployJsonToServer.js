@@ -32,8 +32,7 @@ async function main() {
     await fs.copy("../assets", "../../myAssets/assets");
 
     //versch. environments koennen gemeinsame assets nutzen
-    assetConfig = await fs.readJSON("assetsConfig.json");
-    assetsId = assetConfig[appId] ? assetConfig[appId] : appId;
+    assetsId = connection[appId].assetId;
     console.log("keep assets from app " + assetsId);
 
     //Assets (=JSON-Configs) loeschen, die nicht zu dieser App gehoeren (z.B. json von marlen loeschen, wenn pw json deployed wird)

@@ -1,6 +1,6 @@
 //node .\compareLocalJsonWithServer.js pw pw (= PW Assets mit PW Pi vergleichen)
 //node .\compareLocalJsonWithServer.js marlen vb (= Marlen Assets mit VB vergleichen)
-//node .\compareLocalJsonWithServer.js marlen laila (= PW Assets mit Laila Player vergleichen)
+//node .\compareLocalJsonWithServer.js laila laila (= PW Assets mit Laila Player vergleichen)
 
 //Connection laden
 const connection = require("./connection.js");
@@ -21,8 +21,7 @@ const path = require('path');
 itemsLocal = [];
 
 //versch. environments koennen gemeinsame assets nutzen
-assetConfig = await fs.readJSON("assetsConfig.json");
-assetsId = assetConfig[appId] ? assetConfig[appId] : appId;
+assetsId = connection[appId].assetId;
 console.log("use assets " + assetsId);
 
 //Ueber ueber filter-dirs des aktuellen modes gehen (hsp, kindermusik,...)
