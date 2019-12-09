@@ -50,7 +50,7 @@
     {
         "name": "Bibi und Tina - 25 - Das Weihnachtsfest",
         "file": "25-weihnachtsfest",
-        "active": false,
+        "active": true,
         "rfid": "0005041428",
         "length": "00:43:53",
         "tracks": []

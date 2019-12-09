@@ -38,6 +38,7 @@ import { ConnectionComponent } from './components/connection/connection.componen
 import { ViewControlComponent } from './components/view-control/view-control.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { CountdownComponent } from './components/countdown/countdown.component';
+import { ToggleJokerviewComponent } from './components/toggle-jokerview/toggle-jokerview.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { CountdownComponent } from './components/countdown/countdown.component';
     ViewControlComponent,
     HighlightDirective,
     CountdownComponent,
+    ToggleJokerviewComponent
   ],
   imports: [
     BrowserModule,

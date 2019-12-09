@@ -23,5 +23,19 @@
             "Eis holen",
             "Im Schrank"
         ]
+    },
+    {
+        "name": "Joker Laila",
+        "file": "joker-laila",
+        "active": true,
+        "length": null,
+        "tracks": []
+    },
+    {
+        "name": "Joker Luis",
+        "file": "joker-luis",
+        "active": true,
+        "length": null,
+        "tracks": []
     }
 ]

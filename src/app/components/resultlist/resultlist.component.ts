@@ -16,7 +16,7 @@ import { ViewControlService } from '../../services/view-control.service';
 export class ResultlistComponent {
 
   //Modus hsp vs. kindermusik
-  mode$: BehaviorSubject<string>;
+  mode: string;
 
   //Itemliste als Observable. Wird in Template per async pipe ausgegeben
   items$: Observable<Item[]>;
@@ -42,6 +42,9 @@ export class ResultlistComponent {
   //Suchterm fuer Markierung der Trefferliste
   searchTerm: string;
 
+  //Sollen die Jokersymbole angezeigt werden?
+  showJoker: boolean;
+
   //Services injecten
   constructor(private bs: BackendService, private fs: ResultfilterService, private vcs: ViewControlService) { }
 
@@ -55,7 +58,9 @@ export class ResultlistComponent {
     this.showTracks$ = this.fs.getShowTracks();
 
     //Modus abbonieren
-    this.mode$ = this.bs.getMode();
+    this.bs.getMode().subscribe(mode => {
+      this.mode = mode;
+    });
 
     //AllowRandom abbonieren
     this.allowRandom$ = this.bs.getAllowRandom();
@@ -76,13 +81,15 @@ export class ResultlistComponent {
 
     //Suchterm abbonieren
     this.fs.getSearchTerm().subscribe(searchTerm => this.searchTerm = searchTerm);
+
+    //Jokeranzeige abbonieren
+    this.fs.getShowJoker().subscribe(showJoker => {
+      this.showJoker = showJoker;
+    });
   }
 
   //einzelnes Item abspielen
   playSingleItem(item) {
-
-    //aktuellen Modus auslesen (hsp vs. kindermusik)
-    let mode = this.mode$.getValue();
 
     //aktuellen Wert fuer allowRandom holen
     let allowRandom = this.allowRandom$.getValue();
@@ -92,14 +99,14 @@ export class ResultlistComponent {
       type: "set-playlist",
       value: {
         name: item.name,
-        mode: mode,
+        mode: this.mode,
         path: item.mode + "/" + item.file,
         allowRandom: allowRandom
       }
     });
 
     //Musiksammlung mit random starten (setzen falls nicht schon random)
-    if (mode === 'musik' && !this.random) {
+    if (this.mode === 'musik' && !this.random) {
       this.bs.sendMessage({ type: "toggle-random", value: "" });
     }
 
@@ -108,5 +115,16 @@ export class ResultlistComponent {
 
     //Beim Starten oder Einreihen eines Items das Suchfeld leeren
     this.fs.setSearchTerm("");
+  }
+
+  //Die gewaehlte Playlist als Joker fuer eine Person setzen
+  setJoker(jokerMode, item) {
+    this.bs.sendMessage({
+      type: "set-joker",
+      value: {
+        jokerMode: jokerMode,
+        wantedJokerFolder: this.mode + "/" + item.mode + "/" + item.file
+      }
+    });
   }
 }

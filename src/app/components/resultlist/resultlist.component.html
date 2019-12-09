@@ -1,17 +1,29 @@
 <!-- Ueber Items-Array gehen und die bereits gefilterte und sortierte Liste ausgeben -->
-<button (click)="playSingleItem(item)"
-        *ngFor="let item of items$ | async"
+<button *ngFor="let item of items$ | async"
+        (click)="showJoker || playSingleItem(item)"
         class="box col text-left pl-2"
-        [class.active-item]="item.mode + '/' + item.file === activeItem">
+        [ngClass]="{
+          'active-item': item.mode + '/' + item.file === activeItem,
+          'joker': showJoker
+        }">
 
-  <!-- Zeile mit (hover-) Playsymbol, Name der Playlist und Laenge -->
-  <div class="row no-gutters align-items-center">
+  <!-- Zeile mit Joker-Buttons, (hover-) Playsymbol, Name der Playlist und Laenge -->
+  <div class="row no-gutters align-items-center flex-nowrap">
 
-    <!-- Play-Symbol wird nur bei hover und active angezeigt -->
-    <i class="fa fa-play fa-fw mr-1 opacity-50"></i>
+    <!-- Joker setzen Buttons -->
+    <button *ngIf="showJoker"
+            class="btn btn-sm fa fa-heart p-1 mr-2 joker-laila"
+            (click)="setJoker('laila', item)"></button>
+    <button *ngIf="showJoker"
+            class="btn btn-sm fa fa-heart p-1 mr-2 joker-luis"
+            (click)="setJoker('luis', item)"></button>
+
+    <!-- Play-Symbol wird nur bei hover und active angezeigt und nicht im Jokermodus-->
+    <i *ngIf="!showJoker"
+       class="fa fa-play fa-fw mr-1 opacity-50"></i>
 
     <!-- gekurzter Itemname mit Highlight -->
-    <span class="col"
+    <span class="flex-grow-1"
           [highlight]="searchTerm">{{item.name|fileName:modeFilter}}</span>
 
     <!-- formattierte Laenge des Items -->
