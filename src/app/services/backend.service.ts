@@ -82,6 +82,9 @@ export class BackendService {
     //aktueller Random-Zustand
     random$: Subject<boolean> = new Subject<boolean>();
 
+    //aktueller JokerLock-Zustand (wird gerade Joker-Playlist kopiert?)
+    jokerLock$: Subject<boolean> = new Subject<boolean>();
+
     //aktives Item
     activeItem$: Subject<string> = new Subject<string>();
 
@@ -214,6 +217,7 @@ export class BackendService {
         );
         let observer = {
             next: (data: Object) => {
+                //console.log(data);
 
                 //Wenn Verbindung zu WSS existiert
                 if (socket.readyState === WebSocket.OPEN) {
@@ -246,9 +250,8 @@ export class BackendService {
 
         //auf Nachrichten vom Server reagieren
         this.socket.subscribe(message => {
-
-            //console.log((JSON.parse(message.data.toString())));
             let obj = JSON.parse(message.data);
+            //console.log(obj);
             let value = obj.value;
 
             //Switch anhand Message-Types
@@ -279,6 +282,10 @@ export class BackendService {
 
                 case "random":
                     this.random$.next(value);
+                    break;
+
+                case "jokerLock":
+                    this.jokerLock$.next(value);
                     break;
 
                 case "activeItem":
@@ -336,6 +343,10 @@ export class BackendService {
 
     getRandom() {
         return this.random$;
+    }
+
+    getJokerLock() {
+        return this.jokerLock$;
     }
 
     getActiveItem() {

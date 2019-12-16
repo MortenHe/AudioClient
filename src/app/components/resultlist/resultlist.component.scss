@@ -1,10 +1,17 @@
 @import '~scss/variables.scss';
 
+.light-bg {
+    background: $color-light-bg;
+}
+
+.joker {
+    background: $color-light-bg;
+}
+
 .box {
     border: none;
     border-top: 1px solid $color-light-border-grey;
     padding: 5px;
-    background: $color-light-bg;
     width: 100%;
 
     .fa-play {

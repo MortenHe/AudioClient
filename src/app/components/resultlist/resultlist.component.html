@@ -4,7 +4,9 @@
         class="box col text-left pl-2"
         [ngClass]="{
           'active-item': item.mode + '/' + item.file === activeItem,
-          'joker': showJoker
+          'joker': showJoker,
+          'light-bg': !showJoker,
+          'opacity-50': jokerLock
         }">
 
   <!-- Zeile mit Joker-Buttons, (hover-) Playsymbol, Name der Playlist und Laenge -->
@@ -12,9 +14,11 @@
 
     <!-- Joker setzen Buttons -->
     <button *ngIf="showJoker"
+            [disabled]="jokerLock"
             class="btn btn-sm fa fa-heart p-1 mr-2 joker-laila"
             (click)="setJoker('laila', item)"></button>
     <button *ngIf="showJoker"
+            [disabled]="jokerLock"
             class="btn btn-sm fa fa-heart p-1 mr-2 joker-luis"
             (click)="setJoker('luis', item)"></button>
 

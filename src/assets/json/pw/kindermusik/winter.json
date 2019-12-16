@@ -273,5 +273,36 @@
             "Die Geschenkepackerei",
             "Kekse für alle"
         ]
+    },
+    {
+        "name": "Kleine Kerze Leuchte [Detlev Jöcker]",
+        "file": "kleine-kerze-leuchte",
+        "active": true,
+        "length": "01:08:27",
+        "tracks": [
+            "Meine kleine Kerze",
+            "Schneeflöckchen, Weißröckchen",
+            "Oh weh, noch immer liegt kein Schnee",
+            "Bald ist Nikolausabend da",
+            "Guter alter Nikolaus",
+            "Wenn wir heute Plätzchen backen",
+            "Mein Weihnachtsstern, der leuchtet weit",
+            "Kleine Kerze leuchte",
+            "Leo Spekulatius, der Lebkuchenmann",
+            "Wie viel mal noch schlafen?",
+            "Es singt in mir und klingt in mir",
+            "Wunschzettellied",
+            "Wi-Wa-Weihnachtsmann",
+            "Ihr Kinderlein kommet",
+            "Was ist nur geschehen?",
+            "Meine kleine Kerze (Instrumentalversion)",
+            "Schneeflöckchen, Weißröckchen (Instrumentalversion)",
+            "Bald ist Nikolausabend da (Instrumentalversion)",
+            "Mein Weihnachtsstern, der leuchtet weit (Instrumentalversion)",
+            "Kleine Kerze leuchte (Instrumentalversion)",
+            "Es singt in mir und klingt in mir (Instrumentalversion)",
+            "Wi-Wa-Weihnachtsmann (Instrumentalversion)",
+            "Ihr Kinderlein kommet (Instrumentalversion)"
+        ]
     }
 ]

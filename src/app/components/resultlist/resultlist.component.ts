@@ -45,6 +45,9 @@ export class ResultlistComponent {
   //Sollen die Jokersymbole angezeigt werden?
   showJoker: boolean;
 
+  //Wird gerade eine Joker Playlist kopiert?
+  jokerLock: boolean = false;
+
   //Services injecten
   constructor(private bs: BackendService, private fs: ResultfilterService, private vcs: ViewControlService) { }
 
@@ -86,6 +89,11 @@ export class ResultlistComponent {
     this.fs.getShowJoker().subscribe(showJoker => {
       this.showJoker = showJoker;
     });
+
+    //Zustand der JokerErstellung abbonieren
+    this.bs.getJokerLock().subscribe(jokerLock => {
+      this.jokerLock = jokerLock;
+    })
   }
 
   //einzelnes Item abspielen
@@ -117,8 +125,11 @@ export class ResultlistComponent {
     this.fs.setSearchTerm("");
   }
 
-  //Die gewaehlte Playlist als Joker fuer eine Person setzen
+  //Die gewaehlte Playlist als Joker fuer eine Person setzen, Lock setzten, um Oberflaeche zu blokieren (Wert kommt spaeter auch von WSS)
   setJoker(jokerMode, item) {
+    this.jokerLock = true;
+
+    //Playlist als Joker setzen
     this.bs.sendMessage({
       type: "set-joker",
       value: {
