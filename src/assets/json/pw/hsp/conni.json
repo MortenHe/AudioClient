@@ -22,5 +22,20 @@
             "Conni und der Osterhase",
             "Conni spielt Fussball"
         ]
+    },
+    {
+        "name": "Conni - Rettet Oma",
+        "file": "18-rettet-oma",
+        "active": true,
+        "length": "00:48:15",
+        "tracks": [
+            "Der Kinobesuch",
+            "Urlaub mit Oma und Opa",
+            "Bootstour zur Liebesinsel",
+            "Ernste Gespräche",
+            "Was ist mit Oma ",
+            "Bei Oma im Krankenhaus",
+            "Es ist alles wieder gut"
+        ]
     }
 ]
