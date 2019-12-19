@@ -1,6 +1,5 @@
-//node .\compareLocalJsonWithServer.js pw pw (= PW Assets mit PW Pi vergleichen)
-//node .\compareLocalJsonWithServer.js marlen vb (= Marlen Assets mit VB vergleichen)
-//node .\compareLocalJsonWithServer.js laila laila (= PW Assets mit Laila Player vergleichen)
+//Lokales JSON mit Dateien auf Server vergleichen
+//node .\compareLocalJsonWithServer.js pw | marlen | vb | laila
 
 //Connection laden
 const connection = require("./connection.js");
