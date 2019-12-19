@@ -10,7 +10,7 @@ const connection = require("./connection.js");
 const targetMachine = process.argv[2] || "pw";
 
 //Dort liegen / dorthin kommen die Dateien
-const localAudioDir = "C:/Users/Martin/Desktop/media/audioDone" + targetMachine.toUpperCase();
+const localAudioDir = "C:/Users/Martin/Desktop/media/audioDone" + connection[targetMachine].assetId.toUpperCase();
 const remoteAudioDir = "/media/usb_audio/audio";
 
 console.log("upload audio files from " + localAudioDir);
@@ -84,9 +84,18 @@ async function main() {
             const filesToUpload = folderPromises[1];
             for (file of filesToUpload) {
 
-                //Jeder Upload als Promise, damit mehrere Uploads gleichzeitig laufen koennen
-                console.log("Upload " + file + " to " + remoteAudioPath);
-                filePromises.push(sftp.fastPut(localAudioFolder + "/" + file, remoteAudioPath + "/" + file));
+                //Nur mp3-Dateien hochladen
+                if (path.extname(file).toLowerCase() === ".mp3") {
+
+                    //Jeder Upload als Promise, damit mehrere Uploads gleichzeitig laufen koennen
+                    console.log("Upload " + file + " to " + remoteAudioPath);
+                    filePromises.push(sftp.fastPut(localAudioFolder + "/" + file, remoteAudioPath + "/" + file));
+                }
+
+                //andere Dateiformate ignorieren
+                else {
+                    console.log("Ignore " + file);
+                }
             }
         }
     }

@@ -1,7 +1,5 @@
 //Nur JSON-Config auf Server uebertragen
-//node .\deployJsonToServer.js pw pw (= PW JSON auf PW Pi laden)
-//node .\deployJsonToServer.js marlen vb (= Marlen JSON auf VB laden)
-//node .\deployJsonToServer.js pw laila (= PW JSON auf Lailas Player laden)
+//node .\deployJsonToServer.js pw | marlen | vb | laila
 
 //Async Methode fuer Await Aufrufe
 async function main() {
@@ -10,9 +8,9 @@ async function main() {
     const connection = require("./connection.js");
 
     //Welche JSON Files (pw vs. marlen) wohin deployen (pw / marlen / vb)
-    const appId = process.argv[2] || "pw";
-    const targetMachine = process.argv[3] || "pw";
-    console.log("deploy audio json (" + appId + ") to server " + targetMachine + ": " + connection[targetMachine].host);
+    const targetMachine = process.argv[2] || "pw";
+    const assetsId = connection[targetMachine].assetId;
+    console.log("deploy audio json (" + assetsId + ") to server " + targetMachine + ": " + connection[targetMachine].host);
 
     //Unter welchem Unterpfad wird die App auf dem Server laufen?
     const base_href = "wap";
@@ -32,10 +30,8 @@ async function main() {
     await fs.copy("../assets", "../../myAssets/assets");
 
     //versch. environments koennen gemeinsame assets nutzen
-    assetsId = connection[appId].assetId;
-    console.log("keep assets from app " + assetsId);
-
     //Assets (=JSON-Configs) loeschen, die nicht zu dieser App gehoeren (z.B. json von marlen loeschen, wenn pw json deployed wird)
+    console.log("keep assets from app " + assetsId);
     console.log("delete other JSON-configs");
     const folders = await fs.readdir("../../myAssets/assets/json")
     for (const folder of folders) {

@@ -6,9 +6,11 @@
 const connection = require("./connection.js");
 
 //welche assets (pw vs. marlen) vergleichen auf welcher Maschine (pw / marlen / vb) 
-const appId = process.argv[2] || "pw";
-const targetMachine = process.argv[3] || "pw";
-console.log("compare local audio files (" + appId + ") with server " + targetMachine + ":" + connection[targetMachine].host);
+const targetMachine = process.argv[2] || "pw";
+
+//versch. environments koennen gemeinsame assets nutzen
+const assetsId = connection[targetMachine].assetId;
+console.log("compare local audio files (" + assetsId + ") with server " + targetMachine + ":" + connection[targetMachine].host);
 
 //Pfade wo die Dateien liegen auf Server
 const audioPath = "/media/usb_audio/audio";
@@ -19,10 +21,6 @@ const path = require('path');
 
 //lokale Items (z.B. Audio-Ordner) sammeln
 itemsLocal = [];
-
-//versch. environments koennen gemeinsame assets nutzen
-assetsId = connection[appId].assetId;
-console.log("use assets " + assetsId);
 
 //Ueber ueber filter-dirs des aktuellen modes gehen (hsp, kindermusik,...)
 fs.readdirSync("../assets/json/" + assetsId).forEach(folder => {

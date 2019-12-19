@@ -1,8 +1,5 @@
 //Webseite bauen und auf Server laden
-//node .\deployWebsiteToServer.js pw pw (= PW Webseite auf PW Pi laden)
-//node .\deployWebsiteToServer.js marlen vb (= Marlen Webseite auf VB laden)
-//node .\deployWebsiteToServer.js vb vb (= VB Webseite auf VB laden)
-//node .\deployWebsiteToServer.js laila laila (= Laila Webseite auf Lailas Player laden)
+//node .\deployWebsiteToServer.js pw | marlen | vb | laila
 
 //Async Methode fuer Await Aufrufe
 async function main() {
@@ -11,9 +8,9 @@ async function main() {
     const connection = require("./connection.js");
 
     //Welche Website (pw / marlen / vb) wohin deployen (pw / marlen / vb)
-    const appId = process.argv[2] || "pw";
-    const targetMachine = process.argv[3] || "pw";
-    console.log("build and deploy audio (" + appId + ") to server " + targetMachine + ": " + connection[targetMachine].host);
+    const targetMachine = process.argv[2] || "pw";
+    assetsId = connection[targetMachine].assetId;
+    console.log("build and deploy audio (" + assetsId + ") to server " + targetMachine + ": " + connection[targetMachine].host);
 
     //Unter welchem Unterpfad wird die App auf dem Server laufen?
     const base_href = "wap";
@@ -25,17 +22,14 @@ async function main() {
     const util = require('util');
     const exec = util.promisify(require('child_process').exec);
     console.log("start build");
-    await exec("ng build -c=" + appId + " --base-href=/" + base_href + "/");
+    await exec("ng build -c=" + targetMachine + " --base-href=/" + base_href + "/");
     console.log("build done");
 
     //Assets (=JSON-Configs) loeschen, die nicht zu dieser App gehoeren (z.B. json von marlen loeschen, wenn pw json deployed wird)
+    //versch. environments koennen gemeinsame assets nutzen
     const fs = require('fs-extra');
     console.log("delete other JSON-configs");
-
-    //versch. environments koennen gemeinsame assets nutzen
-    assetsId = connection[appId].assetId;
     console.log("keep assets from app " + assetsId);
-
     const folders = await fs.readdir("../assets/json");
     for (const folder of folders) {
         if (folder !== assetsId) {
