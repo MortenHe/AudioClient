@@ -28,6 +28,7 @@
         "name": "Joker Laila",
         "file": "joker-laila",
         "active": true,
+        "rfid": "0000110189",
         "length": null,
         "tracks": []
     },
@@ -35,6 +36,7 @@
         "name": "Joker Luis",
         "file": "joker-luis",
         "active": true,
+        "rfid": "0003289532",
         "length": null,
         "tracks": []
     }

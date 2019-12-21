@@ -21,6 +21,7 @@
         "name": "Janosch - Hasenkinder sind nicht dumm",
         "file": "hasenkinder",
         "length": "00:33:53",
+        "rfid": "0000121765",
         "active": true,
         "tracks": [
             "Hasenkinder sind nicht dumm",
@@ -32,6 +33,7 @@
         "file": "kasper-muetze",
         "length": "00:35:22",
         "active": true,
+        "rfid": "0000097108",
         "tracks": [
             "Kasper Mütze",
             "Der Frosch ist ein Großmaul",
@@ -44,6 +46,7 @@
         "file": "kleines-schweinchen",
         "length": "00:34:51",
         "active": true,
+        "rfid": "0003898421",
         "tracks": [
             "Guten Tag kleines Schweinchen",
             "Kleines Schweinchen großer König",
@@ -91,6 +94,7 @@
         "file": "traumstunde",
         "length": "00:30:11",
         "active": true,
+        "rfid": "0000924512",
         "tracks": [
             "Traumstunde für Siebenschläfer",
             "Oh, wie schön ist Panama"
@@ -126,6 +130,7 @@
         "name": "Janosch - Lukas Kümmel",
         "file": "kuemmel",
         "active": true,
+        "rfid": "0000091578",
         "length": "00:38:21",
         "tracks": [
             "Lukas Kümmel",
@@ -155,6 +160,7 @@
         "name": "Janosch - Der Rabe Josef",
         "file": "rabe-josef",
         "active": true,
+        "rfid": "0000925020",
         "length": "00:37:52",
         "tracks": []
     },
