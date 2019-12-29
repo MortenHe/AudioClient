@@ -24,6 +24,11 @@
                     "active": true
                 },
                 {
+                    "id": "bob",
+                    "name": "bob",
+                    "active": true
+                },
+                {
                     "id": "bobo",
                     "name": "bobo",
                     "active": true

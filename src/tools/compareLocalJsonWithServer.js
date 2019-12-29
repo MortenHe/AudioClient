@@ -9,7 +9,7 @@ const targetMachine = process.argv[2] || "pw";
 
 //versch. environments koennen gemeinsame assets nutzen
 const assetsId = connection[targetMachine].assetId;
-console.log("compare local audio files (" + assetsId + ") with server " + targetMachine + ":" + connection[targetMachine].host);
+console.log("compare local audio files (" + assetsId + ") with server " + targetMachine + ": " + connection[targetMachine].host);
 
 //Pfade wo die Dateien liegen auf Server
 const audioPath = "/media/usb_audio/audio";

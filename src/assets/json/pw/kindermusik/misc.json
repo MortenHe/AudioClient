@@ -334,5 +334,35 @@
             "Schlaf, Kindlein, schlaf!",
             "Guten Abend, gute Nacht"
         ]
+    },
+    {
+        "name": "Turn-Tier-Lieder im Zoo",
+        "file": "turn-tier-lieder",
+        "active": true,
+        "length": "00:39:49",
+        "tracks": [
+            "Die Spatz-Idee",
+            "Flamingo-Turnen",
+            "Ein Flamingo names Ingo",
+            "Elefanten-Turnen",
+            "Der Elefant",
+            "Kakadu-Turnen",
+            "Ka-ka-du",
+            "Schlangen-Turnen",
+            "Eine Kringel-Schlingel-Schlange",
+            "Panther-Turnen",
+            "Panther und Leopard",
+            "Bären-Turnen",
+            "Der braune und der weiße Bär",
+            "Känguru-Turnen",
+            "Hüpf-hüpf Känguruh",
+            "Pinguin-Turnen",
+            "Frau Pinguin",
+            "Nilpferd-Turnen",
+            "Nilpferd sein",
+            "Affen-Turnen",
+            "Affen",
+            "Dann feiern wir im Zoo (instr.)"
+        ]
     }
 ]
