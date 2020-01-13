@@ -1,7 +1,7 @@
 //Audiodateien auf Server uebertragen
-//node .\deployJsonToServer.js pw (= Dateien auf PW Pi laden)
-//node .\deployJsonToServer.js vb (= Dateien auf VB laden)
-//node .\deployJsonToServer.js laila (= Dateien auf Lailas Player laden)
+//node .\uploadFilesToServer.js pw (= Dateien auf PW Pi laden)
+//node .\uploadFilesToServer.js vb (= Dateien auf VB laden)
+//node .\uploadFilesToServer.js laila (= Dateien auf Lailas Player laden)
 
 //Connection laden
 const connection = require("./connection.js");

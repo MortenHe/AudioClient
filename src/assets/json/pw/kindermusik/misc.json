@@ -364,5 +364,34 @@
             "Affen",
             "Dann feiern wir im Zoo (instr.)"
         ]
+    },
+    {
+        "name": "Bauernhof Olympiade",
+        "file": "bauernhof-olympiade",
+        "active": true,
+        "length": "00:45:17",
+        "tracks": [
+            "Die Idee",
+            "Da lachen ja die Hühner",
+            "Der Maulwurf erzählt von der Kuh",
+            "Lotte die Kuh",
+            "Der Maulwurf erzählt vom Pferd",
+            "Der Wert vom Pferd",
+            "Der Maulwurf erzählt von der Katze",
+            "Katzenjammer",
+            "Der Maulwurf erzählt vom Floh",
+            "Gestatten - der Floh",
+            "Der Maulwurf erzählt von der Fliege",
+            "Wenn Fliegen fliegen",
+            "Der Maulwurf erzählt vom Hahn",
+            "Der Hahn",
+            "Der Maulwurf erzählt von der Ente",
+            "Wackel-Watschel-Ente",
+            "Der Maulwurf erzählt vom Hund",
+            "Hundeleben",
+            "Der Maulwurf erzählt vom Hasen und der Ziege",
+            "Der Hase und die Ziege",
+            "Die noch viel bessere Idee"
+        ]
     }
 ]
