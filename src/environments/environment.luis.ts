@@ -11,9 +11,5 @@ export const environment = {
   {
     "id": "hsp",
     "label": "HSP"
-  },
-  {
-    "id": "cds",
-    "label": "CDs"
   }]
 };

@@ -1,5 +1,5 @@
 export const environment = {
-  envName: 'Audio',
+  envName: 'Steffis Player',
   assetId: 'pw',
   production: false,
   serverUrl: 'http://132.230.25.79',
