@@ -10,7 +10,7 @@ const connection = require("./connection.js");
 const targetMachine = process.argv[2] || "pw";
 
 //Dort liegen / dorthin kommen die Dateien
-const localAudioDir = "C:/Users/Martin/Desktop/media/mix" + connection[targetMachine].assetId.toUpperCase();
+const localAudioDir = "C:/Users/Martin/Desktop/media/mix" + targetMachine.toUpperCase();
 const remoteAudioDir = "/media/usb_audio/shplayer";
 
 console.log("upload audio files from " + localAudioDir);
@@ -38,6 +38,7 @@ async function main() {
     console.log("get local files and folders to upload")
     const modeFolders = await fs.readdir(localAudioDir);
     for (const modeFolder of modeFolders) {
+        console.log("check folder " + modeFolder);
 
         //z.B. media/usb_red/laila
         const remoteAudioPath = remoteAudioDir + "/" + modeFolder;
