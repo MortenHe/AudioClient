@@ -371,6 +371,6 @@ export class BackendService {
 
     //App aktivieren = WSS starten
     activateApp() {
-        return this.http.get(this.serverUrl + "/php/activateApp.php?mode=audio");
+        return this.http.get(this.serverUrl + "/php/activateAudioApp.php?mode=audio");
     }
 }
