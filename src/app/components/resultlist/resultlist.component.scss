@@ -6,6 +6,16 @@
 
 .joker {
     background: $color-light-bg;
+
+    .joker-style {
+        color: pink;
+        height: 24px;
+        border-radius: 100%;
+
+        &:hover {
+            background: rgba(pink, .3);
+        }
+    }
 }
 
 .box {
@@ -48,26 +58,6 @@
             list-style-type: none;
             color: $color-light-grey;
         }
-    }
-}
-
-.joker-laila {
-    color: pink;
-    height: 24px;
-    border-radius: 100%;
-
-    &:hover {
-        background: rgba(pink, .3);
-    }
-}
-
-.joker-luis {
-    color: lightblue;
-    height: 24px;
-    border-radius: 100%;
-
-    &:hover {
-        background: rgba(lightblue, .3);
     }
 }
 

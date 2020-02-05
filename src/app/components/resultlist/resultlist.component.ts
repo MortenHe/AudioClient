@@ -125,17 +125,14 @@ export class ResultlistComponent {
     this.fs.setSearchTerm("");
   }
 
-  //Die gewaehlte Playlist als Joker fuer eine Person setzen, Lock setzten, um Oberflaeche zu blokieren (Wert kommt spaeter auch von WSS)
-  setJoker(jokerMode, item) {
+  //Die gewaehlte Playlist als Joker setzen, Lock setzen, um Oberflaeche zu blokieren (Wert kommt spaeter auch von WSS)
+  setJoker(item) {
     this.jokerLock = true;
 
     //Playlist als Joker setzen
     this.bs.sendMessage({
       type: "set-joker",
-      value: {
-        jokerMode: jokerMode,
-        wantedJokerFolder: this.mode + "/" + item.mode + "/" + item.file
-      }
+      value: this.mode + "/" + item.mode + "/" + item.file
     });
   }
 }

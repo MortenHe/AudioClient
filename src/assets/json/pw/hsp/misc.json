@@ -25,17 +25,17 @@
         ]
     },
     {
-        "name": "Joker Laila",
-        "file": "joker-laila",
+        "name": "Joker",
+        "file": "joker",
         "active": true,
         "rfid": "0000110189",
         "length": null,
         "tracks": []
     },
     {
-        "name": "Joker Luis",
-        "file": "joker-luis",
-        "active": true,
+        "name": "Joker",
+        "file": "joker",
+        "active": false,
         "rfid": "0003289532",
         "length": null,
         "tracks": []

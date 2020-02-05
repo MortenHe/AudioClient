@@ -11,7 +11,7 @@ const targetMachine = process.argv[2] || "pw";
 
 //Dort liegen / dorthin kommen die Dateien
 const localAudioDir = "C:/Users/Martin/Desktop/media/mix" + targetMachine.toUpperCase();
-const remoteAudioDir = "/media/usb_audio/shplayer";
+const remoteAudioDir = "/media/usb_audio/shplayer/kids";
 
 console.log("upload audio files from " + localAudioDir);
 console.log("upload to server " + targetMachine + ": " + connection[targetMachine].host);
@@ -34,77 +34,68 @@ async function main() {
         password: connection[targetMachine].password
     });
 
-    //Pro Player gibt es unterschiedliche Modi (sh, laila, luis, mh)
+    //Dateien parallel hochladen
+    const filePromises = [];
+
+    //lokale Dateien und Ordner, die hochgeladen werden sollen
     console.log("get local files and folders to upload")
-    const modeFolders = await fs.readdir(localAudioDir);
-    for (const modeFolder of modeFolders) {
-        console.log("check folder " + modeFolder);
+    const localFilesAndFolders = await fs.readdir(localAudioDir)
+    for (const fileOrFolderToUpload of localFilesAndFolders) {
+        const fileOrFolder = localAudioDir + "/" + fileOrFolderToUpload;
 
-        //z.B. media/usb_red/laila
-        const remoteAudioPath = remoteAudioDir + "/" + modeFolder;
+        //Wenn es eine einzelne (mp3)-Datei ist
+        if (fs.statSync(fileOrFolder).isFile()) {
 
-        //Dateien parallel hochladen
-        const filePromises = [];
+            //Nur mp3-Dateien hochladen
+            if (path.extname(fileOrFolder).toLowerCase() === ".mp3") {
 
-        //lokale Dateien und Ordner, die hochgeladen werden sollen
-        const localFilesAndFolders = await fs.readdir(localAudioDir + "/" + modeFolder)
-        for (const fileOrFolderToUpload of localFilesAndFolders) {
-            const fileOrFolder = localAudioDir + "/" + modeFolder + "/" + fileOrFolderToUpload;
+                //Jeder Upload als Promise, damit mehrere Uploads gleichzeitig laufen koennen
+                console.log("upload " + fileOrFolderToUpload + " to folder " + remoteAudioDir);
+                filePromises.push(sftp.fastPut(fileOrFolder, remoteAudioDir + "/" + fileOrFolderToUpload));
+            }
 
-            //Wenn es eine einzelne (mp3)-Datei ist
-            if (fs.statSync(fileOrFolder).isFile()) {
+            //andere Dateiformate ignorieren
+            else {
+                console.log("ignore " + fileOrFolderToUpload);
+            }
+        }
+
+        //Es ist ein Verzeichnis
+        else if (fs.statSync(fileOrFolder).isDirectory()) {
+
+            //Dateien dieses Ordners einzeln hochladen
+            const $readAudioDir = fs.readdir(fileOrFolder);
+
+            //Wo sollen die Dateien auf Server liegen? Verzichnis ggf. loeschen und neu anlegen (damit es leer ist)
+            const remoteAudioPathFull = remoteAudioDir + "/" + fileOrFolderToUpload;
+            const dir_exists = await sftp.exists(remoteAudioPathFull);
+            if (dir_exists) {
+                console.log("delete remote folder " + remoteAudioPathFull);
+                await sftp.rmdir(remoteAudioPathFull, true);
+            }
+
+            //Remote folder anlegen
+            console.log("create remote folder " + remoteAudioPathFull);
+            const $makeRemoteDir = sftp.mkdir(remoteAudioPathFull, true);
+
+            //Warten bis remote-Ordner angelegt wurde und lokale Dateien gelesen wurden
+            const folderPromises = await Promise.all([$makeRemoteDir, $readAudioDir]);
+
+            //Ueber einzelne Dateien gehen und hochladen
+            const singleFilesToUpload = folderPromises[1];
+            for (const singleFileToUpload of singleFilesToUpload) {
 
                 //Nur mp3-Dateien hochladen
-                if (path.extname(fileOrFolder).toLowerCase() === ".mp3") {
+                if (path.extname(singleFileToUpload).toLowerCase() === ".mp3") {
 
                     //Jeder Upload als Promise, damit mehrere Uploads gleichzeitig laufen koennen
-                    console.log("upload " + fileOrFolderToUpload + " to folder " + remoteAudioPath);
-                    filePromises.push(sftp.fastPut(fileOrFolder, remoteAudioPath + "/" + fileOrFolderToUpload));
+                    console.log("upload " + singleFileToUpload + " to " + remoteAudioPathFull);
+                    filePromises.push(sftp.fastPut(localAudioDir + "/" + fileOrFolderToUpload + "/" + singleFileToUpload, remoteAudioPathFull + "/" + singleFileToUpload));
                 }
 
                 //andere Dateiformate ignorieren
                 else {
-                    console.log("ignore " + fileOrFolderToUpload);
-                }
-            }
-
-            //Es ist ein Verzeichnis
-            else if (fs.statSync(fileOrFolder).isDirectory()) {
-
-                //Dateien dieses Ordners einzeln hochladen
-                const $readAudioDir = fs.readdir(fileOrFolder);
-
-                //Wo sollen die Dateien auf Server liegen? Verzichnis ggf. loeschen und neu anlegen (damit es leer ist)
-                const remoteAudioPathFull = remoteAudioPath + "/" + fileOrFolderToUpload;
-                const dir_exists = await sftp.exists(remoteAudioPathFull);
-                if (dir_exists) {
-                    console.log("delete remote folder " + remoteAudioPathFull);
-                    await sftp.rmdir(remoteAudioPathFull, true);
-                }
-
-                //Remote folder anlegen
-                console.log("create remote folder " + remoteAudioPathFull);
-                const $makeRemoteDir = sftp.mkdir(remoteAudioPathFull, true);
-
-                //Warten bis remote-Ordner angelegt wurde und lokale Dateien gelesen wurden
-                const folderPromises = await Promise.all([$makeRemoteDir, $readAudioDir]);
-
-                //Ueber einzelne Dateien gehen und hochladen
-                const singleFilesToUpload = folderPromises[1];
-                for (const singleFileToUpload of singleFilesToUpload) {
-
-                    //Nur mp3-Dateien hochladen
-                    if (path.extname(singleFileToUpload).toLowerCase() === ".mp3") {
-
-                        //Jeder Upload als Promise, damit mehrere Uploads gleichzeitig laufen koennen
-                        console.log("upload " + singleFileToUpload + " to " + remoteAudioPathFull);
-                        filePromises.push(sftp.fastPut(localAudioDir + "/" + modeFolder + "/" + fileOrFolderToUpload + "/" + singleFileToUpload, remoteAudioPathFull + "/" + singleFileToUpload));
-                    }
-
-                    //andere Dateiformate ignorieren
-                    else {
-                        console.log("ignore " + singleFileToUpload);
-                    }
+                    console.log("ignore " + singleFileToUpload);
                 }
             }
         }

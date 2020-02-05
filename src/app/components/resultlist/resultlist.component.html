@@ -12,15 +12,11 @@
   <!-- Zeile mit Joker-Buttons, (hover-) Playsymbol, Name der Playlist und Laenge -->
   <div class="row no-gutters align-items-center flex-nowrap">
 
-    <!-- Joker setzen Buttons -->
+    <!-- Joker setzen Button -->
     <button *ngIf="showJoker"
             [disabled]="jokerLock"
-            class="btn btn-sm fa fa-heart p-1 mr-2 joker-laila"
-            (click)="setJoker('laila', item)"></button>
-    <button *ngIf="showJoker"
-            [disabled]="jokerLock"
-            class="btn btn-sm fa fa-heart p-1 mr-2 joker-luis"
-            (click)="setJoker('luis', item)"></button>
+            class="btn btn-sm fa fa-heart p-1 mr-2 joker-style"
+            (click)="setJoker(item)"></button>
 
     <!-- Play-Symbol wird nur bei hover und active angezeigt und nicht im Jokermodus-->
     <i *ngIf="!showJoker"

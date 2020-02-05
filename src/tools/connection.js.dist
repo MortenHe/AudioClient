@@ -1,31 +1,31 @@
 module.exports = {
     pw: {
         host: '',
-        user: '',
+        user: 'root',
         password: '',
         assetId: 'pw'
     },
     laila: {
         host: '',
-        user: '',
+        user: 'root',
         password: '',
         assetId: 'pw'
     },
     luis: {
         host: '',
-        user: '',
+        user: 'root',
         password: '',
         assetId: 'pw'
     },
     marlen: {
         host: '',
-        user: '',
+        user: 'root',
         password: '',
         assetId: 'marlen'
     },
     vb: {
         host: '',
-        user: '',
+        user: 'root',
         password: '',
         assetId: 'pw'
     }
