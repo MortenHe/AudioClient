@@ -3,6 +3,7 @@
         "name": "Mama Muh - Fährt Rad, lernt tauchen und geht angeln",
         "file": "rad",
         "active": true,
+        "rfid": "0011874588",
         "length": "00:39:26",
         "tracks": []
     },
