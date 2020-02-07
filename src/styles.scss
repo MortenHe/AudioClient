@@ -26,6 +26,18 @@ body {
     min-width: 300px;
 }
 
+.app-content {
+    background: $color-white;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.header {
+    background: $color-info-blue;
+    color: $color-grey;
+}
+
 .next-label {
     border: 1px solid $color-light-border-grey;
     user-select: none;

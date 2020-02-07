@@ -393,5 +393,19 @@
             "Der Hase und die Ziege",
             "Die noch viel bessere Idee"
         ]
+    },
+    {
+        "name": "MIX",
+        "file": "mix",
+        "active": true,
+        "length": null,
+        "tracks": []
+    },
+    {
+        "name": "MIX",
+        "file": "mix",
+        "active": false,
+        "length": null,
+        "tracks": []
     }
 ]

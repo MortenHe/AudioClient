@@ -73,6 +73,12 @@ export class BackendService {
     //Die Dateien, die gerade abgespielt werden
     files$: Subject<any[]> = new Subject<any[]>();
 
+    //Die Dateien, die fuer den mixFileOrdner ausgewaehlt werden koennen
+    searchFiles$: Subject<any[]> = new Subject<any[]>();
+
+    //Die Dateien, die gerade im mixFileOrdner liegen
+    mixFiles$: Subject<any[]> = new Subject<any[]>();
+
     //Aktueller Index in Titelliste
     position$: Subject<number> = new Subject<number>();
 
@@ -280,6 +286,14 @@ export class BackendService {
                     this.files$.next(value);
                     break;
 
+                case "searchFiles":
+                    this.searchFiles$.next(value);
+                    break;
+
+                case "mixFiles":
+                    this.mixFiles$.next(value);
+                    break;
+
                 case "random":
                     this.random$.next(value);
                     break;
@@ -327,6 +341,14 @@ export class BackendService {
 
     getFiles() {
         return this.files$;
+    }
+
+    getSearchFiles() {
+        return this.searchFiles$;
+    }
+
+    getMixFiles() {
+        return this.mixFiles$;
     }
 
     getPosition() {

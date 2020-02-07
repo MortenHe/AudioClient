@@ -14,6 +14,9 @@ export class ResultfilterService {
   //Suchfeld-Wert als BS, das abboniert werden kann
   searchTermBS = new BehaviorSubject("");
 
+  //Mix-Suchfeld-Wert als BS, das abboniert werden kann
+  mixSearchTermBS = new BehaviorSubject("");
+
   //Sortierfeld als BS, das abboniert werden kann
   orderFieldBS = new BehaviorSubject("name");
 
@@ -44,6 +47,16 @@ export class ResultfilterService {
   //Suchterm setzen
   setSearchTerm(serachTerm: string) {
     this.searchTermBS.next(serachTerm);
+  }
+
+  //aktuellen Mix-Suchbegriff liefern
+  getMixSearchTerm() {
+    return this.mixSearchTermBS;
+  }
+
+  //Mix-Suchterm setzen
+  setMixSearchTerm(serachTerm: string) {
+    this.mixSearchTermBS.next(serachTerm);
   }
 
   //Sortierfeld liefern

@@ -9,20 +9,16 @@ import { Item } from '../config/main-config';
 export class SearchFilterPipe implements PipeTransform {
 
   //Suchstring wird uebergeben
-  transform(item: Item[], searchString: string, includeTracks: boolean): any {
+  transform(items: Item[], searchString: string, includeTracks: boolean): any {
 
-    //Wenn Suchfeld leer ist
+    //Wenn Suchfeld leer ist, Trefferliste unveraendert zuruck
     if (!searchString) {
-
-      //Treffer anzeigen
-      return item;
+      return items;
     }
 
-    //Filtersuchbegriff ausgewaehlt
+    //Filtersuchbegriff ausgewaehlt -> Items filtern
     else {
-
-      //Items filtern
-      return item.filter(item => {
+      return items.filter(item => {
 
         //Ordnername (audio) des Items soll durchsucht werden
         let haystack = item.name;

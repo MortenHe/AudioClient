@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+//Sortierbare Mix-Liste
+import { SortablejsModule } from 'ngx-sortablejs'
+
 //eigenes Services
 import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
@@ -39,6 +42,7 @@ import { ViewControlComponent } from './components/view-control/view-control.com
 import { HighlightDirective } from './directives/highlight.directive';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { ToggleJokerviewComponent } from './components/toggle-jokerview/toggle-jokerview.component';
+import { MixComponent } from './components/mix/mix.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +69,8 @@ import { ToggleJokerviewComponent } from './components/toggle-jokerview/toggle-j
     ViewControlComponent,
     HighlightDirective,
     CountdownComponent,
-    ToggleJokerviewComponent
+    ToggleJokerviewComponent,
+    MixComponent
   ],
   imports: [
     BrowserModule,
@@ -73,8 +78,12 @@ import { ToggleJokerviewComponent } from './components/toggle-jokerview/toggle-j
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'search/:mode', component: SearchComponent },
+      { path: 'mix', component: MixComponent },
       { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
     ]),
+    SortablejsModule.forRoot({
+      animation: 350,
+    }),
   ],
   providers: [BackendService, ResultfilterService, JsondataService, ViewControlService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
