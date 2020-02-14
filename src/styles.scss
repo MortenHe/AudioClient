@@ -38,6 +38,10 @@ body {
     color: $color-grey;
 }
 
+.mh-bg-primary {
+    background: $color-info-blue;
+}
+
 .next-label {
     border: 1px solid $color-light-border-grey;
     user-select: none;
@@ -69,6 +73,16 @@ input:disabled+.next-label {
     border-radius: 5px;
 }
 
+.tag-sm {
+    width: 30px;
+    height: 30px;
+    cursor: pointer; //border: 1px solid $color-grey;
+    border-radius: 5px;
+
+    &:hover {
+        background: rgba($color-info-blue, .2);
+    }
+}
 
 label {
     margin-bottom: 0px;

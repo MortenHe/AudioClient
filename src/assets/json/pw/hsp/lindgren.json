@@ -3,6 +3,7 @@
         "name": "Bullerbü - Wir Kinder aus Bullerbü",
         "file": "kinder-bullerbue",
         "active": true,
+        "rfid": "0011902107",
         "length": "00:33:34",
         "tracks": [
             "Mein allerschönster Geburtstag",
@@ -38,6 +39,7 @@
         "name": "Bullerbü - Immer lustig in Bullerbü",
         "file": "lustig-bullerbue",
         "active": true,
+        "rfid": "0011818619",
         "length": "01:04:54",
         "tracks": [
             "Immer lustig in Bullerbü",
@@ -54,6 +56,7 @@
         "name": "Bullerbü - Mehr von uns Kindern aus Bullerbü",
         "file": "mehr-bullerbue",
         "active": true,
+        "rfid": "0011781262",
         "length": "01:03:08",
         "tracks": [
             "Wir Kinder aus Bullerbü",

@@ -5,6 +5,10 @@
     <!-- 1. Zeile: Countdown, Connection und Shutdown -->
     <div class="header row no-gutters align-items-center py-1 px-2">
 
+        <!-- Link auf Player -->
+        <div class="font-weight-bold ml-2 cursor-pointer"
+             routerLink="/">Player</div>
+
         <!-- Countdown -->
         <countdown class="ml-auto"></countdown>
 
@@ -18,7 +22,7 @@
     <!-- 2. Zeile: Suchfeld -->
     <div class="d-flex mx-2 mt-3">
 
-        <!-- Suchfeld: Label besteht auch Icon und Input -->
+        <!-- Suchfeld: Label besteht aus Icon und Input -->
         <label class="search-field form-control d-flex no-gutters align-items-center p-1"
                for="searchField">
 
@@ -39,10 +43,16 @@
     </div>
 
     <!-- 3. Zeile: Trefferliste der Dateisuche -->
-    <div class="mx-2 mt-3">
+    <div class="mx-2 mt-2">
         <div *ngFor="let searchFile of searchFiles | searchFilter:searchTerm | slice:0:10"
-             (click)=addItem(searchFile)>
-            - {{searchFile.path | fileName}}
+             class="d-flex align-items-center mb-2">
+
+            <!-- Titel zu Mix-Ordner hinzufuegen -->
+            <i class="fa fa-plus tag-sm d-flex align-items-center justify-content-center"
+               (click)="addItem(searchFile)"></i>
+
+            <!-- Name des Titels -->
+            <span class="ml-2">{{searchFile.path | fileName}}</span>
         </div>
     </div>
 
@@ -50,13 +60,19 @@
 
     <!-- Sortierbare Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
     <div class="mx-2 mt-3">
-        <div [sortablejs]="mixFiles">
+        <div [sortablejs]="mixFiles"
+             (end)=sortDone($event)>
             <div *ngFor="let mixFile of mixFiles, index as index"
-                 class="d-flex">
-                - {{mixFile.path | fileName:mixFile.type === 'old'}}
+                 class="d-flex align-items-center mb-2">
+
+                <!-- Sortier-Handle -->
+                <i class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle"></i>
+
+                <!-- Name des Titels -->
+                <span class="ml-2">{{mixFile.path | fileName:mixFile.type === 'old'}}</span>
 
                 <!-- Titel aus Liste loeschen -->
-                <i class="ml-auto fa fa-trash"
+                <i class="ml-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"
                    (click)="removeItem(index, mixFile)"></i>
             </div>
         </div>
@@ -64,8 +80,9 @@
 
     <hr>
 
-    <!-- Anederungen auf Server speichern -->
-    <button class="mx-2 mb-2 btn btn-primary"
+    <!-- Anederungen auf Server speichern, disabled wenn keine Aenderungen vorliegen -->
+    <button class="mx-2 mb-2 btn mh-bg-primary"
+            [disabled]="!hasUnsavedChanges"
             (click)="saveChanges()">Speichern</button>
 </div>
 

@@ -4,6 +4,7 @@
         "file": "jahresuhr",
         "length": "00:38:34",
         "active": true,
+        "rfid": "0011831286",
         "tracks": [
             "Die Jahresuhr",
             "Es ist nicht leicht, ein Narr zu sein",
@@ -134,6 +135,7 @@
         "name": "Rolf Zuckowski - Rolfs Hasengeschichte",
         "file": "rolfs-hasengeschichte",
         "active": true,
+        "rfid": "0011801137",
         "length": "00:39:49",
         "tracks": [
             "Häschen in der Grube (1).mp3",
@@ -150,6 +152,26 @@
             "Aufbruch.mp3",
             "Häschen in der Grube (2).mp3",
             "Frohe Ostern.mp3"
+        ]
+    },
+    {
+        "name": "Rolf Zuckowski - Lieder, die wie Brücken sind",
+        "file": "lieder-bruecken",
+        "active": true,
+        "length": "00:40:25",
+        "tracks": [
+            "... und ganz doll mich",
+            "Mein Freund Abdullah",
+            "Lieder, die wie Brücken sind",
+            "Guten Morgen Sally",
+            "Wir sind Kinder...",
+            "Die Lollipop-Melodie IV",
+            "Guten Morgen liebe Sonne",
+            "Das große Lollipop-Quiz",
+            "Grolli, das Schulweg-Monster",
+            "Meine Mami",
+            "Ein Lied für Tweety",
+            "Schneewittchen und die sieben Zwerge"
         ]
     }
 ]

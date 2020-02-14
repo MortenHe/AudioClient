@@ -83,6 +83,7 @@ import { MixComponent } from './components/mix/mix.component';
     ]),
     SortablejsModule.forRoot({
       animation: 350,
+      handle: '.sort-handle'
     }),
   ],
   providers: [BackendService, ResultfilterService, JsondataService, ViewControlService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],

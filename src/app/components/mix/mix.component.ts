@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { BackendService } from '../../services/backend.service';
 import * as path from 'path';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-mix',
@@ -10,6 +11,9 @@ import * as path from 'path';
   styleUrls: ['./mix.component.scss']
 })
 export class MixComponent implements OnInit {
+
+  //Shutdown
+  shutdown$;
 
   //Suchfeld
   searchField = new FormControl("");
@@ -23,15 +27,24 @@ export class MixComponent implements OnInit {
   //Liste der Dateien im Mix-Ordner
   mixFiles = [];
 
+  //Originalliste der Dateien im Mix-Ordner
+  mixFilesOrig = [];
+
   //Wo liegen die Mixfiles?
   mixDir = "/media/usb_audio/audio/kindermusik/misc/mix";
 
   //Liste der Aktionen, die auf dem Server durchgefuehrt werden (move, delete)
   actionList = [];
 
+  //Gibt es Aenderungen bei den Mixfolder Dateien
+  hasUnsavedChanges = false;
+
   constructor(private bs: BackendService, private fs: ResultfilterService) { }
 
   ngOnInit() {
+
+    //Shutdown Zustand abbonieren
+    this.shutdown$ = this.bs.getShutdown();
 
     //Liste der auswaehlbaren Files abbonieren
     this.bs.getSearchFiles().subscribe(searchFiles => {
@@ -40,7 +53,15 @@ export class MixComponent implements OnInit {
 
     //Liste der Mixfiles abbonieren
     this.bs.getMixFiles().subscribe(mixFiles => {
+
+      //Liste der Mix-Files fuer Oberflaeche
       this.mixFiles = mixFiles;
+
+      //Liste der Mix-Files nochmal zusaetzlich speichern, um vergleichen zu koennen ob sich Array geandert hat
+      this.mixFilesOrig = mixFiles.slice();
+
+      //Aenderungen-Flag zuruecksetzen
+      this.hasUnsavedChanges = false;
     });
 
     //Bei Aenderung des Suchfeldes den Suchterm in Filterservice eintragen
@@ -57,6 +78,11 @@ export class MixComponent implements OnInit {
 
   //Neue Datei zu Liste fuer Mix-Ordner hinzufuegen
   addItem(item) {
+
+    //Auf jeden Fall Aenderung an Mix-Folder-Liste
+    this.hasUnsavedChanges = true;
+
+    //Datei bei Mix-Files oben einfuegen
     this.mixFiles.unshift({
       "type": "new",
       "path": item.path
@@ -69,6 +95,9 @@ export class MixComponent implements OnInit {
     //Aus Liste entfernen
     this.mixFiles.splice(index, 1);
 
+    //Pruefen, ob neue Liste wieder der urspruenglichen Liste entspricht (dann waeren keine Aenderungen zum Speichern da)
+    this.checkIfMixFolderHasChanged();
+
     //Wenn es ein Titel aus dem Mix-Ordner ist, diesen zur Loeschung vormerken
     if (item.type === "old") {
       this.actionList.push({
@@ -76,6 +105,16 @@ export class MixComponent implements OnInit {
         "path": item.path
       });
     }
+  }
+
+  //Wenn Umsortierung abgeschlossen ist, pruefen ob Mix-Liste Aenderungen hat
+  sortDone($event) {
+    this.checkIfMixFolderHasChanged();
+  }
+
+  //Pruefen ob geandertes Array (durch Umsortierung oder Loeschung) Aenderungen zum urspruenglichen Array hat
+  checkIfMixFolderHasChanged() {
+    this.hasUnsavedChanges = !(_.isEqual(this.mixFilesOrig, this.mixFiles));
   }
 
   //Aenderungen an Mix-Ordner an Server melden

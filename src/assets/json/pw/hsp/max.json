@@ -3,6 +3,7 @@
         "name": "Max - 11 - Kindergarten & Kinderarzt",
         "file": "11-kindergarten",
         "active": true,
+        "rfid": "0011801034",
         "length": "00:26:00",
         "tracks": []
     },
@@ -10,6 +11,7 @@
         "name": "Max - 12 - Rad fahren & Spaghetti kochen",
         "file": "12-rad",
         "active": true,
+        "rfid": "0011820783",
         "length": "00:33:46",
         "tracks": []
     }

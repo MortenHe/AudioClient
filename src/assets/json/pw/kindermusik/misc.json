@@ -398,12 +398,14 @@
         "name": "MIX",
         "file": "mix",
         "active": true,
+        "rfid": "0004603223",
         "length": null,
         "tracks": []
     },
     {
         "name": "MIX",
         "file": "mix",
+        "rfid": "0003289532",
         "active": false,
         "length": null,
         "tracks": []

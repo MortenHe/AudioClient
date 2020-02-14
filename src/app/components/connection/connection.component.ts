@@ -16,7 +16,9 @@ export class ConnectionComponent implements OnInit {
   ngOnInit() {
 
     //Zustand abbonieren, ob Verbindung zu WSS besteht
-    this.bs.getConnected().subscribe(connected => this.connected = connected);
+    this.bs.getConnected().subscribe(connected => {
+      this.connected = connected;
+    });
   }
 
   //App aktivieren (WSS per PHP starten)

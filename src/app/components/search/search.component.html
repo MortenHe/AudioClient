@@ -2,79 +2,83 @@
 <div *ngIf="!(shutdown$ | async); else shutdownTemp"
      class="app-content container no-gutters p-0 shadow">
 
-  <!-- 1. Zeile: Modes, Countdown, Connection und Shutdown -->
-  <div class="header row no-gutters align-items-center py-1 px-2">
+    <!-- 1. Zeile: Modes, Countdown, Connection und Shutdown -->
+    <div class="header row no-gutters align-items-center py-1 px-2">
 
-    <!-- Liste der Modes (kindermusik, hsp, cds) -->
-    <selectmode class="col"></selectmode>
+        <!-- Liste der Modes (kindermusik, hsp, cds) -->
+        <selectmode class="col"></selectmode>
 
-    <!-- Countdown -->
-    <countdown></countdown>
+        <!-- Countdown -->
+        <countdown></countdown>
 
-    <!-- Zustand der WSS-Verbindung -->
-    <connection></connection>
+        <!-- Zustand der WSS-Verbindung -->
+        <connection></connection>
 
-    <!-- Shutdown -->
-    <picontrol></picontrol>
-  </div>
-
-  <!-- 2. Zeile: Steuerelemente -->
-  <div class="row no-gutters py-1 px-2 justify-content-center player-controls">
-
-    <!-- Play, Pause, Stop, Seek  -->
-    <playercontrol class="col-8 control-content row no-gutters"></playercontrol>
-
-    <!-- Lautstaerke -->
-    <volume-control class="col row no-gutters justify-content-end"></volume-control>
-  </div>
-
-  <!-- 3. Zeile: Zwischen Suche und Playlist umschalten + Random-Checkbox fuer Playlist -->
-  <div class="d-flex mx-2 mt-3">
-
-    <!-- Views umschalten (Suche vs. Playlist) -->
-    <view-control></view-control>
-
-    <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben und nur in Playlist View) -->
-    <random-playback [class.hidden]="activeView !== 'playlist' || !(allowRandomRunning$ | async)"
-                     class="d-flex ml-auto"></random-playback>
-  </div>
-
-  <!-- Wenn Suche aktiv ist -->
-  <div [class.hidden]="activeView !== 'search'"
-       class="mt-3">
-
-    <!-- 4. Zeile: Filter-Buttons -->
-    <modefilter *ngIf="showModeFilterList"
-                class="d-flex mx-2"></modefilter>
-
-    <!-- 5. Zeile: Suchfeld, Info-Button, Sortier-Button -->
-    <div class="d-flex no-gutters mx-2 mt-3">
-
-      <!-- Suchfeld fuer Trefferliste -->
-      <searchfilter class="col mr-2"></searchfilter>
-
-      <!-- Jokersymbole ein-/ausblenden -->
-      <toggle-jokerview class="mr-2"></toggle-jokerview>
-
-      <!-- Ansicht der Infos zu toggeln -->
-      <toggletrackview class="d-flex mr-2"></toggletrackview>
-
-      <!-- Sortierbuttons der Trefferliste -->
-      <sortfilter class="d-block"></sortfilter>
+        <!-- Shutdown -->
+        <picontrol></picontrol>
     </div>
 
-    <!-- 6. Zeile: Trefferliste -->
-    <resultlist class="mt-3 d-block"></resultlist>
-  </div>
+    <!-- 2. Zeile: Steuerelemente -->
+    <div class="row no-gutters py-1 px-2 justify-content-center player-controls">
 
-  <!-- Anischt der aktuell laufenden Playlist -->
-  <playlist [class.hidden]="activeView !== 'playlist'"
-            class="d-block mt-3 mx-2 mb-2"></playlist>
+        <!-- Play, Pause, Stop, Seek  -->
+        <playercontrol class="col-8 control-content row no-gutters"></playercontrol>
+
+        <!-- Lautstaerke -->
+        <volume-control class="col row no-gutters justify-content-end"></volume-control>
+    </div>
+
+    <!-- 3. Zeile: Zwischen Suche und Playlist umschalten + Random-Checkbox fuer Playlist -->
+    <div class="d-flex mx-2 mt-3 align-items-center">
+
+        <!-- Views umschalten (Suche vs. Playlist) -->
+        <view-control></view-control>
+
+        <!-- Link auf Mixer-Seite -->
+        <div class="ml-2 tag fa fa-smile-o d-flex align-items-center justify-content-center mix"
+             routerLink="/mix"></div>
+
+        <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben und nur in Playlist View) -->
+        <random-playback [class.hidden]="activeView !== 'playlist' || !(allowRandomRunning$ | async)"
+                         class="d-flex ml-auto"></random-playback>
+    </div>
+
+    <!-- Wenn Suche aktiv ist -->
+    <div [class.hidden]="activeView !== 'search'"
+         class="mt-3">
+
+        <!-- 4. Zeile: Filter-Buttons -->
+        <modefilter *ngIf="showModeFilterList"
+                    class="d-flex mx-2"></modefilter>
+
+        <!-- 5. Zeile: Suchfeld, Info-Button, Sortier-Button -->
+        <div class="d-flex no-gutters mx-2 mt-3">
+
+            <!-- Suchfeld fuer Trefferliste -->
+            <searchfilter class="col mr-2"></searchfilter>
+
+            <!-- Jokersymbole ein-/ausblenden -->
+            <toggle-jokerview class="mr-2"></toggle-jokerview>
+
+            <!-- Ansicht der Infos zu toggeln -->
+            <toggletrackview class="d-flex mr-2"></toggletrackview>
+
+            <!-- Sortierbuttons der Trefferliste -->
+            <sortfilter class="d-block"></sortfilter>
+        </div>
+
+        <!-- 6. Zeile: Trefferliste -->
+        <resultlist class="mt-3 d-block"></resultlist>
+    </div>
+
+    <!-- Anischt der aktuell laufenden Playlist -->
+    <playlist [class.hidden]="activeView !== 'playlist'"
+              class="d-block mt-3 mx-2 mb-2"></playlist>
 </div>
 
 <!-- Anzeigen, wenn Pi heruntergefahren wurde -->
 <ng-template #shutdownTemp>
-  <div class="container mr-0 ml-0 no-gutters text-center">
-    Der Player wurde beendet.
-  </div>
+    <div class="container mr-0 ml-0 no-gutters text-center">
+        Der Player wurde beendet.
+    </div>
 </ng-template>
