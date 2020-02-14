@@ -7,7 +7,7 @@ const mp3Duration = require('mp3-duration');
 const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
-dataDir = "C:/Users/Martin/Desktop/media/audioDonePW";
+dataDir = "C:/Users/Martin/Desktop/media/done/pw/audio";
 
 //lokale Items (z.B. Audio-Ordner) sammeln
 outputArray = [];
@@ -21,9 +21,9 @@ totalDuration = [];
 //Ueber ueber filter-dirs des aktuellen modes gehen (hsp, kindermusik,...)
 fs.readdirSync(dataDir).forEach(folder => {
 
-    //Wenn es ein Ordner ist und nicht der copy-save Ordner
+    //Wenn es ein Ordner ist
     let stat = fs.statSync(dataDir + "/" + folder);
-    if (stat && stat.isDirectory() && folder !== "copy-save") {
+    if (stat && stat.isDirectory()) {
 
         //15-der-rote-hahn -> 15 der rote hahn
         let name = folder.replace(/-/g, ' ');

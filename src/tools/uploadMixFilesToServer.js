@@ -10,7 +10,7 @@ const connection = require("./connection.js");
 const targetMachine = process.argv[2] || "pw";
 
 //Dort liegen / dorthin kommen die Dateien
-const localAudioDir = "C:/Users/Martin/Desktop/media/mix" + targetMachine.toUpperCase();
+const localAudioDir = "C:/Users/Martin/Desktop/media/done/" + targetMachine + "/mix";
 const remoteAudioDir = "/media/usb_audio/shplayer/kids";
 
 console.log("upload audio files from " + localAudioDir);

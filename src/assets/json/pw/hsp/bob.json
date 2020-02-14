@@ -8,5 +8,15 @@
             "Stürmische Abenteuer",
             "Bob zählt Elefanten"
         ]
+    },
+    {
+        "name": "Bob der Baumeister - Alle Helfen Bob",
+        "file": "alle-helfen-bob",
+        "active": true,
+        "length": "00:43:57",
+        "tracks": [
+            "Bob ist krank",
+            "Das Tunnelabenteuer"
+        ]
     }
 ]
