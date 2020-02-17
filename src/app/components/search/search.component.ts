@@ -21,9 +21,6 @@ export class SearchComponent {
   //welche ModeFilter gibt es (all, conni, janosch, misc)
   showModeFilterList: boolean = false;
 
-  //Zustand ob Verbindung zu WSS existiert
-  connected: boolean;
-
   //ist random playback erlaubt bei laufender Playlist?
   allowRandomRunning$;
 
@@ -107,11 +104,6 @@ export class SearchComponent {
 
     //Shutdown Zustand abbonieren
     this.shutdown$ = this.bs.getShutdown();
-
-    //Zustand abbonieren, ob Verbindung zu WSS besteht
-    this.bs.getConnected().subscribe(connected => {
-      this.connected = connected
-    });
 
     //Regelmassieg eine Nachricht an WSS schicken, damit ggf. die Verbindung wieder aufgebaut wird
     setInterval(() => {

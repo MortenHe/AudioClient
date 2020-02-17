@@ -74,10 +74,10 @@ export class BackendService {
     files$: Subject<any[]> = new Subject<any[]>();
 
     //Die Dateien, die fuer den mixFileOrdner ausgewaehlt werden koennen
-    searchFiles$: Subject<any[]> = new Subject<any[]>();
+    searchFiles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
     //Die Dateien, die gerade im mixFileOrdner liegen
-    mixFiles$: Subject<any[]> = new Subject<any[]>();
+    mixFiles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
     //Aktueller Index in Titelliste
     position$: Subject<number> = new Subject<number>();
@@ -106,10 +106,8 @@ export class BackendService {
     //Ist die App gerade mit dem WSS verbunden?
     connected$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    //Services injekten
+    //WebSocket erstellen
     constructor(private http: HttpClient, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
-
-        //WebSocket erstellen
         this.createWebsocket();
     }
 
