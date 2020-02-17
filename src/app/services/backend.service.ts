@@ -10,7 +10,6 @@ import { OrderByPipe } from '../pipes/order-by.pipe';
 import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs/Subject';
 import { Observer } from 'rxjs/Observer';
-import { JsondataService } from './jsondata.service';
 import 'rxjs/add/operator/switchMap';
 
 @Injectable()
@@ -31,9 +30,6 @@ export class BackendService {
     //Komplette Itemliste wird nur 1 Mal geholt
     itemListFull;
 
-    //Mode als Variable
-    mode;
-
     //Mode-Filter (conni, heidi)
     modeFilter;
 
@@ -50,7 +46,7 @@ export class BackendService {
     reverseOrder;
 
     //Modus als BS, das abboniert werden kann
-    modeBS = new BehaviorSubject("kinder");
+    modeBS = new BehaviorSubject("hsp");
 
     //gefilterte und sortierte Itemliste als BS, das abboniert werden kann
     itemListFilteredBS = new BehaviorSubject([]);
@@ -62,16 +58,16 @@ export class BackendService {
     allowRandomBS = new BehaviorSubject(false);
 
     //Lautstaerke
-    volume$: Subject<number> = new Subject<number>();
+    volume$: BehaviorSubject<number> = new BehaviorSubject<number>(null);
 
     //Zeit innerhalb items
-    time$: Subject<string> = new Subject<string>();
+    time$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
     //Countdownzeit
-    countdownTime$: Subject<number> = new Subject<number>();
+    countdownTime$: BehaviorSubject<number> = new BehaviorSubject<number>(null);
 
     //Die Dateien, die gerade abgespielt werden
-    files$: Subject<any[]> = new Subject<any[]>();
+    files$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
     //Die Dateien, die fuer den mixFileOrdner ausgewaehlt werden koennen
     searchFiles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
@@ -80,22 +76,22 @@ export class BackendService {
     mixFiles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
     //Aktueller Index in Titelliste
-    position$: Subject<number> = new Subject<number>();
+    position$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
     //aktueller Pause-Zustand
-    paused$: Subject<boolean> = new Subject<boolean>();
+    paused$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     //aktueller Random-Zustand
-    random$: Subject<boolean> = new Subject<boolean>();
+    random$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     //aktueller JokerLock-Zustand (wird gerade Joker-Playlist kopiert?)
-    jokerLock$: Subject<boolean> = new Subject<boolean>();
+    jokerLock$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     //aktives Item
-    activeItem$: Subject<string> = new Subject<string>();
+    activeItem$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
     //Name der aktiven Playlist: Rolf Zuckowski - Starke Kinder
-    activeItemName$: Subject<string> = new Subject<string>();
+    activeItemName$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
     //wurde Server heruntergefahren?
     shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -106,84 +102,67 @@ export class BackendService {
     //Ist die App gerade mit dem WSS verbunden?
     connected$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    //WebSocket erstellen
-    constructor(private http: HttpClient, private jds: JsondataService, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
+    constructor(private http: HttpClient, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
+
+        //Websocket erstellen
         this.createWebsocket();
-    }
 
-    //Itemlist laden
-    loadFullItemlist() {
+        //Wenn sich der Modus aendert
+        this.modeBS.subscribe(mode => {
 
-        //Itemlist holen per HTTP-Request
-        this.jds.loadJson().switchMap(fullList => {
-            return fullList;
-        }).subscribe(itemList => {
+            //Trefferliste und Allowrandom apnassen
+            if (this.itemListFull) {
+                this.setValuesForMode();
+            }
+        });
 
-            //komplette Itemliste speichern
-            this.itemListFull = itemList;
+        //Aenderungen an ModeFilter abbonieren, speichern und Itemliste neu erstellen
+        this.fs.getModeFilter().subscribe(modeFilter => {
+            this.modeFilter = modeFilter;
+            this.filterItemList();
+        });
 
-            //Wenn sich der Modus aendert
-            this.modeBS.subscribe(mode => {
+        //Aenderungen an Suchterm abbonieren, speichern und Itemliste neu erstellen
+        this.fs.getSearchTerm().subscribe(searchTerm => {
+            this.searchTerm = searchTerm;
+            this.filterItemList();
+        });
 
-                //Modus in Variable speichern (fuer Start Playlist Funktion)
-                this.mode = mode;
+        //Aenderungen an Track-Sichtbarkeit abbonieren, speichern und Itemliste neu erstellen
+        this.fs.getShowTracks().subscribe(showTracks => {
+            this.searchIncludeTracks = showTracks;
+            this.filterItemList();
+        });
 
-                //Wert in BS setzen, ob Random in diesem Modus erlaubt ist
-                this.allowRandomBS.next(this.itemListFull[mode].allowRandom);
+        //Aenderungen an Sortierfeld abbonieren, speichern und Itemliste neu erstellen
+        this.fs.getOrderField().subscribe(orderField => {
+            this.orderField = orderField;
+            this.filterItemList();
+        });
 
-                //Filter-Modus-Liste des aktuellen Modus setzen
-                this.modeFilterListBS.next(this.itemListFull[mode].filter);
-
-                //gefilterte Itemliste erstellen
-                this.filterItemList();
-            });
-
-            //Aenderungen an ModeFilter abbonieren, speichern und Itemliste neu erstellen
-            this.fs.getModeFilter().subscribe(modeFilter => {
-                this.modeFilter = modeFilter;
-                this.filterItemList();
-            });
-
-            //Aenderungen an Suchterm abbonieren, speichern und Itemliste neu erstellen
-            this.fs.getSearchTerm().subscribe(searchTerm => {
-                this.searchTerm = searchTerm;
-                this.filterItemList();
-            });
-
-            //Aenderungen an Track-Sichtbarkeit abbonieren, speichern und Itemliste neu erstellen
-            this.fs.getShowTracks().subscribe(showTracks => {
-                this.searchIncludeTracks = showTracks;
-                this.filterItemList();
-            });
-
-            //Aenderungen an Sortierfeld abbonieren, speichern und Itemliste neu erstellen
-            this.fs.getOrderField().subscribe(orderField => {
-                this.orderField = orderField;
-                this.filterItemList();
-            });
-
-            //Aenderungen an umgekehrter Sortierung abbonieren, speichern und Itemliste neu erstellen
-            this.fs.getReverseOrder().subscribe(reverseOrder => {
-                this.reverseOrder = reverseOrder;
-                this.filterItemList();
-            });
+        //Aenderungen an umgekehrter Sortierung abbonieren, speichern und Itemliste neu erstellen
+        this.fs.getReverseOrder().subscribe(reverseOrder => {
+            this.reverseOrder = reverseOrder;
+            this.filterItemList();
         });
     }
 
     //Wenn Modus / Filter / Sortierung angepasst wurde, muss Itemliste neu erstellt / gefiltert / sortiert werden
     filterItemList() {
+        if (this.itemListFull) {
 
-        //Mode-Filter auf Items dieses Modus anwenden
-        let filteredItemList = this.modeFilterPipe.transform(this.itemListFull[this.mode].items, this.modeFilter);
+            //Mode-Filter auf Items dieses Modus anwenden
+            let filteredItemList = this.modeFilterPipe.transform(this.itemListFull[this.modeBS.getValue()].items, this.modeFilter);
 
-        //Suchfeld-Filter anwenden
-        filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm, this.searchIncludeTracks);
+            //Suchfeld-Filter anwenden
+            filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm, this.searchIncludeTracks);
 
-        //Sortierung anwenden
-        filteredItemList = this.orderByPipe.transform(filteredItemList, this.orderField, this.reverseOrder);
+            //Sortierung anwenden
+            filteredItemList = this.orderByPipe.transform(filteredItemList, this.orderField, this.reverseOrder);
 
-        //neue Itemliste in BS schieben
-        this.itemListFilteredBS.next(filteredItemList);
+            //neue Itemliste in BS schieben
+            this.itemListFilteredBS.next(filteredItemList);
+        }
     }
 
     getMode() {
@@ -292,6 +271,13 @@ export class BackendService {
                     this.mixFiles$.next(value);
                     break;
 
+                case "mainJSON":
+                    this.itemListFull = value;
+
+                    //Passend filtern anhand Modus
+                    this.setValuesForMode();
+                    break;
+
                 case "random":
                     this.random$.next(value);
                     break;
@@ -387,6 +373,19 @@ export class BackendService {
 
     getConnected() {
         return this.connected$;
+    }
+
+    //Trefferliste fuer Oberflaeche (welche Playlists auswaehlbar) anhand des gewaehlten Modes filtern
+    setValuesForMode() {
+
+        //Wert in BS setzen, ob Random in diesem Modus erlaubt ist
+        this.allowRandomBS.next(this.itemListFull[this.modeBS.getValue()].allowRandom);
+
+        //Filter-Modus-Liste des aktuellen Modus setzen
+        this.modeFilterListBS.next(this.itemListFull[this.modeBS.getValue()].filter);
+
+        //Filterte Liste erstellen
+        this.filterItemList();
     }
 
     //App aktivieren = WSS starten

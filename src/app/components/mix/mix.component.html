@@ -52,7 +52,8 @@
                (click)="addItem(searchFile)"></i>
 
             <!-- Name des Titels -->
-            <span class="ml-2">{{searchFile.path | fileName}}</span>
+            <span class="ml-2"
+                  [highlight]="searchTerm">{{searchFile.path | fileName}}</span>
         </div>
     </div>
 

@@ -43,9 +43,6 @@ export class SearchComponent {
   //Beim Init
   ngOnInit() {
 
-    //Komplettliste der Items in Service laden
-    this.bs.loadFullItemlist();
-
     //AllowRandom abonnieren (fuer Anzeige gewisser Komponenten)
     this.allowRandomRunning$ = this.bs.getAllowRandomRunning();
 

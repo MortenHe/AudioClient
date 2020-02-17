@@ -10,7 +10,6 @@ import { SortablejsModule } from 'ngx-sortablejs'
 //eigenes Services
 import { BackendService } from './services/backend.service';
 import { ResultfilterService } from './services/resultfilter.service';
-import { JsondataService } from './services/jsondata.service';
 import { ViewControlService } from './services/view-control.service';
 
 //eigenes Pipes
@@ -79,14 +78,14 @@ import { MixComponent } from './components/mix/mix.component';
     RouterModule.forRoot([
       { path: 'search/:mode', component: SearchComponent },
       { path: 'mix', component: MixComponent },
-      { path: '**', redirectTo: '/search/default', pathMatch: 'full' }
+      { path: '**', redirectTo: '/search/hsp', pathMatch: 'full' }
     ]),
     SortablejsModule.forRoot({
       animation: 350,
       handle: '.sort-handle'
     }),
   ],
-  providers: [BackendService, ResultfilterService, JsondataService, ViewControlService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
+  providers: [BackendService, ResultfilterService, ViewControlService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
