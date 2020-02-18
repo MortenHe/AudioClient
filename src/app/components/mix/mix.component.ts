@@ -36,6 +36,9 @@ export class MixComponent implements OnInit {
   //Liste der Aktionen, die auf dem Server durchgefuehrt werden (move, delete)
   actionList = [];
 
+  //Flag waehrend Titel gespeichert werden
+  saving: boolean = false;
+
   //Gibt es Aenderungen bei den Mixfolder Dateien
   hasUnsavedChanges = false;
 
@@ -60,8 +63,9 @@ export class MixComponent implements OnInit {
       //Liste der Mix-Files nochmal zusaetzlich speichern, um vergleichen zu koennen ob sich Array geandert hat
       this.mixFilesOrig = mixFiles.slice();
 
-      //Aenderungen-Flag zuruecksetzen
+      //Aenderungen-Flags zuruecksetzen
       this.hasUnsavedChanges = false;
+      this.saving = false;
     });
 
     //Bei Aenderung des Suchfeldes den Suchterm in Filterservice eintragen
@@ -119,6 +123,9 @@ export class MixComponent implements OnInit {
 
   //Aenderungen an Mix-Ordner an Server melden
   saveChanges() {
+    this.saving = true;
+
+    //Liste der Anederung erstellen und an Server schicken
     this.mixFiles.forEach((value, index) => {
 
       //Zwischen alten Dateien (bereits im Mix-Ordner) und neuen Dateien (noch nicht im Mix-Ordner) unterscheiden

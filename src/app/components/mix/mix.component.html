@@ -82,9 +82,16 @@
     <hr>
 
     <!-- Anederungen auf Server speichern, disabled wenn keine Aenderungen vorliegen -->
-    <button class="mx-2 mb-2 btn mh-bg-primary"
+    <button class="ml-2 mb-2 btn"
+            [ngClass]="{
+                'mh-bg-primary': hasUnsavedChanges,
+                'bg-secondary opacity-30': !hasUnsavedChanges}"
             [disabled]="!hasUnsavedChanges"
             (click)="saveChanges()">Speichern</button>
+
+    <!-- Spinner waehrend Speichervorgang -->
+    <i *ngIf="saving"
+       class="ml-2 fa fa-spinner fa-spin"></i>
 </div>
 
 <!-- Anzeigen, wenn Pi heruntergefahren wurde -->
