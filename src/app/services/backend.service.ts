@@ -102,18 +102,25 @@ export class BackendService {
     //Ist die App gerade mit dem WSS verbunden?
     connected$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+    //Websocket erstellen, von dort erhaelt man die JSON-Infos ueber verfuegbare Playlists
     constructor(private http: HttpClient, private fs: ResultfilterService, private modeFilterPipe: ModeFilterPipe, private searchFilterPipe: SearchFilterPipe, private orderByPipe: OrderByPipe) {
-
-        //Websocket erstellen
         this.createWebsocket();
+    }
+
+    //Subscriptions erstellen, die die komplette JSON-Liste filtern
+    finishInit() {
 
         //Wenn sich der Modus aendert
         this.modeBS.subscribe(mode => {
 
-            //Trefferliste und Allowrandom apnassen
-            if (this.itemListFull) {
-                this.setValuesForMode();
-            }
+            //Wert in BS setzen, ob Random in diesem Modus erlaubt ist
+            this.allowRandomBS.next(this.itemListFull[this.modeBS.getValue()].allowRandom);
+
+            //Filter-Modus-Liste des aktuellen Modus setzen
+            this.modeFilterListBS.next(this.itemListFull[this.modeBS.getValue()].filter);
+
+            //Filterte Liste erstellen
+            this.filterItemList();
         });
 
         //Aenderungen an ModeFilter abbonieren, speichern und Itemliste neu erstellen
@@ -149,20 +156,18 @@ export class BackendService {
 
     //Wenn Modus / Filter / Sortierung angepasst wurde, muss Itemliste neu erstellt / gefiltert / sortiert werden
     filterItemList() {
-        if (this.itemListFull) {
 
-            //Mode-Filter auf Items dieses Modus anwenden
-            let filteredItemList = this.modeFilterPipe.transform(this.itemListFull[this.modeBS.getValue()].items, this.modeFilter);
+        //Mode-Filter auf Items dieses Modus anwenden
+        let filteredItemList = this.modeFilterPipe.transform(this.itemListFull[this.modeBS.getValue()].items, this.modeFilter);
 
-            //Suchfeld-Filter anwenden
-            filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm, this.searchIncludeTracks);
+        //Suchfeld-Filter anwenden
+        filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm, this.searchIncludeTracks);
 
-            //Sortierung anwenden
-            filteredItemList = this.orderByPipe.transform(filteredItemList, this.orderField, this.reverseOrder);
+        //Sortierung anwenden
+        filteredItemList = this.orderByPipe.transform(filteredItemList, this.orderField, this.reverseOrder);
 
-            //neue Itemliste in BS schieben
-            this.itemListFilteredBS.next(filteredItemList);
-        }
+        //neue Itemliste in BS schieben
+        this.itemListFilteredBS.next(filteredItemList);
     }
 
     getMode() {
@@ -274,8 +279,8 @@ export class BackendService {
                 case "mainJSON":
                     this.itemListFull = value;
 
-                    //Passend filtern anhand Modus
-                    this.setValuesForMode();
+                    //Subscriptions anlegen, damit Aenderungen an Mode, etc. auf itemList angewendet werden
+                    this.finishInit();
                     break;
 
                 case "random":
@@ -373,19 +378,6 @@ export class BackendService {
 
     getConnected() {
         return this.connected$;
-    }
-
-    //Trefferliste fuer Oberflaeche (welche Playlists auswaehlbar) anhand des gewaehlten Modes filtern
-    setValuesForMode() {
-
-        //Wert in BS setzen, ob Random in diesem Modus erlaubt ist
-        this.allowRandomBS.next(this.itemListFull[this.modeBS.getValue()].allowRandom);
-
-        //Filter-Modus-Liste des aktuellen Modus setzen
-        this.modeFilterListBS.next(this.itemListFull[this.modeBS.getValue()].filter);
-
-        //Filterte Liste erstellen
-        this.filterItemList();
     }
 
     //App aktivieren = WSS starten
