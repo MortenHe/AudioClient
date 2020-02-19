@@ -121,6 +121,7 @@
         "name": "Nola Note - Auf musikalischer Weltreise",
         "file": "nola-note-weltreise-1",
         "active": true,
+        "rfid": "0011804257",
         "length": "00:51:12",
         "tracks": [
             "Die Reise beginnt... auf nach Mexiko",
@@ -223,10 +224,11 @@
         ]
     },
     {
-        "name": "Babylove Kinderlieder",
+        "name": "DM Babylove Kinderlieder",
         "file": "babylove-kinderlieder",
         "length": "00:22:23",
         "active": true,
+        "rfid": "0011877243",
         "tracks": [
             "Es tanzt der Bi-Ba-Butzemann",
             "Kuckuck, Kuckuck, ruft's aus dem Wald",
@@ -339,6 +341,7 @@
         "name": "Turn-Tier-Lieder im Zoo",
         "file": "turn-tier-lieder",
         "active": true,
+        "rfid": "0011846051",
         "length": "00:39:49",
         "tracks": [
             "Die Spatz-Idee",
@@ -395,17 +398,31 @@
         ]
     },
     {
+        "name": "Carus - Kinderlieder",
+        "file": "carus-kinderlieder",
+        "active": true,
+        "length": "01:12:41",
+        "tracks": []
+    },
+    {
+        "name": "Carus - Wiegenlieder",
+        "file": "carus-wiegenlieder",
+        "active": true,
+        "length": "01:18:10",
+        "tracks": []
+    },
+    {
         "name": "MIX",
         "file": "mix",
         "active": true,
-        "rfid": "0004603223",
+        "rfid": "0011786870",
         "length": null,
         "tracks": []
     },
     {
         "name": "MIX",
         "file": "mix",
-        "rfid": "0003289532",
+        "rfid": "0011777896",
         "active": false,
         "length": null,
         "tracks": []

@@ -4,6 +4,7 @@
         "file": "anne-kaffeekanne",
         "length": "00:39:33",
         "active": true,
+        "rfid": "0011782377",
         "tracks": [
             "Lied vom Wecken",
             "Vom Laufenlernen",
@@ -48,6 +49,7 @@
         "file": "spatz",
         "length": "00:35:26",
         "active": true,
+        "rfid": "0011812552",
         "tracks": [
             "Das Würmchen",
             "Das kleine bunte Trampeltier",

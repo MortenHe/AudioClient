@@ -10,6 +10,7 @@
         "name": "Frieder - Wieder schreit der Frieder: Oma!",
         "file": "frieder-wieder-schreit",
         "active": true,
+        "rfid": "0011833753",
         "length": "01:16:17",
         "tracks": [
             "Regen",
@@ -36,6 +37,7 @@
         "name": "Joker",
         "file": "joker",
         "active": false,
+        "rfid": "0003289532",
         "length": null,
         "tracks": []
     }

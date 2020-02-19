@@ -11,6 +11,7 @@
         "name": "Mama Muh - Fährt Schlitten, im Dunkeln und Sankta Mucia",
         "file": "schlitten",
         "active": true,
+        "rfid": "0012037244",
         "length": "00:41:19",
         "tracks": []
     },
@@ -18,6 +19,7 @@
         "name": "Mama Muh - Der Kletterbaum",
         "file": "kletterbaum",
         "active": true,
+        "rfid": "0011873698",
         "length": "00:36:05",
         "tracks": []
     }

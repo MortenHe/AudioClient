@@ -97,6 +97,7 @@
         "file": "starke-kinder",
         "length": "00:38:59",
         "active": true,
+        "rfid": "0011778929",
         "tracks": [
             "Starke Kinder",
             "Kleine Europäer",
@@ -116,6 +117,7 @@
         "file": "vogelhochzeit",
         "length": "00:27:53",
         "active": true,
+        "rfid": "0011803746",
         "tracks": [
             "Ein Vogel wollte Hochzeit machen",
             "Hoch in der Luft",
