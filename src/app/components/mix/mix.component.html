@@ -6,8 +6,17 @@
     <div class="header row no-gutters align-items-center py-1 px-2">
 
         <!-- Link auf Player -->
-        <div class="font-weight-bold ml-2 cursor-pointer"
-             routerLink="/">Player</div>
+        <div class="ml-2 cursor-pointer"
+             routerLink="/">
+            <i class="fa fa-chevron-left"></i>
+            <span class="ml-2">Zum Player</span></div>
+
+        <!-- Mix Playlist starten -->
+        <div class="ml-3"
+             (click)="startMixFolder()">
+            <i class="fa fa-play"></i>
+            <span class="ml-2">Mix starten</span>
+        </div>
 
         <!-- Countdown -->
         <countdown class="ml-auto"></countdown>
@@ -62,7 +71,7 @@
     <!-- Sortierbare Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
     <div class="mx-2 mt-3">
         <div [sortablejs]="mixFiles"
-             (end)=sortDone($event)>
+             (end)=sortDone()>
             <div *ngFor="let mixFile of mixFiles, index as index"
                  class="d-flex align-items-center mb-2">
 
