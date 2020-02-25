@@ -26,6 +26,20 @@
         ]
     },
     {
+        "name": "Das Sams - 1 - Eine Woche voller Samstage (1)",
+        "file": "sams-1-woche-voller-samstage-1",
+        "active": true,
+        "length": "00:42:50",
+        "tracks": []
+    },
+    {
+        "name": "Das Sams - 2 - Eine Woche voller Samstage (2)",
+        "file": "sams-2-woche-voller-samstage-2",
+        "active": true,
+        "length": "00:51:44",
+        "tracks": []
+    },
+    {
         "name": "Joker",
         "file": "joker",
         "active": true,
