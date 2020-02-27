@@ -10,7 +10,7 @@ const connection = require("./connection.js");
 const targetMachine = process.argv[2] || "pw";
 
 //Dort liegen / dorthin kommen die Dateien
-const localAudioDir = "C:/Users/Martin/Desktop/media/done/" + targetMachine + "/audio";
+const localAudioDir = require("./config.js").mediaDir + "/" + targetMachine + "/audio";
 const remoteAudioDir = "/media/usb_audio/audio";
 
 console.log("upload audio files from " + localAudioDir);

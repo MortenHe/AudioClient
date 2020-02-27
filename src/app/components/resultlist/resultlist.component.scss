@@ -8,12 +8,13 @@
     background: $color-light-bg;
 
     .joker-style {
-        color: pink;
+        color: grey;
+        line-height: 0;
         height: 24px;
         border-radius: 100%;
 
         &:hover {
-            background: rgba(pink, .3);
+            background: rgba(grey, .3);
         }
     }
 }

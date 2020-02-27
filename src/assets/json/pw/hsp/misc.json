@@ -1,5 +1,21 @@
 [
     {
+        "name": "Joker",
+        "file": "joker",
+        "active": true,
+        "rfid": "0000110189",
+        "length": null,
+        "tracks": []
+    },
+    {
+        "name": "Joker",
+        "file": "joker",
+        "active": false,
+        "rfid": "0003289532",
+        "length": null,
+        "tracks": []
+    },
+    {
         "name": "Der Eisenofen",
         "file": "eisenofen",
         "active": true,
@@ -40,19 +56,10 @@
         "tracks": []
     },
     {
-        "name": "Joker",
-        "file": "joker",
+        "name": "Das Sams - 3 - Am Samstag kam das Sams zurück",
+        "file": "sams-3-am-samstag-kam-das-sams-zurueck",
         "active": true,
-        "rfid": "0000110189",
-        "length": null,
-        "tracks": []
-    },
-    {
-        "name": "Joker",
-        "file": "joker",
-        "active": false,
-        "rfid": "0003289532",
-        "length": null,
+        "length": "00:54:42",
         "tracks": []
     }
 ]

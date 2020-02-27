@@ -1,3 +1,7 @@
+//Fuer Playlists die JSON-Info erstellen
+//Praefix "Bob der Baumeister" fuer label und keine Tracknamen auswerten
+//node .\createAudioJsonObject.js --prefix="Bob der Baumeister" notracks
+
 //libraries laden fuer Dateizugriff
 const fs = require('fs-extra');
 const path = require('path');
@@ -7,7 +11,14 @@ const mp3Duration = require('mp3-duration');
 const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
-dataDir = "C:/Users/Martin/Desktop/media/done/pw/audio";
+const mediaDir = require("./config.js").mediaDir + "/pw/audio";
+
+//Erst ab dem 3. Parameter auswerten ()
+const argv = require('minimist')(process.argv.slice(2));
+
+//Soll das Label einen Praefix bekommen (z.B. Bob der Baumeister)?
+const noTracks = argv["_"].includes("notracks") || false;
+const prefix = argv["prefix"] || "";
 
 //lokale Items (z.B. Audio-Ordner) sammeln
 outputArray = [];
@@ -19,10 +30,10 @@ const durationPromises = [];
 totalDuration = [];
 
 //Ueber ueber filter-dirs des aktuellen modes gehen (hsp, kindermusik,...)
-fs.readdirSync(dataDir).forEach(folder => {
+fs.readdirSync(mediaDir).forEach(folder => {
 
     //Wenn es ein Ordner ist
-    let stat = fs.statSync(dataDir + "/" + folder);
+    let stat = fs.statSync(mediaDir + "/" + folder);
     if (stat && stat.isDirectory()) {
 
         //15-der-rote-hahn -> 15 der rote hahn
@@ -38,13 +49,13 @@ fs.readdirSync(dataDir).forEach(folder => {
 
         //JSON-Objekt fuer diese Folge erstellen
         outputArray[folder] = {
-            "name": " - " + name,
+            "name": prefix + " - " + name,
             "file": folder,
             "active": true
         };
 
         //Ueber Tracks des Ordners gehen
-        fs.readdir(dataDir + "/" + folder, (err, files) => {
+        fs.readdir(mediaDir + "/" + folder, (err, files) => {
 
             //Tracks sammeln und Gesamtdauer ermitteln
             tracks[folder] = [];
@@ -54,23 +65,27 @@ fs.readdirSync(dataDir).forEach(folder => {
             for (let file of files) {
                 if (path.extname(file).toLowerCase() === '.mp3') {
 
-                    //Tracks per Promise sammeln
-                    trackPromises.push(new Promise((resolve, reject) => {
-                        if (err) {
-                            reject(err.message);
-                        }
+                    //Wenn Tracknamen ausgewertet werden sollen
+                    if (!noTracks) {
 
-                        //Dateinamen kuerzen und sammeln -> Fuehrende Zahlen entfernen und Endung .mp3 mit Hilfe von Gruppe mit OR ( | )
-                        fileNameShort = file.replace(/(^\d\d ?-? ?|.mp3$)/g, '');
-                        tracks[folder].push(fileNameShort);
-                        resolve();
-                    }));
+                        //Tracks per Promise sammeln
+                        trackPromises.push(new Promise((resolve, reject) => {
+                            if (err) {
+                                reject(err.message);
+                            }
+
+                            //Dateinamen kuerzen und sammeln -> Fuehrende Zahlen entfernen und Endung .mp3 mit Hilfe von Gruppe mit OR ( | )
+                            fileNameShort = file.replace(/(^\d\d ?-? ?|.mp3$)/g, '');
+                            tracks[folder].push(fileNameShort);
+                            resolve();
+                        }));
+                    }
 
                     //Gesamtlaenge ermitteln
                     durationPromises.push(new Promise((resolve, reject) => {
 
                         //mp3 Laenge ermitteln
-                        mp3Duration(dataDir + "/" + folder + "/" + file, (err, duration) => {
+                        mp3Duration(mediaDir + "/" + folder + "/" + file, (err, duration) => {
                             if (err) {
                                 reject(err.message);
                             }
