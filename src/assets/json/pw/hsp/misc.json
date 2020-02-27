@@ -28,18 +28,7 @@
         "active": true,
         "rfid": "0011833753",
         "length": "01:16:17",
-        "tracks": [
-            "Regen",
-            "Roboter",
-            "Feiern wie die Großen",
-            "Nikolaus",
-            "Lahmes Bein",
-            "Sonntag Mittagsschlaf",
-            "Neue Schuhe",
-            "Räuber",
-            "Eis holen",
-            "Im Schrank"
-        ]
+        "tracks": []
     },
     {
         "name": "Das Sams - 1 - Eine Woche voller Samstage (1)",
@@ -49,14 +38,14 @@
         "tracks": []
     },
     {
-        "name": "Das Sams - 2 - Eine Woche voller Samstage (2)",
+        "name": "Das Sams - 1 - Eine Woche voller Samstage (2)",
         "file": "sams-2-woche-voller-samstage-2",
         "active": true,
         "length": "00:51:44",
         "tracks": []
     },
     {
-        "name": "Das Sams - 3 - Am Samstag kam das Sams zurück",
+        "name": "Das Sams - 2 - Am Samstag kam das Sams zurück",
         "file": "sams-3-am-samstag-kam-das-sams-zurueck",
         "active": true,
         "length": "00:54:42",

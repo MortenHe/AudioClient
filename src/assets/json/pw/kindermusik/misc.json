@@ -1,5 +1,21 @@
 [
     {
+        "name": "MIX",
+        "file": "mix",
+        "active": true,
+        "rfid": "0011786870",
+        "length": null,
+        "tracks": []
+    },
+    {
+        "name": "MIX",
+        "file": "mix",
+        "rfid": "0011777896",
+        "active": false,
+        "length": null,
+        "tracks": []
+    },
+    {
         "name": "Deutsch",
         "file": "deutsch",
         "active": true,
@@ -151,6 +167,7 @@
         "name": "Der Löwe beim Frisör",
         "file": "loewe-frisoer",
         "active": true,
+        "rfid": "0011800072",
         "length": "00:50:52",
         "tracks": [
             "Der Tausendfüßler",
@@ -246,6 +263,7 @@
         "name": "22 Mitmachlieder",
         "file": "mitmachlieder",
         "length": "00:42:29",
+        "rfid": "0011903298",
         "active": true,
         "tracks": [
             "Hallo, Hallo, schön dass Du da bist",
@@ -276,6 +294,7 @@
         "name": "1, 2, 3 im Sauseschritt",
         "file": "sauseschritt",
         "length": "00:46:47",
+        "rfid": "0011778779",
         "active": true,
         "tracks": [
             "Jetzt geht es los",
@@ -300,6 +319,7 @@
         "name": "Kalle Klang & die Flohtöne",
         "file": "kalle-klang",
         "active": true,
+        "rfid": "0011781330",
         "length": "01:10:02",
         "tracks": [
             "Alle Vögel sind schon da",
@@ -372,6 +392,7 @@
         "name": "Bauernhof Olympiade",
         "file": "bauernhof-olympiade",
         "active": true,
+        "rfid": "0011777842",
         "length": "00:45:17",
         "tracks": [
             "Die Idee",
@@ -409,22 +430,6 @@
         "file": "carus-wiegenlieder",
         "active": true,
         "length": "01:18:10",
-        "tracks": []
-    },
-    {
-        "name": "MIX",
-        "file": "mix",
-        "active": true,
-        "rfid": "0011786870",
-        "length": null,
-        "tracks": []
-    },
-    {
-        "name": "MIX",
-        "file": "mix",
-        "rfid": "0011777896",
-        "active": false,
-        "length": null,
         "tracks": []
     }
 ]

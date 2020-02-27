@@ -3,6 +3,7 @@
         "name": "Leo Lausemaus - 01 - Will nicht essen",
         "file": "01",
         "length": "00:46:34",
+        "rfid": "0011814948",
         "active": true,
         "tracks": [
             "Will nicht essen",
@@ -15,6 +16,7 @@
         "name": "Leo Lausemaus - 02 - Will nicht in den Kindergarten",
         "file": "02",
         "length": "00:49:55",
+        "rfid": "0011781059",
         "active": true,
         "tracks": [
             "Will nicht in den Kindergarten",
@@ -40,6 +42,7 @@
         "name": "Leo Lausemaus - 04 - Will nicht baden",
         "file": "04",
         "active": true,
+        "rfid": "0011820563",
         "length": "00:47:38",
         "tracks": [
             "Will nicht baden",
@@ -52,6 +55,7 @@
         "name": "Leo Lausemaus - 05 - Und sein erster Wackelzahn",
         "file": "05",
         "length": "00:44:31",
+        "rfid": "0011921294",
         "active": true,
         "tracks": [
             "Und sein erster Wackelzahn",
@@ -129,6 +133,7 @@
         "name": "Leo Lausemaus - 11 - Will alles alleine machen",
         "file": "11",
         "active": true,
+        "rfid": "0011859575",
         "length": "00:42:37",
         "tracks": [
             "Will alles alleine machen",

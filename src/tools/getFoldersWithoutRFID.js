@@ -24,4 +24,5 @@ for (const file of files) {
 
 //Trefferliste sortieren und ausgeben
 foldersWithoutRFID.sort();
+console.log(foldersWithoutRFID.length + " folders without rfid");
 console.log(foldersWithoutRFID);

@@ -23,6 +23,7 @@
         "name": "Rolf Zuckowski - Frag mir doch kein Loch in'n Bauch",
         "file": "loch-bauch",
         "length": "00:40:42",
+        "rfid": "0011777566",
         "active": true,
         "tracks": [
             "Frag' mir doch kein Loch in 'n Bauch",
@@ -44,6 +45,7 @@
         "name": "Rolf Zuckowski - Radio Lollipop",
         "file": "lollipop",
         "length": "00:36:03",
+        "rfid": "0011842626",
         "active": true,
         "tracks": [
             "Auf Sendersuche",
@@ -71,6 +73,7 @@
         "name": "Rolf Zuckowski - Rolfs Schulweghitparade",
         "file": "schulweghitparade",
         "length": "00:48:38",
+        "rfid": "0011784825",
         "active": true,
         "tracks": [
             "Mein Weg zur Schule",

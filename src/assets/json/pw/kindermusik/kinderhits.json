@@ -3,6 +3,7 @@
         "name": "Giraffenaffen 3",
         "file": "giraffenaffen3",
         "length": "00:51:01",
+        "rfid": "0011848504",
         "active": true,
         "tracks": [
             "Giraffenaffenzeit",
@@ -28,6 +29,7 @@
         "name": "Ministars '92",
         "file": "ministars-92",
         "length": "00:49:42",
+        "rfid": "0011827588",
         "active": true,
         "tracks": [
             "Ein Lied für dich",
@@ -52,6 +54,7 @@
         "name": "Kinderhitparade",
         "file": "kinderhitparade",
         "length": "00:42:31",
+        "rfid": "0011792876",
         "active": true,
         "tracks": [
             "Alles Bingo",
@@ -72,6 +75,7 @@
         "name": "Radio Kinderzimmer - Wer hat die Kokosnuss geklaut",
         "file": "radio-kinderzimmer",
         "active": true,
+        "rfid": "0011781439",
         "length": "00:46:20",
         "tracks": [
             "Willkommen bei Radio Kinderzimmer",
