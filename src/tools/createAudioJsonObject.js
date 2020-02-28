@@ -123,6 +123,7 @@ fs.readdirSync(mediaDir).forEach(folder => {
                 outputArray[folder]["tracks"] = tracks[folder];
 
                 //JSON-Objekt-Array ausgeben
+                console.log(",");
                 console.log(JSON.stringify(outputArray[folder], null, 2));
             }).catch((err) => {
                 console.log('error:', err);
