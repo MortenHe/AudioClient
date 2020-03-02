@@ -21,14 +21,14 @@
         "tracks": []
     },
     {
-        "name": "conni - 04 - Lernt reiten und geht zelten",
+        "name": "Conni - 04 - Lernt reiten und geht zelten",
         "file": "04-lernt-reiten-und-geht-zelten",
         "active": true,
         "length": "00:41:37",
         "tracks": []
     },
     {
-        "name": "conni - 05 - Erster Flug und geht zum Zahnarzt",
+        "name": "Conni - 05 - Connis erster Flug und geht zum Zahnarzt",
         "file": "05-erster-flug-und-geht-zum-zahnarzt",
         "active": true,
         "length": "00:39:40",
@@ -42,10 +42,31 @@
         "tracks": []
     },
     {
+        "name": "Conni - 07 - Zieht um und macht Musik",
+        "file": "07-zieht-um-und-macht-musik",
+        "active": true,
+        "length": "00:41:55",
+        "tracks": []
+    },
+    {
+        "name": "Conni - 08 - Backt Pizza und lernt Rad fahren",
+        "file": "08-backt-pizza-und-lernt-rad-fahren",
+        "active": true,
+        "length": "00:42:22",
+        "tracks": []
+    },
+    {
         "name": "Conni - 09 - Im Krankenhaus und lernt tanzen",
         "file": "09-im-krankenhaus-und-lernt-tanzen",
         "active": true,
         "length": "00:49:53",
+        "tracks": []
+    },
+    {
+        "name": "Conni - 10 - Der Osterhase und spielt Fußball",
+        "file": "10-der-osterhase-und-spielt-fussball",
+        "active": true,
+        "length": "00:45:43",
         "tracks": []
     },
     {
@@ -67,6 +88,13 @@
         "file": "13-der-liebesbrief",
         "active": true,
         "length": "00:47:24",
+        "tracks": []
+    },
+    {
+        "name": "Conni - 14 - Reist ans Mittelmeer",
+        "file": "14-reist-ans-mittelmeer",
+        "active": true,
+        "length": "00:53:15",
         "tracks": []
     },
     {
