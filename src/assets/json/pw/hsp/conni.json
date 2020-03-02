@@ -21,6 +21,20 @@
         "tracks": []
     },
     {
+        "name": "conni - 04 - Lernt reiten und geht zelten",
+        "file": "04-lernt-reiten-und-geht-zelten",
+        "active": true,
+        "length": "00:41:37",
+        "tracks": []
+    },
+    {
+        "name": "conni - 05 - Erster Flug und geht zum Zahnarzt",
+        "file": "05-erster-flug-und-geht-zum-zahnarzt",
+        "active": true,
+        "length": "00:39:40",
+        "tracks": []
+    },
+    {
         "name": "Conni - 06 - Feiert Weihnachten und fährt Ski",
         "file": "06-feiert-weihnachten-und-faehrt-ski",
         "active": true,
