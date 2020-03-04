@@ -12,7 +12,7 @@
             <span class="ml-2">Zum Player</span></div>
 
         <!-- Mix Playlist starten -->
-        <div class="ml-3"
+        <div class="ml-3 cursor-pointer"
              (click)="startMixFolder()">
             <i class="fa fa-play"></i>
             <span class="ml-2">Mix starten</span>
@@ -27,6 +27,9 @@
         <!-- Shutdown -->
         <picontrol></picontrol>
     </div>
+
+    <!-- Name der aktuellen Playlist -->
+    <div class="mb-2 p-1 pl-2 current-playlist">Gerade läuft: <b>{{activeItemName}}</b></div>
 
     <!-- 2. Zeile: Suchfeld -->
     <div class="d-flex mx-2 mt-3">
@@ -79,7 +82,7 @@
                 <i class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle"></i>
 
                 <!-- Name des Titels -->
-                <span class="ml-2">{{mixFile.path | fileName:mixFile.type === 'old'}}</span>
+                <span class="ml-2 flex-grow-1">{{mixFile.path | fileName:mixFile.type === 'old'}}</span>
 
                 <!-- Titel aus Liste loeschen -->
                 <i class="ml-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"

@@ -13,7 +13,7 @@
         height: 24px;
         border-radius: 100%;
 
-        &:hover {
+        &:hover:not(:disabeld) {
             background: rgba(grey, .3);
         }
     }

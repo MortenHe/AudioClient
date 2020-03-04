@@ -12,10 +12,14 @@
   <!-- Zeile mit Joker-Buttons, (hover-) Playsymbol, Name der Playlist und Laenge -->
   <div class="row no-gutters align-items-center flex-nowrap">
 
-    <!-- Joker setzen Button -->
+    <!-- Joker setzen Button, Spinner wenn Joker auf Server gesetzt wird -->
     <button *ngIf="showJoker"
             [disabled]="jokerLock"
-            class="btn btn-sm fa fa-smile-o p-1 mr-2 joker-style"
+            class="btn btn-sm fa p-1 mr-2 joker-style"
+            [ngClass]="{
+              'fa-smile-o': !jokerLock || item !== clickedJokerItem,
+              'fa-spinner fa-spin': jokerLock && item === clickedJokerItem
+            }"
             (click)="setJoker(item)"></button>
 
     <!-- Play-Symbol wird nur bei hover und active angezeigt und nicht im Jokermodus-->

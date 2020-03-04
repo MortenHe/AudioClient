@@ -15,6 +15,9 @@ export class MixComponent implements OnInit {
     //Shutdown
     shutdown$;
 
+    //Name der aktuellen Playlist: Rolf Zuckowski - Starke Kinder
+    activeItemName: string = "";
+
     //Suchfeld
     searchField = new FormControl("");
 
@@ -48,6 +51,11 @@ export class MixComponent implements OnInit {
 
         //Shutdown Zustand abbonieren
         this.shutdown$ = this.bs.getShutdown();
+
+        //Name der aktuellen Playlist abbonieren
+        this.bs.getActiveItemName().subscribe(activeItemName => {
+            this.activeItemName = activeItemName
+        });
 
         //Liste der auswaehlbaren Files abbonieren
         this.bs.getSearchFiles().subscribe(searchFiles => {
@@ -174,11 +182,14 @@ export class MixComponent implements OnInit {
                 //Neue Datei in den Mix-Ordner kopieren
                 case "new":
 
-                    //Dateiname: MH - At Ease.mp3
+                    //Dateiname: 02 - MH - At Ease.mp3
                     const origFileName = path.basename(value.path);
 
+                    //Zahlenpraefix kuerzen: 02 - MH - At Ease -> MH - At Ease.mp3
+                    const shortFileName = origFileName.replace(/^\d{2} - /, '');
+
                     //Neuer Dateiname mit Praefix anhand der Position in der Liste: 03 + " - " +  MH - At Ease.mp3 =>  03 - MH - At Ease.mp3
-                    const prefixedFileName = (index + 1).toString().padStart(2, '0') + " - " + origFileName;
+                    const prefixedFileName = (index + 1).toString().padStart(2, '0') + " - " + shortFileName;
 
                     //Kopieren in den Mix-Ordner vormerken
                     this.actionList.push({

@@ -2,4 +2,7 @@ module.exports = {
 
     //Wo liegen die Dateien
     mediaDir: "C:/Users/Martin/Desktop/media/done",
+
+    //Wo liegen die Soundquiz-Dateien
+    soundquizDir: "C:/Users/Martin/Desktop/Google Drive/Martin/Audio Player/Soundquiz Sounds"
 };
