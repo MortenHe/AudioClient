@@ -2,4 +2,4 @@
 <button *ngFor="let mode of modes"
         class="btn"
         [class.active-mode]="activeMode === mode.id"
-        (click)="setMode(mode.id)"><span>{{mode.label}}</span></button>
+        (click)="setMode(mode.id)"><span class="hover-underline">{{mode.label}}</span></button>
