@@ -16,6 +16,14 @@
         "tracks": []
     },
     {
+        "name": "MIX",
+        "file": "mix",
+        "rfid": "0000159794",
+        "active": false,
+        "length": null,
+        "tracks": []
+    },
+    {
         "name": "Deutsch",
         "file": "deutsch",
         "active": true,

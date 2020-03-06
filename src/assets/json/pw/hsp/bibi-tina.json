@@ -11,6 +11,7 @@
         "name": "Bibi und Tina - 11 - Papis Pony",
         "file": "11-papis-pony",
         "active": true,
+        "rfid": "0011782141",
         "length": "00:41:26",
         "tracks": []
     },
@@ -66,6 +67,7 @@
         "name": "Bibi und Tina - 26 - Die Osterferien",
         "file": "26-die-osterferien",
         "active": true,
+        "rfid": "0011844046",
         "length": "00:42:37",
         "tracks": []
     },

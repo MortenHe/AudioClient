@@ -3,6 +3,7 @@
         "name": "Conni - 01 - Kommt in den Kindergarten und macht das Seepferdchen",
         "file": "01-kommt-in-den-kindergarten-und-macht-das-seepferdchen",
         "active": true,
+        "rfid": "0003907553",
         "length": "00:45:43",
         "tracks": []
     },
@@ -17,6 +18,7 @@
         "name": "Conni - 03 - Auf dem Bauernhof und das neue Baby",
         "file": "03-auf-dem-bauernhof-und-das-neue-baby",
         "active": true,
+        "rfid": "0011828533",
         "length": "00:44:15",
         "tracks": []
     },
@@ -24,6 +26,7 @@
         "name": "Conni - 04 - Lernt reiten und geht zelten",
         "file": "04-lernt-reiten-und-geht-zelten",
         "active": true,
+        "rfid": "0000869067",
         "length": "00:41:37",
         "tracks": []
     },
@@ -31,6 +34,7 @@
         "name": "Conni - 05 - Connis erster Flug und geht zum Zahnarzt",
         "file": "05-erster-flug-und-geht-zum-zahnarzt",
         "active": true,
+        "rfid": "0003908996",
         "length": "00:39:40",
         "tracks": []
     },
@@ -45,6 +49,7 @@
         "name": "Conni - 07 - Zieht um und macht Musik",
         "file": "07-zieht-um-und-macht-musik",
         "active": true,
+        "rfid": "0000122092",
         "length": "00:41:55",
         "tracks": []
     },
@@ -66,6 +71,7 @@
         "name": "Conni - 10 - Der Osterhase und spielt Fußball",
         "file": "10-der-osterhase-und-spielt-fussball",
         "active": true,
+        "rfid": "0011794051",
         "length": "00:45:43",
         "tracks": []
     },
@@ -80,6 +86,7 @@
         "name": "Conni - 12 - Auf dem Reiterhof",
         "file": "12-auf-dem-reiterhof",
         "active": true,
+        "rfid": "0011814136",
         "length": "00:49:44",
         "tracks": []
     },
@@ -94,6 +101,7 @@
         "name": "Conni - 14 - Reist ans Mittelmeer",
         "file": "14-reist-ans-mittelmeer",
         "active": true,
+        "rfid": "0000825640",
         "length": "00:53:15",
         "tracks": []
     },
@@ -115,6 +123,7 @@
         "name": "Conni - 17 - Der verschwundene Hund",
         "file": "17-der-verschwundene-hund",
         "active": true,
+        "rfid": "0011801914",
         "length": "00:47:55",
         "tracks": []
     },
@@ -122,6 +131,7 @@
         "name": "Conni - 18 - Rettet Oma",
         "file": "18-rettet-oma",
         "active": true,
+        "rfid": "0000868530",
         "length": "00:48:15",
         "tracks": []
     },
@@ -129,6 +139,7 @@
         "name": "Conni - 19 - Lernt backen und hilft Mama",
         "file": "19-lernt-backen-und-hilft-mama",
         "active": true,
+        "rfid": "0011830112",
         "length": "00:44:37",
         "tracks": []
     },
@@ -136,6 +147,7 @@
         "name": "Conni - 20 - Das Geheimnis der Koi",
         "file": "20-das-geheimnis-der-koi",
         "active": true,
+        "rfid": "0000178846",
         "length": "01:03:48",
         "tracks": []
     },
@@ -143,6 +155,7 @@
         "name": "Conni - 21 - Schläft im Kindergarten und geht in den Zoo",
         "file": "21-schlaeft-im-kindergarten-und-geht-in-den-zoo",
         "active": true,
+        "rfid": "0011808948",
         "length": "00:46:52",
         "tracks": []
     },
@@ -192,6 +205,7 @@
         "name": "Conni - 28 - Das tanzende Pony",
         "file": "28-das-tanzende-pony",
         "active": true,
+        "rfid": "0011810138",
         "length": "01:10:36",
         "tracks": []
     },
@@ -213,6 +227,7 @@
         "name": "Conni - 31 - Ist krank und beim Frisör",
         "file": "31-ist-krank-und-beim-frisoer",
         "active": true,
+        "rfid": "0011819093",
         "length": "00:35:39",
         "tracks": []
     },
@@ -220,6 +235,7 @@
         "name": "Conni - 32 - Rettet die Tiere",
         "file": "32-rettet-die-tiere",
         "active": true,
+        "rfid": "0011775883",
         "length": "01:07:42",
         "tracks": []
     },
@@ -234,6 +250,7 @@
         "name": "Conni - 34 - Ihr Lieblingspony und geht Laterne laufen",
         "file": "34-ihr-lieblingspony-und-geht-laterne-laufen",
         "active": true,
+        "rfid": "0000107972",
         "length": "00:50:25",
         "tracks": []
     },
@@ -262,6 +279,7 @@
         "name": "Conni - 38 - Macht einen Ausflug und geht auf Reisen",
         "file": "38-macht-einen-ausflug-und-geht-auf-reisen",
         "active": true,
+        "rfid": "0011838054",
         "length": "00:47:26",
         "tracks": []
     },
@@ -276,6 +294,7 @@
         "name": "Conni - 40 - Das neue Fohlen",
         "file": "40-das-neue-fohlen",
         "active": true,
+        "rfid": "0005887122",
         "length": "01:11:25",
         "tracks": []
     }

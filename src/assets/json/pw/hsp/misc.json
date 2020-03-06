@@ -34,6 +34,7 @@
         "name": "Das Sams - 1 - Eine Woche voller Samstage (1)",
         "file": "sams-1-woche-voller-samstage-1",
         "active": true,
+        "rfid": "0011850735",
         "length": "00:42:50",
         "tracks": []
     },
@@ -41,6 +42,7 @@
         "name": "Das Sams - 1 - Eine Woche voller Samstage (2)",
         "file": "sams-2-woche-voller-samstage-2",
         "active": true,
+        "rfid": "0000870257",
         "length": "00:51:44",
         "tracks": []
     },
@@ -48,6 +50,7 @@
         "name": "Das Sams - 2 - Am Samstag kam das Sams zurück",
         "file": "sams-3-am-samstag-kam-das-sams-zurueck",
         "active": true,
+        "rfid": "0000832269",
         "length": "00:54:42",
         "tracks": []
     }

@@ -13,6 +13,7 @@
         "name": "Bob der Baumeister - 02 - Yo, wir schaffen das",
         "file": "02-yo",
         "active": true,
+        "rfid": "0011793744",
         "length": "00:49:33",
         "tracks": [
             "Wendy zeigt was sie kann",
@@ -23,6 +24,7 @@
         "name": "Bob der Baumeister - 03 - Alle helfen Bob",
         "file": "03-alle-helfen-bob",
         "active": true,
+        "rfid": "0000111846",
         "length": "00:43:57",
         "tracks": [
             "Bob ist krank",
@@ -33,6 +35,7 @@
         "name": "Bob der Baumeister - 07 - Mixi und das Vogelbaby",
         "file": "07-vogelbaby",
         "active": true,
+        "rfid": "0011952815",
         "length": "00:41:33",
         "tracks": [
             "Mixi und das Vogelbaby",
@@ -70,6 +73,7 @@
         "name": "Bob der Baumeister - 24 - Neue und alte Freunde",
         "file": "24-neue-alte-freunde",
         "active": true,
+        "rfid": "0011833892",
         "length": "00:42:49",
         "tracks": [
             "Rollos neuer Freund",
@@ -80,6 +84,7 @@
         "name": "Bob der Baumeister - 32 - Der Spielplatz",
         "file": "32-spielplatz",
         "active": true,
+        "rfid": "0011808243",
         "length": "00:41:09",
         "tracks": [
             "Der Spielplatz",
