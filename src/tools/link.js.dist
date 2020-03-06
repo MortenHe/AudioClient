@@ -1,0 +1,8 @@
+module.exports = {
+    
+    //Performer fuer CUE-Sheet
+    performer: "Bibi und Tina",
+
+    //Link zu XML-Metadaten
+    url: "https://musicbrainz.org/ws/2/release/bd0b1a03-9ae1-48f9-b0ee-ba33bb8f1f03?inc=aliases+artist-credits+labels+discids+recordings"
+};

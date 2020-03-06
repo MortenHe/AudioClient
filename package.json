@@ -46,6 +46,7 @@
     "ssh2-promise": "^0.1.6",
     "ssh2-sftp-client": "^2.4.3",
     "tslib": "^1.11.1",
+    "xml2js": "^0.4.23",
     "zip-a-folder": "0.0.8",
     "zone.js": "~0.10.2"
   },

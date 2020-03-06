@@ -8,6 +8,13 @@
         "tracks": []
     },
     {
+        "name": "Bibi und Tina - 11 - Papis Pony",
+        "file": "11-papis-pony",
+        "active": true,
+        "length": "00:41:26",
+        "tracks": []
+    },
+    {
         "name": "Bibi und Tina - 13 - Die Wildpferde Teil 1",
         "file": "13-wildpferde1",
         "active": true,
@@ -53,6 +60,13 @@
         "active": true,
         "rfid": "0005041428",
         "length": "00:43:53",
+        "tracks": []
+    },
+    {
+        "name": "Bibi und Tina - 26 - Die Osterferien",
+        "file": "26-die-osterferien",
+        "active": true,
+        "length": "00:42:37",
         "tracks": []
     },
     {
