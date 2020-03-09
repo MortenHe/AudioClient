@@ -5,4 +5,10 @@ module.exports = {
 
     //Wo liegen die Soundquiz-Dateien
     soundquizDir: "C:/Users/Martin/Desktop/Google Drive/Martin/Audio Player/Soundquiz Sounds"
+
+    //Wo liegen die Soundquiz-Bilder
+    soundquizImageDir: "C:/Users/Martin/Desktop/Google Drive/Martin/Audio Player/Karten/Lernspiel",
+
+    //Wo liegt die RFID-Info fuer das Soundquiz
+    soundquizRFIDDir: "C:/Apache24/htdocs/MortenHe/WSRFID/"
 };
