@@ -20,9 +20,9 @@ rfidFile = fs.readJSONSync(link.soundquizRFIDDir + "/config_cards_7070.json");
 const games = ["people", "sounds"];
 
 //RFID-Daten anhnad der Spiele merken
-rfidData = {
-    "people": new Set(),
-    "sounds": new Set()
+rfidData = {};
+for (game of games) {
+    rfidData[game] = new Set();
 }
 
 //Ueber RFID Infos gehen
@@ -33,6 +33,11 @@ for (key in rfidFile) {
     if (obj.games) {
         for (game of obj.games) {
             rfidData[game].add(obj.value);
+
+            //Karten ausgeben, die zwar erfasst sind, aber inaktiv sind oder noch kein korrekte RFID haben
+            if (!obj.active || key.startsWith("todo")) {
+                console.log("no rfid / inactive card: " + key + " = " + obj.value);
+            }
         }
     }
 }
@@ -57,6 +62,7 @@ for (game of games) {
 
     //Union aller Werte
     const allValues = new Set([...questions, ...names, ...pics, ...rfidData[game]]);
+    console.log();
 
     //Welche Fragen-Dateien fehlen?
     const missingQuestions = new Set([...allValues].filter(x => !questions.has(x)));
@@ -81,5 +87,4 @@ for (game of games) {
     if (missingRFID.size) {
         console.log("Fehlender RFID-Eintrag bei " + game + ": " + [...missingRFID].join(', '));
     }
-    console.log();
 }

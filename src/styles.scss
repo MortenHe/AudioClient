@@ -78,10 +78,6 @@ input:disabled+.next-label {
     height: 30px;
     cursor: pointer; //border: 1px solid $color-grey;
     border-radius: 5px;
-
-    &:hover {
-        background: rgba($color-info-blue, .2);
-    }
 }
 
 label {
@@ -278,10 +274,12 @@ label.fa-smile-o {
     border-radius: 5px;
 }
 
-@media (hover: hover) {
-    .hover-underline {
-        &:hover {
-            border-bottom: 2px solid rgba($color-grey, .5);
-        }
+@media (hover: hover) and (pointer: fine) {
+    .hover-underline:hover {
+        border-bottom: 2px solid rgba($color-grey, .5);
+    }
+
+    .tag-sm:hover {
+        background: rgba($color-info-blue, .2);
     }
 }

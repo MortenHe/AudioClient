@@ -9,7 +9,7 @@
         <div class="ml-2 cursor-pointer"
              routerLink="/">
             <i class="fa fa-chevron-left"></i>
-            <span class="ml-2 hover-underline">Zum Player</span></div>
+            <span class="ml-2 hover-underline">Zurück</span></div>
 
         <!-- Mix Playlist starten -->
         <div class="ml-3 cursor-pointer"
@@ -65,7 +65,7 @@
 
             <!-- Name des Titels -->
             <span class="ml-2"
-                  [highlight]="searchTerm">{{searchFile.path | fileName}}</span>
+                  [highlight]="searchTerm">{{searchFile.path | fileName:'digitOnly'}}</span>
         </div>
     </div>
 
@@ -82,7 +82,7 @@
                 <i class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle"></i>
 
                 <!-- Name des Titels -->
-                <span class="ml-2 flex-grow-1">{{mixFile.path | fileName:mixFile.type === 'old'}}</span>
+                <span class="ml-2 flex-grow-1">{{mixFile.path | fileName:'digitOnly'}}</span>
 
                 <!-- Titel aus Liste loeschen -->
                 <i class="ml-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"
