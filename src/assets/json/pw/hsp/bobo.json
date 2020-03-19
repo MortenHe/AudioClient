@@ -72,11 +72,27 @@
             "Bobo geht einkaufen",
             "Bobo ist krank",
             "Bobo bei der Großmutter",
-            "Bobo und der Schlüssel",
+            "Bobo und der Schlüssel Krik Krak",
             "Bobo und die Grillparty",
             "Bobo feiert Mamas Geburtstag",
             "Bobo im Schnee",
             "Bobos Weihnachten"
+        ]
+    },
+    {
+        "name": "Bobo Siebenschläfer - Bobo wird nicht müde",
+        "file": "bobo-wird-nicht-muede",
+        "active": true,
+        "length": "00:41:52",
+        "tracks": [
+            "Bobo und der Schlüssel Krik Krak",
+            "Bobo und die Grillparty",
+            "Bobo und sein Großvater",
+            "Bobos Faulenzermorgen",
+            "Bobo sagt 'Tut nicht weh!'",
+            "Bobo und der Kartonzug",
+            "Bobo beim Kindergartenfest",
+            "Lied für Bobo"
         ]
     }
 ]
