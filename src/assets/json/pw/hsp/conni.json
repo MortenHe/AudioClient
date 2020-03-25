@@ -11,6 +11,7 @@
         "name": "Conni - 02 - Geht zum Arzt und geht in die Schule",
         "file": "02-geht-zum-arzt-und-geht-in-die-schule",
         "active": true,
+        "rfid": "0011806925",
         "length": "00:44:15",
         "tracks": []
     },
@@ -42,6 +43,7 @@
         "name": "Conni - 06 - Feiert Weihnachten und fährt Ski",
         "file": "06-feiert-weihnachten-und-faehrt-ski",
         "active": true,
+        "rfid": "0011927522",
         "length": "00:44:58",
         "tracks": []
     },
@@ -57,6 +59,7 @@
         "name": "Conni - 08 - Backt Pizza und lernt Rad fahren",
         "file": "08-backt-pizza-und-lernt-rad-fahren",
         "active": true,
+        "rfid": "0011951124",
         "length": "00:42:22",
         "tracks": []
     },
@@ -64,6 +67,7 @@
         "name": "Conni - 09 - Im Krankenhaus und lernt tanzen",
         "file": "09-im-krankenhaus-und-lernt-tanzen",
         "active": true,
+        "rfid": "0011818306",
         "length": "00:49:53",
         "tracks": []
     },
@@ -79,6 +83,7 @@
         "name": "Conni - 11 - Bekommt eine Katze und hat Geburtstag",
         "file": "11-bekommt-eine-katze-und-hat-geburtstag",
         "active": true,
+        "rfid": "0011822032",
         "length": "00:49:16",
         "tracks": []
     },
@@ -94,6 +99,7 @@
         "name": "Conni - 13 - Der Liebesbrief",
         "file": "13-der-liebesbrief",
         "active": true,
+        "rfid": "0011790507",
         "length": "00:47:24",
         "tracks": []
     },
@@ -109,13 +115,15 @@
         "name": "Conni - 15 - Geht auf Klassenfahrt",
         "file": "15-geht-auf-klassenfahrt",
         "active": true,
+        "rfid": "0011915962",
         "length": "00:50:47",
         "tracks": []
     },
     {
-        "name": "Conni - 16 - Feiert Geburtstag",
+        "name": "Conni - 16 - FHat Geburtstag",
         "file": "16-feiert-geburtstag",
         "active": true,
+        "rfid": "0011863232",
         "length": "00:54:06",
         "tracks": []
     },
@@ -163,13 +171,15 @@
         "name": "Conni - 22 - Die Jungs von nebenan",
         "file": "22-die-jungs-von-nebenan",
         "active": true,
+        "rfid": "0011784320",
         "length": "00:57:43",
         "tracks": []
     },
     {
-        "name": "Conni - 23 - Das ganz spezielle Weihnachstfest",
-        "file": "23-das-ganz-spezielle-weihnachstfest",
+        "name": "Conni - 23 - Das ganz spezielle Weihnachtsfest",
+        "file": "23-das-ganz-spezielle-weihnachtsfest",
         "active": true,
+        "rfid": "0011849751",
         "length": "01:10:35",
         "tracks": []
     },
@@ -177,6 +187,7 @@
         "name": "Conni - 24 - Das Hochzeitsfest",
         "file": "24-das-hochzeitsfest",
         "active": true,
+        "rfid": "0011811209",
         "length": "01:02:48",
         "tracks": []
     },
@@ -184,6 +195,7 @@
         "name": "Conni - 25 - In der großen Stadt",
         "file": "25-in-der-grossen-stadt",
         "active": true,
+        "rfid": "0011812865",
         "length": "01:05:28",
         "tracks": []
     },
@@ -191,6 +203,7 @@
         "name": "Conni - 26 - Die verflixte 13",
         "file": "26-die-verflixte-13",
         "active": true,
+        "rfid": "0011812417",
         "length": "01:09:02",
         "tracks": []
     },
@@ -198,6 +211,7 @@
         "name": "Conni - 27 - Der Dinoknochen",
         "file": "27-der-dinoknochen",
         "active": true,
+        "rfid": "0011863803",
         "length": "01:06:09",
         "tracks": []
     },
@@ -213,6 +227,7 @@
         "name": "Conni - 29 - Der große Schnee",
         "file": "29-der-grosse-schnee",
         "active": true,
+        "rfid": "0011806978",
         "length": "01:10:54",
         "tracks": []
     },
@@ -220,6 +235,7 @@
         "name": "Conni - 30 - In den Bergen und geht verloren",
         "file": "30-in-den-bergen-und-geht-verloren",
         "active": true,
+        "rfid": "0011831323",
         "length": "00:35:38",
         "tracks": []
     },
@@ -243,6 +259,7 @@
         "name": "Conni - 33 - Die Detektive",
         "file": "33-die-detektive",
         "active": true,
+        "rfid": "0011847636",
         "length": "00:59:33",
         "tracks": []
     },
@@ -258,6 +275,7 @@
         "name": "Conni - 35 - Der Ferienzirkus",
         "file": "35-der-ferienzirkus",
         "active": true,
+        "rfid": "0011794278",
         "length": "01:18:25",
         "tracks": []
     },
@@ -265,6 +283,7 @@
         "name": "Conni - 36 - Die Burg der Vampire",
         "file": "36-die-burg-der-vampire",
         "active": true,
+        "rfid": "0011798504",
         "length": "01:11:34",
         "tracks": []
     },
@@ -272,6 +291,7 @@
         "name": "Conni - 37 - Übernachtet bei Julia und geht nicht mit Fremden mit",
         "file": "37-uebernachtet-bei-julia-und-geht-nicht-mit-fremden-mit",
         "active": true,
+        "rfid": "0011907155",
         "length": "00:31:41",
         "tracks": []
     },
@@ -287,6 +307,7 @@
         "name": "Conni - 39 - Die große Eiszeit",
         "file": "39-die-grosse-eiszeit",
         "active": true,
+        "rfid": "0011798157",
         "length": "01:12:55",
         "tracks": []
     },
