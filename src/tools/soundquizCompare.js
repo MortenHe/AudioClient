@@ -16,7 +16,7 @@ const imageDir = link.soundquizImageDir;
 //RFID-Config einlesen
 rfidFile = fs.readJSONSync(link.soundquizRFIDDir + "/config_cards_7070.json");
 
-//welche Lernspiele gibt es
+//welche Lernspiele gibt es (Rechnen nicht pruefen)
 const games = ["people", "sounds"];
 
 //RFID-Daten anhnad der Spiele merken
@@ -32,11 +32,15 @@ for (key in rfidFile) {
     //Wenn es eine Spielkarte ist, den Wert im passenden Bereich sammeln
     if (obj.games) {
         for (game of obj.games) {
-            rfidData[game].add(obj.value);
 
-            //Karten ausgeben, die zwar erfasst sind, aber inaktiv sind oder noch kein korrekte RFID haben
-            if (!obj.active || key.startsWith("todo")) {
-                console.log("no rfid / inactive card: " + key + " = " + obj.value);
+            //Rechnen nicht pruefen
+            if (game !== "numbers") {
+                rfidData[game].add(obj.value);
+
+                //Karten ausgeben, die zwar erfasst sind, aber inaktiv sind oder noch kein korrekte RFID haben
+                if (!obj.active || key.startsWith("todo")) {
+                    console.log("no rfid / inactive card: " + key + " = " + obj.value);
+                }
             }
         }
     }
