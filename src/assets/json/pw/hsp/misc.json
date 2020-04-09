@@ -16,6 +16,14 @@
         "tracks": []
     },
     {
+        "name": "Joker",
+        "file": "joker",
+        "active": false,
+        "rfid": "0011784466",
+        "length": null,
+        "tracks": []
+    },
+    {
         "name": "Der Eisenofen",
         "file": "eisenofen",
         "active": true,
