@@ -61,5 +61,12 @@
         "rfid": "0000832269",
         "length": "00:54:42",
         "tracks": []
+    },
+    {
+        "name": "Das Sams - 3 - Neue Punkte für das Sams",
+        "file": "sams-4-neue-punkte-fuer-das-sams",
+        "active": true,
+        "length": "00:59:36",
+        "tracks": []
     }
 ]
