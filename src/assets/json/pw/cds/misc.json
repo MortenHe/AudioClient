@@ -37,5 +37,37 @@
             "Antonia",
             "Fanta Bourama"
         ]
+    },
+    {
+        "name": "Autogenes Training",
+        "file": "autogenes-training",
+        "active": true,
+        "length": "01:06:47",
+        "tracks": [
+            "Grundübung zum Stressabbau",
+            "Die Konzentration steigern",
+            "Das Selbstvertrauen stärken",
+            "Besser einschlafen"
+        ]
+    },
+    {
+        "name": "Entspannung für Kinder",
+        "file": "entspannung-fuer-kinder",
+        "active": true,
+        "length": "01:08:20",
+        "tracks": [
+            "Der Baum im Wind, der Hund, die Katze und der Löwe",
+            "Lauschen",
+            "Die Zitrone",
+            "Der Fels am Meer",
+            "Dein Herz",
+            "Die Sonne",
+            "Meeresrauschen",
+            "Dein Bauch",
+            "Das autogene Training",
+            "Zaubersprüche",
+            "Gewichtheben",
+            "Die progressive Muskelentspannung"
+        ]
     }
 ]
