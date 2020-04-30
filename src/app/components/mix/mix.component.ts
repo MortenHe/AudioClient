@@ -34,7 +34,7 @@ export class MixComponent implements OnInit {
     mixFilesOrig = [];
 
     //Wo liegen die Mixfiles?
-    mixDir = "/media/usb_audio/audio/kindermusik/misc/mix";
+    mixDir = "/media/usb_audio/Nextcloud/audio/wap/mp3/kindermusik/misc/mix";
 
     //Liste der Aktionen, die auf dem Server durchgefuehrt werden (move, delete)
     actionList = [];

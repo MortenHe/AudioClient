@@ -7,7 +7,6 @@ import * as path from 'path';
 export class FileNamePipe implements PipeTransform {
 
   transform(filePath: string, prefixFilter?: string): any {
-    console.log(prefixFilter)
 
     //Dateiname aus Pfad extrahieren: /home/pi/.../01 - Ansage.mp3 -> 01 - Ansage
     let fileName = path.basename(filePath, '.mp3');
