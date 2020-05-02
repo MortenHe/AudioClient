@@ -10,5 +10,8 @@ export const environment = {
   }, {
     "id": "kindermusik",
     "label": "Kids"
+  }, {
+    "id": "cds",
+    "label": "CDs"
   }]
 };
