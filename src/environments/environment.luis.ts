@@ -4,6 +4,7 @@ export const environment = {
   production: true,
   serverUrl: 'http://192.168.0.233',
   wssUrl: 'ws://192.168.0.233:8080',
+  mixDir: '/media/usb_audio/Nextcloud/audio/wap/mp3/kindermusik/misc/mix-luis',
   domainModes: [{
     "id": "hsp",
     "label": "HSP"

@@ -4,6 +4,7 @@ import { ResultfilterService } from '../../services/resultfilter.service';
 import { BackendService } from '../../services/backend.service';
 import * as path from 'path';
 import * as _ from 'lodash';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-mix',
@@ -34,7 +35,7 @@ export class MixComponent implements OnInit {
     mixFilesOrig = [];
 
     //Wo liegen die Mixfiles?
-    mixDir = "/media/usb_audio/Nextcloud/audio/wap/mp3/kindermusik/misc/mix";
+    mixDir = environment.mixDir;
 
     //Liste der Aktionen, die auf dem Server durchgefuehrt werden (move, delete)
     actionList = [];
@@ -121,12 +122,15 @@ export class MixComponent implements OnInit {
 
     //Mix-Folder starten
     startMixFolder() {
+        const playlistMode = path.basename(path.dirname(path.dirname(this.mixDir)));
+        const playlistPath = path.basename(path.dirname(this.mixDir)) + "/" + path.basename(this.mixDir);
+
         this.bs.sendMessage({
             type: "set-playlist",
             value: {
                 name: "mix",
-                mode: "kindermusik",
-                path: "misc/mix",
+                mode: playlistMode,
+                path: playlistPath,
                 allowRandom: true
             }
         });
