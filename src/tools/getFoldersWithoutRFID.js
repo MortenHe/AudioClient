@@ -1,16 +1,12 @@
 //Ordner ermitteln, die noch keine RFID gesetzt haben
-
-const assetId = "pw";
-
-//Libs laden
 const fs = require('fs-extra');
 const glob = require("glob");
 
 //Ordner ohne RFID sammeln
 foldersWithoutRFID = [];
 
-//JSON Assets dieser App durchgehen
-const files = glob.sync("../../src/assets/json/" + assetId + "/*/*.json")
+//JSON Assets durchgehen
+const files = glob.sync(require("./config.js").jsonDir + "/*/*.json")
 for (const file of files) {
 
     //Ueber Eintraege eines Modes gehen und Eintraege ohne RFID sammeln

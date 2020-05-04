@@ -3,6 +3,9 @@ module.exports = {
     //Wo liegen die Dateien
     mediaDir: "C:/Users/Martin/Desktop/media/done",
 
+     //Wo liegen die JSON-Dateien
+    jsonDir: "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/wap/json/pw",
+
     //Wo liegen die Soundquiz-Dateien
     soundquizDir: "C:/Users/Martin/Desktop/Google Drive/Martin/Audio Player/Soundquiz Sounds"
 
