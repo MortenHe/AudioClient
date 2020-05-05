@@ -14,3 +14,4 @@ myJson.zip
 src/tools/config.js
 src/tools/link.js
 src/environments/environment.ts
+src/tools/config.json
