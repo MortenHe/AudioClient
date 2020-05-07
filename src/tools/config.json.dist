@@ -1,4 +1,6 @@
 {
     "audioDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/wap/mp3",
-    "jsonDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/wap/json/pw"
+    "jsonDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/wap/json/pw",
+    "splitDir": "C:/Users/Martin/Desktop/media/raspi/split",
+    "createAudioDir": "C:/Users/Martin/Desktop/media/raspi/audio"
 }

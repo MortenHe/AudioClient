@@ -11,7 +11,7 @@ const mp3Duration = require('mp3-duration');
 const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
-const mediaDir = require("./config.js").mediaDir + "/pw/audio";
+const createAudioDir = fs.readJsonSync("config.json").createAudioDir;
 
 //Erst ab dem 3. Parameter auswerten ()
 const argv = require('minimist')(process.argv.slice(2));
@@ -30,10 +30,10 @@ const durationPromises = [];
 totalDuration = [];
 
 //Ueber ueber filter-dirs des aktuellen modes gehen (hsp, kindermusik,...)
-fs.readdirSync(mediaDir).forEach(folder => {
+fs.readdirSync(createAudioDir).forEach(folder => {
 
     //Wenn es ein Ordner ist
-    let stat = fs.statSync(mediaDir + "/" + folder);
+    let stat = fs.statSync(createAudioDir + "/" + folder);
     if (stat && stat.isDirectory()) {
 
         //15-der-rote-hahn -> 15 der rote hahn
@@ -55,7 +55,7 @@ fs.readdirSync(mediaDir).forEach(folder => {
         };
 
         //Ueber Tracks des Ordners gehen
-        fs.readdir(mediaDir + "/" + folder, (err, files) => {
+        fs.readdir(createAudioDir + "/" + folder, (err, files) => {
 
             //Tracks sammeln und Gesamtdauer ermitteln
             tracks[folder] = [];
@@ -85,7 +85,7 @@ fs.readdirSync(mediaDir).forEach(folder => {
                     durationPromises.push(new Promise((resolve, reject) => {
 
                         //mp3 Laenge ermitteln
-                        mp3Duration(mediaDir + "/" + folder + "/" + file, (err, duration) => {
+                        mp3Duration(createAudioDir + "/" + folder + "/" + file, (err, duration) => {
                             if (err) {
                                 reject(err.message);
                             }
