@@ -35,7 +35,7 @@ export class MixComponent implements OnInit {
     mixFilesOrig = [];
 
     //Wo liegen die Mixfiles?
-    mixDir = environment.mixDir;
+    mixDir: string = null;
 
     //Liste der Aktionen, die auf dem Server durchgefuehrt werden (move, delete)
     actionList = [];
@@ -61,6 +61,11 @@ export class MixComponent implements OnInit {
         //Liste der auswaehlbaren Files abbonieren
         this.bs.getSearchFiles().subscribe(searchFiles => {
             this.searchFiles = searchFiles;
+        });
+
+        //Abo MixDir
+        this.bs.getMixDir().subscribe(mixDir => {
+            this.mixDir = mixDir;
         });
 
         //Liste der Mixfiles abbonieren

@@ -1,10 +1,9 @@
 export const environment = {
-  envName: 'Steffis Player',
+  envName: 'Audio Player',
   assetId: 'pw',
   production: false,
-  serverUrl: 'http://localhost',
+  serverUrl: 'http://localhost/MortenHe/wss-install',
   wssUrl: 'ws://localhost:8080',
-  mixDir: '/media/usb_audio/Nextcloud/audio/wap/mp3/kindermusik/misc/mix-###',
   domainModes: [{
     "id": "hsp",
     "label": "HSP"

@@ -72,6 +72,9 @@ export class BackendService {
     //Die Dateien, die fuer den mixFileOrdner ausgewaehlt werden koennen
     searchFiles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
+    //Mix-Files-Ordner
+    mixDir$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+
     //Die Dateien, die gerade im mixFileOrdner liegen
     mixFiles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
@@ -272,6 +275,10 @@ export class BackendService {
                     this.searchFiles$.next(value);
                     break;
 
+                case "mixDir":
+                    this.mixDir$.next(value);
+                    break;
+
                 case "mixFiles":
                     this.mixFiles$.next(value);
                     break;
@@ -336,6 +343,10 @@ export class BackendService {
         return this.searchFiles$;
     }
 
+    getMixDir() {
+        return this.mixDir$;
+    }
+
     getMixFiles() {
         return this.mixFiles$;
     }
@@ -382,6 +393,6 @@ export class BackendService {
 
     //App aktivieren = WSS starten
     activateApp() {
-        return this.http.get(this.serverUrl + "/php/activateAudioApp.php?mode=audio");
+        return this.http.get(this.serverUrl + "/activateAudioApp.php?mode=audio");
     }
 }
