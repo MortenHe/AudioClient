@@ -110,7 +110,8 @@ for (missingJsonFile of missingJsonFiles) {
     outputArray[folder] = {
         "name": name,
         "file": file,
-        "active": true
+        "active": true,
+        "added": new Date().toISOString().slice(0, 10)
     };
 
     //Ueber Tracks des Ordners gehen
