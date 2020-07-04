@@ -51,7 +51,8 @@ fs.readdirSync(createAudioDir).forEach(folder => {
         outputArray[folder] = {
             "name": prefix + " - " + name,
             "file": folder,
-            "active": true
+            "active": true,
+            "added": new Date().toISOString().slice(0, 10)
         };
 
         //Ueber Tracks des Ordners gehen
