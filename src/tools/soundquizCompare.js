@@ -1,4 +1,5 @@
 //RFID-Config mit Audiodateien und Bildern vergleichen (was fehlt wo?)
+//TODO Dir per Config
 
 //Pfade wo die Dateien liegen auf Server
 const audioPath = "/media/usb_audio/audio";
