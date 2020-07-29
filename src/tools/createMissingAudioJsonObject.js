@@ -76,6 +76,13 @@ tracks = [];
 const durationPromises = [];
 totalDuration = [];
 
+//Ordner ermitteln, die in JSON-Config aber nicht im Dateisystem exisiteren
+missingAudioFolders = [...jsonAudioFiles].filter(audioFolder => !audioFolders.has(audioFolder));
+if (missingAudioFolders.length) {
+    console.log("Ordner aus Config, die nicht im Dateisystem sind");
+    console.log(missingAudioFolders);
+}
+
 //Ueber Ordner gehen, fuer die es noch keinen JSON-Eintrag gibt und den JSON-Eintrag erstellen
 missingJsonFiles = [...audioFolders].filter(audioFolder => !jsonAudioFiles.has(audioFolder));
 for (missingJsonFile of missingJsonFiles) {

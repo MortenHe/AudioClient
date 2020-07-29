@@ -1,6 +1,8 @@
 {
     "audioDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/wap/mp3",
     "jsonDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/wap/json/pw",
+    "soundquizDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/soundquiz",
+    "cardsDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/cards",
     "splitDir": "C:/Users/Martin/Desktop/media/raspi/split",
     "createAudioDir": "C:/Users/Martin/Desktop/media/raspi/audio"
 }

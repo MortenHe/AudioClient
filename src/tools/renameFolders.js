@@ -4,7 +4,7 @@
 const fs = require('fs-extra');
 
 //Wo liegen die Ordner, die umbenannt werden sollen?
-const mediaDir = require("./config.js").mediaDir + "/pw/audio";
+const mediaDir = fs.readJsonSync("config.json").createAudioDir;
 
 //Ueber ueber filter-dirs des aktuellen modes gehen (hsp, kindermusik,...)
 fs.readdirSync(mediaDir).forEach(folder => {

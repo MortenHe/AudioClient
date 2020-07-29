@@ -1,21 +1,16 @@
-//RFID-Config mit Audiodateien und Bildern vergleichen (was fehlt wo?)
-//TODO Dir per Config
-
-//Pfade wo die Dateien liegen auf Server
-const audioPath = "/media/usb_audio/audio";
+//RFID-Config mit Audiodateien und Bildern (fuer Karten) vergleichen (was fehlt wo?)
 
 //libraries laden fuer Dateizugriff
 const fs = require('fs-extra')
 const path = require('path');
 const glob = require('glob');
 
-//Links zu Verzeichnissen laden wo die Audio- und Bilddateien liegen
-const link = require("./config.js");
-const audioDir = link.soundquizDir;
-const imageDir = link.soundquizImageDir;
+//Pfade wo die Dateien liegen auf Server
+const soundquizDir = fs.readJsonSync("config.json").soundquizDir;
+const cardsDir = fs.readJsonSync("config.json").cardsDir;
 
 //RFID-Config einlesen
-rfidFile = fs.readJSONSync(link.soundquizRFIDDir + "/config_cards_7070.json");
+const rfidFile = fs.readJSONSync(soundquizDir + "/soundquiz_rfid.json");
 
 //welche Lernspiele gibt es (Rechnen nicht pruefen)
 const games = ["people", "sounds"];
@@ -51,17 +46,17 @@ for (key in rfidFile) {
 for (game of games) {
 
     //Ermitteln welche Fragen-Dateien es gibt
-    const questions = new Set(glob.sync(audioDir + "/" + game + "/*-question.mp3").map(file => {
+    const questions = new Set(glob.sync(soundquizDir + "/" + game + "/*-question.mp3").map(file => {
         return path.basename(file, '.mp3').replace('-question', '');
     }));
 
     //Ermitteln welche Loesungs-Dateien es gibt
-    const names = new Set(glob.sync(audioDir + "/" + game + "/*-name.mp3").map(file => {
+    const names = new Set(glob.sync(soundquizDir + "/" + game + "/*-name.mp3").map(file => {
         return path.basename(file, '.mp3').replace('-name', '');
     }));
 
     //Ermitteln welche Bilder es gibt
-    const pics = new Set(glob.sync(imageDir + "/" + game + "/*.jpg").map(file => {
+    const pics = new Set(glob.sync(cardsDir + "/soundquiz/" + game + "/*.jpg").map(file => {
         return path.basename(file, '.jpg');
     }));
 

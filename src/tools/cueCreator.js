@@ -12,7 +12,7 @@ const request = require('request');
 const link = require("./link.js");
 
 //Datei aus Splitdir ermitteln und daraus Infos ableiten
-const splitDir = require("./config.js").mediaDir + "/split";
+const splitDir = fs.readJsonSync("config.json").splitDir;
 const mp3File = path.basename(glob.sync(splitDir + "/*.mp3")[0], '.mp3');
 const fileParts = mp3File.split(" - ");
 

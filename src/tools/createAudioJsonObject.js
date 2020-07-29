@@ -1,6 +1,6 @@
 //Fuer Playlists die JSON-Info erstellen
-//Praefix "Bob der Baumeister" fuer label und keine Tracknamen auswerten
 //node .\createAudioJsonObject.js --prefix="Bob der Baumeister" notracks
+//Praefix "Bob der Baumeister" fuer label und keine Tracknamen auswerten
 
 //libraries laden fuer Dateizugriff
 const fs = require('fs-extra');

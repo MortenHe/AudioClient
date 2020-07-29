@@ -6,13 +6,13 @@ const glob = require("glob");
 foldersWithoutRFID = [];
 
 //JSON Assets durchgehen
-const files = glob.sync(require("./config.js").jsonDir + "/*/*.json")
+const files = glob.sync(fs.readJsonSync("config.json").jsonDir + "/*/*.json");
 for (const file of files) {
 
     //Ueber Eintraege eines Modes gehen und Eintraege ohne RFID sammeln
     const json = fs.readJSONSync(file);
     for (album of json) {
-        if (!album.rfid) {
+        if (!album.rfid && album.rfid !== null) {
             foldersWithoutRFID.push(album.name);
         }
     }

@@ -5,7 +5,7 @@ const execSync = require('child_process').execSync;
 const fs = require('fs-extra');
 
 //Wo liegen die Dateien zur Erzeugung der Rechenabfragen
-const soundquizDir = require("./config.js").soundquizDir
+const soundquizDir = fs.readJsonSync("config.json").soundquizDir;
 
 //Audiofiles von Rechnungen erstellen
 for (let i = 1; i <= 9; i++) {
