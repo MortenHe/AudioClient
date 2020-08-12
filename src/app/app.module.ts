@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 //Sortierbare Mix-Liste
-import { SortablejsModule } from 'ngx-sortablejs'
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 //eigenes Services
 import { BackendService } from './services/backend.service';
@@ -42,6 +42,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { ToggleJokerviewComponent } from './components/toggle-jokerview/toggle-jokerview.component';
 import { MixComponent } from './components/mix/mix.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -80,10 +81,8 @@ import { MixComponent } from './components/mix/mix.component';
       { path: 'mix', component: MixComponent },
       { path: '**', redirectTo: '/search/hsp', pathMatch: 'full' }
     ]),
-    SortablejsModule.forRoot({
-      animation: 350,
-      handle: '.sort-handle'
-    }),
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [BackendService, ResultfilterService, ViewControlService, ModeFilterPipe, SearchFilterPipe, OrderByPipe],
   bootstrap: [AppComponent]

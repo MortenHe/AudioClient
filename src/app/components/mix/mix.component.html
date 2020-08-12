@@ -73,13 +73,16 @@
 
     <!-- Sortierbare Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
     <div class="mx-2 mt-3">
-        <div [sortablejs]="mixFiles"
-             (end)=sortDone()>
+        <div cdkDropList
+             class="sort-list"
+             (cdkDropListDropped)="drop($event)">
             <div *ngFor="let mixFile of mixFiles, index as index"
-                 class="d-flex align-items-center mb-2">
+                 cdkDrag
+                 class="sort-box mb-2">
 
                 <!-- Sortier-Handle -->
-                <i class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle"></i>
+                <i cdkDragHandle
+                   class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle"></i>
 
                 <!-- Name des Titels -->
                 <span class="ml-2 flex-grow-1">{{mixFile.path | fileName:'digitOnly'}}</span>

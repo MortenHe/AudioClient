@@ -4,7 +4,7 @@ import { ResultfilterService } from '../../services/resultfilter.service';
 import { BackendService } from '../../services/backend.service';
 import * as path from 'path';
 import * as _ from 'lodash';
-import { environment } from '../../../environments/environment';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
     selector: 'app-mix',
@@ -141,8 +141,9 @@ export class MixComponent implements OnInit {
         });
     }
 
-    //Wenn Umsortierung abgeschlossen ist, pruefen ob Mix-Liste Aenderungen hat
-    sortDone() {
+    //Wenn Umsortierung abgeschlossen ist -> Model anpassen und pruefen ob Mix-Liste Aenderungen hat
+    drop(event: CdkDragDrop<string[]>) {
+        moveItemInArray(this.mixFiles, event.previousIndex, event.currentIndex);
         this.checkIfMixFolderHasChanged();
     }
 
