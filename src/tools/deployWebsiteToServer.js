@@ -1,16 +1,15 @@
 //Webseite bauen und auf Server laden
-//node .\deployWebsiteToServer.js pw | marlen | vb | laila
+//node .\deployWebsiteToServer.js pw | marlen | laila
+const fs = require('fs-extra');
+const config = fs.readJSONSync("config.json");
 
 //Async Methode fuer Await Aufrufe
 async function main() {
 
-    //Connection laden
-    const connection = require("./connection.js");
-
     //Welche Website (pw / marlen / vb) wohin deployen (pw / marlen / vb)
     const targetMachine = process.argv[2] || "pw";
-    assetsId = connection[targetMachine].assetId;
-    console.log("build and deploy audio (" + assetsId + ") to server " + targetMachine + ": " + connection[targetMachine].host);
+    const connection = config["connections"][targetMachine];
+    console.log("build and deploy audio (" + connection.assetId + ") to server " + targetMachine + ": " + connection.host);
 
     //Unter welchem Unterpfad wird die App auf dem Server laufen?
     const base_href = "wap";
@@ -47,19 +46,19 @@ async function main() {
     //SSH-Verbindung um Shell-Befehle auszufuehren (unzip, chmod,...)
     const SSH2Promise = require('ssh2-promise');
     const ssh = new SSH2Promise({
-        host: connection[targetMachine].host,
-        username: connection[targetMachine].user,
-        password: connection[targetMachine].password
+        host: connection.host,
+        username: connection.user,
+        password: connection.password
     });
 
     //sftp-Verbindung um Webseiten-Dateien hochzuladen
     const Client = require('ssh2-sftp-client');
     const sftp = new Client();
     await sftp.connect({
-        host: connection[targetMachine].host,
+        host: connection.host,
         port: '22',
-        username: connection[targetMachine].user,
-        password: connection[targetMachine].password
+        username: connection.user,
+        password: connection.password
     });
 
     //gibt es schon einen Ordner (wap)

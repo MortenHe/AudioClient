@@ -9,7 +9,10 @@ const xml2js = require('xml2js');
 const request = require('request');
 
 //Modus laden
-const link = require("./link.js");
+const link = {
+    performer: "",
+    url: ""
+};
 
 //Datei aus Splitdir ermitteln und daraus Infos ableiten
 const splitDir = fs.readJsonSync("config.json").splitDir;
