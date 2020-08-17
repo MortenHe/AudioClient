@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BackendService } from '../../services/backend.service';
-import 'rxjs/add/operator/takeUntil';
-import { Subject } from 'rxjs/Subject';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'random-playback',
@@ -25,7 +25,7 @@ export class RandomPlaybackComponent implements OnInit {
   ngOnInit() {
 
     //Aenderungen an random-Wert verfolgen (z.B. wenn per Code Wert geandert wird oder wenn Komponente nach destroy neu erstellt wird)
-    this.bs.getRandom().takeUntil(this.ngUnsubscribe).subscribe(bool => {
+    this.bs.getRandom().pipe(takeUntil(this.ngUnsubscribe)).subscribe(bool => {
 
       //Checkbox-Wert (ohne Event) setzen
       this.randomPlaybackCheckbox.setValue(bool, { 'emitEvent': false })

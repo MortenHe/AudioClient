@@ -23,11 +23,22 @@
 
 //Box um gedraggtes Element gestalten
 .cdk-drag-preview {
+
+    //Elemente (ausser Drag-handle) ausgrauen
+    >* {
+        opacity: .3;
+    }
+
+    //Drag-Handle voll sichtbar
+    .cdk-drag-handle {
+        opacity: 1 !important;
+    }
+
     box-sizing: border-box;
     border-radius: 8px;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-        0 8px 10px 1px rgba(0, 0, 0, 0.14),
-        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 //gedraggtes Element wird nicht doppelt angezeigt
@@ -43,4 +54,15 @@
 //Slide-Dauer der Elemente, die Platz machen
 .sort-list.cdk-drop-list-dragging .sort-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+//Drag-Handle voll sichtbar bei Hover
+.cdk-drag-handle:active,
+.cdk-drag-handle:hover {
+    opacity: 1;
+}
+
+//Elemente hinter .cdk-drag-handle ausgrauen
+.cdk-drag-handle:active~* {
+    opacity: .3;
 }

@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../../config/main-config';
 import { BackendService } from '../../services/backend.service';
 import { ResultfilterService } from '../../services/resultfilter.service';
-import { Observable } from 'rxjs/Observable';
-import { environment } from '../../../environments/environment';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ViewControlService } from '../../services/view-control.service';
 
 @Component({
