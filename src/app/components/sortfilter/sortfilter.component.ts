@@ -14,6 +14,9 @@ export class SortfilterComponent implements OnInit {
     orderField: "name",
     reverseOrder: false
   }, {
+    orderField: "added",
+    reverseOrder: true
+  }, {
     orderField: "length",
     reverseOrder: true
   }, {

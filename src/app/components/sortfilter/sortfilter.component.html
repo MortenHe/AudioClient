@@ -2,9 +2,10 @@
 <div class="tag d-flex align-items-center justify-content-center"
      (click)="setNextOrder()">
 
-  <!-- Sortiersymbol (Buchstaben, Uhr) -->
+  <!-- Sortiersymbol (Buchstaben, Uhr,...) -->
   <i class="fa"
      [ngClass]="{
+    'fa-calendar': orderField === 'added',
     'fa-font': orderField === 'name',
     'fa-clock-o': orderField === 'length'
   }"></i>
