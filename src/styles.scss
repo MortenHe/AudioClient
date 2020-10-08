@@ -302,10 +302,6 @@ label.fa-smile-o {
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .hover-underline:hover {
-        border-bottom: 2px solid rgba($color-grey, .5);
-    }
-
     .tag-sm:hover {
         background: rgba($color-info-blue, .2);
     }
