@@ -14,7 +14,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export class MixComponent implements OnInit {
 
     //Shutdown
-    shutdown$;
+    shutdown: boolean = false;
 
     //Name der aktuellen Playlist: Rolf Zuckowski - Starke Kinder
     activeItemName: string = "";
@@ -30,6 +30,12 @@ export class MixComponent implements OnInit {
 
     //Liste der Dateien im Mix-Ordner
     mixFiles = [];
+
+    //Titel pro Seite in Mix-Files-Suche
+    itemsPerPage: number = 10;
+
+    //Wo soll Liste der durchsuchbaren Mix-Files anfangen
+    pageStart: number = 0;
 
     //Originalliste der Dateien im Mix-Ordner
     mixFilesOrig = [];
@@ -51,7 +57,9 @@ export class MixComponent implements OnInit {
     ngOnInit() {
 
         //Shutdown Zustand abbonieren
-        this.shutdown$ = this.bs.getShutdown();
+        this.bs.getShutdown().subscribe(shutdown => {
+            this.shutdown = shutdown;
+        });
 
         //Name der aktuellen Playlist abbonieren
         this.bs.getActiveItemName().subscribe(activeItemName => {
@@ -87,8 +95,9 @@ export class MixComponent implements OnInit {
             this.fs.setMixSearchTerm(searchTerm);
         });
 
-        //Wenn sich Term von extern aendert -> Wert merken und Suchfeld setzen
+        //Wenn sich Term von extern aendert -> Wert merken und Suchfeld setzen und Paging auf 0 stellen
         this.fs.getMixSearchTerm().subscribe(searchTerm => {
+            this.pageStart = 0;
             this.searchTerm = searchTerm;
             this.searchField.setValue(searchTerm, { emitEvent: false });
         });
@@ -221,5 +230,20 @@ export class MixComponent implements OnInit {
             //Liste der Aktionen wieder leeren
             this.actionList = [];
         }
+    }
+
+    //aktuelle Seite fuer Paging Anzeige
+    currentPage(itemCount: number) {
+        return Math.min((this.pageStart / this.itemsPerPage) + 1, itemCount);
+    }
+
+    //Gesamtzahl der Pages fuer Anzeige
+    totalPages(itemCount: number) {
+        return Math.ceil(itemCount / this.itemsPerPage);
+    }
+
+    //Paging links / rechts
+    changePage(direction: number) {
+        this.pageStart = this.pageStart + (direction * this.itemsPerPage);
     }
 }

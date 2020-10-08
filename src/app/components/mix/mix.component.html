@@ -1,5 +1,5 @@
 <!--Wrapper fuer sichtbare Elemte, waehrend Anwendung laueft -->
-<div *ngIf="!(shutdown$ | async); else shutdownTemp"
+<div *ngIf="!shutdown; else shutdownTemp"
      class="app-content container no-gutters p-0 shadow">
 
     <!-- 1. Zeile: Countdown, Connection und Shutdown -->
@@ -31,48 +31,80 @@
     <!-- Name der aktuellen Playlist -->
     <div class="mb-2 p-1 pl-2 current-playlist">Gerade läuft: <b>{{activeItemName}}</b></div>
 
-    <!-- 2. Zeile: Suchfeld -->
-    <div class="d-flex mx-2 mt-3">
+    <!-- 2. Zeile: Suchfeld + Paging -->
+    <ng-container *ngIf="(searchFiles | searchFilter:searchTerm) as searchTermResult">
+        <div class="d-flex mx-2 mt-3">
 
-        <!-- Suchfeld: Label besteht aus Icon und Input -->
-        <label class="search-field form-control d-flex no-gutters align-items-center p-1"
-               for="searchField">
+            <!-- Suchfeld: Label besteht aus Icon und Input -->
+            <label class="search-field form-control d-flex no-gutters align-items-center p-1"
+                   for="searchField">
 
-            <!-- Such-Symbol -->
-            <i class="fa fa-search ml-2"></i>
+                <!-- Such-Symbol -->
+                <i class="fa fa-search ml-2"></i>
 
-            <!-- Suchefeld -->
-            <input [formControl]="searchField"
-                   autofocus
-                   autocomplete="off"
-                   id="searchField"
-                   placeholder="Liste durchsuchen"
-                   class="col ml-2"
-                   id="search"
-                   type="search"
-                   name="search">
-        </label>
-    </div>
+                <!-- Suchefeld -->
+                <input [formControl]="searchField"
+                       autofocus
+                       autocomplete="off"
+                       id="searchField"
+                       placeholder="Liste durchsuchen"
+                       class="col ml-2"
+                       id="search"
+                       type="search"
+                       name="search">
+            </label>
 
-    <!-- 3. Zeile: Trefferliste der Dateisuche -->
-    <div class="mx-2 mt-2">
-        <div *ngFor="let searchFile of searchFiles | searchFilter:searchTerm | slice:0:10"
-             class="d-flex align-items-center mb-2">
+            <!-- Paging -->
+            <div class="d-flex paging align-items-center text-right justify-content-between ml-2">
 
-            <!-- Titel zu Mix-Ordner hinzufuegen -->
-            <i class="fa fa-plus tag-sm d-flex align-items-center justify-content-center"
-               (click)="addItem(searchFile)"></i>
+                <!-- Paging - -->
+                <button class="btn btn-sm fa fa-chevron-left"
+                        [disabled]="pageStart === 0"
+                        (click)="changePage(-1)"></button>
 
-            <!-- Name des Titels -->
-            <span class="ml-2"
-                  [highlight]="searchTerm">{{searchFile.path | fileName:'digitOnly'}}</span>
+                <!-- Seite x / y -->
+                <div class="mx-1">{{currentPage(searchTermResult.length)}} / {{totalPages(searchTermResult.length)}}
+                </div>
+
+                <!-- Paging + -->
+                <button class="btn  fa fa-chevron-right"
+                        [disabled]="pageStart + itemsPerPage >= searchTermResult.length"
+                        (click)="changePage(1)"></button>
+            </div>
         </div>
-    </div>
+
+        <!-- 3. Zeile: Trefferliste der Dateisuche -->
+        <div class="mx-2 mt-2">
+            <div *ngFor="let searchFile of searchTermResult | slice:pageStart:(pageStart + itemsPerPage)"
+                 class="d-flex align-items-center mb-2">
+
+                <!-- Titel zu Mix-Ordner hinzufuegen -->
+                <i class="fa fa-plus tag-sm d-flex align-items-center justify-content-center"
+                   (click)="addItem(searchFile)"></i>
+
+                <!-- Name des Titels -->
+                <span class="ml-2"
+                      [highlight]="searchTerm">{{searchFile.path | fileName:'digitOnly'}}</span>
+            </div>
+        </div>
+    </ng-container>
 
     <hr>
 
+    <!-- Anederungen auf Server speichern, disabled wenn keine Aenderungen vorliegen -->
+    <button class="ml-3 btn"
+            [ngClass]="{
+          'mh-bg-primary': hasUnsavedChanges,
+          'bg-secondary opacity-30': !hasUnsavedChanges}"
+            [disabled]="!hasUnsavedChanges"
+            (click)="saveChanges()">Speichern</button>
+
+    <!-- Spinner waehrend Speichervorgang -->
+    <i *ngIf="saving"
+       class="ml-2 fa fa-spinner fa-spin"></i>
+
     <!-- Sortierbare Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
-    <div class="mx-2 mt-3">
+    <div class="mx-2 mt-2">
         <div cdkDropList
              class="sort-list"
              (cdkDropListDropped)="drop($event)">
@@ -93,20 +125,6 @@
             </div>
         </div>
     </div>
-
-    <hr>
-
-    <!-- Anederungen auf Server speichern, disabled wenn keine Aenderungen vorliegen -->
-    <button class="ml-2 mb-2 btn"
-            [ngClass]="{
-                'mh-bg-primary': hasUnsavedChanges,
-                'bg-secondary opacity-30': !hasUnsavedChanges}"
-            [disabled]="!hasUnsavedChanges"
-            (click)="saveChanges()">Speichern</button>
-
-    <!-- Spinner waehrend Speichervorgang -->
-    <i *ngIf="saving"
-       class="ml-2 fa fa-spinner fa-spin"></i>
 </div>
 
 <!-- Anzeigen, wenn Pi heruntergefahren wurde -->
