@@ -32,9 +32,6 @@ export class ResultlistComponent {
   //welches Item in der Liste wurde angeklickt?
   activeItem: string = "";
 
-  //Aktuelle Playlist (kommt von Server)
-  files: any[] = [];
-
   //Modefilter
   modeFilter: string;
 
@@ -77,9 +74,6 @@ export class ResultlistComponent {
     this.bs.getActiveItem().subscribe(activeItem => {
       this.activeItem = activeItem;
     });
-
-    //Laufende Playlist abbonieren
-    this.bs.getFiles().subscribe(files => this.files = files);
 
     //ModeFilter (bibi, bibi-tina, all,...) abbonieren
     this.fs.getModeFilter().subscribe(modeFilter => this.modeFilter = modeFilter);
