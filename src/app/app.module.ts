@@ -77,10 +77,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: 'search/:mode', component: SearchComponent },
-      { path: 'mix', component: MixComponent },
-      { path: '**', redirectTo: '/search/hsp', pathMatch: 'full' }
-    ]),
+    { path: 'search/:mode', component: SearchComponent },
+    { path: 'mix', component: MixComponent },
+    { path: '**', redirectTo: '/search/hsp', pathMatch: 'full' }
+], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     DragDropModule
   ],

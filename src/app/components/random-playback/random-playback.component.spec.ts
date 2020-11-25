@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RandomPlaybackComponent } from './random-playback.component';
 
@@ -6,7 +6,7 @@ describe('RandomPlaybackComponent', () => {
   let component: RandomPlaybackComponent;
   let fixture: ComponentFixture<RandomPlaybackComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RandomPlaybackComponent ]
     })

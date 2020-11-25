@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ToggleJokerviewComponent } from './toggle-jokerview.component';
 
@@ -6,7 +6,7 @@ describe('ToggleJokerviewComponent', () => {
   let component: ToggleJokerviewComponent;
   let fixture: ComponentFixture<ToggleJokerviewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ToggleJokerviewComponent ]
     })
