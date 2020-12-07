@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { BackendService } from '../../services/backend.service';
 import * as path from 'path';
-import * as _ from 'lodash';
+import * as _ from 'lodash-es';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({

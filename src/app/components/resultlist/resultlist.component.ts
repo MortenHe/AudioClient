@@ -128,10 +128,14 @@ export class ResultlistComponent {
     //Joker-Item merken, damit dort ein Spinner-Symbol angezeigt werden kann
     this.clickedJokerItem = item;
 
-    //Playlist als Joker setzen
+    //Playlist als Joker setzen. mode und folder, damit auf Server geprueft werden kann, ob es einen Joker-Ordner fuer diese Serie gibt (z.B. hsp/00-pumuck-joker)
     this.bs.sendMessage({
       type: "set-joker",
-      value: this.mode + "/" + item.mode + "/" + item.file
+      value: {
+        wantedJokerFolder: this.mode + "/" + item.mode + "/" + item.file,
+        mode: this.mode,
+        folder: item.mode
+      }
     });
   }
 }
