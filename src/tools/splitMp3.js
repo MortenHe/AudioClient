@@ -1,4 +1,5 @@
 //https://wiki.librivox.org/index.php/How_To_Split_With_Mp3Splt
+//http://manpages.ubuntu.com/manpages/hirsute/en/man1/mp3splt.1.html
 //mp3splt muss im PATH vorhanden sein
 
 //Libs
@@ -43,9 +44,43 @@ fs.copySync(file, newFilePath);
 //Label fuer nummerierte Benennung: 15 - Der rote Hahn -> Der rote Hahn
 const label = filename.replace(/\d{2} - /, '');
 
-//Prompt fuer
+//Modus ab 16.12.2020: Split ueber Threshold und Anzahl der Tracks. Prompt fuer Threshold
+const questions = [{
+    type: 'number',
+    name: 'threshold',
+    message: 'Threshold',
+    default: 30
+}];
+inquirer.prompt(questions)
+    .then(answers => {
+        const command = "cd " + splitDir + " && mp3splt -s -p th=-" + answers.threshold + ",nt=8,min=3,trackjoin=120 -d " + newFilename + " " + newFile;
+        console.log(command)
+        execSync(command, { stdio: 'inherit' });
+
+        //Dateien in Unterordner mit Nummerierung umbenennen
+        counter = 1;
+        const mp3Files = fs.readdirSync(splitDir + "/" + newFilename);
+        for (const oldFilename of mp3Files) {
+
+            //01 - Der rote Hahn [1].mp3
+            const numberedFilename = "0" + counter + " - " + label + " [" + counter + "].mp3";
+
+            //15-der-rote-hahn/15-der-rote-hahn/15-der-rote-hahn_00m_00s__07m_00s.mp3 -> 15-der-rote-hahn/01 - Der rote Hahn [1].mp3
+            const oldFilePath = splitDir + "/" + newFilename + "/" + oldFilename;
+            const newFilePath = splitDir + "/" + newFilename + "/" + numberedFilename;
+            fs.renameSync(oldFilePath, newFilePath);
+            counter++;
+        }
+
+        //Fuer Splitskript umbenannte Datei 15-der-rote-hahn.mp3 loeschen
+        fs.removeSync(newFilePath);
+    });
+
+    //Prompt fuer
 //Dateiname "Der rote Hahn" fuer nummerierte Einzeltracks (01 - Der rote Hahn [1].mp3)
 //durchschn. Tracklaenge
+//Modus bis 15.12.2020: Split ueber Tracklaenge
+/*
 const questions = [{
     type: 'input',
     name: 'label',
@@ -82,3 +117,4 @@ inquirer.prompt(questions)
         //Fuer Splitskript umbenannte Datei 15-der-rote-hahn.mp3 loeschen
         fs.removeSync(newFilePath);
     });
+*/
