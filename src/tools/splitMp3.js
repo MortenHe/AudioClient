@@ -1,6 +1,9 @@
+//Linux WSL: sudo apt install mp3splt
 //https://wiki.librivox.org/index.php/How_To_Split_With_Mp3Splt
 //http://manpages.ubuntu.com/manpages/hirsute/en/man1/mp3splt.1.html
 //mp3splt muss im PATH vorhanden sein
+
+//Datei "32 - Die Verkehrsschule"
 
 //Libs
 const glob = require("glob");
@@ -53,7 +56,7 @@ const questions = [{
 }];
 inquirer.prompt(questions)
     .then(answers => {
-        const command = "cd " + splitDir + " && mp3splt -s -p th=-" + answers.threshold + ",nt=8,min=3,trackjoin=120 -d " + newFilename + " " + newFile;
+        const command = "cd " + splitDir + " && mp3splt -s -p th=-" + answers.threshold + ",nt=6,min=3,trackjoin=120 -d " + newFilename + " " + newFile;
         console.log(command)
         execSync(command, { stdio: 'inherit' });
 

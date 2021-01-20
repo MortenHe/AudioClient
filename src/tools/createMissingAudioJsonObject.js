@@ -191,7 +191,7 @@ for (missingJsonFile of missingJsonFiles) {
 
             //JSON-Objekt-Array ausgeben
             console.log(",");
-            console.log(JSON.stringify(outputArray[folder], null, 2));
+            console.log(JSON.stringify(outputArray[folder], null, 4));
         }).catch((err) => {
             console.log('error:', err);
         });
