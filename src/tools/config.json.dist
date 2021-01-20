@@ -6,6 +6,12 @@
     "splitDir": "C:/Users/Martin/Desktop/media/raspi/split",
     "createAudioDir": "C:/Users/Martin/Desktop/media/raspi/audio",
     "connections": { 
+         "mh": {
+            "host": "",
+            "user": "root",
+            "password": "",
+            "assetId": "pw"
+        },
         "pw": {
             "host": "",
             "user": "root",
