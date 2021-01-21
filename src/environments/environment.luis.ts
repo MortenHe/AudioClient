@@ -13,5 +13,8 @@ export const environment = {
   }, {
     "id": "cds",
     "label": "CDs"
+  }, {
+    "id": "extra",
+    "label": "Extra"
   }]
 };

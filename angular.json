@@ -39,6 +39,28 @@
                 }
               ]
             },
+            "mh": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.mh.ts"
+                }
+              ]
+            },
             "pw": {
               "budgets": [
                 {
@@ -163,6 +185,9 @@
             "browserTarget": "website:build"
           },
           "configurations": {
+            "mh": {
+              "browserTarget": "website:build:mh"
+            },
             "pw": {
               "browserTarget": "website:build:pw"
             },
@@ -259,5 +284,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

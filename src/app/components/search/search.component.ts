@@ -80,7 +80,7 @@ export class SearchComponent {
 
         //Filter-Buttons nur anzeigen, wenn es neben "Alle" und "Sonstige" noch andere Filter gibt
         this.showModeFilterList = modeFilterListItems.some(elem => {
-          return (elem.id !== 'all' && elem.id !== 'misc');
+          return (elem.id !== "all" && elem.id !== "misc");
         });
       }
 
