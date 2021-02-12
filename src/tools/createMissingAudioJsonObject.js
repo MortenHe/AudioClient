@@ -28,6 +28,7 @@ naming["bibi-tina"] = "Bibi und Tina";
 naming["pumuckl"] = "Pumuckl";
 naming["bob"] = "Bob der Baumeister";
 naming["bebl"] = "Benjamin Blümchen";
+naming["wieso"] = "Wieso Weshalb Warum";
 
 //Lokale Audio-Ordner sammeln
 const audioFolders = new Set();
