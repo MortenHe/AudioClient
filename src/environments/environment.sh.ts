@@ -1,5 +1,5 @@
 export const environment = {
-  envName: 'SH Player',
+  envName: 'SH',
   assetId: 'pw',
   production: true,
   serverUrl: 'http://192.168.0.224/php',
