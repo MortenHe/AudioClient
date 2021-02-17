@@ -1,5 +1,5 @@
 export const environment = {
-  envName: 'Musik',
+  envName: 'Marlen',
   assetId: 'marlen',
   production: true,
   serverUrl: 'http://192.168.2.39/php',

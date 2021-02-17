@@ -1,5 +1,5 @@
 export const environment = {
-  envName: 'PW Player',
+  envName: 'MH',
   assetId: 'pw',
   production: true,
   serverUrl: 'http://192.168.0.124/php',
