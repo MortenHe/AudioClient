@@ -1,6 +1,6 @@
 //Ermitteln fuer welche Audio-Playlists auf dem lokalen System es noch keinen JSON-Eintrag gibt und die zugehoerigen JSON-Eintraege erstellen und ausgeben
-//node .\createMissingAudioJsonObject notracks
-//notracks flag setzen, wenn keine Trackinfo erstellt werden soll (z.B. bei Hoerspiel mit gleichen Tracks 01 - Bobo kauft ein [1].mp3, 02 - Bobo kauft ein [2].mp3,...)
+//node .\createMissingAudioJsonObject showTracks
+//shotTracks flag setzen, wenn  Trackinfo erstellt werden soll (z.B. gerippte CD mit Titelnamen)
 
 //libraries laden fuer Dateizugriff
 const fs = require('fs-extra')
@@ -18,7 +18,7 @@ const jsonDir = config["jsonDir"];
 
 //Erst ab dem 3. Parameter auswerten ()
 const argv = require('minimist')(process.argv.slice(2));
-const noTracks = argv["_"].includes("notracks") || false;
+const showTracks = argv["_"].includes("showTracks") || false;
 
 //Benennungen anhand des Ordners, in dem die Dateien liegen
 naming = [];
@@ -134,7 +134,7 @@ for (missingJsonFile of missingJsonFiles) {
             if (path.extname(file).toLowerCase() === '.mp3') {
 
                 //Wenn Tracknamen ausgewertet werden sollen
-                if (!noTracks) {
+                if (showTracks) {
 
                     //Tracks per Promise sammeln
                     trackPromises.push(new Promise((resolve, reject) => {

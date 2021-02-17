@@ -1,5 +1,5 @@
 //Fuer Playlists die JSON-Info erstellen
-//node .\createAudioJsonObject.js --prefix="Bob der Baumeister" notracks
+//node .\createAudioJsonObject.js --prefix="Bob der Baumeister" showTracks
 //Praefix "Bob der Baumeister" fuer label und keine Tracknamen auswerten
 
 //libraries laden fuer Dateizugriff
@@ -16,8 +16,8 @@ const createAudioDir = fs.readJsonSync("config.json").createAudioDir;
 //Erst ab dem 3. Parameter auswerten ()
 const argv = require('minimist')(process.argv.slice(2));
 
-//Soll das Label einen Praefix bekommen (z.B. Bob der Baumeister)?
-const noTracks = argv["_"].includes("notracks") || false;
+//Sollen die Namen der Einzeltracks ausgewertet werden und das Label einen Praefix bekommen (z.B. Bob der Baumeister)?
+const showTracks = argv["_"].includes("showTracks") || false;
 const prefix = argv["prefix"] || "";
 
 //lokale Items (z.B. Audio-Ordner) sammeln
@@ -67,7 +67,7 @@ fs.readdirSync(createAudioDir).forEach(folder => {
                 if (path.extname(file).toLowerCase() === '.mp3') {
 
                     //Wenn Tracknamen ausgewertet werden sollen
-                    if (!noTracks) {
+                    if (showTracks) {
 
                         //Tracks per Promise sammeln
                         trackPromises.push(new Promise((resolve, reject) => {
