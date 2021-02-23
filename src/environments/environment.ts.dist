@@ -2,7 +2,7 @@ export const environment = {
   envName: 'Audio Player',
   assetId: 'pw',
   production: false,
-  serverUrl: 'http://localhost/MortenHe/wss-install',
+  serverUrl: 'http://localhost/php',
   wssUrl: 'ws://localhost:8080',
   domainModes: [{
     "id": "hsp",
