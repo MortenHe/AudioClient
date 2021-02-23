@@ -22,9 +22,6 @@ export class BackendService {
     //WebSocket
     socket: Subject<any>;
 
-    //produktiv-System?
-    production = environment.production;
-
     //Komplette Itemliste wird nur 1 Mal geholt
     itemListFull;
 

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
+import { domainModes } from '../../share/domainModes';
 import { ViewControlService } from '../../services/view-control.service';
 
 @Component({
@@ -25,7 +24,7 @@ export class SelectmodeComponent implements OnInit {
   ngOnInit() {
 
     //Modes aus Config laden
-    this.modes = environment.domainModes;
+    this.modes = domainModes;
 
     //1. Modus als aktiv setzen
     this.activeMode = this.modes[0];

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from '../../../environments/environment'
+import { environment } from '../../../environments/environment';
+import { domainModes } from '../../share/domainModes';
 import { ViewControlService } from '../../services/view-control.service';
 
 @Component({
@@ -11,9 +12,6 @@ import { ViewControlService } from '../../services/view-control.service';
 })
 
 export class SearchComponent {
-
-  //dev vs. produktiv
-  production = environment.production;
 
   //In welchem Bereich sind wir (hsp, cds, musik)
   mode = null;
@@ -50,16 +48,12 @@ export class SearchComponent {
     this.route.paramMap.subscribe(params => {
 
       //Modus (hsp vs. musikmh) aus URL-Parameter auslesen
-      let mode = params.get('mode');
+      const mode = params.get('mode');
 
-      //Modes, die es in der der Config gibt
-      let domainModes = environment.domainModes.map(domainMode => { return domainMode.id });
-
-      //Wenn es diesen Modus nicht gibt
-      if (domainModes.indexOf(mode) === -1) {
-
-        //zu 1. Modus aus Config navigieren
-        this.router.navigate(['/search', environment.domainModes[0].id]);
+      //Wenn es diesen Modus nicht gibt, zu 1. Modus aus Config navigieren
+      const domainModesArray = domainModes.map(domainMode => { return domainMode.id });
+      if (domainModesArray.indexOf(mode) === -1) {
+        this.router.navigate(['/search', domainModesArray[0]]);
       }
 
       //Modus per Service setzen

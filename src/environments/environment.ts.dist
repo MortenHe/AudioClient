@@ -1,20 +1,7 @@
 export const environment = {
-  envName: 'Audio Player',
+  envName: 'Audio',
   assetId: 'pw',
   production: false,
   serverUrl: 'http://localhost/php',
-  wssUrl: 'ws://localhost:8080',
-  domainModes: [{
-    "id": "hsp",
-    "label": "HSP"
-  }, {
-    "id": "kindermusik",
-    "label": "Kids"
-  }, {
-    "id": "cds",
-    "label": "CDs"
-  }, {
-    "id": "extra",
-    "label": "Extra"
-  }]
+  wssUrl: 'ws://localhost:8080'
 };
