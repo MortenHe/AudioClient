@@ -4,8 +4,6 @@
 const fs = require('fs-extra');
 const slugify = require('slugify')
 
-
-
 //Wo liegen die Ordner, die umbenannt werden sollen?
 const mediaDir = fs.readJsonSync("config.json").createAudioDir;
 

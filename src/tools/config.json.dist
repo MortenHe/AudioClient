@@ -1,15 +1,12 @@
 {
-    "audioDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/wap/mp3",
-    "jsonDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/wap/json/pw",
-    "soundquizDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio/soundquiz",
-    "cardsDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/cards",
+    "nextcloudDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi",
     "splitDir": "C:/Users/Martin/Desktop/media/raspi/split",
     "createAudioDir": "C:/Users/Martin/Desktop/media/raspi/audio",
     "connections": { 
-         "mh": {
-            "host": "",
+        "mh": {
+            "host": "192.168.0.124",
             "user": "root",
-            "password": "",
+            "password": "martin12",
             "assetId": "pw"
         },
         "pw": {

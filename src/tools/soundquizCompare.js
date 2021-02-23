@@ -6,9 +6,9 @@ const path = require('path');
 const glob = require('glob');
 
 //Pfade wo die Dateien liegen auf Server
-const config = fs.readJsonSync("config.json");
-const soundquizDir = config.soundquizDir;
-const cardsDir = config.cardsDir;
+const nextcloudDir = fs.readJsonSync("config.json").nextcloudDir;
+const soundquizDir = nextcloudDir + "/audio/soundquiz";
+const cardsDir = nextcloudDir + "/cards";
 
 //RFID-Config einlesen
 const rfidFile = fs.readJSONSync(soundquizDir + "/soundquiz_rfid.json");

@@ -6,7 +6,8 @@ const glob = require("glob");
 foldersWithoutRFID = [];
 
 //JSON Assets durchgehen
-const files = glob.sync(fs.readJsonSync("config.json").jsonDir + "/*/*.json");
+const jsonDir = fs.readJsonSync("config.json").nextcloudDir + "/audio/wap/json/pw";
+const files = glob.sync(jsonDir + "/*/*.json");
 for (const file of files) {
 
     //Ueber Eintraege eines Modes gehen und Eintraege ohne RFID sammeln, Eintraege die keine RFID erhalten sollen haben in der JSON-Datei rfid=null

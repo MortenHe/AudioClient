@@ -1,4 +1,4 @@
-//Linux WSL: sudo apt install mp3splt
+//Ubuntu / Linux WSL: sudo apt install mp3splt
 //https://wiki.librivox.org/index.php/How_To_Split_With_Mp3Splt
 //http://manpages.ubuntu.com/manpages/hirsute/en/man1/mp3splt.1.html
 //mp3splt muss im PATH vorhanden sein
