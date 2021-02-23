@@ -11,7 +11,7 @@ const mp3Duration = require('mp3-duration');
 const timelite = require('timelite');
 
 //Wo liegen die Dateien fuer die JSON Infos erzeugt werden sollen?
-const createAudioDir = fs.readJsonSync("config.json").createAudioDir;
+const createAudioDir = fs.readJsonSync("config.json").mediaDir + "/audio";
 
 //Erst ab dem 3. Parameter auswerten ()
 const argv = require('minimist')(process.argv.slice(2));

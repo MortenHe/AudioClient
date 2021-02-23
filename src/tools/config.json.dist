@@ -1,7 +1,6 @@
 {
     "nextcloudDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi",
-    "splitDir": "C:/Users/Martin/Desktop/media/raspi/split",
-    "createAudioDir": "C:/Users/Martin/Desktop/media/raspi/audio",
+    "mediaDir": "C:/Users/Martin/Desktop/media",
     "connections": { 
         "mh": {
             "host": "192.168.0.124",
