@@ -1,11 +1,11 @@
 {
-    "nextcloudDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi",
+    "audioDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/audio",
     "mediaDir": "C:/Users/Martin/Desktop/media",
     "connections": { 
         "mh": {
-            "host": "192.168.0.124",
+            "host": "",
             "user": "root",
-            "password": "martin12",
+            "password": "",
             "assetId": "pw"
         },
         "pw": {

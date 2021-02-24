@@ -12,10 +12,9 @@ const mp3Duration = require('mp3-duration');
 const timelite = require('timelite');
 
 //Pfade wo die Dateien lokal liegen 
-const config = fs.readJSONSync("config.json");
-const nextcloudDir = config["nextcloudDir"];
-const audioDir = nextcloudDir + "/audio/wap/mp3";
-const jsonDir = nextcloudDir + "/audio/wap/json/pw";
+const audioDir = fs.readJSONSync("config.json").audioDir;
+const audioFilesDir = audioDir + "/wap/mp3";
+const jsonDir = audioDir + "/wap/json/pw";
 
 //Erst ab dem 3. Parameter auswerten ()
 const argv = require('minimist')(process.argv.slice(2));
@@ -33,7 +32,7 @@ naming["wieso"] = "Wieso Weshalb Warum";
 
 //Lokale Audio-Ordner sammeln
 const audioFolders = new Set();
-const localFolders = glob.sync(audioDir + "/*/*/*");
+const localFolders = glob.sync(audioFilesDir + "/*/*/*");
 for (const localFolder of localFolders) {
 
     //hsp
@@ -124,7 +123,7 @@ for (missingJsonFile of missingJsonFiles) {
     };
 
     //Ueber Tracks des Ordners gehen
-    fs.readdir(audioDir + "/" + folder, (err, files) => {
+    fs.readdir(audioFilesDir + "/" + folder, (err, files) => {
 
         //Tracks sammeln und Gesamtdauer ermitteln
         tracks[folder] = [];
@@ -154,7 +153,7 @@ for (missingJsonFile of missingJsonFiles) {
                 durationPromises.push(new Promise((resolve, reject) => {
 
                     //mp3 Laenge ermitteln
-                    mp3Duration(audioDir + "/" + folder + "/" + file, (err, duration) => {
+                    mp3Duration(audioFilesDir + "/" + folder + "/" + file, (err, duration) => {
                         if (err) {
                             reject(err.message);
                         }

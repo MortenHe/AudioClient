@@ -1,14 +1,13 @@
 //Webseite bauen und auf Server laden
 //node .\deployWebsiteToServer.js pw | marlen | laila
-const fs = require('fs-extra');
-const config = fs.readJSONSync("config.json");
 
 //Async Methode fuer Await Aufrufe
 async function main() {
 
     //Welche Website (pw / marlen / vb) wohin deployen (pw / marlen / vb)
+    const fs = require('fs-extra');
     const targetMachine = process.argv[2] || "pw";
-    const connection = config["connections"][targetMachine];
+    const connection = fs.readJSONSync("config.json").connections[targetMachine];
     console.log("build and deploy audio (" + connection.assetId + ") to server " + targetMachine + ": " + connection.host);
 
     //Unter welchem Unterpfad wird die App auf dem Server laufen?
@@ -24,7 +23,6 @@ async function main() {
     console.log("build done");
 
     //htaccess Schablone in dist Ordner kopieren und durch Pattern Ersetzung anpassen
-    const fs = require('fs-extra');
     const replace = require("replace");
     console.log("copy htacces");
     await fs.copy('.htaccess', '../../dist/htaccess');
