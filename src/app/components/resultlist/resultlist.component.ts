@@ -109,11 +109,6 @@ export class ResultlistComponent {
       }
     });
 
-    //Musiksammlung mit random starten (setzen falls nicht schon random)
-    if (this.mode === 'musik' && !this.random) {
-      this.bs.sendMessage({ type: "toggle-random", value: "" });
-    }
-
     //Ansicht auf Playlist umstellen
     this.vcs.setView('playlist');
 
