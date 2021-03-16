@@ -11,7 +11,10 @@ const hsp = process.argv[2] || "wieso";
 const filePath = jsonDir + "/hsp/" + hsp + ".json";
 const json = fs.readJSONSync(filePath);
 
-//Liste alles Hoerspiele dieser Serie ausgeben
+//Name der Hoerspielserie ausgeben: "Bob der Baumeister - 00 - Bob Joker" => "Bob der Baumeister " (trim entfernt letztes whitespace)
+const header = (json[0].name).match(/^[^-]+/);
+console.log(header[0].trim());
+console.log();
 for (let obj of json) {
     const name = obj.name
 
