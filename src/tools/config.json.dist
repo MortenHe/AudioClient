@@ -1,5 +1,5 @@
 {
-    "audioDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/audio",
+    "audioDir": "C:/Users/Martin/Desktop/Nextcloud/Raspi/files/audio",
     "mediaDir": "C:/Users/Martin/Desktop/media",
     "connections": { 
         "mh": {
