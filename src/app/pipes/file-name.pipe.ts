@@ -9,7 +9,7 @@ export class FileNamePipe implements PipeTransform {
   transform(filePath: string, prefixFilter?: string): any {
 
     //Dateiname aus Pfad extrahieren: /home/pi/.../01 - Ansage.mp3 -> 01 - Ansage
-    let fileName = path.basename(filePath, '.mp3');
+    let fileName = path.basename(filePath, path.extname(filePath), '.mp3');
 
     //Nur Zahlen wegstreichen: 03 - Here We Go -> Here We Go
     if (prefixFilter === "digitOnly") {
