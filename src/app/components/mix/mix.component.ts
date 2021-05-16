@@ -52,6 +52,33 @@ export class MixComponent implements OnInit {
     //Gibt es Aenderungen bei den Mixfolder Dateien
     hasUnsavedChanges = false;
 
+    //Liste der auswaehlbaren Modes
+    userModeObjs: any[] = [
+        {
+            id: "luis",
+            label: "Luis"
+        },
+        {
+            id: "laila",
+            label: "Laila"
+        },
+        {
+            id: "pw",
+            label: "PW"
+        },
+        {
+            id: "sh",
+            label: "SH"
+        },
+        {
+            id: "mh",
+            label: "MH"
+        }
+    ];
+
+    //userMode-Auswahl
+    userModeSelect: FormControl = new FormControl(this.userModeObjs[0]);
+
     constructor(private bs: BackendService, private fs: ResultfilterService) { }
 
     ngOnInit() {
@@ -74,6 +101,22 @@ export class MixComponent implements OnInit {
         //Abo MixDir
         this.bs.getMixDir().subscribe(mixDir => {
             this.mixDir = mixDir;
+        });
+
+        //Abo userMode -> passendes Select setzen
+        this.bs.getUserMode().subscribe(userMode => {
+            const userModeIndex = this.userModeObjs.findIndex((obj) => {
+                return obj.id === userMode;
+            });
+            this.userModeSelect.setValue(this.userModeObjs[userModeIndex], { emitEvent: false });
+        });
+
+        //Neuen userMode setzen
+        this.userModeSelect.valueChanges.subscribe(userMode => {
+            this.bs.sendMessage({
+                type: "set-user-mode",
+                value: userMode.id
+            });
         });
 
         //Liste der Mixfiles abbonieren

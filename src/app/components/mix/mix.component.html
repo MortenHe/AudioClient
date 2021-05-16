@@ -9,7 +9,8 @@
         <div class="ml-2 cursor-pointer"
              routerLink="/">
             <i class="fa fa-chevron-left"></i>
-            <span class="ml-2">Zurück</span></div>
+            <span class="ml-2">Zurück</span>
+        </div>
 
         <!-- Mix Playlist starten -->
         <div class="ml-3 cursor-pointer"
@@ -34,6 +35,15 @@
     <!-- 2. Zeile: Suchfeld + Paging -->
     <ng-container *ngIf="(searchFiles | searchFilter:searchTerm) as searchTermResult">
         <div class="d-flex mx-2 mt-3">
+
+            <!-- userMode Auswahl -->
+            <select [formControl]="userModeSelect"
+                    class="mr-2 form-control w-auto">
+                <option *ngFor="let userModeObj of userModeObjs"
+                        [ngValue]="userModeObj">
+                    {{userModeObj.label}}
+                </option>
+            </select>
 
             <!-- Suchfeld: Label besteht aus Icon und Input -->
             <label class="search-field form-control d-flex no-gutters align-items-center p-1"

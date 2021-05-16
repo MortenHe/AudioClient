@@ -91,6 +91,9 @@ export class BackendService {
     //Name der aktiven Playlist: Rolf Zuckowski - Starke Kinder
     activeItemName$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
+    //Usermode (um MixFilesDir und JokerDir ueber Oberflaeche aendern zu koennen), Bsp. PW-Player laueft und man kann dort Luis AudioMix anpassen
+    userMode$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+
     //wurde Server heruntergefahren?
     shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -305,6 +308,10 @@ export class BackendService {
                     this.allowRandomRunning$.next(value);
                     break;
 
+                case "userMode":
+                    this.userMode$.next(value);
+                    break;
+
                 case "shutdown":
                     this.shutdown$.next(true);
                     break;
@@ -372,6 +379,10 @@ export class BackendService {
 
     getActiveItemName() {
         return this.activeItemName$;
+    }
+
+    getUserMode() {
+        return this.userMode$;
     }
 
     getShutdown() {
