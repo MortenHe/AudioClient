@@ -43,6 +43,7 @@ import { CountdownComponent } from './components/countdown/countdown.component';
 import { ToggleJokerviewComponent } from './components/toggle-jokerview/toggle-jokerview.component';
 import { MixComponent } from './components/mix/mix.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SelectusermodeComponent } from './components/selectusermode/selectusermode.component';
 
 @NgModule({
   declarations: [
@@ -70,17 +71,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HighlightDirective,
     CountdownComponent,
     ToggleJokerviewComponent,
-    MixComponent
+    MixComponent,
+    SelectusermodeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-    { path: 'search/:mode', component: SearchComponent },
-    { path: 'mix', component: MixComponent },
-    { path: '**', redirectTo: '/search/hsp', pathMatch: 'full' }
-], { relativeLinkResolution: 'legacy' }),
+      { path: 'search/:mode', component: SearchComponent },
+      { path: 'mix', component: MixComponent },
+      { path: '**', redirectTo: '/search/hsp', pathMatch: 'full' }
+    ], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     DragDropModule
   ],

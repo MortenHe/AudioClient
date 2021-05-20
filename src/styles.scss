@@ -41,6 +41,11 @@
     color: $color-white;
 }
 
+//z.B. Select kein blauer Border
+.form-control:focus {
+    border-color: $color-light-border-grey;
+}
+
 /* eigene styles */
 
 body {
@@ -299,6 +304,11 @@ label.fa-smile-o {
     font-size: 15px;
     background: rgba($color-info-blue, .1);
     border-radius: 5px;
+}
+
+.no-left-border-radius {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 @media (hover: hover) and (pointer: fine) {

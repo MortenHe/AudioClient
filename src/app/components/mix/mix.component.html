@@ -36,17 +36,11 @@
     <ng-container *ngIf="(searchFiles | searchFilter:searchTerm) as searchTermResult">
         <div class="d-flex mx-2 mt-3">
 
-            <!-- userMode Auswahl -->
-            <select [formControl]="userModeSelect"
-                    class="mr-2 form-control w-auto">
-                <option *ngFor="let userModeObj of userModeObjs"
-                        [ngValue]="userModeObj">
-                    {{userModeObj.label}}
-                </option>
-            </select>
+            <!-- Auswahl des Mix-Ordners (Luis vs. Laila...)-->
+            <selectusermode></selectusermode>
 
             <!-- Suchfeld: Label besteht aus Icon und Input -->
-            <label class="search-field form-control d-flex no-gutters align-items-center p-1"
+            <label class="search-field form-control d-flex no-gutters align-items-center p-1 no-left-border-radius"
                    for="searchField">
 
                 <!-- Such-Symbol -->
