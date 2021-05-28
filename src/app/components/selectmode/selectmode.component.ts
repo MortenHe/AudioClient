@@ -3,45 +3,43 @@ import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { domainModes } from '../../share/domainModes';
 import { ViewControlService } from '../../services/view-control.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'selectmode',
-  templateUrl: './selectmode.component.html',
-  styleUrls: ['./selectmode.component.scss']
+    selector: 'selectmode',
+    templateUrl: './selectmode.component.html',
+    styleUrls: ['./selectmode.component.scss']
 })
 export class SelectmodeComponent implements OnInit {
 
-  //aktiver Modus
-  activeMode: string;
+    //Liste der Modes (kindervideo, jahresvideo)
+    modes: any[] = domainModes;
 
-  //Liste der Modes (kindervideo, jahresvideo)
-  modes: any[];
+    //mode-Auswahl
+    modeSelect: FormControl = new FormControl(this.modes[0]);
 
-  //Services injecten
-  constructor(private bs: BackendService, private router: Router, private vcs: ViewControlService) { }
+    //Services injecten
+    constructor(private bs: BackendService, private router: Router, private vcs: ViewControlService) { }
 
-  //beim Init
-  ngOnInit() {
+    //beim Init
+    ngOnInit() {
 
-    //Modes aus Config laden
-    this.modes = domainModes;
+        //Wenn sich der Modus aendert (z.B. URL annavigiert oder Aenderung per Select), Modus merken
+        this.bs.getMode().subscribe(mode => {
+            const modeIndex = this.modes.findIndex((obj) => {
+                return obj.id === mode;
+            });
+            this.modeSelect.setValue(this.modes[modeIndex], { emitEvent: false });
+        });
 
-    //1. Modus als aktiv setzen
-    this.activeMode = this.modes[0];
+        //Bei Aenderung des Select
+        this.modeSelect.valueChanges.subscribe(mode => {
 
-    //Wenn sich der Modus aendert (z.B. URL annavigiert oder Aenderung per Select), Modus merken
-    this.bs.getMode().subscribe(mode => {
-      this.activeMode = mode;
-    });
-  }
+            //zu passender URL navigieren
+            this.router.navigate(['/search', mode.id]);
 
-  //Wenn Modus gesetzt wird
-  setMode(mode) {
-
-    //zu passender URL navigieren
-    this.router.navigate(['/search', mode]);
-
-    //Auf Suche-View umschalten
-    this.vcs.setView('search');
-  }
+            //Auf Suche-View umschalten
+            this.vcs.setView('search');
+        });
+    }
 }
