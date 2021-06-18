@@ -1,7 +1,0 @@
-export const environment = {
-  envName: 'Audio',
-  assetId: 'pw',
-  production: false,
-  serverUrl: 'http://localhost/php',
-  wssUrl: 'ws://localhost:8080'
-};

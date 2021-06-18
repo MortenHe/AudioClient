@@ -102,6 +102,6 @@ export class SearchComponent {
         type: "ping",
         value: ""
       });
-    }, 1500);
+    }, 2500);
   }
 }

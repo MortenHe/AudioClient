@@ -1,16 +1,3 @@
-/src/tools/connection.php
-/nbproject/private/
-/nbproject/project.properties
-/nbproject/project.xml
-/package-lock.json
 /node_modules
 /.vscode
-/dist-audio
 /dist
-/myDist.zip
-/myAssets
-myJson.zip
-src/tools/config.js
-src/tools/link.js
-src/environments/environment.ts
-src/tools/config.json
