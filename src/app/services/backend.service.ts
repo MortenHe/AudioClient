@@ -93,6 +93,9 @@ export class BackendService {
     //Usermode (um MixFilesDir und JokerDir ueber Oberflaeche aendern zu koennen), Bsp. PW-Player laueft und man kann dort Luis AudioMix anpassen
     userMode$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
+    //HTML-Page Title
+    pageTitle$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+
     //wurde Server heruntergefahren?
     shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -318,6 +321,10 @@ export class BackendService {
                     this.userMode$.next(value);
                     break;
 
+                case "pageTitle":
+                    this.pageTitle$.next(value);
+                    break;
+
                 case "shutdown":
                     this.shutdown$.next(true);
                     break;
@@ -389,6 +396,10 @@ export class BackendService {
 
     getUserMode() {
         return this.userMode$;
+    }
+
+    getPageTitle() {
+        return this.pageTitle$;
     }
 
     getShutdown() {

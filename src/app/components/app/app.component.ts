@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { BackendService } from 'app/services/backend.service';
-import { upperFirst } from 'lodash-es';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +15,9 @@ export class AppComponent {
   ngOnInit() {
 
     //HTML-Page-Title setzen, Kurze Namen Caps-Locked (mh -> MH), lange Titel nur 1. Buchstabe gross (luis -> Luis)
-    this.bs.getUserMode().subscribe((userMode: string) => {
-      if (userMode) {
-        const title = userMode.length > 2 ? userMode[0].toUpperCase() + userMode.substring(1) : userMode.toUpperCase();
+    this.bs.getPageTitle().subscribe((pageTitle: string) => {
+      if (pageTitle) {
+        const title = pageTitle.length > 2 ? pageTitle[0].toUpperCase() + pageTitle.substring(1) : pageTitle.toUpperCase();
         this.titleService.setTitle(title);
       }
     });
