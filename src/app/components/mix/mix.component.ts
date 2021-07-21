@@ -49,6 +49,9 @@ export class MixComponent implements OnInit {
     //Flag waehrend Titel gespeichert werden
     saving: boolean = false;
 
+    //userMode fuer Name der Mix Playlist
+    userMode: string;
+
     //Gibt es Aenderungen bei den Mixfolder Dateien
     hasUnsavedChanges = false;
 
@@ -101,6 +104,11 @@ export class MixComponent implements OnInit {
             this.searchTerm = searchTerm;
             this.searchField.setValue(searchTerm, { emitEvent: false });
         });
+
+        //Abo userMode
+        this.bs.getUserMode().subscribe(userMode => {
+            this.userMode = userMode;
+        });
     }
 
     //Neue Datei zu Liste fuer Mix-Ordner hinzufuegen
@@ -139,10 +147,14 @@ export class MixComponent implements OnInit {
         const playlistMode = path.basename(path.dirname(path.dirname(this.mixDir)));
         const playlistPath = path.basename(path.dirname(this.mixDir)) + "/" + path.basename(this.mixDir);
 
+        //Namen fuer Playlist bauen, da diese hier ausnahmsweise von Client und nicht vom Server kommt: sh -> MIX SH, luis -> MIX Luis
+        const userModeClean = this.userMode.length > 2 ? this.userMode[0].toUpperCase() + this.userMode.substring(1) : this.userMode.toUpperCase();
+        const playlistName = "Mix " + userModeClean;
+
         this.bs.sendMessage({
             type: "set-playlist",
             value: {
-                name: "mix",
+                name: playlistName,
                 mode: playlistMode,
                 path: playlistPath,
                 allowRandom: true
