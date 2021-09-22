@@ -46,8 +46,12 @@ export class OrderByPipe implements PipeTransform {
       //Wenn nach Name sortiert wird
       if (orderField === 'name') {
 
-        //normale Sortierung nach Namensfeld (nur aufsteigend moeglich)
-        return a.name.localeCompare(b.name);
+        //normale Sortierung nach Namensfeld (nur aufsteigend moeglich), numeric/base damit 109 hinten 2-stelligen Ziffern kommt
+        return a.name.localeCompare(b.name, 'de',
+          {
+            numeric: true,
+            sensitivity: 'base'
+          });
       }
 
       //Sortierung nach Laenge
@@ -85,7 +89,11 @@ export class OrderByPipe implements PipeTransform {
         else {
 
           //dann Namensfeld als 2. Sortierkritierum verwenden (aufsteigend)
-          return a.name > b.name ? 1 : -1;
+          return a.name.localeCompare(b.name, 'de',
+            {
+              numeric: true,
+              sensitivity: 'base'
+            });
         }
       }
     });

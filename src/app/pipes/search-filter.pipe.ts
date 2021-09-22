@@ -9,6 +9,7 @@ import { Item } from '../config/main-config';
 export class SearchFilterPipe implements PipeTransform {
 
   //Suchstring wird uebergeben
+  //TODO: includeTracks entfernen
   transform(items: Item[], searchString: string, includeTracks: boolean): any {
 
     //Wenn Suchfeld leer ist, Trefferliste unveraendert zuruck

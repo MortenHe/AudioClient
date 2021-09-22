@@ -37,11 +37,13 @@
   </div>
 
   <!-- Wenn Tracks angezeigt werden sollen, Tracks ausgeben (mit Highlight) -->
-  <ul *ngIf="showTracks$ | async">
-    <li *ngFor="let track of item.tracks"
-        class="mr-1"
-        [highlight]="searchTerm">
-      {{track}}
-    </li>
-  </ul>
+  <ng-container *ngIf="showTracks$ | async">
+    <ul *ngIf="item.tracks">
+      <li *ngFor="let track of item.tracks"
+          class="mr-1"
+          [highlight]="searchTerm">
+        {{track}}
+      </li>
+    </ul>
+  </ng-container>
 </button>
