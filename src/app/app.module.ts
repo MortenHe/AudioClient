@@ -40,7 +40,6 @@ import { ConnectionComponent } from './components/connection/connection.componen
 import { ViewControlComponent } from './components/view-control/view-control.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { CountdownComponent } from './components/countdown/countdown.component';
-import { ToggleJokerviewComponent } from './components/toggle-jokerview/toggle-jokerview.component';
 import { MixComponent } from './components/mix/mix.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectusermodeComponent } from './components/selectusermode/selectusermode.component';
@@ -70,7 +69,6 @@ import { SelectusermodeComponent } from './components/selectusermode/selectuserm
     ViewControlComponent,
     HighlightDirective,
     CountdownComponent,
-    ToggleJokerviewComponent,
     MixComponent,
     SelectusermodeComponent
   ],

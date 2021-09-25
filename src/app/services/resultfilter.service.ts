@@ -26,9 +26,6 @@ export class ResultfilterService {
   //Sollen Track angezeigt werden als BS, das abboniert werden kann
   showTracksBS = new BehaviorSubject(false);
 
-  //Sollen die Joker-Symbole anzeigt werden?
-  showJokerBS = new BehaviorSubject(false);
-
   //aktuell ausgewaehlten Mode-Filter liefern
   getModeFilter() {
     return this.modeFilterBS;
@@ -87,15 +84,5 @@ export class ResultfilterService {
   //Track-Sichtbarkeit setzen
   setShowTracks(bool: boolean) {
     this.showTracksBS.next(bool);
-  }
-
-  //Joker-Sichtbarkeit liefern
-  getShowJoker() {
-    return this.showJokerBS;
-  }
-
-  //Joker-Sichtbarkeit setzen
-  setShowJoker(bool: boolean) {
-    this.showJokerBS.next(bool);
   }
 }

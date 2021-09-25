@@ -4,21 +4,6 @@
     background: $color-light-bg;
 }
 
-.joker {
-    background: $color-light-bg;
-
-    .joker-style {
-        color: grey;
-        line-height: 0;
-        height: 24px;
-        border-radius: 100%;
-
-        &:hover:not(:disabeld) {
-            background: rgba(grey, .3);
-        }
-    }
-}
-
 .box {
     border: none;
     border-top: 1px solid $color-light-border-grey;
@@ -31,7 +16,7 @@
     }
 
     &:not(:disabled) {
-        &:hover:not(.active-item):not(.joker) {
+        &:hover:not(.active-item) {
             background: $color-light-bg-hover;
 
             .fa-play {

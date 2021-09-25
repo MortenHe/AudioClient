@@ -38,15 +38,6 @@ export class ResultlistComponent {
   //Suchterm fuer Markierung der Trefferliste
   searchTerm: string;
 
-  //Sollen die Jokersymbole angezeigt werden?
-  showJoker: boolean;
-
-  //Wird gerade eine Joker Playlist kopiert?
-  jokerLock: boolean = false;
-
-  //welcher Joker wird gerade gesetzt?
-  clickedJokerItem: any = null;
-
   //Services injecten
   constructor(private bs: BackendService, private fs: ResultfilterService, private vcs: ViewControlService) { }
 
@@ -80,16 +71,6 @@ export class ResultlistComponent {
 
     //Suchterm abbonieren
     this.fs.getSearchTerm().subscribe(searchTerm => this.searchTerm = searchTerm);
-
-    //Jokeranzeige abbonieren
-    this.fs.getShowJoker().subscribe(showJoker => {
-      this.showJoker = showJoker;
-    });
-
-    //Zustand der JokerErstellung abbonieren
-    this.bs.getJokerLock().subscribe(jokerLock => {
-      this.jokerLock = jokerLock;
-    });
   }
 
   //einzelnes Item abspielen
@@ -114,23 +95,5 @@ export class ResultlistComponent {
 
     //Beim Starten oder Einreihen eines Items das Suchfeld leeren
     this.fs.setSearchTerm("");
-  }
-
-  //Die gewaehlte Playlist als Joker setzen, Lock setzen, um Oberflaeche zu blokieren (Wert kommt spaeter auch von WSS)
-  setJoker(item) {
-    this.jokerLock = true;
-
-    //Joker-Item merken, damit dort ein Spinner-Symbol angezeigt werden kann
-    this.clickedJokerItem = item;
-
-    //Playlist als Joker setzen. mode und folder, damit auf Server geprueft werden kann, ob es einen Joker-Ordner fuer diese Serie gibt (z.B. hsp/00-pumuck-joker)
-    this.bs.sendMessage({
-      type: "set-joker",
-      value: {
-        wantedJokerFolder: this.mode + "/" + item.mode + "/" + item.file,
-        mode: this.mode,
-        folder: item.mode
-      }
-    });
   }
 }

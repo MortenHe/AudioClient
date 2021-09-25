@@ -81,16 +81,13 @@ export class BackendService {
     //aktueller Random-Zustand
     random$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    //aktueller JokerLock-Zustand (wird gerade Joker-Playlist kopiert?)
-    jokerLock$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
     //aktives Item
     activeItem$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
     //Name der aktiven Playlist: Rolf Zuckowski - Starke Kinder
     activeItemName$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-    //Usermode (um MixFilesDir und JokerDir ueber Oberflaeche aendern zu koennen), Bsp. PW-Player laueft und man kann dort Luis AudioMix anpassen
+    //Usermode (um MixFilesDir ueber Oberflaeche aendern zu koennen), Bsp. PW-Player laueft und man kann dort Luis AudioMix anpassen
     userMode$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
     //HTML-Page Title
@@ -301,10 +298,6 @@ export class BackendService {
                     this.random$.next(value);
                     break;
 
-                case "jokerLock":
-                    this.jokerLock$.next(value);
-                    break;
-
                 case "activeItem":
                     this.activeItem$.next(value);
                     break;
@@ -380,10 +373,6 @@ export class BackendService {
 
     getRandom() {
         return this.random$;
-    }
-
-    getJokerLock() {
-        return this.jokerLock$;
     }
 
     getActiveItem() {
