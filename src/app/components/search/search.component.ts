@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
 import { domainModes } from '../../share/domainModes';
 import { ViewControlService } from '../../services/view-control.service';
 
