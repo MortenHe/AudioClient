@@ -43,7 +43,8 @@ export class RandomPlaybackComponent implements OnInit {
   ngOnDestroy() {
 
     //von Subscirpiton abmelden
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    //TODO: check warum Fehler bei lokaler Entwicklung
+    //this.ngUnsubscribe.next();
+    //this.ngUnsubscribe.complete();
   }
 }

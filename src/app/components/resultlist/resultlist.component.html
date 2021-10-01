@@ -1,23 +1,23 @@
 <!-- Ueber Items-Array gehen und die bereits gefilterte und sortierte Liste ausgeben -->
 <button *ngFor="let item of items$ | async"
         (click)="playSingleItem(item)"
-        class="box col text-left pl-2 light-bg"
+        class="box col text-start ps-2 light-bg"
         [ngClass]="{
           'active-item': item.mode + '/' + item.file === activeItem
         }">
 
   <!-- Zeile mit (hover-) Playsymbol, Name der Playlist und Laenge -->
-  <div class="row no-gutters align-items-center flex-nowrap">
+  <div class="row g-0 align-items-baseline flex-nowrap">
 
     <!-- Play-Symbol wird nur bei hover und active angezeigt -->
-    <i class="fa fa-play fa-fw mr-1 opacity-50"></i>
+    <i class="fa fa-play fa-fw me-1 opacity-50"></i>
 
     <!-- gekurzter Itemname mit Highlight -->
     <span class="flex-grow-1"
           [highlight]="searchTerm">{{item.name|fileName:modeFilter}}</span>
 
     <!-- formattierte Laenge des Items -->
-    <div class="item-length item-length-audio text-right ml-1 mr-1">
+    <div class="item-length item-length-audio text-right ms-1 me-1">
       {{item.length | timeformatter}}
     </div>
   </div>
@@ -26,7 +26,7 @@
   <ng-container *ngIf="showTracks$ | async">
     <ul *ngIf="item.tracks">
       <li *ngFor="let track of item.tracks"
-          class="mr-1"
+          class="me-1"
           [highlight]="searchTerm">
         {{track}}
       </li>

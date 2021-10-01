@@ -1,36 +1,36 @@
 <!--Wrapper fuer sichtbare Elemte, waehrend Anwendung laueft -->
 <div *ngIf="!shutdown; else shutdownTemp"
-     class="app-content container no-gutters p-0 shadow">
+     class="app-content container g-0 p-0 shadow">
 
     <!-- 1. Zeile: Countdown, Connection und Shutdown -->
-    <div class="header row no-gutters align-items-center py-1 px-2">
+    <div class="header row g-0 align-items-center py-1 px-2">
 
         <!-- Link auf Player -->
-        <div class="ml-2 cursor-pointer"
+        <div class="ms-2 cursor-pointer w-auto"
              routerLink="/">
             <i class="fa fa-chevron-left"></i>
-            <span class="ml-2">Zurück</span>
+            <span class="ms-2">Zurück</span>
         </div>
 
         <!-- Mix Playlist starten -->
-        <div class="ml-3 cursor-pointer"
+        <div class="ms-3 cursor-pointer w-auto"
              (click)="startMixFolder()">
             <i class="fa fa-play"></i>
-            <span class="ml-2">Mix starten</span>
+            <span class="ms-2">Mix starten</span>
         </div>
 
         <!-- Countdown -->
-        <countdown class="ml-auto"></countdown>
+        <countdown class="ms-auto w-auto"></countdown>
 
         <!-- Zustand der WSS-Verbindung -->
-        <connection></connection>
+        <connection class="w-auto"></connection>
 
         <!-- Shutdown -->
-        <picontrol></picontrol>
+        <picontrol class="w-auto"></picontrol>
     </div>
 
     <!-- Name der aktuellen Playlist -->
-    <div class="mb-2 p-1 pl-2 current-playlist">Gerade läuft: <b>{{activeItemName}}</b></div>
+    <div class="mb-2 p-1 ps-2 current-playlist">Gerade läuft: <b>{{activeItemName}}</b></div>
 
     <!-- 2. Zeile: Suchfeld + Paging -->
     <ng-container *ngIf="(searchFiles | searchFilter:searchTerm) as searchTermResult">
@@ -40,11 +40,11 @@
             <selectusermode></selectusermode>
 
             <!-- Suchfeld: Label besteht aus Icon und Input -->
-            <label class="search-field form-control d-flex no-gutters align-items-center p-1 no-left-border-radius"
+            <label class="search-field form-control d-flex g-0 align-items-center p-1 no-left-border-radius"
                    for="searchField">
 
                 <!-- Such-Symbol -->
-                <i class="fa fa-search ml-2"></i>
+                <i class="fa fa-search ms-2"></i>
 
                 <!-- Suchefeld -->
                 <input [formControl]="searchField"
@@ -52,14 +52,14 @@
                        autocomplete="off"
                        id="searchField"
                        placeholder="Suche"
-                       class="col ml-2"
+                       class="col ms-2"
                        id="search"
                        type="search"
                        name="search">
             </label>
 
             <!-- Paging -->
-            <div class="d-flex paging align-items-center text-right justify-content-between ml-2">
+            <div class="d-flex paging align-items-center text-right justify-content-between ms-2">
 
                 <!-- Paging - -->
                 <button class="btn btn-sm fa fa-chevron-left"
@@ -87,7 +87,7 @@
                    (click)="addItem(searchFile)"></i>
 
                 <!-- Name des Titels -->
-                <span class="ml-2"
+                <span class="ms-2"
                       [highlight]="searchTerm">{{searchFile.path | fileName:'digitOnly'}}</span>
             </div>
         </div>
@@ -96,7 +96,7 @@
     <hr>
 
     <!-- Anederungen auf Server speichern, disabled wenn keine Aenderungen vorliegen -->
-    <button class="ml-3 btn"
+    <button class="ms-3 btn"
             [ngClass]="{
           'mh-bg-primary': hasUnsavedChanges,
           'bg-secondary opacity-30': !hasUnsavedChanges}"
@@ -105,7 +105,7 @@
 
     <!-- Spinner waehrend Speichervorgang -->
     <i *ngIf="saving"
-       class="ml-2 fa fa-spinner fa-spin"></i>
+       class="ms-2 fa fa-spinner fa-spin"></i>
 
     <!-- Sortierbare Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
     <div class="mx-2 mt-2">
@@ -121,10 +121,10 @@
                    class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle opacity-50"></i>
 
                 <!-- Name des Titels -->
-                <span class="ml-2 flex-grow-1">{{mixFile.path | fileName:'digitOnly'}}</span>
+                <span class="ms-2 flex-grow-1">{{mixFile.path | fileName:'digitOnly'}}</span>
 
                 <!-- Titel aus Liste loeschen -->
-                <i class="ml-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"
+                <i class="ms-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"
                    (click)="removeItem(index, mixFile)"></i>
             </div>
         </div>
@@ -133,7 +133,7 @@
 
 <!-- Anzeigen, wenn Pi heruntergefahren wurde -->
 <ng-template #shutdownTemp>
-    <div class="container mr-0 ml-0 no-gutters text-center">
+    <div class="container me-0 ms-0 g-0 text-center">
         Der Player wurde beendet.
     </div>
 </ng-template>

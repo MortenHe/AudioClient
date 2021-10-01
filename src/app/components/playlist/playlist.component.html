@@ -8,7 +8,7 @@
      [ngClass]="{
         'opacity-50': i < position,
         'waiting': i === jumpPosition,
-        'font-weight-bold': i === position
+        'fw-bold': i === position
        }">
 
   <!-- Zaehler ggf. mit fuehrender 0, unterschiedliche Breite bei >= 10 bzw. >= 100 Titel -->
@@ -29,7 +29,7 @@
   </span>
 
   <!-- Dateiname + Zeit -->
-  <span class="file-name ml-1">
+  <span class="file-name ms-1">
 
     <!-- Dateiname ohne fuehrende Ziffern -->
     {{file|fileName:'digit'}}
