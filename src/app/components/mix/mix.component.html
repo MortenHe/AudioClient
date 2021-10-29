@@ -30,36 +30,40 @@
     </div>
 
     <!-- Name der aktuellen Playlist -->
-    <div class="mb-2 p-1 ps-2 current-playlist">Gerade läuft: <b>{{activeItemName}}</b></div>
+    <div class="p-1 ps-2 current-playlist">Gerade läuft: <b>{{activeItemName}}</b></div>
 
     <!-- 2. Zeile: Suchfeld + Paging -->
     <ng-container *ngIf="(searchFiles | searchFilter:searchTerm) as searchTermResult">
-        <div class="d-flex mx-2 mt-3">
+        <div class="d-flex flex-wrap mx-2 mt-3">
 
-            <!-- Auswahl des Mix-Ordners (Luis vs. Laila...)-->
-            <selectusermode></selectusermode>
+            <!-- Auswahl-Button und Suchfeld gruppieren, damit Paging bei kleinen Aufloesungen in die naechste Zeile springt -->
+            <div class="d-flex flex-grow-1">
 
-            <!-- Suchfeld: Label besteht aus Icon und Input -->
-            <label class="search-field form-control d-flex g-0 align-items-center p-1 no-left-border-radius"
-                   for="searchField">
+                <!-- Auswahl des Mix-Ordners (Luis vs. Laila...)-->
+                <selectusermode></selectusermode>
 
-                <!-- Such-Symbol -->
-                <i class="fa fa-search ms-2"></i>
+                <!-- Suchfeld: Label besteht aus Icon und Input -->
+                <label class="search-field form-control d-flex g-0 align-items-center p-1 no-left-border-radius"
+                       for="searchField">
 
-                <!-- Suchefeld -->
-                <input [formControl]="searchField"
-                       autofocus
-                       autocomplete="off"
-                       id="searchField"
-                       placeholder="Suche"
-                       class="col ms-2"
-                       id="search"
-                       type="search"
-                       name="search">
-            </label>
+                    <!-- Such-Symbol -->
+                    <i class="fa fa-search ms-2"></i>
+
+                    <!-- Suchefeld -->
+                    <input [formControl]="searchField"
+                           autofocus
+                           autocomplete="off"
+                           id="searchField"
+                           placeholder="Suche"
+                           class="col ms-2"
+                           id="search"
+                           type="search"
+                           name="search">
+                </label>
+            </div>
 
             <!-- Paging -->
-            <div class="d-flex paging align-items-center text-right justify-content-between ms-2">
+            <div class="d-flex paging align-items-center text-right justify-content-between">
 
                 <!-- Paging - -->
                 <button class="btn btn-sm fa fa-chevron-left"
