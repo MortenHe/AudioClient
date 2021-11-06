@@ -7,7 +7,7 @@
         }">
 
   <!-- Zeile mit (hover-) Playsymbol, Name der Playlist und Laenge -->
-  <div class="row g-0 align-items-baseline flex-nowrap">
+  <div class="d-flex g-0 align-items-baseline flex-nowrap">
 
     <!-- Play-Symbol wird nur bei hover und active angezeigt -->
     <i class="fa fa-play fa-fw me-1 opacity-50"></i>
@@ -17,7 +17,7 @@
           [highlight]="searchTerm">{{item.name|fileName:modeFilter}}</span>
 
     <!-- formattierte Laenge des Items -->
-    <div class="item-length item-length-audio text-right ms-1 me-1">
+    <div class="item-length item-length-audio text-end ms-1 me-1">
       {{item.length | timeformatter}}
     </div>
   </div>
