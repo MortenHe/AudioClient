@@ -26,11 +26,11 @@
 //@include angular-material-theme($website-theme);
 
 //Eigenes Theme fuer Bootstrap importieren
-@import 'customize-bootstrap.scss';
+@import "customize-bootstrap.scss";
 //Bootstrap importieren
-@import '../node_modules/bootstrap/scss/bootstrap';
+@import "../node_modules/bootstrap/scss/bootstrap";
 //MH Variablen importieren
-@import '~scss/variables.scss';
+@import "~scss/variables.scss";
 /* Bootstrap changes */
 
 .btn {
@@ -87,13 +87,13 @@ body {
     background: $color-white;
 }
 
-input:checked+.next-label {
-    background: rgba($color-info-blue, .2);
+input:checked + .next-label {
+    background: rgba($color-info-blue, 0.2);
     border: 1px solid $color-light-border-grey;
 }
 
-input:disabled+.next-label {
-    opacity: .3;
+input:disabled + .next-label {
+    opacity: 0.3;
 }
 
 .tag {
@@ -139,7 +139,7 @@ select:focus {
 }
 
 button:disabled {
-    opacity: .5;
+    opacity: 0.5;
     cursor: default;
 }
 
@@ -148,7 +148,7 @@ button:disabled {
 }
 
 .vertical-line {
-    border-left: 2px solid rgba($color-grey, .4);
+    border-left: 2px solid rgba($color-grey, 0.4);
     height: 20px;
     display: inline-block;
     margin-left: 5px;
@@ -160,13 +160,13 @@ button:disabled {
 }
 
 .margin-top-block {
-    +.margin-top-block {
+    + .margin-top-block {
         margin-top: 10px;
     }
 }
 
 .margin-left-block {
-    +.margin-left-block {
+    + .margin-left-block {
         margin-left: 10px;
     }
 }
@@ -176,10 +176,10 @@ button:disabled {
 }
 
 .item-length {
-    min-width: 45px;
+    min-width: 50px;
 }
 
-.input-wrapper>span {
+.input-wrapper > span {
     margin-right: 5px;
 }
 
@@ -222,12 +222,12 @@ button:disabled {
     background-position: 50%;
     transform: scale(10, 10);
     opacity: 0;
-    transition: transform .5s, opacity .8s;
+    transition: transform 0.5s, opacity 0.8s;
 }
 
 .ripple:active:after {
     transform: scale(0, 0);
-    opacity: .2;
+    opacity: 0.2;
     transition: 0s;
 }
 
@@ -293,7 +293,7 @@ button:disabled {
 
 mark {
     padding: 0;
-    background: rgba($color-info-blue, .4);
+    background: rgba($color-info-blue, 0.4);
 }
 
 label.fa-smile-o {
@@ -302,7 +302,7 @@ label.fa-smile-o {
 
 .current-playlist {
     font-size: 15px;
-    background: rgba($color-info-blue, .1);
+    background: rgba($color-info-blue, 0.1);
     border-radius: 5px;
 }
 
@@ -313,7 +313,7 @@ label.fa-smile-o {
 
 @media (hover: hover) and (pointer: fine) {
     .tag-sm:hover {
-        background: rgba($color-info-blue, .2);
+        background: rgba($color-info-blue, 0.2);
     }
 }
 
