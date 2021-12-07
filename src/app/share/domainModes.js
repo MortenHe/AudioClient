@@ -1,10 +1,10 @@
 //Liste der Modes fuer Navigation oben
 export const domainModes = [{
     "id": "hsp",
-    "label": "HSP"
+    "label": "Hörspiele"
 }, {
     "id": "kindermusik",
-    "label": "Kids"
+    "label": "Kindermusik"
 }, {
     "id": "cds",
     "label": "CDs"
