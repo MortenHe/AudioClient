@@ -6,6 +6,9 @@ import * as path from 'path';
 })
 export class FileNamePipe implements PipeTransform {
 
+  //Bei welchen modes soll keine Kuerzung des Namens stattfinden?
+  ignoreArr: string[] = ["all", "misc", "spring", "summer", "autumn", "winter", "kinderhits", "german", "musical", "slow"];
+
   transform(filePath: string, prefixFilter?: string): any {
     let fileName = filePath;
 
@@ -21,7 +24,7 @@ export class FileNamePipe implements PipeTransform {
 
     //Wenn in der Playlist die fuerhenden Zeichen entfernt werden sollen (Ed Sheeran - Sing -> Sing)
     //oder ein anderer Modefilter als Alle oder Sonstige ausgewaehlt ist, den Namen der Serie (Bibi und Tina - ) vorne wegkuerzen fuer mehr Platz
-    else if (prefixFilter === "digit" || (prefixFilter && ((prefixFilter !== "all" && prefixFilter !== "misc")))) {
+    else if (prefixFilter === "digit" || (prefixFilter && !this.ignoreArr.includes(prefixFilter))) {
       fileName = fileName.replace(/^[A-Za-z0-9_äÄöÖüÜß ]* - /, '');
     }
 
