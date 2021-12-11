@@ -7,7 +7,7 @@ import * as path from 'path';
 export class FileNamePipe implements PipeTransform {
 
   //Bei welchen modes soll keine Kuerzung des Namens stattfinden?
-  ignoreArr: string[] = ["all", "misc", "spring", "summer", "autumn", "winter", "kinderhits", "german", "musical", "slow"];
+  ignoreArr: string[] = ["all", "misc", "spring", "summer", "autumn", "winter", "xmas", "kinderhits", "german", "musical", "slow"];
 
   transform(filePath: string, prefixFilter?: string): any {
     let fileName = filePath;
