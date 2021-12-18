@@ -20,10 +20,6 @@ export class SelectusermodeComponent implements OnInit {
             label: "Luis"
         },
         {
-            id: "sh",
-            label: "SH"
-        },
-        {
             id: "mh",
             label: "MH"
         }
