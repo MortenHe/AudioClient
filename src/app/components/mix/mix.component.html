@@ -39,7 +39,7 @@
             <!-- Auswahl-Button und Suchfeld gruppieren, damit Paging bei kleinen Aufloesungen in die naechste Zeile springt -->
             <div class="d-flex flex-grow-1">
 
-                <!-- Auswahl des Mix-Ordners (Luis vs. Laila...)-->
+                <!-- Auswahl des Herz-Mix-Ordners (Luis vs. Laila...)-->
                 <selectusermode></selectusermode>
 
                 <!-- Suchfeld: Label besteht aus Icon und Input -->
@@ -86,7 +86,7 @@
             <div *ngFor="let searchFile of searchTermResult | slice:pageStart:(pageStart + itemsPerPage)"
                  class="d-flex align-items-baseline mb-2">
 
-                <!-- Titel zu Mix-Ordner hinzufuegen -->
+                <!-- Titel zu Herz-Mix-Ordner hinzufuegen -->
                 <i class="fa fa-plus tag-sm d-flex align-items-center justify-content-center"
                    (click)="addItem(searchFile)"></i>
 
@@ -111,7 +111,7 @@
     <i *ngIf="saving"
        class="ms-2 fa fa-spinner fa-spin"></i>
 
-    <!-- Sortierbare Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
+    <!-- Sortierbare Herz-Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
     <div class="mx-2 mt-2">
         <div cdkDropList
              class="sort-list"

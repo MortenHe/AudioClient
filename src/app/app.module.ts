@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-//Sortierbare Mix-Liste
+//Sortierbare Herz-Mix-Liste
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 //eigenes Services

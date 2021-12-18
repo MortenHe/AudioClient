@@ -28,19 +28,19 @@ export class MixComponent implements OnInit {
     //Liste der auswaehlbaren Dateien
     searchFiles = [];
 
-    //Liste der Dateien im Mix-Ordner
+    //Liste der Dateien im Herz-Mix-Ordner
     mixFiles = [];
 
-    //Titel pro Seite in Mix-Files-Suche
+    //Titel pro Seite in Herz-Mix-Files-Suche
     itemsPerPage: number = 10;
 
-    //Wo soll Liste der durchsuchbaren Mix-Files anfangen
+    //Wo soll Liste der durchsuchbaren Herz-Mix-Files anfangen
     pageStart: number = 0;
 
-    //Originalliste der Dateien im Mix-Ordner
+    //Originalliste der Dateien im Herz-Mix-Ordner
     mixFilesOrig = [];
 
-    //Wo liegen die Mixfiles?
+    //Wo liegen die Herz-Mix-Dateien?
     mixDir: string = null;
 
     //Liste der Aktionen, die auf dem Server durchgefuehrt werden (move, delete)
@@ -82,10 +82,10 @@ export class MixComponent implements OnInit {
         //Liste der Mixfiles abbonieren
         this.bs.getMixFiles().subscribe(mixFiles => {
 
-            //Liste der Mix-Files fuer Oberflaeche
+            //Liste der Herz-Mix-Files fuer Oberflaeche
             this.mixFiles = mixFiles;
 
-            //Liste der Mix-Files nochmal zusaetzlich speichern, um vergleichen zu koennen ob sich Array geandert hat
+            //Liste der Herz-Mix-Files nochmal zusaetzlich speichern, um vergleichen zu koennen ob sich Array geandert hat
             this.mixFilesOrig = mixFiles.slice();
 
             //Aenderungen-Flags zuruecksetzen
@@ -111,20 +111,20 @@ export class MixComponent implements OnInit {
         });
     }
 
-    //Neue Datei zu Liste fuer Mix-Ordner hinzufuegen
+    //Neue Datei zu Liste fuer Herz-Mix-Ordner hinzufuegen
     addItem(item) {
 
-        //Auf jeden Fall Aenderung an Mix-Folder-Liste
+        //Auf jeden Fall Aenderung an Herz-Mix-Folder-Liste
         this.hasUnsavedChanges = true;
 
-        //Datei bei Mix-Files oben einfuegen
+        //Datei bei Herz-Mix-Files oben einfuegen
         this.mixFiles.unshift({
             "type": "new",
             "path": item.path
         });
     }
 
-    //Titel aus Liste fuer Mix-Ordner entfernen
+    //Titel aus Liste fuer Herz-Mix-Ordner entfernen
     removeItem(index, item) {
 
         //Aus Liste entfernen
@@ -133,7 +133,7 @@ export class MixComponent implements OnInit {
         //Pruefen, ob neue Liste wieder der urspruenglichen Liste entspricht (dann waeren keine Aenderungen zum Speichern da)
         this.checkIfMixFolderHasChanged();
 
-        //Wenn es ein Titel aus dem Mix-Ordner ist, diesen zur Loeschung vormerken
+        //Wenn es ein Titel aus dem Herz-Mix-Ordner ist, diesen zur Loeschung vormerken
         if (item.type === "old") {
             this.actionList.push({
                 "type": "remove",
@@ -142,12 +142,12 @@ export class MixComponent implements OnInit {
         }
     }
 
-    //Mix-Folder starten
+    //Herz-Mix-Folder starten
     startMixFolder() {
         const playlistMode = path.basename(path.dirname(path.dirname(this.mixDir)));
         const playlistPath = path.basename(path.dirname(this.mixDir)) + "/" + path.basename(this.mixDir);
 
-        //Namen fuer Playlist bauen, da diese hier ausnahmsweise von Client und nicht vom Server kommt: sh -> MIX SH, luis -> MIX Luis
+        //Namen fuer Playlist bauen, da diese hier ausnahmsweise von Client und nicht vom Server kommt: laila -> Herz-Mix Laila, luis -> Herz-Mix Luis
         const userModeClean = this.userMode.length > 2 ? this.userMode[0].toUpperCase() + this.userMode.substring(1) : this.userMode.toUpperCase();
         const playlistName = "Mix " + userModeClean;
 
@@ -162,7 +162,7 @@ export class MixComponent implements OnInit {
         });
     }
 
-    //Wenn Umsortierung abgeschlossen ist -> Model anpassen und pruefen ob Mix-Liste Aenderungen hat
+    //Wenn Umsortierung abgeschlossen ist -> Model anpassen und pruefen ob Herz-Mix-Liste Aenderungen hat
     drop(event: CdkDragDrop<string[]>) {
         moveItemInArray(this.mixFiles, event.previousIndex, event.currentIndex);
         this.checkIfMixFolderHasChanged();
@@ -173,17 +173,17 @@ export class MixComponent implements OnInit {
         this.hasUnsavedChanges = !(_.isEqual(this.mixFilesOrig, this.mixFiles));
     }
 
-    //Aenderungen an Mix-Ordner an Server melden
+    //Aenderungen an Herz-Mix-Ordner an Server melden
     saveChanges() {
         this.saving = true;
 
         //Liste der Anederung erstellen und an Server schicken
         this.mixFiles.forEach((value, index) => {
 
-            //Zwischen alten Dateien (bereits im Mix-Ordner) und neuen Dateien (noch nicht im Mix-Ordner) unterscheiden
+            //Zwischen alten Dateien (bereits im Herz-Mix-Ordner) und neuen Dateien (noch nicht im Herz-Mix-Ordner) unterscheiden
             switch (value.type) {
 
-                //Alte Datei im Mix-Ordner umbenennen
+                //Alte Datei im Herz-Mix-Ordner umbenennen
                 case "old":
 
                     //Dateiname: 03 - MH - Show Me Heaven.mp3
@@ -210,7 +210,7 @@ export class MixComponent implements OnInit {
                     }
                     break;
 
-                //Neue Datei in den Mix-Ordner kopieren
+                //Neue Datei in den Herz-Mix-Ordner kopieren
                 case "new":
 
                     //Dateiname: 02 - MH - At Ease.mp3
@@ -222,7 +222,7 @@ export class MixComponent implements OnInit {
                     //Neuer Dateiname mit Praefix anhand der Position in der Liste: 03 + " - " +  MH - At Ease.mp3 =>  03 - MH - At Ease.mp3
                     const prefixedFileName = (index + 1).toString().padStart(2, '0') + " - " + shortFileName;
 
-                    //Kopieren in den Mix-Ordner vormerken
+                    //Kopieren in den Herz-Mix-Ordner vormerken
                     this.actionList.push({
                         "type": "copy",
                         "from": value.path,
@@ -232,7 +232,7 @@ export class MixComponent implements OnInit {
             }
         });
 
-        //Liste der Aktionen fuer Mix-Ordner an Server schicken
+        //Liste der Aktionen fuer Herz-Mix-Ordner an Server schicken
         if (this.actionList.length) {
             this.bs.sendMessage({
                 type: "update-mix-folder",

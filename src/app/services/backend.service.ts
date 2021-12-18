@@ -63,13 +63,13 @@ export class BackendService {
     //Die Dateien, die gerade abgespielt werden
     files$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
-    //Die Dateien, die fuer den mixFileOrdner ausgewaehlt werden koennen
+    //Die Dateien, die fuer den Herz-Mix-Ordner ausgewaehlt werden koennen
     searchFiles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
-    //Mix-Files-Ordner
+    //Herz-Mix-Files-Ordner
     mixDir$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-    //Die Dateien, die gerade im mixFileOrdner liegen
+    //Die Dateien, die gerade im Herz-Mix-Ordner liegen
     mixFiles$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
     //Aktueller Index in Titelliste
@@ -87,7 +87,7 @@ export class BackendService {
     //Name der aktiven Playlist: Rolf Zuckowski - Starke Kinder
     activeItemName$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
-    //Usermode (um MixFilesDir ueber Oberflaeche aendern zu koennen), Bsp. PW-Player laueft und man kann dort Luis AudioMix anpassen
+    //Usermode (um Herz-Mix-Ordner ueber Oberflaeche aendern zu koennen), Bsp. PW-Player laueft und man kann dort Luis AudioMix anpassen
     userMode$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
     //HTML-Page Title
