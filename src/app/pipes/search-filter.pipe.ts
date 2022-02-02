@@ -9,8 +9,7 @@ import { Item } from '../config/main-config';
 export class SearchFilterPipe implements PipeTransform {
 
   //Suchstring wird uebergeben
-  //TODO: includeTracks entfernen
-  transform(items: Item[], searchString: string, includeTracks: boolean): any {
+  transform(items: Item[], searchString: string): any {
 
     //Wenn Suchfeld leer ist, Trefferliste unveraendert zuruck
     if (!searchString) {
@@ -22,30 +21,20 @@ export class SearchFilterPipe implements PipeTransform {
       return items.filter(item => {
 
         //Ordnername (audio) des Items soll durchsucht werden
-        let haystack = item.name;
-
-        //Wenn auch Tracks durchsucht werden sollen
-        //if (includeTracks && item.tracks) {
-
-        //@MH: 11.2019 -> Tracks immer durchsuchen
-        //An Titel noch alle Tracks anhaengen: Janosch - Schnuddelgeschichten Wolkenzimmerhaus Oh wie einsam ist die Luft...
-        if (item.tracks) {
-          haystack += " " + item.tracks.join(" ");
-        }
-        //}
+        const haystack = item.name;
 
         //durchsuchten String und Suchstring als lowercase: "Bobo Drache" -> "bobo drache"
-        let haystackLower = haystack.toLowerCase();
-        let searchStringLower = searchString.toLowerCase();
+        const haystackLower = haystack.toLowerCase();
+        const searchStringLower = searchString.toLowerCase();
 
         //Suchstring in einzelne Terme aufteilen: "bobo drache" -> ["bobo", "drache"]
-        let searchStringArray = searchStringLower.split(" ");
+        const searchStringArray = searchStringLower.split(" ");
 
         //davon ausgehen, dass Suche gefunden wird
         let containsSubstrings = true;
 
         //Alle Terme des Suchstrings pruefen, ob sie im durchsuchten String enthalten sind
-        for (let searchStringValue of searchStringArray) {
+        for (const searchStringValue of searchStringArray) {
 
           //Nur nicht-leere Terme ansehen
           if (searchStringValue.trim() != "") {

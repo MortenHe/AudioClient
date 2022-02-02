@@ -33,8 +33,6 @@ import { SelectmodeComponent } from './components/selectmode/selectmode.componen
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { PlayercontrolComponent } from './components/playercontrol/playercontrol.component';
 import { PicontrolComponent } from './components/picontrol/picontrol.component';
-import { ToggletrackviewComponent } from './components/toggletrackview/toggletrackview.component';
-import { RandomPlaybackComponent } from './components/random-playback/random-playback.component';
 import { VolumeControlComponent } from './components/volume-control/volume-control.component';
 import { ConnectionComponent } from './components/connection/connection.component';
 import { ViewControlComponent } from './components/view-control/view-control.component';
@@ -57,12 +55,10 @@ import { SelectusermodeComponent } from './components/selectusermode/selectuserm
     PlaylistComponent,
     PlayercontrolComponent,
     PicontrolComponent,
-    ToggletrackviewComponent,
     ModeFilterPipe,
     SearchFilterPipe,
     OrderByPipe,
     ToggleCheckboxDirective,
-    RandomPlaybackComponent,
     VolumeControlComponent,
     FileNamePipe,
     ConnectionComponent,

@@ -23,9 +23,6 @@ export class ResultfilterService {
   //umgekehrte Sortierung als BS, das abboniert werden kann
   reverseOrderBS = new BehaviorSubject(false);
 
-  //Sollen Track angezeigt werden als BS, das abboniert werden kann
-  showTracksBS = new BehaviorSubject(false);
-
   //aktuell ausgewaehlten Mode-Filter liefern
   getModeFilter() {
     return this.modeFilterBS;
@@ -74,15 +71,5 @@ export class ResultfilterService {
   //Umgekehrte Sortierung setzen
   setReverseOrder(bool: boolean) {
     this.reverseOrderBS.next(bool);
-  }
-
-  //Track-Sichtbarkeit liefern
-  getShowTracks() {
-    return this.showTracksBS;
-  }
-
-  //Track-Sichtbarkeit setzen
-  setShowTracks(bool: boolean) {
-    this.showTracksBS.next(bool);
   }
 }

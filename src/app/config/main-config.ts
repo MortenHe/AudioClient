@@ -5,6 +5,4 @@ export class Item {
     added: string;
     file: string;
     length: string;
-    active: boolean;
-    tracks: string[];
 }

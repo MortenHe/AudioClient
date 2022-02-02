@@ -156,8 +156,7 @@ export class MixComponent implements OnInit {
             value: {
                 name: playlistName,
                 mode: playlistMode,
-                path: playlistPath,
-                allowRandom: true
+                path: playlistPath
             }
         });
     }

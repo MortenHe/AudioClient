@@ -28,7 +28,7 @@
         <volume-control class="col row g-0 justify-content-end"></volume-control>
     </div>
 
-    <!-- 3. Zeile: Zwischen Suche und Playlist umschalten + Random-Checkbox fuer Playlist -->
+    <!-- 3. Zeile: Zwischen Suche und Playlist umschalten -->
     <div class="d-flex mx-2 mt-3 align-items-center">
 
         <!-- Views umschalten (Suche vs. Playlist) -->
@@ -37,10 +37,6 @@
         <!-- Link auf Mixer-Seite -->
         <div class="ms-2 tag fa fa-heart d-flex align-items-center justify-content-center mix"
              routerLink="/mix"></div>
-
-        <!-- Checkbox fuer zufaellige Wiedergabe (nur bei Modi, die random erlauben und nur in Playlist View) -->
-        <random-playback [class.hidden]="activeView !== 'playlist' || !(allowRandomRunning$ | async)"
-                         class="d-flex ms-auto"></random-playback>
     </div>
 
     <!-- Wenn Suche aktiv ist -->

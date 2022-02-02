@@ -18,9 +18,6 @@ export class SearchComponent {
   //welche ModeFilter gibt es (all, conni, janosch, misc)
   showModeFilterList: boolean = false;
 
-  //ist random playback erlaubt bei laufender Playlist?
-  allowRandomRunning$;
-
   //Position in Playlist
   position: number = -1;
 
@@ -39,9 +36,6 @@ export class SearchComponent {
 
   //Beim Init
   ngOnInit() {
-
-    //AllowRandom abonnieren (fuer Anzeige gewisser Komponenten)
-    this.allowRandomRunning$ = this.bs.getAllowRandomRunning();
 
     //immer wenn sich die Route /serach/hsp -> /search/musikmh aendert
     this.route.paramMap.subscribe(params => {

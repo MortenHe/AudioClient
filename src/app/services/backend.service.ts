@@ -30,9 +30,6 @@ export class BackendService {
     //Suchefeld-Filter
     searchTerm;
 
-    //sollen auch Tracks durchsucht werden
-    searchIncludeTracks;
-
     //Sortierfeld
     orderField;
 
@@ -47,9 +44,6 @@ export class BackendService {
 
     //Liste der Mode Filter dieses Modus als BS, das abboniert werden kann
     modeFilterListBS = new BehaviorSubject(null);
-
-    //Random Playback erlaubt als BS, das abboniert werden kann
-    allowRandomBS = new BehaviorSubject(false);
 
     //Lautstaerke
     volume$: BehaviorSubject<number> = new BehaviorSubject<number>(null);
@@ -78,9 +72,6 @@ export class BackendService {
     //aktueller Pause-Zustand
     paused$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    //aktueller Random-Zustand
-    random$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
     //aktives Item
     activeItem$: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
@@ -95,9 +86,6 @@ export class BackendService {
 
     //wurde Server heruntergefahren?
     shutdown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-    //ist Random bei der aktuell laufenden Playlist erlaubt?
-    allowRandomRunning$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     //Ist die App gerade mit dem WSS verbunden?
     connected$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -120,9 +108,6 @@ export class BackendService {
         //Wenn sich der Modus aendert
         this.modeBS.subscribe(mode => {
 
-            //Wert in BS setzen, ob Random in diesem Modus erlaubt ist
-            this.allowRandomBS.next(this.itemListFull[this.modeBS.getValue()].allowRandom);
-
             //Filter-Modus-Liste des aktuellen Modus setzen
             this.modeFilterListBS.next(this.itemListFull[this.modeBS.getValue()].filter);
 
@@ -142,11 +127,7 @@ export class BackendService {
             this.filterItemList();
         });
 
-        //Aenderungen an Track-Sichtbarkeit abbonieren, speichern und Itemliste neu erstellen
-        this.fs.getShowTracks().subscribe(showTracks => {
-            this.searchIncludeTracks = showTracks;
-            this.filterItemList();
-        });
+
 
         //Aenderungen an Sortierfeld abbonieren, speichern und Itemliste neu erstellen
         this.fs.getOrderField().subscribe(orderField => {
@@ -168,7 +149,7 @@ export class BackendService {
         let filteredItemList = this.modeFilterPipe.transform(this.itemListFull[this.modeBS.getValue()].items, this.modeFilter);
 
         //Suchfeld-Filter anwenden
-        filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm, this.searchIncludeTracks);
+        filteredItemList = this.searchFilterPipe.transform(filteredItemList, this.searchTerm);
 
         //Sortierung anwenden
         filteredItemList = this.orderByPipe.transform(filteredItemList, this.orderField, this.reverseOrder);
@@ -183,10 +164,6 @@ export class BackendService {
 
     setMode(mode) {
         this.modeBS.next(mode);
-    }
-
-    getAllowRandom() {
-        return this.allowRandomBS;
     }
 
     getFilteredItemlist() {
@@ -294,20 +271,12 @@ export class BackendService {
                     this.finishInit();
                     break;
 
-                case "random":
-                    this.random$.next(value);
-                    break;
-
                 case "activeItem":
                     this.activeItem$.next(value);
                     break;
 
                 case "activeItemName":
                     this.activeItemName$.next(value);
-                    break;
-
-                case "allowRandom":
-                    this.allowRandomRunning$.next(value);
                     break;
 
                 case "userMode":
@@ -371,10 +340,6 @@ export class BackendService {
         return this.paused$;
     }
 
-    getRandom() {
-        return this.random$;
-    }
-
     getActiveItem() {
         return this.activeItem$;
     }
@@ -393,10 +358,6 @@ export class BackendService {
 
     getShutdown() {
         return this.shutdown$;
-    }
-
-    getAllowRandomRunning() {
-        return this.allowRandomRunning$;
     }
 
     getConnected() {
