@@ -18,7 +18,7 @@
                        autocomplete="off"
                        id="searchField"
                        placeholder="Suche"
-                       class="col ms-2"
+                       class="col ms-2 ps-0"
                        id="search"
                        type="search"
                        name="search">
@@ -47,7 +47,7 @@
     <!-- 2. Zeile: Trefferliste der Dateisuche -->
     <div class="mx-2 mt-2">
         <div *ngFor="let searchFile of searchTermResult | slice:pageStart:(pageStart + itemsPerPage)"
-             class="d-flex align-items-baseline mb-2">
+             class="d-flex align-items-baseline mb-1">
 
             <!-- Titel zu Herz-Mix-Ordner hinzufuegen -->
             <i class="fa fa-plus tag-sm d-flex align-items-center justify-content-center"
@@ -66,7 +66,7 @@
 <div class="row g-0 align-items-center px-2">
 
     <!-- Auswahl des Herz-Mix-Ordners (Luis vs. Laila...)-->
-    <selectusermode class="width-auto"></selectusermode>
+    <selectusermode></selectusermode>
 
     <!-- Anederungen auf Server speichern, disabled wenn keine Aenderungen vorliegen -->
     <button class="btn width-auto no-left-border-radius position-relative"
@@ -92,13 +92,13 @@
 <hr>
 
 <!-- 4. Zeile: Sortierbare Herz-Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
-<div class="mx-2 mt-2">
+<div class="mx-2">
     <div cdkDropList
          class="sort-list"
          (cdkDropListDropped)="drop($event)">
         <div *ngFor="let mixFile of mixFiles, index as index"
              cdkDrag
-             class="sort-box mb-2">
+             class="sort-box mb-1">
 
             <!-- Sortier-Handle -->
             <i cdkDragHandle
