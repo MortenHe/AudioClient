@@ -1,9 +1,11 @@
-@import '~scss/variables.scss';
+@import "~scss/variables.scss";
 
 :host {
     display: flex;
+    background: white;
+    border-radius: 5px;
 }
 
 .activeView {
-    background: rgba($color-info-blue, .2);
+    background: rgba($color-info-green, 0.1);
 }

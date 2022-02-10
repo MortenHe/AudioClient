@@ -43,7 +43,7 @@
                             "sourceMap": false,
                             "namedChunks": false,
                             "aot": true,
-                            "extractLicenses": true,
+                            "extractLicenses": false,
                             "vendorChunk": false,
                             "buildOptimizer": true,
                             "fileReplacements": [
@@ -52,8 +52,17 @@
                                     "with": "src/environments/environment.prod.ts"
                                 }
                             ]
+                        },
+                        "devel": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
                         }
-                    }
+                    },
+                    "defaultConfiguration": "devel"
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
@@ -63,6 +72,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "website:build:production"
+                        },
+                        "devel": {
+                            "browserTarget": "website:build:devel"
                         }
                     }
                 },

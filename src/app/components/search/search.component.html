@@ -6,7 +6,10 @@
     <div class="header row g-0 align-items-center py-1 ps-1 pe-2">
 
         <!-- Liste der Modes (kindermusik, hsp, cds) -->
-        <selectmode class="col"></selectmode>
+        <selectmode class="w-auto"></selectmode>
+
+        <!-- Views umschalten (Suche, Playlist, Mix) -->
+        <view-control class="w-auto mr-auto ms-1"></view-control>
 
         <!-- Countdown -->
         <countdown class="g-0 w-auto"></countdown>
@@ -19,24 +22,16 @@
     </div>
 
     <!-- 2. Zeile: Steuerelemente -->
-    <div class="row g-0 py-1 px-2 justify-content-center player-controls">
+    <div class="row g-0 py-1 px-2 justify-content-center player-controls align-items-center">
 
         <!-- Play, Pause, Stop, Seek  -->
-        <playercontrol class="col-8 control-content row g-0"></playercontrol>
+        <playercontrol class="w-auto control-content row g-0"></playercontrol>
+
+        <!-- Name der aktuellen Playlist -->
+        <div class="col text-center font-weight-bold">{{activeItemName}}</div>
 
         <!-- Lautstaerke -->
-        <volume-control class="col row g-0 justify-content-end"></volume-control>
-    </div>
-
-    <!-- 3. Zeile: Zwischen Suche und Playlist umschalten -->
-    <div class="d-flex mx-2 mt-3 align-items-center">
-
-        <!-- Views umschalten (Suche vs. Playlist) -->
-        <view-control></view-control>
-
-        <!-- Link auf Mixer-Seite -->
-        <div class="ms-2 tag fa fa-heart d-flex align-items-center justify-content-center mix"
-             routerLink="/mix"></div>
+        <volume-control class="w-auto row g-0 justify-content-end"></volume-control>
     </div>
 
     <!-- Wenn Suche aktiv ist -->
@@ -64,6 +59,9 @@
     <!-- Anischt der aktuell laufenden Playlist -->
     <playlist [class.hidden]="activeView !== 'playlist'"
               class="d-block mt-3 mx-2 mb-2"></playlist>
+
+    <!-- Herz-Mix Ansicht -->
+    <mix [class.hidden]="activeView !== 'mix'"></mix>
 </div>
 
 <!-- Anzeigen, wenn Pi heruntergefahren wurde -->

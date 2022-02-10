@@ -7,7 +7,7 @@ import * as _ from 'lodash-es';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
-    selector: 'app-mix',
+    selector: 'mix',
     templateUrl: './mix.component.html',
     styleUrls: ['./mix.component.scss']
 })
@@ -15,9 +15,6 @@ export class MixComponent implements OnInit {
 
     //Shutdown
     shutdown: boolean = false;
-
-    //Name der aktuellen Playlist: Rolf Zuckowski - Starke Kinder
-    activeItemName: string = "";
 
     //Suchfeld
     searchField = new FormControl("");
@@ -62,11 +59,6 @@ export class MixComponent implements OnInit {
         //Shutdown Zustand abbonieren
         this.bs.getShutdown().subscribe(shutdown => {
             this.shutdown = shutdown;
-        });
-
-        //Name der aktuellen Playlist abbonieren
-        this.bs.getActiveItemName().subscribe(activeItemName => {
-            this.activeItemName = activeItemName
         });
 
         //Liste der auswaehlbaren Files abbonieren

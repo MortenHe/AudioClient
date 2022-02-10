@@ -10,9 +10,6 @@ import { FormControl } from '@angular/forms';
 
 export class PlaylistComponent implements OnInit {
 
-  //Name der aktuellen Playlist: Rolf Zuckowski - Starke Kiner
-  activeItemName: string = "";
-
   //aktuelle Zeit des laufenden Items
   time: string = "";
 
@@ -30,9 +27,6 @@ export class PlaylistComponent implements OnInit {
 
   //beim Init
   ngOnInit() {
-
-    //Name der aktuellen Playlist abbonieren
-    this.bs.getActiveItemName().subscribe(activeItemName => this.activeItemName = activeItemName);
 
     //akutelle Zeit per Service abbonieren und in Variable schreiben
     this.bs.getTime().subscribe(time => this.time = time);

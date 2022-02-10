@@ -1,6 +1,6 @@
 <!-- userMode Auswahl -->
 <select [formControl]="userModeSelect"
-        class="form-select w-auto mh-input-group">
+        class="form-select w-auto mh-input-group border-end-0">
     <option *ngFor="let userModeObj of userModeObjs"
             [ngValue]="userModeObj">
         {{userModeObj.label}}

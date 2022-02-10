@@ -1,143 +1,115 @@
-<!--Wrapper fuer sichtbare Elemte, waehrend Anwendung laueft -->
-<div *ngIf="!shutdown; else shutdownTemp"
-     class="app-content container g-0 p-0 shadow">
+<!-- 1. Zeile: Suchfeld + Paging -->
+<ng-container *ngIf="(searchFiles | searchFilter:searchTerm) as searchTermResult">
+    <div class="d-flex flex-wrap mx-2 mt-3">
 
-    <!-- 1. Zeile: Countdown, Connection und Shutdown -->
-    <div class="header row g-0 align-items-center py-1 px-2">
+        <!-- Auswahl-Button und Suchfeld gruppieren, damit Paging bei kleinen Aufloesungen in die naechste Zeile springt -->
+        <div class="d-flex flex-grow-1">
 
-        <!-- Link auf Player -->
-        <div class="ms-2 cursor-pointer w-auto"
-             routerLink="/">
-            <i class="fa fa-chevron-left"></i>
-            <span class="ms-2">Zurück</span>
+            <!-- Suchfeld: Label besteht aus Icon und Input -->
+            <label class="search-field form-control d-flex g-0 align-items-center p-1"
+                   for="searchField">
+
+                <!-- Such-Symbol -->
+                <i class="fa fa-search ms-2"></i>
+
+                <!-- Suchefeld -->
+                <input [formControl]="searchField"
+                       autofocus
+                       autocomplete="off"
+                       id="searchField"
+                       placeholder="Suche"
+                       class="col ms-2"
+                       id="search"
+                       type="search"
+                       name="search">
+            </label>
         </div>
 
-        <!-- Mix Playlist starten -->
-        <div class="ms-3 cursor-pointer w-auto"
-             (click)="startMixFolder()">
-            <i class="fa fa-play"></i>
-            <span class="ms-2">Mix starten</span>
+        <!-- Paging -->
+        <div class="d-flex paging align-items-center text-end justify-content-between">
+
+            <!-- Paging - -->
+            <button class="btn btn-sm fa fa-chevron-left"
+                    [disabled]="pageStart === 0"
+                    (click)="changePage(-1)"></button>
+
+            <!-- Seite x / y -->
+            <div class="mx-1">{{currentPage(searchTermResult.length)}} / {{totalPages(searchTermResult.length)}}
+            </div>
+
+            <!-- Paging + -->
+            <button class="btn  fa fa-chevron-right"
+                    [disabled]="pageStart + itemsPerPage >= searchTermResult.length"
+                    (click)="changePage(1)"></button>
         </div>
-
-        <!-- Countdown -->
-        <countdown class="ms-auto w-auto"></countdown>
-
-        <!-- Zustand der WSS-Verbindung -->
-        <connection class="w-auto"></connection>
-
-        <!-- Shutdown -->
-        <picontrol class="w-auto"></picontrol>
     </div>
 
-    <!-- Name der aktuellen Playlist -->
-    <div class="p-1 ps-2 current-playlist">Gerade läuft: <b>{{activeItemName}}</b></div>
+    <!-- 2. Zeile: Trefferliste der Dateisuche -->
+    <div class="mx-2 mt-2">
+        <div *ngFor="let searchFile of searchTermResult | slice:pageStart:(pageStart + itemsPerPage)"
+             class="d-flex align-items-baseline mb-2">
 
-    <!-- 2. Zeile: Suchfeld + Paging -->
-    <ng-container *ngIf="(searchFiles | searchFilter:searchTerm) as searchTermResult">
-        <div class="d-flex flex-wrap mx-2 mt-3">
+            <!-- Titel zu Herz-Mix-Ordner hinzufuegen -->
+            <i class="fa fa-plus tag-sm d-flex align-items-center justify-content-center"
+               (click)="addItem(searchFile)"></i>
 
-            <!-- Auswahl-Button und Suchfeld gruppieren, damit Paging bei kleinen Aufloesungen in die naechste Zeile springt -->
-            <div class="d-flex flex-grow-1">
-
-                <!-- Auswahl des Herz-Mix-Ordners (Luis vs. Laila...)-->
-                <selectusermode></selectusermode>
-
-                <!-- Suchfeld: Label besteht aus Icon und Input -->
-                <label class="search-field form-control d-flex g-0 align-items-center p-1 no-left-border-radius"
-                       for="searchField">
-
-                    <!-- Such-Symbol -->
-                    <i class="fa fa-search ms-2"></i>
-
-                    <!-- Suchefeld -->
-                    <input [formControl]="searchField"
-                           autofocus
-                           autocomplete="off"
-                           id="searchField"
-                           placeholder="Suche"
-                           class="col ms-2"
-                           id="search"
-                           type="search"
-                           name="search">
-                </label>
-            </div>
-
-            <!-- Paging -->
-            <div class="d-flex paging align-items-center text-end justify-content-between">
-
-                <!-- Paging - -->
-                <button class="btn btn-sm fa fa-chevron-left"
-                        [disabled]="pageStart === 0"
-                        (click)="changePage(-1)"></button>
-
-                <!-- Seite x / y -->
-                <div class="mx-1">{{currentPage(searchTermResult.length)}} / {{totalPages(searchTermResult.length)}}
-                </div>
-
-                <!-- Paging + -->
-                <button class="btn  fa fa-chevron-right"
-                        [disabled]="pageStart + itemsPerPage >= searchTermResult.length"
-                        (click)="changePage(1)"></button>
-            </div>
+            <!-- Name des Titels -->
+            <span class="ms-2"
+                  [highlight]="searchTerm">{{searchFile.path | fileName:'digitOnly'}}</span>
         </div>
+    </div>
+</ng-container>
 
-        <!-- 3. Zeile: Trefferliste der Dateisuche -->
-        <div class="mx-2 mt-2">
-            <div *ngFor="let searchFile of searchTermResult | slice:pageStart:(pageStart + itemsPerPage)"
-                 class="d-flex align-items-baseline mb-2">
+<hr>
 
-                <!-- Titel zu Herz-Mix-Ordner hinzufuegen -->
-                <i class="fa fa-plus tag-sm d-flex align-items-center justify-content-center"
-                   (click)="addItem(searchFile)"></i>
+<!-- 3. Zeile: Auswahl des Herz-Mix-Ordners und Speicher-Button -->
+<div class="row g-0 align-items-center px-2">
 
-                <!-- Name des Titels -->
-                <span class="ms-2"
-                      [highlight]="searchTerm">{{searchFile.path | fileName:'digitOnly'}}</span>
-            </div>
-        </div>
-    </ng-container>
-
-    <hr>
+    <!-- Auswahl des Herz-Mix-Ordners (Luis vs. Laila...)-->
+    <selectusermode class="width-auto"></selectusermode>
 
     <!-- Anederungen auf Server speichern, disabled wenn keine Aenderungen vorliegen -->
-    <button class="ms-3 btn"
+    <button class="btn width-auto no-left-border-radius position-relative"
             [ngClass]="{
           'mh-bg-primary': hasUnsavedChanges,
           'bg-secondary opacity-30': !hasUnsavedChanges}"
             [disabled]="!hasUnsavedChanges"
-            (click)="saveChanges()">Speichern</button>
+            (click)="saveChanges()">
 
-    <!-- Spinner waehrend Speichervorgang -->
-    <i *ngIf="saving"
-       class="ms-2 fa fa-spinner fa-spin"></i>
+        <!-- Text "Speichern", nur wenn gerade nicht gespeichert wird -->
+        <span [class.invisible]="saving">Speichern</span>
 
-    <!-- Sortierbare Herz-Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
-    <div class="mx-2 mt-2">
-        <div cdkDropList
-             class="sort-list"
-             (cdkDropListDropped)="drop($event)">
-            <div *ngFor="let mixFile of mixFiles, index as index"
-                 cdkDrag
-                 class="sort-box mb-2">
+        <!-- Spinner waehrend Speichervorgang -->
+        <i [class.invisible]="!saving"
+           class="fa fa-spinner fa-spin position-absolute mh-spinner"></i>
+    </button>
 
-                <!-- Sortier-Handle -->
-                <i cdkDragHandle
-                   class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle opacity-50"></i>
+    <!-- Mix Playlist starten -->
+    <div class="ms-2 cursor-pointer w-auto start-mix"
+         (click)="startMixFolder()">Mix starten</div>
+</div>
 
-                <!-- Name des Titels -->
-                <span class="ms-2 flex-grow-1">{{mixFile.path | fileName:'digitOnly'}}</span>
+<hr>
 
-                <!-- Titel aus Liste loeschen -->
-                <i class="ms-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"
-                   (click)="removeItem(index, mixFile)"></i>
-            </div>
+<!-- 4. Zeile: Sortierbare Herz-Mix-Uebersicht (bereits existierende Dateien aus Ordner + neu aus Suche hinzugefuegte Dateien) -->
+<div class="mx-2 mt-2">
+    <div cdkDropList
+         class="sort-list"
+         (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let mixFile of mixFiles, index as index"
+             cdkDrag
+             class="sort-box mb-2">
+
+            <!-- Sortier-Handle -->
+            <i cdkDragHandle
+               class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle opacity-50"></i>
+
+            <!-- Name des Titels -->
+            <span class="ms-2 flex-grow-1">{{mixFile.path | fileName:'digitOnly'}}</span>
+
+            <!-- Titel aus Liste loeschen -->
+            <i class="ms-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"
+               (click)="removeItem(index, mixFile)"></i>
         </div>
     </div>
 </div>
-
-<!-- Anzeigen, wenn Pi heruntergefahren wurde -->
-<ng-template #shutdownTemp>
-    <div class="container me-0 ms-0 g-0 text-center">
-        Der Player wurde beendet.
-    </div>
-</ng-template>

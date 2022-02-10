@@ -74,7 +74,6 @@ import { SelectusermodeComponent } from './components/selectusermode/selectuserm
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'search/:mode', component: SearchComponent },
-      { path: 'mix', component: MixComponent },
       { path: '**', redirectTo: '/search/hsp', pathMatch: 'full' }
     ], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,

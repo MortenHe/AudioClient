@@ -1,40 +1,20 @@
-<!-- Name der aktuellen Playlist -->
-<h1 class="mb-2 p-1 current-playlist">{{activeItemName}}</h1>
-
 <!-- Titel fett anzeigen (bei >= 10 Titel fuehrende 0 bei Zaehlung) -->
 <div *ngFor="let file of files; let i = index"
      (click)="jumpTo(i)"
-     class="item align-items-baseline d-flex"
+     class="item align-items-baseline d-flex ps-1"
      [ngClass]="{
         'opacity-50': i < position,
         'waiting': i === jumpPosition,
         'fw-bold': i === position
        }">
 
-  <!-- Zaehler ggf. mit fuehrender 0, unterschiedliche Breite bei >= 10 bzw. >= 100 Titel -->
-  <span [ngClass]="{
-      'counter-1': files.length.toString().length === 1,
-      'counter-2': files.length.toString().length === 2,
-      'counter-3': files.length.toString().length === 3
-    }">
+  <!-- Dateiname ohne fuehrende Ziffern -->
+  <span>-&nbsp;{{file|fileName:'digit'}}</span>
 
-    <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
-    <i class="fa fa-spinner fa-spin"
-       *ngIf="i === jumpPosition"></i>
+  <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
+  <i class="fa fa-spinner fa-spin spinner-left"
+     *ngIf="i === jumpPosition"></i>
 
-    <!-- Titelnummer anzeigen, wenn nicht gerade der Spinner angezeigt wird -->
-    <ng-container *ngIf="i !== jumpPosition">
-      {{(i + 1).toString().padStart(files.length.toString().length, "0")}})
-    </ng-container>
-  </span>
-
-  <!-- Dateiname + Zeit -->
-  <span class="file-name ms-1">
-
-    <!-- Dateiname ohne fuehrende Ziffern -->
-    {{file|fileName:'digit'}}
-
-    <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
-    <ng-container *ngIf="i === position && time !== ''"> ({{time|timeformatter}})</ng-container>
-  </span>
+  <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
+  <span *ngIf="i === position && time !== ''">&nbsp;({{time|timeformatter}}3.33)</span>
 </div>

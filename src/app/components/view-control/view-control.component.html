@@ -1,9 +1,14 @@
 <!-- Suche sichtbar machen -->
-<div class="tag fa fa-search d-flex align-items-center justify-content-center"
+<div class="tag fa fa-search d-flex align-items-center justify-content-center no-right-border-radius"
      [class.activeView]="activeView === 'search'"
      (click)="setActive('search')"></div>
 
 <!-- Playlist sichtbar machen -->
-<div class="ms-2 tag fa fa-list d-flex align-items-center justify-content-center"
+<div class="ml-minus-1 tag fa fa-list d-flex align-items-center justify-content-center no-left-border-radius no-right-border-radius"
      [class.activeView]="activeView === 'playlist'"
      (click)="setActive('playlist')"></div>
+
+<!-- Mix-Seite sichtbar machen -->
+<div class="ml-minus-1 tag fa fa-heart d-flex align-items-center justify-content-center no-left-border-radius mix"
+     [class.activeView]="activeView === 'mix'"
+     (click)="setActive('mix')"></div>

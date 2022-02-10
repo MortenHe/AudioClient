@@ -1,4 +1,4 @@
-@import '~scss/variables.scss';
+@import "~scss/variables.scss";
 
 :host {
     position: relative;
@@ -20,7 +20,7 @@
 }
 
 .player-controls {
-    background: rgba($color-info-blue, .1);
+    background: rgba($color-info-green, 0.1);
 }
 
 .mix {

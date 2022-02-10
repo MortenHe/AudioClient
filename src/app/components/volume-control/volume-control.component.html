@@ -1,3 +1,8 @@
+<!-- unsichtbares icon, damit 3 Icons wie bei player-control -> Aktuelle Playlist in der Mitte zentriert -->
+<button (click)="changeVolume(false)"
+        [disabled]="volume === 0 || position < 0"
+        class="ripple fa fa-volume-down text-info button-clean invisible"></button>
+
 <!-- Lautstaerke -->
 <!-- leiser -->
 <button (click)="changeVolume(false)"

@@ -18,6 +18,9 @@ export class SearchComponent {
   //welche ModeFilter gibt es (all, conni, janosch, misc)
   showModeFilterList: boolean = false;
 
+  //Name der aktuellen Playlist: Rolf Zuckowski - Starke Kiner
+  activeItemName: string = "";
+
   //Position in Playlist
   position: number = -1;
 
@@ -55,6 +58,9 @@ export class SearchComponent {
 
     //Modus abbonieren
     this.bs.getMode().subscribe(mode => this.mode = mode);
+
+    //Name der aktuellen Playlist abbonieren
+    this.bs.getActiveItemName().subscribe(activeItemName => this.activeItemName = activeItemName);
 
     //Liste der Modefilter abonnieren
     this.bs.getModeFilterList().subscribe(modeFilterlist => {

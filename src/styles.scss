@@ -66,12 +66,12 @@ body {
 }
 
 .header {
-    background: $color-info-blue;
+    background: $color-info-green;
     color: $color-grey;
 }
 
 .mh-bg-primary {
-    background: $color-info-blue;
+    background: $color-info-green;
 }
 
 .next-label {
@@ -88,7 +88,7 @@ body {
 }
 
 input:checked + .next-label {
-    background: rgba($color-info-blue, 0.2);
+    background: rgba($color-info-green, 0.2);
     border: 1px solid $color-light-border-grey;
 }
 
@@ -119,6 +119,10 @@ label {
 h1 {
     font-size: 22px;
     margin-bottom: 0px;
+}
+
+.h-40 {
+    height: 40px;
 }
 
 .button-clean {
@@ -173,6 +177,10 @@ button:disabled {
 
 .width-auto {
     width: auto;
+}
+
+.mr-auto {
+    margin-right: auto;
 }
 
 .item-length {
@@ -293,17 +301,20 @@ button:disabled {
 
 mark {
     padding: 0;
-    background: rgba($color-info-blue, 0.4);
+    background: rgba($color-info-green, 0.4);
 }
 
 label.fa-smile-o {
     font-size: 22px !important;
 }
 
+.font-weight-bold {
+    font-weight: bold;
+}
+
 .current-playlist {
     font-size: 15px;
-    background: rgba($color-info-blue, 0.1);
-    border-radius: 5px;
+    background: rgba($color-info-green, 0.1);
 }
 
 .no-left-border-radius {
@@ -311,9 +322,18 @@ label.fa-smile-o {
     border-bottom-left-radius: 0px;
 }
 
+.no-right-border-radius {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.ml-minus-1 {
+    margin-left: -1px;
+}
+
 @media (hover: hover) and (pointer: fine) {
     .tag-sm:hover {
-        background: rgba($color-info-blue, 0.2);
+        background: rgba($color-info-green, 0.2);
     }
 }
 
