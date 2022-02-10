@@ -8,13 +8,13 @@
         'fw-bold': i === position
        }">
 
-  <!-- Dateiname ohne fuehrende Ziffern -->
-  <span>-&nbsp;{{file|fileName:'digit'}}</span>
+   <!-- Dateiname ohne fuehrende Ziffern -->
+   <span>-&nbsp;{{file|fileName:'digit'}}</span>
 
-  <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
-  <i class="fa fa-spinner fa-spin spinner-left"
-     *ngIf="i === jumpPosition"></i>
+   <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
+   <i class="fa fa-spinner fa-spin spinner-left"
+      *ngIf="i === jumpPosition"></i>
 
-  <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
-  <span *ngIf="i === position && time !== ''">&nbsp;({{time|timeformatter}}3.33)</span>
+   <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
+   <span *ngIf="i === position && time !== ''">&nbsp;({{time|timeformatter}})</span>
 </div>
