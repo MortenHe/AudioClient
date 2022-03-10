@@ -1,5 +1,9 @@
 @import "~scss/variables.scss";
 
+:host {
+    padding: 10px 0px;
+}
+
 .item {
     cursor: pointer;
     user-select: none;

@@ -1,25 +1,25 @@
 <!-- Titel fett anzeigen (bei >= 10 Titel fuehrende 0 bei Zaehlung) -->
 <div *ngFor="let file of files; let i = index"
      (click)="jumpTo(i)"
-     class="item align-items-baseline d-flex ps-1"
+     class="item align-items-baseline d-flex pe-2"
      [ngClass]="{
         'opacity-50': i < position,
         'waiting': i === jumpPosition,
         'fw-bold': i === position
        }">
 
-   <!-- List item symbol -->
-   <span class="li-span"
-         *ngIf="i !== jumpPosition">&nbsp;-&nbsp;</span>
+      <!-- List item symbol -->
+      <span class="li-span"
+            *ngIf="i !== jumpPosition">&nbsp;-&nbsp;</span>
 
-   <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
-   <i class="fa fa-spinner fa-spin spinner-left me-2"
-      *ngIf="i === jumpPosition"></i>
+      <!-- Spinner anzeigen, wenn zu diesem Titel gesprungen wird -->
+      <i class="fa fa-spinner fa-spin spinner-left me-2"
+         *ngIf="i === jumpPosition"></i>
 
-   <!-- Dateiname ohne fuehrende Ziffern -->
-   <span>{{file|fileName:'digit'}}</span>
+      <!-- Dateiname ohne fuehrende Ziffern -->
+      <span>{{file|fileName:'digit'}}</span>
 
-   <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
-   <span class="ms-auto"
-         [class.invisible]="i !== position || time === ''">&nbsp;({{time|timeformatter}})</span>
+      <!-- aktuelle Laufzeit, wenn das der gerade aktuelle Titel ist-->
+      <span class="ms-auto"
+            [class.invisible]="i !== position || time === ''">&nbsp;({{time|timeformatter}})</span>
 </div>
