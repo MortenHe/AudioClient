@@ -50,7 +50,7 @@
              class="d-flex align-items-baseline mb-1">
 
             <!-- Titel zu Herz-Mix-Ordner hinzufuegen -->
-            <i class="fa fa-plus tag-sm d-flex align-items-center justify-content-center"
+            <i class="opacity-80 fa fa-plus tag-sm d-flex align-items-center justify-content-center"
                (click)="addItem(searchFile)"></i>
 
             <!-- Name des Titels -->
@@ -102,13 +102,13 @@
 
             <!-- Sortier-Handle -->
             <i cdkDragHandle
-               class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle opacity-50"></i>
+               class="fa fa-bars tag-sm d-flex align-items-center justify-content-center sort-handle opacity-80"></i>
 
             <!-- Name des Titels -->
             <span class="ms-2 flex-grow-1">{{mixFile.path | fileName:'digitOnly'}}</span>
 
             <!-- Titel aus Liste loeschen -->
-            <i class="ms-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"
+            <i class="opacity-80 ms-auto fa fa-trash tag-sm d-flex align-items-center justify-content-center"
                (click)="removeItem(index, mixFile)"></i>
         </div>
     </div>

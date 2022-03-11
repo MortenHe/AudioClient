@@ -1,18 +1,18 @@
 <!-- 1 Sortierbutton fuer alle Optionen (Name aufsteigend vs. Laenge absteigend) -->
-<div class="tag d-flex align-items-center justify-content-center"
+<div class="tag light-border d-flex align-items-center justify-content-center"
      (click)="setNextOrder()">
 
-  <!-- Sortiersymbol (Buchstaben, Uhr,...) -->
-  <i class="fa"
-     [ngClass]="{
+   <!-- Sortiersymbol (Buchstaben, Uhr,...) -->
+   <i class="fa"
+      [ngClass]="{
     'fa-calendar': orderField === 'added',
     'fa-font': orderField === 'name',
     'fa-clock-o': orderField === 'length'
   }"></i>
 
-  <!-- Aufsteigend / Absteigend sortieren Symbol -->
-  <i class="ms-1 fa"
-     [ngClass]="{
+   <!-- Aufsteigend / Absteigend sortieren Symbol -->
+   <i class="ms-1 fa"
+      [ngClass]="{
         'fa-sort-up': !reverseOrder,
         'fa-sort-down': reverseOrder
       }"></i>
