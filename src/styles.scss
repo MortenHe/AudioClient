@@ -341,5 +341,23 @@ label.fa-smile-o {
     }
 }
 
+@media (max-width: 500px)  {
+    playercontrol {
+        flex: 1 !important;
+        order: 2;
+    }
+
+    .playlist-name {
+        width: 100%;
+        flex: auto !important;
+        order: 1;
+    }
+    
+    volume-control {
+        flex: 1 !important;
+        order: 3;
+    }
+}
+
 //html, body { height: 100%; }
 //body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
