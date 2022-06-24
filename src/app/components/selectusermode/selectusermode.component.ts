@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { BackendService } from 'app/services/backend.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class SelectusermodeComponent implements OnInit {
     ];
 
     //userMode-Auswahl
-    userModeSelect: FormControl = new FormControl(this.userModeObjs[0]);
+    userModeSelect: UntypedFormControl = new UntypedFormControl(this.userModeObjs[0]);
 
     constructor(private bs: BackendService) { }
 

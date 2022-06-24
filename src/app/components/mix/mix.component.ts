@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { BackendService } from '../../services/backend.service';
 import * as path from 'path';
@@ -17,7 +17,7 @@ export class MixComponent implements OnInit {
     shutdown: boolean = false;
 
     //Suchfeld
-    searchField = new FormControl("");
+    searchField = new UntypedFormControl("");
 
     //Suchwert
     searchTerm = "";

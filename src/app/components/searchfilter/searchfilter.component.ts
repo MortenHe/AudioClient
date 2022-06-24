@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from "@angular/forms";
+import { UntypedFormControl } from "@angular/forms";
 import { ResultfilterService } from '../../services/resultfilter.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ResultfilterService } from '../../services/resultfilter.service';
 export class SearchfilterComponent implements OnInit {
 
   //Suchfeld
-  searchField = new FormControl("");
+  searchField = new UntypedFormControl("");
 
   //Services injecten
   constructor(private fs: ResultfilterService) { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from "@angular/forms";
+import { UntypedFormBuilder } from "@angular/forms";
 import { ResultfilterService } from '../../services/resultfilter.service';
 import { BackendService } from '../../services/backend.service';
 
@@ -18,7 +18,7 @@ export class ModefilterComponent implements OnInit {
   modeFilter;
 
   //Services injecten
-  constructor(private fb: FormBuilder, private fs: ResultfilterService, private bs: BackendService) { }
+  constructor(private fb: UntypedFormBuilder, private fs: ResultfilterService, private bs: BackendService) { }
 
   //Beim Init
   ngOnInit() {

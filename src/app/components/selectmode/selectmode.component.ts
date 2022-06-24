@@ -3,7 +3,7 @@ import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { domainModes } from '../../share/domainModes';
 import { ViewControlService } from '../../services/view-control.service';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
     selector: 'selectmode',
@@ -16,7 +16,7 @@ export class SelectmodeComponent implements OnInit {
     modes: any[] = domainModes;
 
     //mode-Auswahl
-    modeSelect: FormControl = new FormControl(this.modes[0]);
+    modeSelect: UntypedFormControl = new UntypedFormControl(this.modes[0]);
 
     //Services injecten
     constructor(private bs: BackendService, private router: Router, private vcs: ViewControlService) { }
