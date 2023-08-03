@@ -1,12 +1,10 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable()
-
 export class ResultfilterService {
-
   //Service injecten
-  constructor() { }
+  constructor() {}
 
   //modeFilter als BS, das abboniert werden kann
   modeFilterBS = new BehaviorSubject("all");
@@ -18,10 +16,10 @@ export class ResultfilterService {
   mixSearchTermBS = new BehaviorSubject("");
 
   //Sortierfeld als BS, das abboniert werden kann
-  orderFieldBS = new BehaviorSubject("name");
+  orderFieldBS = new BehaviorSubject("added");
 
   //umgekehrte Sortierung als BS, das abboniert werden kann
-  reverseOrderBS = new BehaviorSubject(false);
+  reverseOrderBS = new BehaviorSubject(true);
 
   //aktuell ausgewaehlten Mode-Filter liefern
   getModeFilter() {
@@ -60,7 +58,7 @@ export class ResultfilterService {
 
   //Sortierfeld setzen
   setOrderField(field: string) {
-    this.orderFieldBS.next(field)
+    this.orderFieldBS.next(field);
   }
 
   //umgekehrte Sortierung liefern
