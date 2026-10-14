@@ -14,7 +14,7 @@ export class FileNamePipe implements PipeTransform {
 
     //Bei Mixfiles und aktueller Playlist den Dateinamen aus Pfad extrahieren: /home/pi /.../01 - Ansage.mp3 -> 01 - Ansage
     if (prefixFilter === "digitOnly" || prefixFilter === "digit") {
-      fileName = path.basename(filePath, path.extname(filePath), '.mp3');
+      fileName = path.basename(filePath, path.extname(filePath));
     }
 
     //Nur Zahlen wegstreichen: 03 - Here We Go -> Here We Go
@@ -25,7 +25,7 @@ export class FileNamePipe implements PipeTransform {
     //Wenn in der Playlist die fuerhenden Zeichen entfernt werden sollen (Ed Sheeran - Sing -> Sing)
     //oder ein anderer Modefilter als Alle oder Sonstige ausgewaehlt ist, den Namen der Serie (Bibi und Tina - ) vorne wegkuerzen fuer mehr Platz
     else if (prefixFilter === "digit" || (prefixFilter && !this.ignoreArr.includes(prefixFilter))) {
-      fileName = fileName.replace(/^[A-Za-z0-9_äÄöÖüÜß ]* - /, '');
+      fileName = fileName.replace(/^[A-Za-z0-9_äÄöÖüÜß .-]*? - /, '');
     }
 
     return fileName;
